@@ -4,76 +4,79 @@
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="mx-auto max-w-xl text-center">
         <p class="text-lg font-medium leading-8 tracking-tight text-blue-600" aria-hidden="true">Testimonials</p>
-        <h2 class="mt-2 text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">We have worked with thousands of amazing people</h2>
+        <h2 class="mt-2 text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">Dare to know us and you'll love us</h2>
       </div>
       <div class="mx-auto mt-16 grid max-w-2xl grid-cols-1 grid-rows-1 gap-8 text-sm leading-6 text-neutral-900 sm:mt-20 sm:grid-cols-2 xl:mx-0 xl:max-w-none xl:grid-flow-col xl:grid-cols-4">
         <figure class="rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5 sm:col-span-2 xl:col-start-2 xl:row-end-1">
-          <blockquote class="p-6 text-lg font-medium leading-7 tracking-tight text-neutral-900 sm:p-12 sm:text-xl sm:leading-8">
-            <p>{{ `“${featuredTestimonial.body}”` }}</p>
+          <blockquote class="p-6 text-lg font-medium leading-7 tracking-tight text-gray-900 sm:p-12 sm:text-xl sm:leading-8">
+            <p>{{ featuredTestimonial.body }}</p>
           </blockquote>
           <figcaption class="flex flex-wrap items-center gap-x-4 gap-y-4 border-t border-gray-900/10 px-6 py-4 sm:flex-nowrap">
-            <img class="h-10 w-10 flex-none rounded-full bg-gray-50" :src="featuredTestimonial.author.imageUrl" alt="" />
             <div class="flex-auto">
-              <div class="font-medium">{{ featuredTestimonial.author.name }}</div>
-              <div class="text-neutral-600">{{ `@${featuredTestimonial.author.handle}` }}</div>
+              <div class="font-semibold">{{ featuredTestimonial.author.name }}</div>
+              <a :href="featuredTestimonial.author.link" class="text-blue-600 hover:text-neutral-900">{{ `${featuredTestimonial.author.where}` }}</a>
             </div>
             <img class="h-10 w-auto flex-none" :src="featuredTestimonial.author.logoUrl" alt="" />
           </figcaption>
         </figure>
         <div v-for="(columnGroup, columnGroupIdx) in testimonials" :key="columnGroupIdx" class="space-y-8 xl:contents xl:space-y-0">
           <div v-for="(column, columnIdx) in columnGroup" :key="columnIdx" :class="[(columnGroupIdx === 0 && columnIdx === 0) || (columnGroupIdx === testimonials.length - 1 && columnIdx === columnGroup.length - 1) ? 'xl:row-span-2' : 'xl:row-start-1', 'space-y-8']">
-            <figure v-for="testimonial in column" :key="testimonial.author.handle" class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
-              <blockquote class="text-neutral-900">
-                <p>{{ `“${testimonial.body}”` }}</p>
+            <figure v-for="testimonial in column" :key="testimonial.author.handle" class="rounded-xl bg-white p-6 shadow-plastic-md ring-1 ring-gray-900/5">
+              <blockquote class="text-neutral-900 text-base">
+                <p>{{ testimonial.body }}</p>
               </blockquote>
               <figcaption class="mt-6 flex items-center gap-x-4">
-                <img class="h-10 w-10 rounded-full bg-gray-50" :src="testimonial.author.imageUrl" alt="" />
                 <div>
-                  <div class="font-medium">{{ testimonial.author.name }}</div>
-                  <div class="text-neutral-600">{{ `@${testimonial.author.handle}` }}</div>
+                  <span class="font-medium mr-1">{{ testimonial.author.name }}</span>
+                  <a :href="testimonial.author.link" class="text-blue-500 hover:text-neutral-900 block">View {{ testimonial.author.where }}</a>
                 </div>
               </figcaption>
             </figure>
           </div>
         </div>
       </div>
+      <div class="coin">
+        <div class="tails"></div>
+        <div class="head"></div>
+      </div>
     </div>
   </div>
 </template>
 
+
+
 <script setup>
+import CoinTelegraph from '../../assets/images/testimonials/Cointelegraph.svg';
+
 const featuredTestimonial = {
-  body: 'Integer id nunc sit semper purus. Bibendum at lacus ut arcu blandit montes vitae auctor libero. Hac condimentum dignissim nibh vulputate ut nunc. Amet nibh orci mi venenatis blandit vel et proin. Non hendrerit in vel ac diam.',
+  body: 'Crypto lending reinvented: This solution can reduce liquidation and overcollateralization risks. The Nolus protocol represents a promising solution to the major issues hindering the adoption of DeFi lending. With its proactive strategies to mitigate overcollateralization and liquidation risks, Nolus paves the way for a safer and more user-friendly DeFi lending environment.',
   author: {
-    name: 'Brenna Goyette',
-    handle: 'brennagoyette',
-    imageUrl:
-      'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=1024&h=1024&q=80',
-    logoUrl: 'https://tailwindui.com/img/logos/savvycal-logo-gray-900.svg',
+    name: 'CoinTelegraph',
+    where: 'https://cointelegraph.com/',
+    link: 'https://cointelegraph.com/press-releases/nolus-protocol-reinvents-crypto-lending-with-its-decentralized-cross-chain-lease-protocol',
+    logoUrl: CoinTelegraph,
   },
 }
 const testimonials = [
   [
     [
       {
-        body: 'Laborum quis quam. Dolorum et ut quod quia. Voluptas numquam delectus nihil. Aut enim doloremque et ipsam.',
+        body: 'In our opinion, Nolus has the potential for significant growth as it seeks to address the limitations of current lending options in the crypto market and offers innovative solutions through its DeFi Lease and Nolus Protocol.',
         author: {
-          name: 'Leslie Alexander',
-          handle: 'lesliealexander',
-          imageUrl:
-            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          name: 'Token Metrics Ventures',
+          where: 'on X',
+          link: 'https://twitter.com/tmventuresfund/status/1683597424638533632',
         },
       },
       // More testimonials...
     ],
     [
       {
-        body: 'Aut reprehenderit voluptatem eum asperiores beatae id. Iure molestiae ipsam ut officia rem nulla blanditiis.',
+        body: 'Explore endless possibilities with Nolus. It gets two thumbs up from me for its simplicity and straightforwardness of lending and leasing. 👍 🌐',
         author: {
-          name: 'Lindsay Walton',
-          handle: 'lindsaywalton',
-          imageUrl:
-            'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          name: 'CosmosHOSS',
+          where: 'on X',
+          link: 'https://twitter.com/CosmosHOSS/status/1721906947879035257'
         },
       },
       // More testimonials...
@@ -82,24 +85,22 @@ const testimonials = [
   [
     [
       {
-        body: 'Voluptas quos itaque ipsam in voluptatem est. Iste eos blanditiis repudiandae. Earum deserunt enim molestiae ipsum perferendis recusandae saepe corrupti.',
+        body: "Just looking at my @NolusProtocol position and it's looking good. Put down $100 axlWETH to open the position. Borrowed $100 to buy more WETH. As WETH is now up 28%, I'm actually up 56% on my initial investment. Defi Lease. Safe 🤜🤛",
         author: {
-          name: 'Tom Cook',
-          handle: 'tomcook',
-          imageUrl:
-            'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          name: 'Rebel Defi',
+          where: 'on X',
+          link: 'https://twitter.com/rebel_defi/status/1731968852286718357'
         },
       },
       // More testimonials...
     ],
     [
       {
-        body: 'Molestias ea earum quos nostrum doloremque sed. Quaerat quasi aut velit incidunt excepturi rerum voluptatem minus harum.',
+        body: '@NolusProtocol $NLS has one of the cleanest IBC user interfaces. There is nowhere else in crypto that moving assets between sovereign chains is this quick and easy',
         author: {
           name: 'Leonard Krasner',
-          handle: 'leonardkrasner',
-          imageUrl:
-            'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          where: 'on X',
+          link: 'https://twitter.com/DLeveraged/status/1713192924731859432 '
         },
       },
       // More testimonials...

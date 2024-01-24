@@ -10,8 +10,8 @@
         <div>
           <ul class="flex flex-wrap justify-stretch gap-x-4 gap-y-4 w-full mx-auto text-center">
               <li v-for="hub in hubs" :key="hub.id" class="flex-grow basis-32">
-                <a class="py-7 px-4 flex flex-col items-center bg-white shadow-plastic-sm rounded-2xl">
-                  <figure class="text-xs w-20 h-20 mx-auto mb-4 bg-neutral-100 p-4 rounded-full shadow-inner shadow-sm shadow-neutral-200" aria-hidden="true">
+                <a class="py-7 px-4 flex flex-col items-center ">
+                  <figure class="text-xs w-20 h-20 mx-auto mb-4 bg-white p-4 rounded-full shadow-inner shadow-sm shadow-neutral-200" aria-hidden="true">
                     <img :src="hub.image" :alt='`Logo of ${hub.shortName}`'>
                   </figure>
                   <h3 class="text-sm text-neutral-600">{{ hub.shortName }}</h3>

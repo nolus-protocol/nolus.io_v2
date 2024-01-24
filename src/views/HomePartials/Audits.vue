@@ -11,6 +11,7 @@
 
         <div class="basis-1/2 gap-x-10 items-center justify-center">
           <img src="../../assets/verified.png" alt="" class="w-40 mb-8" aria-hidden="true" />
+          <!-- <div class="temp h-56"></div> -->
           <div>
             <h2 class="mt-2 text-3xl font-bold tracking-tight text-neutral-50 sm:text-4xl">Audited &amp; Verified</h2>
             <p class="mt-6 text-lg leading-8 text-neutral-100">Audited by the world’s leading security firms, security of the Nolus Protocol is the highest priority</p>

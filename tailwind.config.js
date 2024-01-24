@@ -90,7 +90,7 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['Garet', 'sans-serif']
+        sans: ['Garet', 'Helvetica', 'Arial', 'sans-serif']
       },
       fontSize: {
         xs: ['0.8125rem', { lineHeight: '1rem' }],
@@ -115,6 +115,7 @@ export default {
       },
       boxShadow: {
         'plastic-sm': '0 -1px 1px inset rgba(0, 0, 0, 0.4), 0 2px 1px inset rgba(255, 255, 255, 0.8), 0 16px 20px rgba(0,0,0,0.05)',
+        'plastic-md': '0 -1px 2px inset rgba(0, 0, 0, 0.3), 0 1px 1px inset rgba(255, 255, 255, 1), 0 16px 30px rgba(0,0,0,0.05)',
       }
     },
   },
