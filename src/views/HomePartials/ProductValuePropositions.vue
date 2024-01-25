@@ -3,8 +3,8 @@
     <NolusContainer class="relative z-10">
         <div class="flex justify-stretch gap-x-12 w-full">
           <ul class="basis-56 shrink-0 flex flex-col gap-y-2 text-neutral-800">
-            <li v-for="(tab, index) in tabs" :key="index" class="text-xl font-medium px-4 py-3 rounded-full cursor-pointer hover:bg-neutral-200/40 transition-all" :class="{ 'active bg-white shadow-plastic-sm text-blue-600 hover:bg-white': activeTab === index }" @click="setActiveTab(index)" @mouseover="stopInterval" @mouseout="startInterval">
-              <component :is="tab.tabIcon" fill="#ffcc00" alt="" class="inline-block icon" aria-hidden="true" /> {{ tab.tabName }}
+            <li v-for="(tab, index) in tabs" :key="index" class="text-xl font-medium px-4 py-3 rounded-full cursor-pointer hover:bg-neutral-200/40 transition-all" :class="{ 'active bg-white shadow-plastic-hard text-blue-600 hover:bg-white': activeTab === index }" @click="setActiveTab(index)" @mouseover="stopInterval" @mouseout="startInterval">
+              <component :is="tab.tabIcon" fill="#ffcc00" alt="" class="inline-block icon w-9" aria-hidden="true" /> {{ tab.tabName }}
             </li>
           </ul>
           <div class="w-full relative" ref="tabsContainer">
@@ -36,11 +36,11 @@
 import { ref, onMounted, onUnmounted, onBeforeUnmount, nextTick } from 'vue';
 import Button from '@/components/Button.vue'
 import NolusContainer from '@/components/NolusContainer.vue'
-import LeaseIcon from '../../assets/images/product-value-propositions/lease.svg'
-import SwapIcon from '../../assets/images/product-value-propositions/swap.svg'
-import EarnIcon from '../../assets/images/product-value-propositions/earn.svg'
-import DelegateIcon from '../../assets/images/product-value-propositions/delegate.svg'
-import GovernIcon from '../../assets/images/product-value-propositions/govern.svg'
+import LeaseIcon from '../../assets/icons/lease.svg'
+import SwapIcon from '../../assets/icons/swap.svg'
+import EarnIcon from '../../assets/icons/earn.svg'
+import DelegateIcon from '../../assets/icons/delegate.svg'
+import GovernIcon from '../../assets/icons/govern.svg'
 import LeaseImage from '../../assets/images/product-value-propositions/lease.jpg'
 
 const tabs = [

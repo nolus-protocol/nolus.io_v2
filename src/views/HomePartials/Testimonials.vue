@@ -21,7 +21,7 @@
         </figure>
         <div v-for="(columnGroup, columnGroupIdx) in testimonials" :key="columnGroupIdx" class="space-y-8 xl:contents xl:space-y-0">
           <div v-for="(column, columnIdx) in columnGroup" :key="columnIdx" :class="[(columnGroupIdx === 0 && columnIdx === 0) || (columnGroupIdx === testimonials.length - 1 && columnIdx === columnGroup.length - 1) ? 'xl:row-span-2' : 'xl:row-start-1', 'space-y-8']">
-            <figure v-for="testimonial in column" :key="testimonial.author.handle" class="rounded-xl bg-white p-6 shadow-plastic-md ring-1 ring-gray-900/5">
+            <figure v-for="testimonial in column" :key="testimonial.author.handle" class="rounded-xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
               <blockquote class="text-neutral-900 text-base">
                 <p>{{ testimonial.body }}</p>
               </blockquote>
