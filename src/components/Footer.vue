@@ -1,6 +1,6 @@
 <template>
   <footer class="bg-white">
-    <div class="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-24 lg:px-8">
+    <div class="mx-auto max-w-7xl overflow-hidden px-6 py-16 sm:py-16 lg:px-8">
       <div class="flex justify-between">
         <div class="flex space-x-10">
           <a v-for="item in social_navigation" :key="item.name" :href="item.href" class="text-blue-600 hover:text-neutral-500">

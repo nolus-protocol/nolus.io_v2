@@ -12,9 +12,9 @@
               <li v-for="hub in hubs" :key="hub.id" class="flex-grow basis-32">
                 <a class="py-7 px-4 flex flex-col items-center ">
                   <figure class="text-xs w-20 h-20 mx-auto mb-4 bg-white p-4 rounded-full shadow-inner shadow-sm shadow-neutral-200" aria-hidden="true">
-                    <img :src="hub.image" :alt='`Logo of ${hub.shortName}`'>
+                    <component :is="hub.image" :alt='`Logo of ${hub.shortName}`'></component>
                   </figure>
-                  <h3 class="text-sm text-neutral-600">{{ hub.shortName }}</h3>
+                  <h3 class="text-sm text-neutral-600 leading-3">{{ hub.shortName }}</h3>
                   <p class="text-lg leading-7 tracking-tight text-neutral-900">{{ hub.fullName }}</p>
                 </a>
               </li>
@@ -35,10 +35,10 @@
 
 <script setup>
 import NolusContainer from '@/components/NolusContainer.vue';
-import nolusImage from '../../assets/images/hubs/nolus.png';
 import osmosisImage from '../../assets/images/hubs/osmosis.svg';
+import astroportImage from '../../assets/images/hubs/astroport.svg';
+import nolusImage from '../../assets/images/hubs/nolus.svg';
 import arbitrumImage from '../../assets/images/hubs/arbitrum.svg';
-import astroportImage from '../../assets/images/hubs/astroport.png';
 
 const hubs = [
   {

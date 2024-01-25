@@ -34,9 +34,9 @@
 </template>
   
 <script setup>
-import vp1 from '../../assets/images/value-propositions/vp1.jpg'
-import vp2 from '../../assets/images/value-propositions/vp2.jpg'
-import vp3 from '../../assets/images/value-propositions/vp3.jpg'
+import vp1 from '../../assets/images/general-value-propositions/vp1.jpg'
+import vp2 from '../../assets/images/general-value-propositions/vp2.jpg'
+import vp3 from '../../assets/images/general-value-propositions/vp3.jpg'
 import NolusContainer from '../../components/NolusContainer.vue'
 
 const features = [
