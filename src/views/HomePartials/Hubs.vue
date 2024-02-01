@@ -22,14 +22,7 @@
         </div>
       </div>
     </NolusContainer>
-    <svg width="100%" height="100%" class="absolute bottom-0 left-0 fill-neutral-300 [mask-image:radial-gradient(65%_75%_at_top_left,white,transparent)]">
-      <defs>
-        <pattern id="dots" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
-          <circle cx="20" cy="20" r="2.5"></circle>
-        </pattern>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#dots)"></rect>
-    </svg>
+    
   </div>
 </template>
 

@@ -1,17 +1,12 @@
 <template>
   <div class="bg-blue-800 relative overflow-hidden">
     <div class="mx-auto max-w-7xl py-32 px-6 lg:px-8 relative z-10">
-      <div class="absolute -bottom-64 -z-10 transform-gpu overflow-hidden blur-3xl" aria-hidden="true">
-        <div class="relative aspect-[1/1] w-[36.125rem] bg-gradient-to-r from-blue-500 to-blue-950 opacity-50" style="clip-path: circle(50%);"></div>
-      </div>
-      <div class="absolute -top-40 right-0 -z-10 transform-gpu overflow-hidden blur-3xl" aria-hidden="true">
-        <div class="relative aspect-[1/1] w-[36.125rem] bg-gradient-to-r from-blue-800 to-blue-300 opacity-50" style="clip-path: circle(50%);"></div>
-      </div>
+      
       <div class="flex flex-row items-start gap-x-8">
 
         <div class="basis-1/2 gap-x-10 items-center justify-center">
-          <img src="../../assets/verified.png" alt="" class="w-40 mb-8" aria-hidden="true" />
-          <!-- <div class="temp h-56"></div> -->
+          <!-- <img :src='AuditImage' alt="" class="w-40 mb-8" aria-hidden="true" /> -->
+          <div class="temp h-56"></div>
           <div>
             <h2 class="mt-2 text-3xl font-bold tracking-tight text-neutral-50 sm:text-4xl">Audited &amp; Verified</h2>
             <p class="mt-6 text-lg leading-8 text-neutral-100">Audited by the world’s leading security firms, security of the Nolus Protocol is the highest priority</p>
@@ -32,20 +27,14 @@
         </ul>
       </div>
     </div>
-    <svg width="100%" height="100%" class="absolute bottom-0 right-0 fill-blue-400 [mask-image:radial-gradient(100%_100%_at_bottom_right,white,transparent)]" aria-hidden="true">
-      <defs>
-        <pattern id="dots" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
-          <circle fill="white" cx="20" cy="20" r="2.5"></circle>
-        </pattern>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#dots)"></rect>
-    </svg>
+
   </div>
 </template>
 
 <script setup>
 import Button from '../../components/Button.vue'
 import { DocumentCheckIcon, CheckIcon } from '@heroicons/vue/20/solid';
+import AuditImage from '@/assets/images/audits/verified.png'
 
 const audits = [
   {

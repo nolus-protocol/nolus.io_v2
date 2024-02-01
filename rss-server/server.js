@@ -12,7 +12,7 @@ const cron = require('node-cron');
 const app = express();
 const parser = new Parser();
 
-const dataDir = path.join(__dirname, 'data');
+const dataDir = path.join(__dirname, '../src/assets/blog');
 
 app.use(cors());
 

@@ -1,5 +1,5 @@
 <template>
-    <a :href="link" class="font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 transition-colors inline-flex gap-x-2" :class="size(), variant().buttonStyles[props.theme]" v-bind="$attrs">
+    <a :href="link" class="font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 cursor-pointer transition-all inline-flex gap-x-2" :class="size(), variant().buttonStyles[props.theme]" v-bind="$attrs">
       <template v-if="icon">
         <component :is="icon" :class="[props.size==='sm'?'h-5':'h-6', variant().iconColor[props.theme]]" />
       </template>
@@ -35,9 +35,9 @@ const props = defineProps({
 /* Button size */
 const size = () => {
   const sizesList = {
-    'sm': 'rounded-full px-3.5 py-2 text-sm',
-    'md': 'rounded-full px-4 py-3 text-md',
-    'lg': 'rounded-full px-6 py-4 text-md',
+    'sm': 'rounded-full px-3.5 py-2 text-sm shadow-md',
+    'md': 'rounded-full px-4 py-3 text-md shadow-lg',
+    'lg': 'rounded-full px-6 py-4 text-md shadow-xl',
   }
 
   return sizesList[props.size] || '';
@@ -48,8 +48,8 @@ const variant = () => {
   const variantsList = {
     'primary': {
       buttonStyles: {
-        light: 'bg-blue-500 text-white hover:bg-blue-600 focus-visible:outline-blue-600 shadow-plastic-soft',
-        dark: 'bg-blue-600 text-white hover:bg-blue-600 focus-visible:outline-blue-600 shadow-plastic-soft'
+        light: 'bg-blue-500 text-white hover:bg-blue-600 focus-visible:outline-blue-600 shadow-blue-200',
+        dark: 'bg-blue-600 text-white hover:bg-blue-600 focus-visible:outline-blue-600 shadow-blue-800'
       },
       iconColor: {
         light: 'text-white fill-white',
@@ -58,8 +58,8 @@ const variant = () => {
     },
     'secondary': {
       buttonStyles: {
-        light: 'text-neutral-900 hover:bg-neutral-100 focus-visible:outline-neutral-500 bg-neutral-50 shadow-plastic-hard',
-        dark: 'text-neutral-50 hover:bg-neutral-950 focus-visible:outline-neutral-500 shadow-neutral-200/80 bg-neutral-900 border border-neutral-600 shadow-plastic-hard'
+        light: 'text-neutral-900 hover:bg-neutral-100 focus-visible:outline-neutral-500 bg-white',
+        dark: 'text-neutral-50 hover:bg-neutral-950 focus-visible:outline-neutral-500 shadow-neutral-200/80 bg-neutral-900 border border-neutral-600'
       },
       iconColor: {
         light: 'text-blue-500 fill-blue-500',
@@ -68,8 +68,8 @@ const variant = () => {
     },
     'clean': {
       buttonStyles: {
-        light: 'text-neutral-900 hover:bg-neutral-100 focus-visible:outline-neutral-500 shadow-none shadow-plastic-hard',
-        dark: 'text-neutral-50 hover:bg-neutral-100 focus-visible:outline-neutral-500 shadow-none shadow-plastic-hard'
+        light: 'text-neutral-900 hover:bg-neutral-100 focus-visible:outline-neutral-500 shadow-none',
+        dark: 'text-neutral-50 hover:bg-neutral-100 focus-visible:outline-neutral-500 shadow-none'
       },
       iconColor: {
         light: 'text-blue-500 fill-blue-500',

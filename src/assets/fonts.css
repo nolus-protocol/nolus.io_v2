@@ -1,4 +1,4 @@
-/* @font-face {
+@font-face {
   font-family: 'Garet';
   src: url('./fonts/garet-regular-webfont.woff2') format('woff2'),
        url('./fonts/garet-regular-webfont.woff') format('woff');
@@ -28,21 +28,4 @@
        url('./fonts/garet-bold-webfont.woff') format('woff');
   font-weight: 600;
   font-style: normal;
-}
-
-@font-face {
-  font-family: 'Garet';
-  src: url('./fonts/garet-black-webfont.woff2') format('woff2'),
-       url('./fonts/garet-black-webfont.woff') format('woff');
-  font-weight: 900;
-  font-style: normal;
-} */
-
-@font-face {
-  font-family: 'Garet, ';
-  src: url('./fonts/garetvariablevf-1-webfont.woff2') format('woff2'),
-       url('./fonts/garetvariablevf-1-webfont.woff') format('woff');
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: optional;
 }

@@ -36,11 +36,11 @@
 import { ref, onMounted, onUnmounted, onBeforeUnmount, nextTick } from 'vue';
 import Button from '@/components/Button.vue'
 import NolusContainer from '@/components/NolusContainer.vue'
-import LeaseIcon from '../../assets/icons/lease.svg'
-import SwapIcon from '../../assets/icons/swap.svg'
-import EarnIcon from '../../assets/icons/earn.svg'
-import DelegateIcon from '../../assets/icons/delegate.svg'
-import GovernIcon from '../../assets/icons/govern.svg'
+import LeaseIcon from '@/assets/icons/lease.svg'
+import SwapIcon from '@/assets/icons/swap.svg'
+import EarnIcon from '@/assets/icons/earn.svg'
+import DelegateIcon from '@/assets/icons/delegate.svg'
+import GovernIcon from '@/assets/icons/govern.svg'
 import LeaseImage from '../../assets/images/product-value-propositions/lease.jpg'
 
 const tabs = [

@@ -1,7 +1,6 @@
 <template>
   <div class="relative isolate bg-neutral-50 pb-32 pt-24 sm:pt-32">
-
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <NolusContainer>
       <div class="mx-auto max-w-xl text-center">
         <p class="text-lg font-medium leading-8 tracking-tight text-blue-600" aria-hidden="true">Testimonials</p>
         <h2 class="mt-2 text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">Dare to know us and you'll love us</h2>
@@ -39,13 +38,14 @@
         <div class="tails"></div>
         <div class="head"></div>
       </div>
-    </div>
+    </NolusContainer>
   </div>
 </template>
 
 
 
 <script setup>
+import NolusContainer from '@/components/NolusContainer.vue';
 import CoinTelegraph from '../../assets/images/testimonials/Cointelegraph.svg';
 
 const featuredTestimonial = {
