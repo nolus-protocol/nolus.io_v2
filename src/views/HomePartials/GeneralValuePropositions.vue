@@ -21,9 +21,6 @@
           </div>
         </div>
       </div>
-      <!-- <div class="absolute inset-x-0 -bottom-40 -left-16  -z-5 transform-gpu overflow-hidden blur-3xl" aria-hidden="true">
-        <div class="relative aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-neutral-100 to-blue-100 opacity-100 sm:w-[72.1875rem]" style="clip-path: polygon(3% 43%, 16% 21%, 37% 35%, 61% 22%, 55% 54%, 91% 44%, 76% 68%, 40% 72%, 29% 51%);"></div>
-      </div> -->
     </NolusContainer>
     
   </div>
