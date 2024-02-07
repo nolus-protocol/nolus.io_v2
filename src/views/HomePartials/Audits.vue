@@ -12,7 +12,7 @@
             <p class="mt-6 text-lg leading-8 text-neutral-100">Audited by the world’s leading security firms, security of the Nolus Protocol is the highest priority</p>
           </div>
         </div>
-
+        
         <ul class="basis-1/2 flex flex-col gap-y-5">
             <li v-for="audit in audits" :key="audit.id" class="flex justify-between items-center gap-x-4 px-6 py-6 bg-gradient-to-r from-neutral-100 to-blue-100 backdrop-blur-sm rounded-full shadow-[0_2px_0px_inset_rgba(255,255,255,1)] relative">
               <div class="flex items-center gap-x-4">

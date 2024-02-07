@@ -24,10 +24,9 @@
           v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="400"
         >
           <Button size="lg" variant="primary" link="https://app.nolus.io/" :icon="SquareArrowUpRightSolidIcon">
-            
             Launch dApp
           </Button>
-          <Button size="lg" variant="secondary" :icon="PlayCircleIcon">
+          <Button size="lg" variant="secondary" :icon="PlayCircleIcon" @click="showVideoDialog = true">
             Watch explainer
           </Button>
         </div>
@@ -42,7 +41,15 @@
               <dt class="text-base leading-6 text-neutral-600">{{ stat.description }}</dt>
             </div>
           </dl>
-        </div>   
+        </div>
+        <Modal
+          :show="showVideoDialog"
+          :variant="'video'"
+          :width="'sm:w-full md:w-2/3'"
+          @close-modal="showVideoDialog = false"
+        >
+          <videoModal />
+        </Modal>   
     </div>
 
   </div>
@@ -54,6 +61,8 @@ import { ArrowTopRightOnSquareIcon, PlayCircleIcon } from '@heroicons/vue/24/sol
 import  SquareArrowUpRightSolidIcon from '@/assets/icons/square-arrow-up-right-solid.svg';
 import Button from '../../components/Button.vue';
 import videoPoster from '@/assets/videos/ball.jpg';
+import Modal from '@/components/modals/templates/Modal.vue';
+import VideoModal from '@/components/modals/VideoModal.vue';
 
 const stats = [
   { id: 1, subtitle: 'Total value', description: 'Value locked across 15 assets distributed over 2 networks', value: '$1,170,869' },
@@ -61,5 +70,6 @@ const stats = [
   { id: 3, subtitle: 'APR Yield', description: 'Real yield interest returns on lent stablecoins', value: '6.24%' },
 ]
 
+const showVideoDialog= ref(false);
 const isVideoLoaded = ref(false);
 </script>

@@ -11,29 +11,45 @@
         <nav>
           <ul class="flex space-x-5">
             <li v-for="item in footer_navigation" :key="item.name" class="text-sm leading-5">
-              <a :href="item.href" class="text-neutral-600 hover:text-neutral-900">{{ item.name }}</a> 
+              <a :href="item.href" @click="handleClick(item, $event)" class="text-neutral-600 hover:text-neutral-900">{{ item.name }}</a> 
             </li>
           </ul>
         </nav>
       </div>
       <p class="mt-10 text-xs leading-5 text-neutral-600 border-t border-neutral-100 pt-7">The information provided on this website is for general informational purposes only. It does not constitute, and should not be considered, a formal offer to sell or a solicitation of an offer to buy any security in any jurisdiction, legal advice, investment advice, or tax advice. If you need legal, investment, or tax advice, please consult with a professional adviser. The Nolus protocol is under development and is subject to change. As such, the protocol documentation and contents of this website may not reflect the current state of the protocol at any given time. The protocol documentation and website content are not final and are subject to change</p>
       <a href="#" class="sr-only">Go back to top</a>
-      
+      <Modal
+          :show="showVideoDialog"
+          @close-modal="showVideoDialog = false"
+        >
+        <tosModal />
+      </Modal>   
     </div>
   </footer>
 </template>
 
 <script setup>
-import { defineComponent, h } from 'vue'
+import { defineComponent, h, ref } from 'vue'
+import Modal from '@/components/modals/templates/Modal.vue';
+import tosModal from '@/components/modals/TosModal.vue';
+
+const showVideoDialog = ref(false);
+
+const handleClick = (item, event) => {
+  !item.href && event.preventDefault();
+  if (item.click) {
+    showVideoDialog.value = true;
+  }
+}
 
 const footer_navigation = [
   {
     name: 'Terms of Service',
-    href: '#',
+    click: 'showVideoDialog = true'
   },
   {
     name: 'Privacy Policy',
-    href: '#',
+    href: 'https://example.org',
   },
 ]
 

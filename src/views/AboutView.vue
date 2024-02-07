@@ -2,14 +2,23 @@
   <div class="bg-white">
     <main class="isolate">
       <!-- Hero section -->
-      <div class="overflow-hidden relative isolate -z-10 bg-blue-800 pt-40 pb-32">
+      <div class="overflow-hidden relative isolate -z-10 bg-[#203A80] pt-40 pb-32" id="hero-wrapper">
           <NolusContainer>
-            <!-- <img :src="aboutHeader" alt="" class="absolute w-[700px] -right-12" /> -->
-            <component :is="dots" class="absolute -right-[325px] -top-12 w-3/5" />
+            <div>
+                <video @loadeddata="isVideoLoaded = true" @play="onVideoPlay" :class="{ invisible: !isVideoLoaded, visible: isVideoLoaded }" muted autoplay playsinline class="absolute -right-[250px] -top-16 -z-10 mx-auto" data-timing="7" data-wait="240" style="width: 1000px"  aria-hidden="true" v-motion :initial="{ opacity: 0 }" :enter="{ opacity: 1, }" :delay="100" :poster='videoPoster'>
+                  <source :src="animatedLogo" type="video/mp4">
+                </video>
+              <img v-if="!isVideoLoaded" :src="videoPoster" alt="Video loading..." class="absolute -right-[250px] -top-16 -z-10 mx-auto" style="width: 1000px" v-motion :initial="{ opacity: 0 }" :enter="{ opacity: 1, }" :delay="100" />
+            </div>
+            <!-- <div>
+              <img :src="logoTunnel" alt="" class="absolute h-full -right-[350px]" />
+              <img :src="logoTunnelBalls" alt="" class="absolute h-full right-[200px]" />
+            </div> -->
+            <!-- <component :is="dots" class="absolute -right-[325px] -top-12 w-3/5" /> -->
             <div class="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
-              <div class="w-full max-w-xl lg:shrink-0 xl:max-w-3xl">
+              <div class="w-full max-w-xl lg:shrink-0 xl:max-w-2xl">
                 <h1 class="text-5xl font-bold tracking-tight text-white leading-tight" v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="100">Nolus Protocol offers a Web3 financial suite with an innovative Lease solution to advance DeFi</h1>
-                <div class="flex gap-x-12">
+                <div class="flex gap-x-8">
                   <p class="basis-1/2 relative mt-6 text-lg leading-8 text-white sm:max-w-md lg:max-w-lg" v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="200">A semi-permissioned blockchain connecting lenders and borrowers in DeFi. Borrowers secure up to 150% financing with DeFi Lease, accessing leveraged assets via whitelisted strategies.</p>
                 <p class="basis-1/2 relative mt-6 text-lg leading-8 text-white sm:max-w-md lg:max-w-lg" v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="300">Nolus reimagines leasing, mirroring traditional models to reduce DeFi's over-collateralization. This enhances capital efficiency and improves borrower terms.</p>
                 </div>
@@ -43,12 +52,12 @@
           <div class="basis-3/5 shrink-0">
             <!-- Core contributors -->
             <ul role="list" class="mx-auto mt-20 grid max-w-2xl grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-              <li v-for="person in core_contributors" :key="person.name" class="group flex items-center py-4 px-4 rounded-2xl hover:bg-white transition-all">
-                <img class="mr-5 h-32 w-32 rounded-full grayscale brightness-110 group-hover:grayscale-0 shadow-xl" :src="person.imageUrl" alt="" />
+              <li v-for="person in core_contributors" :key="person.name" class="group flex items-center py-4 px-4 rounded-2xl hover:bg-white hover:shadow-xl transition-all">
+                <img class="mr-5 h-32 w-32 rounded-full grayscale brightness-110 group-hover:grayscale-0" :src="person.imageUrl" alt="" />
                 <div>
                   <h3 class="text-base font-semibold leading-7 tracking-tight text-neutral-900">{{ person.name }}</h3>
                   <p class="text-sm leading-6 text-neutral-600">{{ person.role }}</p>
-                  <ul role="list" class="flex gap-x-2 mt-2">
+                  <!-- <ul role="list" class="flex gap-x-2 mt-2">
                     <li>
                       <a :href="person.xUrl" class="text-neutral-400 fill-neutral-500 hover:fill-neutral-900 p-3 block bg-neutral-50 rounded-full transition-all hover:fill-blue-600 hover:bg-blue-100">
                         <span class="sr-only">X</span>
@@ -61,7 +70,7 @@
                         <component :is="discordIcon" class="h-6 w-6 "></component>
                       </a>
                     </li>
-                  </ul>
+                  </ul> -->
                   </div>
               </li>
             </ul>
@@ -77,21 +86,21 @@
       </div>
 
       <!-- Logo cloud -->
-      <div class="relative isolate -z-10 py-32 bg-blue-800 overflow-hidden">
+      <div class="relative isolate -z-10 py-16 bg-blue-800 overflow-hidden">
           <NolusContainer>
-            <div class="mx-auto grid max-w-lg grid-cols-4 justify-center items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-4">
-              <img class="mx-auto w-4/5" src="/assets/images/about/partners/cogitent_ventures.png" alt="Cogitent Ventures"  />
-              <img class="mx-auto w-4/5" src="/assets/images/about/partners/cointelegraph.svg" alt="CoinTelegraph" />
-              <img class="mx-auto w-4/5" src="/assets/images/about/partners/dorahacks.svg" alt="DoraHacks" />
-              <img class="mx-auto w-4/5" src="/assets/images/about/partners/tokenmetrics.svg" alt="TokenMetrics" />
-              <img class="mx-auto w-4/5" src="/assets/images/about/partners/kahuna.svg" alt="Kahuna" />
-              <img class="mx-auto w-4/5" src="/assets/images/about/partners/everstake.svg" alt="Everstake" />
-              <img class="mx-auto w-4/5" src="/assets/images/about/partners/block_builders.svg" alt="BlockBuilders" />
-              <img class="mx-auto w-4/5" src="/assets/images/about/partners/gt_capital.svg" alt="GT Capital" />
-              <img class="mx-auto w-4/5" src="/assets/images/about/partners/01node.svg" alt="01Node" />
-              <img class="mx-auto w-4/5" src="/assets/images/about/partners/autonomy_capital.svg" alt="Autonomy Capital" />
-              <img class="mx-auto w-4/5" src="/assets/images/about/partners/nacion_crypto.svg" alt="NAcion Crypto" />
-              <img class="mx-auto w-4/5" src="/assets/images/about/partners/p-ops_team.png" alt="P-OPS Team" />
+            <div class="mx-auto grid max-w-lg grid-cols-4 justify-center items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-6">
+                <img class="mx-auto w-4/5" src="/assets/images/about/partners/cogitent_ventures.png" alt="Cogitent Ventures" />
+                <img class="mx-auto w-4/5" src="/assets/images/about/partners/cointelegraph.svg" alt="CoinTelegraph" />
+                <img class="mx-auto w-4/5" src="/assets/images/about/partners/dorahacks.svg" alt="DoraHacks" />
+                <img class="mx-auto w-4/5" src="/assets/images/about/partners/tokenmetrics.svg" alt="TokenMetrics" />
+                <img class="mx-auto w-4/5" src="/assets/images/about/partners/kahuna.svg" alt="Kahuna" />
+                <img class="mx-auto w-4/5" src="/assets/images/about/partners/everstake.svg" alt="Everstake" />
+                <img class="mx-auto w-4/5" src="/assets/images/about/partners/block_builders.svg" alt="BlockBuilders" />
+                <img class="mx-auto w-4/5" src="/assets/images/about/partners/gt_capital.svg" alt="GT Capital" />
+                <img class="mx-auto w-4/5" src="/assets/images/about/partners/01node.svg" alt="01Node" />
+                <img class="mx-auto w-4/5" src="/assets/images/about/partners/autonomy_capital.svg" alt="Autonomy Capital" />
+                <img class="mx-auto w-4/5" src="/assets/images/about/partners/nacion_crypto.svg" alt="NAcion Crypto" />
+                <img class="mx-auto w-4/5" src="/assets/images/about/partners/p-ops_team.png" alt="P-OPS Team" />
             </div>
           </NolusContainer>
       </div>
@@ -102,6 +111,7 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import NolusContainer from '@/components/NolusContainer.vue';
 
 // Icons and illustrations
@@ -109,6 +119,14 @@ import xIcon from '@/assets/icons/x.svg';
 import discordIcon from '@/assets/icons/discord.svg';
 import dots from '@/assets/images/dots.svg';
 import icon1 from  '@/assets/images/icon1.svg';
+import logoTunnel from '@/assets/images/about/logo-tunnel.png';
+import logoTunnelBalls from '@/assets/images/about/logo-tunnel-balls.png';
+import animatedLogo from '@/assets/videos/animated-logo.mp4';
+import videoPoster from '@/assets/videos/animated-logo.jpg';
+
+// Logo dependencies
+
+const isVideoLoaded = ref(false);
 
 // Define vision, mission and values
 const visionMisionAndValues = [

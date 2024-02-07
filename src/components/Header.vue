@@ -109,7 +109,6 @@ const router = useRouter();
 const headerClass = computed(() => {
   switch (router.currentRoute.value.name) {
     case 'about':
-    case 'governance':
       return 'light-header'
     default:
       return 'dark-header'

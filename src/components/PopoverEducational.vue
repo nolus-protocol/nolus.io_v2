@@ -25,8 +25,8 @@
           </div>
           <div class="bg-blue-100/80 border-t border-blue-900/10 p-4">
             <div class="flex justify-between items-center px-3 mb-2 pr-0">
-              <h3 class="text-md font-medium leading-6 text-neutral-900">Recent posts</h3>
-              <Button size="sm" :icon="ReadmeIcon" variant="secondary" link="https://medium.com/nolusprotocol" >See all posts</Button>
+              <h3 class="text-md font-medium leading-6 text-neutral-900">Recent blog posts</h3>
+              <Button size="sm" :icon="MediumIcon" variant="secondary" link="https://medium.com/nolusprotocol" >View all posts</Button>
             </div>
             <ul role="list" class="space-y-1">
               <li v-for="post in recentPosts" :key="post.id" class="relative w-full">
@@ -66,7 +66,6 @@ const props = defineProps({
 
 const resources = [
   { name: 'Knowledge Hub', description: 'Find solutions for your questions', href: 'https://hub.nolus.io/', icon: LifeRingSolidIcon },
-  { name: 'Blog', description: 'Discover helpful insights and information', href: 'https://medium.com/nolusprotocol', icon: MediumIcon },
 ]
 
 const getImageUrl = (imageName) => {
