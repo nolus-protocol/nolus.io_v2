@@ -1,21 +1,23 @@
 <template>
-  <div class="relative bg-neutral-100 py-24 sm:py-32 border">
-    <NolusContainer class="relative z-10">
-        <div class="flex justify-stretch gap-x-12 w-full">
-          <ul class="basis-48 shrink-0 flex flex-col gap-y-3 text-neutral-800">
-            <li v-for="(tab, index) in tabs" :key="index" class="text-xl font-medium px-4 py-2 rounded-full cursor-pointer hover:bg-neutral-200/40 transition-all" :class="{ 'active bg-white shadow-xl text-blue-600 hover:bg-white': activeTab === index }" @click="setActiveTab(index)" @mouseover="stopInterval" @mouseout="startInterval">
-              <component :is="tab.tabIcon" fill="#ffcc00" alt="" class="inline-block icon w-9" aria-hidden="true" /> {{ tab.tabName }}
-            </li>
-          </ul>
+  <div class="relative bg-neutral-100 py-16 md:py-32 pt-0 md:pt-16">
+    <NolusContainer class="relative z-10 overflow-hidden">
+        <div class="flex flex-col lg:flex-row justify-stretch gap-y-12 gap-x-12 w-full">
+          <div class="md:basis-48 shrink-0 bg-neutral-200/50 md:bg-transparent rounded-3xl">
+            <ul class="p-4 items-center sticky top-40 md:static md:w-auto md:items-stretch flex lg:flex-col flex-wrap  gap-y-2 md:gap-y-3 text-neutral-80">
+              <li v-for="(tab, index) in tabs" :key="index" class="basis-1/2 md:basis-auto text-base md:text-xl font-medium px-2 md:px-4 py-2 md:py-2 rounded-xl md:rounded-full cursor-pointer hover:bg-neutral-200/40 transition-all" :class="{ 'active bg-white shadow-xl text-blue-600 hover:bg-white': activeTab === index }" @click="setActiveTab(index)" @mouseover="stopInterval" @mouseout="startInterval">
+                <component :is="tab.tabIcon" fill="#ffcc00" alt="" class="inline-block icon w-7 md:w-9" aria-hidden="true" /> {{ tab.tabName }}
+              </li>
+            </ul>
+          </div>
           <div class="w-full relative" ref="tabsContainer">
             <div v-for="(tab, index) in tabs" :key="index" class="absolute w-full">
-                <div v-if="activeTab === index">
-                  <div class="w-3/5" v-motion :initial="{ opacity: 0, y: 100 }" :enter="{ opacity: 1, y: 0, scale: 1, transition: {duration: 400} }" :leave="{ opacity: 0, y: 100 }">
+              <div v-if="activeTab === index">
+                  <img :ref="el => { if (el) imgRefs[index] = el }" :src="tab.tabImage" alt="" class="block md:absolute md:w-2/5 w-auto h-80 mb-12 md:mb-0 -z-10 -right-8 top-0" aria-hidden="true" v-motion :initial="{ opacity: 0}" :enter="{ opacity: 1, scale: 1, transition: {duration: 600} }" :leave="{ opacity: 0}" />
+                  <div class="md:w-3/5" v-motion :initial="{ opacity: 0, y: 100 }" :enter="{ opacity: 1, y: 0, scale: 1, transition: {duration: 400} }" :leave="{ opacity: 0, y: 100 }">
                     <h2 class="mt-2 text-3xl font-bold tracking-tight text-neutral-900 sm:text-5xl" aria-hidden="true">{{ tab.heading }}</h2>
                     <p class="mt-6 text-lg leading-8 text-neutral-600">{{ tab.content }}</p>
                     <Button :link="tab.buttonLink" class="mt-5">Get the Nolus dApp</Button>
                   </div>
-                  <img :src="tab.tabImage" alt="" class="absolute w-2/4 h-auto -z-10 -right-16 -top-10" aria-hidden="true" v-motion :initial="{ opacity: 0}" :enter="{ opacity: 1, scale: 1, transition: {duration: 600} }" :leave="{ opacity: 0}" />
                 </div>
             </div>
           </div>
@@ -33,7 +35,7 @@
 }
 </style>
 <script setup>
-import { ref, onMounted, onUnmounted, onBeforeUnmount, nextTick } from 'vue';
+import { ref, onMounted, onUnmounted, onBeforeUnmount, nextTick, reactive } from 'vue';
 import Button from '@/components/Button.vue'
 import NolusContainer from '@/components/NolusContainer.vue'
 import LeaseIcon from '@/assets/icons/lease.svg'
@@ -41,7 +43,7 @@ import SwapIcon from '@/assets/icons/swap.svg'
 import EarnIcon from '@/assets/icons/earn.svg'
 import DelegateIcon from '@/assets/icons/delegate.svg'
 import GovernIcon from '@/assets/icons/govern.svg'
-import LeaseImage from '../../assets/images/product-value-propositions/lease.jpg'
+import LeaseImage from '../../assets/images/product-value-propositions/lease.png'
 
 const tabs = [
   {
@@ -88,6 +90,7 @@ const tabs = [
 
 let activeTab = ref(0); // Initialize activeTab to 0
 let tabsContainer = ref(null);
+let imgRefs = reactive({});
 let intervalId, observer;
 
 const setActiveTab = (index) => {
@@ -109,7 +112,12 @@ const stopInterval = () => {
 
 onMounted(async () => {
   await nextTick(); // Wait for the DOM to update
-  tabsContainer.value.style.height = `${tabsContainer.value.scrollHeight}px`;
+
+  for (const key in imgRefs) {
+    imgRefs[key].onload = () => {
+      tabsContainer.value.style.height = `${tabsContainer.value.scrollHeight}px`;
+    };
+  }
 
   // Create a new Intersection Observer
   observer = new IntersectionObserver((entries) => {

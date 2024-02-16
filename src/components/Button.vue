@@ -1,5 +1,5 @@
 <template>
-    <a :href="link" @click="handleClick" class="font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 cursor-pointer transition-all inline-flex gap-x-2" :class="size(), variant().buttonStyles[props.theme]" v-bind="$attrs">
+    <a :href="link" @click="handleClick" class="flex items-center justify-center font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 cursor-pointer transition-all inline-flex gap-x-2" :class="size(), variant().buttonStyles[props.theme]" v-bind="$attrs">
       <template v-if="icon">
         <component :is="icon" :class="[props.size==='sm'?'h-5':'h-6', variant().iconColor[props.theme]]" />
       </template>

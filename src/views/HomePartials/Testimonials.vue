@@ -1,13 +1,13 @@
 <template>
-  <div class="relative overflow-hidden isolate bg-neutral-50 py-32">
+  <div class="relative overflow-hidden isolate bg-neutral-50 py-16 md:py-32">
     <NolusContainer>
       <div class="mx-auto">
         <p class="text-lg font-medium leading-8 tracking-tight text-blue-600" aria-hidden="true">Testimonials</p>
         <h2 class="mt-2 text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">Dare to know us</h2>
       </div>
-      <div class="mx-auto mt-16 mb-8 grid grid-cols-2 gap-x-20 gap-y-16">
+      <div class="mx-auto mt-12 md:mt-16 mb-8 grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-16">
         <figure v-for="testimonial in displayedTestimonials" :key="testimonial.author.handle" class="divide-y" v-motion :initial="{ opacity: 0, y: -100 }" :enter="{ opacity: 1, y: 0, scale: 1, transition: {duration: 400} }" :leave="{ opacity: 0, y: 100 }">
-          <blockquote class="text-neutral-900 text-xl leading-9">
+          <blockquote class="text-neutral-900 text-base md:text-xl leading-8 md:leading-9">
             <p>{{ testimonial.body }}</p>
           </blockquote>
           <figcaption class="mt-6 flex items-center gap-x-4 text-sm pt-4">
@@ -18,7 +18,7 @@
           </figcaption>
         </figure>
       </div>
-      <Button variant="secondary" :icon="PlusIcon" size="md" v-if="testimonialsToShow < testimonials.length" @click="loadMore" class="mt-4">Load more</Button>
+      <Button variant="secondary" :icon="PlusIcon" size="md" v-if="testimonialsToShow < testimonials.length" @click="loadMore" class="mt-4">Load more testimonials</Button>
     </NolusContainer>
   </div>
 </template>

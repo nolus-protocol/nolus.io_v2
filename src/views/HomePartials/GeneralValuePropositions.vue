@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gradient-to-b from-white to-neutral-50 py-16 pb-24 ">
+  <div class="bg-gradient-to-b from-white to-neutral-50 py-16 pb-40 md:pb-48">
     <NolusContainer class="relative">
       <div class="mx-auto max-w-2xl grid-cols-1 lg:mx-0 lg:max-w-none lg:grid-cols-3 relative z-10">
         <p class="text-blue-500 font-medium" aria-hidden="true">Start today</p>

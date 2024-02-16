@@ -1,13 +1,13 @@
 <template>
-  <Popover class="relative"  v-slot="{ open }">
-    <PopoverButton class="inline-flex items-center gap-x-1 leading-6 text-neutral-900 py-2 px-3 rounded-lg hover:bg-neutral-300/30" :class="{ 'bg-neutral-200/50': open }">
+  <Popover class="relative" v-slot="{ open }">
+    <PopoverButton class="flex w-full justify-between items-center gap-x-1 py-5 lg:py-2 px-5 lg:px-3 rounded-t-2xl  lg:rounded-lg lg:hover:bg-neutral-200/50 transition-all" :class="{ 'bg-white lg:bg-neutral-200/40 shadow-lg lg:shadow-none': open }">
       <span :class="props.textColorClass">Resources</span>
-      <ChevronDownIcon class="h-5 w-5" :class="props.fillColorClass" aria-hidden="true" />
+      <ChevronDownIcon class="h-5 w-5 md:h-3 md:w-3 md:ml-1 fill-neutral-800" :class="props.fillColorClass" aria-hidden="true" />
     </PopoverButton>
 
-    <transition enter-active-class="transition ease-in-out duration-200" enter-from-class="opacity-0 translate-y-3 scale-95 origin-bottom" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-3 scale-95 origin-bottom">
-      <PopoverPanel class="absolute left-1/2 z-10 mt-5 flex w-screen max-w-max -translate-x-1/2 px-4">
-        <div class="w-screen max-w-sm flex-auto rounded-3xl bg-white p-4 text-sm leading-6 shadow-2xl ring-1 ring-gray-900/5 ">
+    <transition enter-active-class="transition ease-in-out duration-200" enter-from-class="opacity-0 translate-y-3 md:scale-95 origin-bottom" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-3 md:scale-95 origin-bottom">
+      <PopoverPanel class="lg:absolute lg:left-1/2 lg:z-10 lg:mt-5 flex lg:w-screen max-w-max lg:-translate-x-1/2 lg:px-4 ">
+        <div class="w-screen max-w-md flex-auto bg-white rounded-b-2xl lg:rounded-3xl leading-6 shadow-2xl ring-1 ring-neutral-900/5 overflow-hidden p-4">
           <a v-for="item in solutions" :key="item.name" :href="item.href" class="rounded-lg">
               <div class="text-sm group relative flex gap-x-4 rounded-lg p-4 hover:bg-blue-100 transition-all ">
                 <div class=" flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-blue-100 group-hover:bg-blue-200  transition-all">
@@ -30,7 +30,7 @@
 <script setup>
 import { defineProps } from 'vue'
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
-import { ChevronDownIcon } from '@heroicons/vue/20/solid'
+import ChevronDownIcon from '@/assets/icons/chevron-down.svg'
 import GithubIcon from '../assets/icons/github.svg'
 import ShieldHalvedSolidIcon from '../assets/icons/shield-halved-solid.svg'
 import BrushSolidIcon from '../assets/icons/brush-solid.svg'

@@ -4,16 +4,18 @@
 
     <main class="isolate">
       <!-- Hero section -->
-      <div class="overflow-hidden relative isolate -z-10 bg-blue-100 pt-40 pb-24">
+      <div class="overflow-hidden relative isolate -z-10 bg-blue-100 py-32 pb-24 md:pt-40">
           <NolusContainer>
-            <svg width="0" height="0" viewBox="0 0 444 444">
-              <defs>
-                <clipPath id="logoMask" clipPathUnits="objectBoundingBox">
-                  <path d="M0.5 0a0.5 0.5 0 0 0-0.461 0.309A0.5 0.5 0 1 0 0.5 0Zm0.175 0.75H0.325a0.075 0.075 0 0 1-0.075-0.075V0.325A0.075 0.075 0 0 1 0.325 0.25h0.35a0.075 0.075 0 0 1 0.075 0.075v0.35a0.075 0.075 0 0 1-0.022 0.053 0.075 0.075 0 0 1-0.053 0.022Z"/>
-                </clipPath>
-              </defs>
-            </svg>
-            <canvas id="myCanvas" ref="myCanvas" class="absolute -top-12 -right-16" style="clip-path: url(#logoMask);" v-motion :initial="{ opacity: 0 }" :enter="{ opacity: 1}" :delay="300"></canvas>
+            <div class="hidden md:absolute -top-12 -right-64 xl:-right-16">
+              <svg width="0" height="0" viewBox="0 0 444 444">
+                <defs>
+                  <clipPath id="logoMask" clipPathUnits="objectBoundingBox">
+                    <path d="M0.5 0a0.5 0.5 0 0 0-0.461 0.309A0.5 0.5 0 1 0 0.5 0Zm0.175 0.75H0.325a0.075 0.075 0 0 1-0.075-0.075V0.325A0.075 0.075 0 0 1 0.325 0.25h0.35a0.075 0.075 0 0 1 0.075 0.075v0.35a0.075 0.075 0 0 1-0.022 0.053 0.075 0.075 0 0 1-0.053 0.022Z"/>
+                  </clipPath>
+                </defs>
+              </svg>
+              <canvas id="myCanvas" ref="myCanvas" style="clip-path: url(#logoMask);" v-motion :initial="{ opacity: 0 }" :enter="{ opacity: 1}" :delay="300"></canvas>
+            </div>
             <div class="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
               <div class="w-full max-w-xl lg:shrink-0 xl:max-w-3xl">
                 <h1 class="text-5xl font-bold tracking-tight text-neutral-900 leading-tight" v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="100">Governance</h1>

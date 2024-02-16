@@ -1,13 +1,13 @@
 <template>
   <Popover class="relative" v-slot="{ open }">
-    <PopoverButton class="inline-flex items-center gap-x-1 py-2 px-3 rounded-lg hover:bg-neutral-300/30 transition-all" :class="{ 'bg-neutral-200/50': open }">
+    <PopoverButton class="flex w-full justify-between items-center gap-x-1 py-5 lg:py-2 px-5 lg:px-3 rounded-t-2xl  lg:rounded-lg lg:hover:bg-neutral-200/50 transition-all" :class="{ 'bg-white lg:bg-neutral-200/40 shadow-lg lg:shadow-none': open }">
       <span :class="props.textColorClass">Educational</span>
-      <ChevronDownIcon class="h-5 w-5" :class="props.fillColorClass" aria-hidden="true" />
+      <ChevronDownIcon class="h-5 w-5 md:h-3 md:w-3 md:ml-1 fill-neutral-800" :class="props.fillColorClass" aria-hidden="true" />
     </PopoverButton>
 
-    <transition enter-active-class="transition ease-in-out duration-200" enter-from-class="opacity-0 translate-y-3 scale-95 origin-bottom" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-3 scale-95 origin-bottom">
-      <PopoverPanel class="absolute left-1/2 z-10 mt-5 flex w-screen max-w-max -translate-x-1/2 px-4 ">
-        <div class="w-screen max-w-md flex-auto bg-white rounded-3xl leading-6 shadow-2xl ring-1 ring-neutral-900/5 overflow-hidden">
+    <transition enter-active-class="transition ease-in-out duration-200" enter-from-class="opacity-0 translate-y-3 md:scale-95 origin-bottom" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-3 md:scale-95 origin-bottom">
+      <PopoverPanel class="lg:absolute lg:left-1/2 lg:z-10 lg:mt-5 flex lg:w-screen max-w-max lg:-translate-x-1/2 lg:px-4 ">
+        <div class="w-screen max-w-md flex-auto bg-white rounded-b-2xl lg:rounded-3xl leading-6 shadow-2xl ring-1 ring-neutral-900/5 overflow-hidden">
           <div class="bg-white p-4">
             <a v-for="item in resources" :key="item.name" :href="item.href" class="rounded-lg">
               <div class="text-sm group relative flex gap-x-4 rounded-lg p-4 hover:bg-blue-100 transition-all">
@@ -24,7 +24,7 @@
             </a>
           </div>
           <div class="bg-blue-100/80 border-t border-blue-900/10 p-4">
-            <div class="flex justify-between items-center px-3 mb-2 pr-0">
+            <div class="flex flex-col md:flex-row gap-y-2 justify-between md:items-center px-3 mb-2 pr-0">
               <h3 class="text-md font-medium leading-6 text-neutral-900">Recent blog posts</h3>
               <Button size="sm" :icon="MediumIcon" variant="secondary" link="https://medium.com/nolusprotocol" >View all posts</Button>
             </div>
@@ -53,7 +53,7 @@
 import { ref, onMounted, defineProps } from 'vue';
 import data from '../../rss-server/data/data.json';
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
-import { ChevronDownIcon } from '@heroicons/vue/20/solid'
+import ChevronDownIcon from '@/assets/icons/chevron-down.svg'
 import Button from './Button.vue';
 import LifeRingSolidIcon from '../assets/icons/life-ring-solid.svg'
 import MediumIcon from '../assets/icons/medium.svg'
