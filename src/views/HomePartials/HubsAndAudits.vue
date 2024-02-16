@@ -2,12 +2,12 @@
   <div class="relative bg-neutral-100 relative">
     <NolusContainer class="relative z-10 -top-24">
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12 items-start">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8 lg:gap-x-12 lg:gap-y-12 items-start">
         <div class="bg-white overflow-hidden rounded-2xl shadow-xl">
           <div class="p-6 md:p-12">
             <p class="text-base font-medium leading-7 text-blue-600" aria-hidden="true">Deep liquidity</p>
-            <h2 class="mt-2 text-3xl font-bold tracking-tight text-neutral-900 sm:text-5xl" aria-hidden="true">Hubs</h2>
-            <p class="mt-6 text-lg leading-8 text-neutral-600">Nolus effortlessly taps into multiple liquidity hubs, bypassing the need to build its own. This enables instant asset lending or swapping on any connected DEX</p>
+            <h2 class="mt-2 text-3xl font-bold tracking-tight text-neutral-900 lg:text-5xl" aria-hidden="true">Hubs</h2>
+            <p class="mt-3 lg:mt-6 text-base lg:text-lg leading-8 text-neutral-600">Nolus effortlessly taps into multiple liquidity hubs, bypassing the need to build its own. This enables instant asset lending or swapping on any connected DEX</p>
           </div>
           <div>
             <ul class="flex flex-wrap gap-px text-center bg-neutral-200/70 border-t">
@@ -26,8 +26,8 @@
         <div class="bg-white rounded-2xl shadow-xl overflow-hidden pb-4">
           <div class="p-6 md:p-12">
             <p class="text-base font-medium leading-7 text-blue-600" aria-hidden="true">Deep liquidity</p>
-            <h2 class="mt-2 text-3xl font-bold tracking-tight text-neutral-900 sm:text-5xl" aria-hidden="true">Audits</h2>
-            <p class="mt-6 text-lg leading-8 text-neutral-600">Audited by the world’s leading security firms, security of the Nolus Protocol is the highest priority</p>
+            <h2 class="mt-2 text-3xl font-bold tracking-tight text-neutral-900 lg:text-5xl" aria-hidden="true">Audits</h2>
+            <p class="mt-3 lg:mt-6 text-base lg:text-lg leading-8 text-neutral-600">Audited by the world’s leading security firms, security of the Nolus Protocol is the highest priority</p>
           </div>
           <div>
             <ul class="flex flex-col gap-px border-t border-neutral-200/50">

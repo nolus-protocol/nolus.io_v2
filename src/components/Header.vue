@@ -1,6 +1,6 @@
 <template>
   <DialogTest />
-  <header :class="{'bg-white/90 backdrop-blur-2xl backdrop-contrast-125 shadow-lg': isHeaderScrolled}" class="fixed inset-x-0 top-0 z-50 transition-all">
+  <header :class="{'backdrop-blur-xl bg-gradient-to-b from-neutral-100 to-white lg:bg-white shadow-lg': isHeaderScrolled}" class="fixed inset-x-0 top-0 z-50 transition-all">
       <nav class="flex items-center justify-between lg:py-4 lg:px-8" aria-label="Global">
         <div class="flex lg:flex-1">
           <a class="h-8 w-auto p-4 flex items-center" href="/">
@@ -10,7 +10,7 @@
           </a>
         </div>
         <div class="flex lg:hidden">
-          <button type="button" class="p-4 inline-flex items-center justify-center hover:bg-neutral-200/50" :class="textColorClass" @click="isOpen = true">
+          <button type="button" class="p-4 py-5 inline-flex items-center justify-center hover:bg-neutral-200/50" :class="textColorClass" @click="isOpen = true">
             <span class="sr-only">Open main menu</span>
             <BarsIcon class="h-6 w-6" aria-hidden="true" />
           </button>

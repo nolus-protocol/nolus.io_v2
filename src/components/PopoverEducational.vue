@@ -2,7 +2,7 @@
   <Popover class="relative" v-slot="{ open }">
     <PopoverButton class="flex w-full justify-between items-center gap-x-1 py-5 lg:py-2 px-5 lg:px-3 rounded-t-2xl  lg:rounded-lg lg:hover:bg-neutral-200/50 transition-all" :class="{ 'bg-white lg:bg-neutral-200/40 shadow-lg lg:shadow-none': open }">
       <span :class="props.textColorClass">Educational</span>
-      <ChevronDownIcon class="h-5 w-5 md:h-3 md:w-3 md:ml-1 fill-neutral-800" :class="props.fillColorClass" aria-hidden="true" />
+      <ChevronDownIcon class="h-5 w-5 md:h-3 md:w-3 md:ml-1 fill-neutral-800 rotate-90 lg:rotate-0 transition-all" :class="{'rotate-0': open},props.fillColorClass" aria-hidden="true" />
     </PopoverButton>
 
     <transition enter-active-class="transition ease-in-out duration-200" enter-from-class="opacity-0 translate-y-3 md:scale-95 origin-bottom" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-3 md:scale-95 origin-bottom">

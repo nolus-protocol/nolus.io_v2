@@ -1,5 +1,5 @@
 <template>
-  <div class="relative overflow-hidden isolate bg-neutral-50 py-16 md:py-32">
+  <div class="relative overflow-hidden isolate bg-neutral-50 py-16 lg:py-24">
     <NolusContainer>
       <div class="mx-auto">
         <p class="text-lg font-medium leading-8 tracking-tight text-blue-600" aria-hidden="true">Testimonials</p>
