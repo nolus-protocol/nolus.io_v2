@@ -33,13 +33,24 @@
           </div>
         </div>
         <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-4 h-5">
-          <Button size="sm" v-bind:class="y==0?'hidden':''" :icon="SquareArrowUpRightSolidIcon" link="https://app.nolus.io/" class=""><span class="hidden xl:inline">Launch</span> dApp</Button>
+          <Button size="sm" v-bind:class="y==0?'hidden':''" :icon="SquareArrowTopRightIcon" link="https://app.nolus.io/" class=""><span class="hidden xl:inline">Launch</span> dApp</Button>
           <PopoverLanguagePicker v-bind="{ textColorClass, bgColorClass, fillColorClass, isHeaderScrolled, isHeroDark }" />
         </div>
         
       </nav>
       <TransitionRoot appear :show="isOpen" as="template">
         <Dialog as="div" class="lg:hidden" @close="isOpen = false" >
+          <TransitionChild
+            as="template"
+            enter="duration-300 ease-out"
+            enter-from="opacity-0"
+            enter-to="opacity-100"
+            leave="duration-200 ease-in"
+            leave-from="opacity-100"
+            leave-to="opacity-0"
+          >
+            <div class="fixed z-50 inset-0 bg-neutral-300/50 backdrop-blur-xl" />
+          </TransitionChild>
           <TransitionChild
             as="template"
             enter="duration-300 ease-out"
@@ -54,7 +65,7 @@
                 <div class="flex items-center justify-between">
                   <button type="button" class="w-full px-4 py-6 border-b border-neutral-200/50 hover:bg-neutral-200/60  text-neutral-700" @click="isOpen = false">
                     <span class="sr-only">Close menu</span>
-                    <CrossIcon class="h-4 w-4 mx-auto fill-neutral-800" aria-hidden="true" />
+                    <CrossLargeIcon class="h-5 w-5 mx-auto fill-neutral-800" aria-hidden="true" />
                   </button>
                 </div>
                 <div class="mt-8 flex flex-col gap-y-4 px-4">
@@ -103,8 +114,8 @@ import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router';
 import { TransitionRoot, TransitionChild, Dialog, DialogPanel } from '@headlessui/vue'
 import BarsIcon from '@/assets/icons/bars.svg'
-import CrossIcon from '@/assets/icons/cross.svg'
-import  SquareArrowUpRightSolidIcon from '@/assets/icons/square-arrow-up-right-solid.svg'
+import CrossLargeIcon from '@/assets/icons/cross-large.svg'
+import SquareArrowTopRightIcon from '@/assets/icons/square-arrow-top-right-2.svg';
 import NolusLogoSymbol from '@/assets/images/logo-symbol.svg'
 import NolusLogoType from '@/assets/images/logo-type.svg'
 import Button from './Button.vue'

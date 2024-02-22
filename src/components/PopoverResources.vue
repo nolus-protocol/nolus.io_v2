@@ -2,7 +2,7 @@
   <Popover class="relative" v-slot="{ open }">
     <PopoverButton class="flex w-full justify-between items-center gap-x-1 py-5 lg:py-2 px-5 lg:px-3 rounded-t-2xl  lg:rounded-lg lg:hover:bg-neutral-200/50 transition-all" :class="{ 'bg-white lg:bg-neutral-200/40 shadow-lg lg:shadow-none': open }">
       <span :class="props.textColorClass">Resources</span>
-      <ChevronDownIcon class="h-5 w-5 md:h-3 md:w-3 md:ml-1 fill-neutral-800 rotate-90 lg:rotate-0 transition-all" :class="{'rotate-0': open}, props.fillColorClass" aria-hidden="true" />
+      <ChevronDownSmallIcon class="h-7 w-7 lg:h-5 lg:w-5 fill-neutral-800 transition-all" :class="[{'rotate-90 lg:rotate-0': !open }, props.fillColorClass]" aria-hidden="true" />
     </PopoverButton>
 
     <transition enter-active-class="transition ease-in-out duration-200" enter-from-class="opacity-0 translate-y-3 md:scale-95 origin-bottom" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-3 md:scale-95 origin-bottom">
@@ -30,12 +30,12 @@
 <script setup>
 import { defineProps } from 'vue'
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
-import ChevronDownIcon from '@/assets/icons/chevron-down.svg'
+import ChevronDownSmallIcon from '@/assets/icons/chevron-down-small.svg'
 import GithubIcon from '../assets/icons/github.svg'
-import ShieldHalvedSolidIcon from '../assets/icons/shield-halved-solid.svg'
-import BrushSolidIcon from '../assets/icons/brush-solid.svg'
-import LifeRingSolidIcon from '../assets/icons/life-ring-solid.svg'
-import FileSolidIcon from '../assets/icons/file-solid.svg'
+import ShieldCheckIcon from '../assets/icons/shield-check.svg'
+import ColorPaletteIcon from '../assets/icons/color-palette.svg'
+import HeadphonesIcon from '../assets/icons/headphones.svg'
+import Newspaper2Icon from '../assets/icons/newspaper-2.svg'
 
 const props = defineProps({
   textColorClass: String,
@@ -47,13 +47,13 @@ const solutions = [
     name: 'Whitepaper', 
     description: 'Learn more about our vision', 
     href: 'https://nolus.io/Nolus-Whitepaper.pdf#',  
-    icon: FileSolidIcon,
+    icon: Newspaper2Icon,
   },
   {
     name: 'Tech documentation',
     description: 'Get all of your questions answered in our forums of contact support',
     href: '#',
-    icon: LifeRingSolidIcon,
+    icon: HeadphonesIcon,
   },
   { 
     name: 'Github', 
@@ -65,13 +65,13 @@ const solutions = [
     name: 'Audits', 
     description: 'Check out webinars with experts and learn about our annual conference', 
     href: '#',
-    icon: ShieldHalvedSolidIcon,
+    icon: ShieldCheckIcon,
   },
   { 
     name: 'Brand assets', 
     description: 'Understand how we take your privacy seriously', 
     href: '#',
-    icon: BrushSolidIcon,
+    icon: ColorPaletteIcon,
   },
 ]
 </script>

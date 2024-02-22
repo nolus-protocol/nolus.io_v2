@@ -2,7 +2,7 @@
   <Popover class="relative" v-slot="{ open }">
     <PopoverButton class="inline-flex items-center gap-x-1 leading-6 text-neutral-900 py-2.5 px-3 rounded-lg transition-all" :class="{ 'bg-neutral-200/40': open, 'shadow-none hover:bg-neutral-200/50': isHeroDark, 'hover:bg-neutral-50': !isHeroDark }, buttonScrollStyles">
       <span :class="`${props.textColorClass} font-medium`"><component :is="flagIcons['en.svg']" class="h-5 w-5 rounded-md overflow-clip" aria-label="English" /></span>
-      <ChevronDownIcon class="h-3 w-3 ml-1 rotate-180 lg:rotate-0 fill-neutral-800" :class="props.fillColorClass" aria-hidden="true" />
+      <ChevronDownSmallIcon class="h-5 w-5 rotate-180 lg:rotate-0 fill-neutral-800" :class="props.fillColorClass" aria-hidden="true" />
     </PopoverButton>
 
     <transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 translate-y-1 scale-95 origin-bottom" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-1 scale-95 origin-bottom">
@@ -18,7 +18,7 @@
 <script setup>
 import { onMounted, ref, computed, markRaw } from 'vue';
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
-import ChevronDownIcon from '@/assets/icons/chevron-down.svg'
+import ChevronDownSmallIcon from '@/assets/icons/chevron-down-small.svg'
 
 const buttonScrollStyles = computed(() => !props.isHeaderScrolled ? `shadow-md ${props.bgColorClass}` : '')
 

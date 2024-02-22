@@ -13,12 +13,12 @@
           <figcaption class="mt-6 flex items-center gap-x-4 text-sm pt-4">
             <div>
               <span class="font-medium mr-1">{{ testimonial.author.name }}</span>
-              <a :href="testimonial.author.link" class="text-blue-500 hover:text-neutral-900 block">View {{ testimonial.author.where }}</a>
+              <a :href="testimonial.author.link" class="text-blue-700 hover:text-neutral-900 block">View {{ testimonial.author.where }}</a>
             </div>
           </figcaption>
         </figure>
       </div>
-      <Button variant="secondary" :icon="PlusIcon" size="md" v-if="testimonialsToShow < testimonials.length" @click="loadMore" class="mt-4">Load more testimonials</Button>
+      <Button variant="secondary" :icon="PlusSmallIcon" size="md" v-if="testimonialsToShow < testimonials.length" @click="loadMore" class="mt-4">Load more testimonials</Button>
     </NolusContainer>
   </div>
 </template>
@@ -28,7 +28,7 @@
 <script setup>
 import Button from '@/components/Button.vue';
 import { onMounted, computed, ref } from 'vue';
-import PlusIcon from '@/assets/icons/plus.svg';
+import PlusSmallIcon from '@/assets/icons/plus-small.svg';
 import NolusContainer from '@/components/NolusContainer.vue';
 
 let testimonialsToShow = ref(2);

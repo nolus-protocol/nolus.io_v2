@@ -11,7 +11,7 @@
           </div>
           <div>
             <ul class="flex flex-wrap gap-px text-center bg-neutral-200/70 border-t">
-                <li v-for="hub in hubs" :key="hub.id" class="bg-white flex-grow basis-12 md:basis-48">
+                <li v-for="hub in hubs" :key="hub.id" class="bg-white flex-grow basis-12 md:basis-40">
                   <a :href="hub.link" class="py-7 px-4 flex flex-col items-center hover:bg-neutral-100 transition-all">
                     <figure class="text-xs w-16 h-16 md:w-20 md:h-20 mx-auto mb-4 bg-white p-4 rounded-full shadow-inner shadow-sm shadow-neutral-200" aria-hidden="true">
                       <component :is="hub.image" :alt='`Logo of ${hub.shortName}`'></component>

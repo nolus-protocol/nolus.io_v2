@@ -2,7 +2,7 @@
   <Popover class="relative" v-slot="{ open }">
     <PopoverButton class="flex w-full justify-between items-center gap-x-1 py-5 lg:py-2 px-5 lg:px-3 rounded-t-2xl  lg:rounded-lg lg:hover:bg-neutral-200/50 transition-all" :class="{ 'bg-white lg:bg-neutral-200/40 shadow-lg lg:shadow-none': open }">
       <span :class="props.textColorClass">Educational</span>
-      <ChevronDownIcon class="h-5 w-5 md:h-3 md:w-3 md:ml-1 fill-neutral-800 rotate-90 lg:rotate-0 transition-all" :class="{'rotate-0': open},props.fillColorClass" aria-hidden="true" />
+      <ChevronDownSmallIcon class="h-7 w-7 lg:h-5 lg:w-5 fill-neutral-800 transition-all" :class="[{'rotate-90 lg:rotate-0': !open }, props.fillColorClass]" aria-hidden="true" />
     </PopoverButton>
 
     <transition enter-active-class="transition ease-in-out duration-200" enter-from-class="opacity-0 translate-y-3 md:scale-95 origin-bottom" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-3 md:scale-95 origin-bottom">
@@ -53,9 +53,9 @@
 import { ref, onMounted, defineProps } from 'vue';
 import data from '../../rss-server/data/data.json';
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
-import ChevronDownIcon from '@/assets/icons/chevron-down.svg'
+import ChevronDownSmallIcon from '@/assets/icons/chevron-down-small.svg'
 import Button from './Button.vue';
-import LifeRingSolidIcon from '../assets/icons/life-ring-solid.svg'
+import BookIcon from '../assets/icons/book.svg'
 import MediumIcon from '../assets/icons/medium.svg'
 import ReadmeIcon from '../assets/icons/readme.svg'
 
@@ -65,7 +65,7 @@ const props = defineProps({
 })
 
 const resources = [
-  { name: 'Knowledge Hub', description: 'Find solutions for your questions', href: 'https://hub.nolus.io/', icon: LifeRingSolidIcon },
+  { name: 'Knowledge Hub', description: 'Find solutions for your questions', href: 'https://hub.nolus.io/', icon: BookIcon },
 ]
 
 const getImageUrl = (imageName) => {

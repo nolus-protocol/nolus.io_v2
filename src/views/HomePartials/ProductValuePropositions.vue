@@ -1,5 +1,5 @@
 <template>
-  <div class="relative bg-neutral-100 py-16 pt-0 lg:py-24 lg:pt-16">
+  <div class="relative bg-neutral-100 py-16 pt-0 lg:py-24 lg:pt-16" @mouseover="stopInterval" @mouseleave="startInterval">
     <NolusContainer class="relative z-10 overflow-hidden">
         <div class="flex flex-col lg:flex-row justify-stretch gap-y-12 gap-x-12 w-full">
           <div class="lg:basis-56 shrink-0 border-b border-neutral-200/50 lg:border-b-0 pb-2">
@@ -17,7 +17,7 @@
                   <p class="mt-6 text-lg leading-8 text-neutral-600">{{ tab.content }}</p>
                   <Button :link="tab.buttonLink" class="mt-5">Get the Nolus dApp</Button>
                 </div>
-                <img :ref="el => { if (el) imgRefs[index] = el }" :src="tab.tabImage" alt="" class="block md:absolute md:w-2/5 w-10/12 mx-auto mt-12 md:mb-0 -z-10 -right-8 top-0" aria-hidden="true" v-motion :initial="{ opacity: 0}" :enter="{ opacity: 1, scale: 1, transition: {duration: 600} }" :leave="{ opacity: 0}" />
+                <img :ref="el => { if (el) imgRefs[index] = el }" :src="tab.tabImage" alt="" class="block md:absolute md:w-2/5 w-10/12 mx-auto md:mb-0 -z-10 -right-8 top-0" aria-hidden="true" v-motion :initial="{ opacity: 0}" :enter="{ opacity: 1, scale: 1, transition: {duration: 600} }" :leave="{ opacity: 0}" />
                 </div>
             </div>
           </div>
@@ -43,7 +43,11 @@ import SwapIcon from '@/assets/icons/swap.svg'
 import EarnIcon from '@/assets/icons/earn.svg'
 import DelegateIcon from '@/assets/icons/delegate.svg'
 import GovernIcon from '@/assets/icons/govern.svg'
-import LeaseImage from '../../assets/images/product-value-propositions/lease.png'
+import LeaseImage from '../../assets/images/product-value-propositions/lease.webp'
+import EarnImage from '../../assets/images/product-value-propositions/earn.webp'
+import SwapImage from '../../assets/images/product-value-propositions/swap.webp'
+import DelegateImage from '../../assets/images/product-value-propositions/delegate.webp'
+import GovernImage from '../../assets/images/product-value-propositions/govern.webp'
 
 const tabs = [
   {
@@ -59,7 +63,7 @@ const tabs = [
     tabIcon: EarnIcon,
     heading: 'Earn real yield on your idle assets by lending them through Nolus',
     content: 'Experience profitable cash-based returns without the risk of impermanent loss. Enjoy the flexibility of easy top-ups and withdrawals',
-    tabImage: LeaseImage,
+    tabImage: EarnImage,
     buttonLink: '#',
   },
   {
@@ -67,7 +71,7 @@ const tabs = [
     tabIcon: SwapIcon,
     heading: 'On the fly cross-chain swaps',
     content: 'Quick and efficient cross-chain swaps without the hassle and complexity of bridging across chains. Experience instant, seamless trading with the freedom to exchange various assets effortlessly',
-    tabImage: LeaseImage,
+    tabImage: SwapImage,
     buttonLink: '#',
   },
   {
@@ -75,7 +79,7 @@ const tabs = [
     tabIcon: DelegateIcon,
     heading: 'Effortless NLS Delegation with One Click',
     content: 'No need for extensive research to find the best validator for staking your NLS. Let Nolus handle it and simply reap the rewards of active participation in the Nolus blockchain.',
-    tabImage: LeaseImage,
+    tabImage: DelegateImage,
     buttonLink: '#',
   },
   {
@@ -83,7 +87,7 @@ const tabs = [
     tabIcon: GovernIcon,
     heading: 'Shape the Future of Nolus Protocol',
     content: 'Play a crucial role in the evolution of the Nolus Protocol by casting your vote and influencing its future development. Your engagement is vital, enabling you to directly contribute to shaping the trajectory of the Nolus Protocol',
-    tabImage: LeaseImage,
+    tabImage: GovernImage,
     buttonLink: '#',
   },
 ]

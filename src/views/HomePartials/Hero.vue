@@ -18,7 +18,7 @@
         <div class="mt-10 flex flex-col md:flex-row gap-y-4 items-center gap-x-3"
           v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="400"
         >
-          <Button class="w-full md:w-auto" size="lg" variant="primary" link="https://app.nolus.io/" :icon="SquareArrowUpRightSolidIcon">
+          <Button class="w-full md:w-auto" size="lg" variant="primary" link="https://app.nolus.io/" :icon="SquareArrowTopRightIcon">
             Launch dApp
           </Button>
           <Button class="w-full md:w-auto" size="lg" variant="secondary" :icon="PlayCircleIcon" @click="showVideoDialog = true">
@@ -59,8 +59,8 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import { ArrowTopRightOnSquareIcon, PlayCircleIcon } from '@heroicons/vue/24/solid';
-import  SquareArrowUpRightSolidIcon from '@/assets/icons/square-arrow-up-right-solid.svg';
+import SquareArrowTopRightIcon from '@/assets/icons/square-arrow-top-right-2.svg';
+import PlayCircleIcon from '@/assets/icons/play-circle.svg';
 import Button from '@/components/Button.vue';
 import videoPoster from '@/assets/videos/ball.jpg';
 import Modal from '@/components/modals/templates/Modal.vue';
