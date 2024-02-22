@@ -1,16 +1,15 @@
 <template>
   <div
-    :class="wrapperClasses"
-    class="proposal w-full flex flex-col shadow lg:rounded-xl p-5 gap-3"
+    class="bg-white w-full flex flex-col shadow-lg rounded-xl p-5 gap-3 justify-between overflow-clip"
   >
-    <div class="flex flex-col md:flex-row gap-2 md:gap-0 justify-between text-[10px] text-upper">
-      <div class="flex items-center gap-1">
-        <div :class="{ [color.bg]: color }" class="w-1.5 h-1.5 rounded" />
+    <div class="flex flex-col md:flex-row gap-2 md:gap-0 ">
+      <div class="flex items-center gap-2">
+        <div :class="{ [color.bg]: color }" class="w-2.5 h-2.5 rounded-full" />
         <div :class="{ [color.text]: color }" class="font-medium">
           {{ ProposalStatus[state.status].split("_")[2] }}
         </div>
       </div>
-      <div v-if="isVotingPeriod" class="flex gap-2 text-light-blue">
+      <div v-if="isVotingPeriod" class="flex gap-2">
         <div>turnout: {{ turnout }}%</div>
         <div>quorum: {{ quorumState }}%</div>
         <div>voting ends: {{ DateUtils.formatDateTime(state.voting_end_time) }}</div>
@@ -23,15 +22,15 @@
       v-if="isVotingPeriod && Object.values(state.tally).filter((res) => !!Number(res)).length > 0"
       :voting="state.tally"
     />
-    <div v-if="state.summary" class="text-neutral-600">
-      <div class="font-bold text-md mb-1">Summary</div>
-      <p class="text-sm">
+    <div v-if="state.summary" class="text-neutral-900">
+      <div class="font-medium text-md mb-1">Summary</div>
+      <p >
         {{ StringUtils.truncateText(state.summary, 256) }}
       </p>
     </div>
     <button
       v-if="state.summary && state.summary.length > 256"
-      class="self-start flex items-center justify-center font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 cursor-pointer transition-all inline-flex rounded-full px-3.5 py-2 text-sm shadow-md bg-blue-500 text-white hover:bg-blue-600 focus-visible:outline-blue-600 shadow-blue-200"
+      class="text-left text-blue-700 hover:text-neutral-800"
       @click="$emit('read-more', { title: state.title, summary: state.summary })"
     >
       Read more
@@ -56,6 +55,7 @@ import { type Proposal, ProposalStatus, type FinalTallyResult } from "../Proposa
 import { ProposalState } from "../state";
 import { Dec } from "@keplr-wallet/unit";
 import ProposalVotingLine from "./ProposalVotingLine.vue";
+import Button from "@/components/Button.vue";
 
 const props = defineProps({
   state: {
@@ -111,10 +111,6 @@ const color = computed(() => {
 const isVotingPeriod = computed(() => {
   return props.state.status === ProposalStatus.PROPOSAL_STATUS_VOTING_PERIOD;
 });
-
-const wrapperClasses = computed(() =>
-  isVotingPeriod.value ? ["background"] : ["bg-transparent", "lg:w-[calc(50%-10px)]"]
-);
 
 defineEmits(["vote", "read-more"]);
 </script>
