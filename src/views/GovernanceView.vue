@@ -46,9 +46,40 @@
           <div class="basis-2/5 shrink-0 mx-auto max-w-2xl lg:mx-0">
             <h2 class="text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl mb-6 ">Recent proposals</h2>
           </div>
-          <div class="basis-3/5 shrink-0">
-            Proposals go here...
+
+          <div class="block md:mt-0 mt-8">
+              <TransitionGroup
+                appear
+                class="flex flex-wrap flex-row lg:gap-x-5 gap-y-8"
+                name="fade-long"
+                tag="div"
+              >
+                <ProposalItem
+                  v-for="proposal in proposals"
+                  :key="proposal.id"
+                  :state="proposal"
+                  :bondedTokens="bondedTokens"
+                  :quorum="quorum"
+                  @read-more="onReadMore"
+                />
+              </TransitionGroup>
+              <div class="text-center mt-6 lg:mt-8">
+                <button
+                  v-if="visible"
+                  class="flex items-center justify-center font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 cursor-pointer transition-all inline-flex gap-x-2 rounded-full px-4 py-3 text-md shadow-lg text-neutral-900 hover:bg-neutral-100 focus-visible:outline-neutral-500 bg-white mt-4 mt-4"
+                  @click="loadMoreProposals"
+                >
+                Load more
+                </button>
+              </div>
+              <Modal v-if="state.showReadMoreModal" @close-modal="onCloseReadMoreModal">
+                <ProposalReadMoreDialog :source="state.proposal.summary" :title="state.proposal.title" />
+              </Modal>
           </div>
+          
+          <!-- <div class="basis-3/5 shrink-0">
+            Proposals go here...
+          </div> -->
         </div>
       </div>
       
@@ -57,9 +88,13 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue';
+import type { Proposal } from '@/components/vote/Proposal';
+import { computed, onMounted, onUnmounted, ref } from 'vue';
+import { Dec } from '@keplr-wallet/unit';
 import NolusContainer from '@/components/NolusContainer.vue';
-import dots from '@/assets/images/dots.svg';
+import ProposalItem from '@/components/vote/components/ProposalItem.vue';
+import ProposalReadMoreDialog from '@/components/vote/components/ProposalReadMoreDialog.vue';
+import Modal from '@/components/vote/components/Modal.vue';
 
 const stats = [
   {description: "A subset of 50 validators from a total of 432 are actively engaged in maintaining the network's integrity", value: '50 active validators' },
@@ -70,7 +105,28 @@ const stats = [
 let myCanvas = ref(null);
 let dotColor = '13,55,127'; // Change this to control the color of the dots
 
-onMounted(() => {
+const bondedTokens = ref(new Dec(0));
+const quorum = ref(new Dec(0));
+
+const state = ref({
+  showReadMoreModal: false,
+  showErrorDialog: false,
+  errorMessage: "",
+  proposal: {
+    id: "",
+    title: "",
+    summary: ""
+  },
+  limit: 6,
+  pagination: {
+    total: 0,
+    next_key: ""
+  },
+});
+
+const proposals = ref([] as Proposal[]);
+
+onMounted(async () => {
   let canvas = myCanvas.value;
   let ctx = canvas.getContext('2d');
   let dotRadius = 7/2;
@@ -126,5 +182,105 @@ onMounted(() => {
   }
 
   animate();
+
+  await Promise.allSettled([fetchGovernanceProposals(), loadBondedTokens(), loadTallying()]);
+
 });
+
+const loadBondedTokens = async () => {
+  const res = await fetch(`https://pirin-cl.nolus.network:1317/cosmos/staking/v1beta1/pool`);
+  const data = await res.json();
+  bondedTokens.value = new Dec(data.pool.bonded_tokens);
+};
+
+const loadTallying = async () => {
+  const res = await fetch(`https://pirin-cl.nolus.network:1317/cosmos/gov/v1/params/tallying`);
+  const data = await res.json();
+  quorum.value = new Dec(data.params.quorum);
+};
+
+const fetchProposalData = async (proposal: Proposal) => {
+  try {
+    const promises = [
+      fetch(`https://pirin-cl.nolus.network:1317/cosmos/gov/v1/proposals/${proposal.id}/tally`)
+        .then((d) => d.json())
+        .then((item) => {
+          proposal.tally = item.tally;
+        })
+    ];
+
+    await Promise.allSettled(promises);
+  } catch (error: Error | any) {
+    state.value.showErrorDialog = true;
+    state.value.errorMessage = error?.message;
+  }
+};
+
+const fetchData = async (url: string) => {
+  try {
+    const req = await fetch(url);
+    return await req.json();
+  } catch (error: Error | any) {
+    state.value.showErrorDialog = true;
+    state.value.errorMessage = error.message;
+    console.error(error);
+    return null;
+  }
+};
+
+const fetchGovernanceProposals = async () => {
+  const data = await fetchData(
+    `https://pirin-cl.nolus.network:1317/cosmos/gov/v1/proposals?pagination.limit=${state.value.limit}&pagination.reverse=true&pagination.countTotal=true`
+  );
+  if (!data) return;
+
+  const promises = [];
+
+  for (const item of data.proposals) {
+    promises.push(fetchProposalData(item));
+  }
+
+  await Promise.all(promises);
+  proposals.value = data.proposals;
+  state.value.pagination = data.pagination;
+
+};
+
+const onReadMore = ({ summary, title }: { summary: string; title: string }) => {
+  state.value.showReadMoreModal = true;
+  state.value.proposal = {
+    ...state.value.proposal,
+    summary,
+    title
+  };
+};
+
+const onCloseReadMoreModal = () => {
+  state.value.showReadMoreModal = false;
+};
+
+
+const visible = computed(() => {
+  return state.value.pagination.next_key;
+});
+
+const loadMoreProposals = async () => {
+  const data = await fetchData(
+    `https://pirin-cl.nolus.network:1317/cosmos/gov/v1/proposals?pagination.limit=${state.value.limit}&pagination.key=${state.value.pagination.next_key}&pagination.reverse=true&pagination.countTotal=true`
+  );
+
+  if (!data) return;
+
+  const promises = [];
+
+  for (const item of data.proposals) {
+    promises.push(fetchProposalData(item));
+  }
+
+  await Promise.all(promises);
+
+  proposals.value = [...proposals.value, ...data.proposals];
+  state.value.pagination = data.pagination;
+};
+
 </script>

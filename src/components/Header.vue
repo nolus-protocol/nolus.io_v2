@@ -1,5 +1,4 @@
 <template>
-  <DialogTest />
   <header :class="{'backdrop-blur-xl bg-gradient-to-b from-neutral-100 to-white lg:bg-white shadow-lg': isHeaderScrolled}" class="fixed inset-x-0 top-0 z-50 transition-all">
       <nav class="flex items-center justify-between lg:py-4 lg:px-8" aria-label="Global">
         <div class="flex lg:flex-1">
