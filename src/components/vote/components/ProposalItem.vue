@@ -1,60 +1,58 @@
 <template>
   <div
-    class="bg-white w-full flex flex-col shadow-lg rounded-xl p-5 gap-3 justify-between overflow-clip"
+    class="bg-white w-full flex flex-col shadow-lg rounded-xl justify-between overflow-clip gap-y-5"
   >
-    <div class="flex flex-col md:flex-row gap-2 md:gap-0 ">
-      <div class="flex items-center gap-2">
-        <div :class="{ [color.bg]: color }" class="w-2.5 h-2.5 rounded-full" />
-        <div :class="{ [color.text]: color }" class="font-medium">
+    <div class="flex items-start justify-between p-5 pb-0">
+      <div class="basis-4/5 overflow-hidden text-xl md:text-2xl font-medium tracking-tight text-neutral-900 break-words">
+        &#35;{{ state.id }} {{ state.title }}
+      </div>
+      <div class="flex items-center gap-2 px-3 py-1 rounded-md" :class="{[color.bg_parent]: color}">
+        <div :class="{ [color.bg]: color}" class="w-2.5 h-2.5 rounded-full" />
+        <div :class="{ [color.text]: color }" class="font-medium text-sm">
           {{ ProposalStatus[state.status].split("_")[2] }}
         </div>
       </div>
-      <div v-if="isVotingPeriod" class="flex gap-2">
-        <div>turnout: {{ turnout }}%</div>
-        <div>quorum: {{ quorumState }}%</div>
-        <div>voting ends: {{ DateUtils.formatDateTime(state.voting_end_time) }}</div>
+    </div>
+    <div class="border-b border-t py-4 flex flex-col gap-y-4 px-5"  v-if="isVotingPeriod">
+      <div class="flex flex-col md:flex-row gap-2 md:gap-0 justify-between items-center">
+        
+        <div class="flex gap-4">
+          <div><span class="block text-sm">Turnout:</span> <span class="font-medium text-base">{{ turnout }}%</span></div>
+          <div><span class="block text-sm">Quorum:</span> <span class="font-medium text-base">{{ quorumState }}%</span></div>
+          <div><span class="block text-sm">Voting ends:</span> <span class="font-medium text-base">{{ DateUtils.formatDateTime(state.voting_end_time) }}</span></div>
+        </div>
       </div>
+      
+      <ProposalVotingLine
+        v-if="isVotingPeriod && Object.values(state.tally).filter((res) => !!Number(res)).length > 0"
+        :voting="state.tally"
+      />
     </div>
-    <div class="text-2xl font-bold tracking-tight text-neutral-900 break-words">
-      &#35;{{ state.id }} {{ state.title }}
+    <div v-if="state.summary" class="text-neutral-900 px-5">
+      <div class="prose prose-h1:text-lg prose-h1:font-medium prose-h1:mb-2 prose-h2:text-lg prose-h2:font-medium prose-h2:my-1" v-html="StringUtils.truncateText(description, 156)"></div>
     </div>
-    <ProposalVotingLine
-      v-if="isVotingPeriod && Object.values(state.tally).filter((res) => !!Number(res)).length > 0"
-      :voting="state.tally"
-    />
-    <div v-if="state.summary" class="text-neutral-900">
-      <div class="font-medium text-md mb-1">Summary</div>
-      <p >
-        {{ StringUtils.truncateText(state.summary, 256) }}
-      </p>
-    </div>
-    <button
-      v-if="state.summary && state.summary.length > 256"
-      class="text-left text-blue-700 hover:text-neutral-800"
-      @click="$emit('read-more', { title: state.title, summary: state.summary })"
-    >
-      Read more
-    </button>
-
-    <div v-if="isVotingPeriod" class="flex flex-col gap-3">
-      <div class="w-full border-standart border-b bg-transparent"></div>
+    <div class="bg-neutral-50 border-t hover:bg-neutral-100 transition-colors">
       <button
-        class="self-end flex items-center justify-center font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 cursor-pointer transition-all inline-flex rounded-full px-8 py-2 text-sm shadow-md bg-blue-500 text-white hover:bg-blue-600 focus-visible:outline-blue-600 shadow-blue-200"
-        @click="$emit('vote', state)"
+        v-if="state.summary && state.summary.length > 156"
+        class="p-3 w-full font-medium text-sm hover:text-neutral-800 flex items-center justify-center"
+        @click="$emit('read-more', { title: state.title, summary: state.summary })"
       >
-        Vote
+      Read more <ChevronRightSmallIcon class="h-5 w-5" aria-hidden="true" />
       </button>
     </div>
+
   </div>
 </template>
 
 <script lang="ts" setup>
 import { computed, type PropType } from "vue";
+import { marked } from "marked";
 import { DateUtils, StringUtils } from "@/utils";
 import { type Proposal, ProposalStatus, type FinalTallyResult } from "../Proposal";
 import { ProposalState } from "../state";
 import { Dec } from "@keplr-wallet/unit";
 import ProposalVotingLine from "./ProposalVotingLine.vue";
+import ChevronRightSmallIcon from '@/assets/icons/chevron-right-small.svg';
 import Button from "@/components/Button.vue";
 
 const props = defineProps({
@@ -71,6 +69,14 @@ const props = defineProps({
     type: Object as PropType<Dec | any>,
     required: true
   }
+});
+
+const description = computed(() => {
+  return marked.parse(props.state.summary, {
+    pedantic: true,
+    gfm: true,
+    breaks: true,
+  });
 });
 
 const turnout = computed(() => {
@@ -94,17 +100,17 @@ const quorumState = computed(() => {
 const color = computed(() => {
   switch (props.state.status) {
     case ProposalStatus.PROPOSAL_STATUS_PASSED:
-      return { bg: "bg-green-400", text: "text-green-400" };
+      return { bg_parent: "bg-green-500/15", bg: "bg-green-500", text: "text-green-500" };
     case ProposalStatus.PROPOSAL_STATUS_REJECTED || ProposalStatus.PROPOSAL_STATUS_FAILED:
-      return { bg: "bg-[#E42929]", text: "text-[#E42929]" };
+      return { bg_parent: "bg-blue-500/15", bg: "bg-blue-500", text: "text-blue-500" };
     case ProposalStatus.PROPOSAL_STATUS_VOTING_PERIOD: {
       if (props.state.voted) {
-        return { bg: "bg-dark-500", text: "text-dark-500" };
+        return { bg: "bg-dark-500", text: "text-dark-500"};
       }
-      return { bg: "bg-light-electric", text: "text-light-electric" };
+      return { bg_parent: "bg-orange-400/15", bg: "bg-orange-400", text: "text-orange-400" };
     }
     default:
-      return { bg: "bg-light-electric", text: "text-light-electric" };
+      return { bg_parent: "bg-neutral-500/15",bg: "bg-neutral-800", text: "text-neutral-800" };
   }
 });
 

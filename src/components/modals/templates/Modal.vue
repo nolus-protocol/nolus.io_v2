@@ -8,6 +8,7 @@
         class="fixed bottom-0 left-0 right-0 top-0 z-[999999999] flex justify-center items-start bg-neutral-600/80 backdrop-blur-sm"
         style="-webkit-overflow-scrolling: touch;"
         @keydown.esc="onModalClose"
+        @click="onModalClose"
         >
         <button
           class="bg-white fixed right-5 top-5 z-[5] rounded-full p-2 border hover:bg-neutral-100 transition-all"
@@ -23,7 +24,7 @@
           :enter="{ opacity: 1, y: 0, scale: 1, transition: {duration: 400}}"
           :leave="{ opacity: 0, y: 100, scale: 0, transition: {duration: 400}}"
           >
-          <div class="mx-auto flex w-full  flex-col justify-start items-center md:rounded-xl overflow-clip bg-white shadow-xl relative" :class="[ width, variant !== 'video' && 'py-10 px-12' ]">
+          <div class="mx-auto flex w-full  flex-col justify-start items-center md:rounded-xl overflow-clip bg-white shadow-xl relative" :class="[ width, variant !== 'video' && 'p-12' ]" @click.stop>
             <slot></slot>
           </div>
         </div>
@@ -45,7 +46,7 @@
 </style>
 
 <script lang="ts" setup>
-import { onMounted, onUnmounted, provide, ref, nextTick, defineProps } from "vue";
+import { onMounted, onUnmounted, provide, watch, defineProps } from "vue";
 import { XMarkIcon } from "@heroicons/vue/24/solid";
 
 const emit = defineEmits(["close-modal"]);
@@ -69,9 +70,15 @@ const escapeClicked = (event: KeyboardEvent) => {
 };
 
 onMounted(() => {
-  props.show && (document.body.style.overflowY = "hidden");
   document.addEventListener("keyup", escapeClicked);
 });
+
+watch(
+  () => props.show,
+  (newValue) => {
+    document.body.style.overflowY = newValue ? "hidden" : "";
+  }
+);
 
 onUnmounted(() => {
   document.removeEventListener("keyup", escapeClicked);

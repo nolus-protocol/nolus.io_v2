@@ -1,13 +1,18 @@
 <template>
   <Teleport to="body">
+    <Transition
+      name="fade"
+    >
     <div
-      class="fixed flex top-0 bottom-0 left-0 right-0 justify-center z-[999999999] modal"
+      v-if="show"
+      class="fixed bottom-0 left-0 right-0 top-0 z-[999999999] flex justify-center items-start bg-neutral-600/80 backdrop-blur-sm"
       @keydown.esc="onModalClose"
       ref="dialog"
+      @click="onModalClose"
     >
       <button
-        v-if="collpase"
-        class="btn-close-modal"
+        v-if="collapse"
+        class="bg-white fixed right-5 top-5 z-[5] rounded-full p-2 border hover:bg-neutral-100 transition-all"
         @click="onModalClose"
       >
         <svg
@@ -30,28 +35,52 @@
             fill="currentColor"
           />
         </svg>
-
       </button>
+      
       <button
         v-else
-        class="btn-close-modal bg-white"
+        class="bg-white fixed right-5 top-5 z-[5] rounded-full p-2 border hover:bg-neutral-100 transition-all"
         @click="onModalClose"
       >
         <XMarkIcon class="inline-block w-8 h-8 z-[5]" />
       </button>
-      <slot></slot>
+      <div 
+        class="overflow-scroll h-full py-12 w-full" 
+        v-motion 
+        :initial="{ opacity: 0, y: 100 }" 
+        :enter="{ opacity: 1, y: 0, scale: 1, transition: {duration: 400}}"
+        :leave="{ opacity: 0, y: 100, scale: 0, transition: {duration: 400}}"
+        >
+        <div class="mx-auto flex w-full  flex-col justify-start items-center md:rounded-xl overflow-clip bg-white shadow-xl relative max-w-3xl p-12" @click.stop>
+          <slot></slot>
+        </div>
+      </div>
     </div>
+  </Transition>
   </Teleport>
 </template>
 
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
+
 <script lang="ts" setup>
-import { onMounted, onUnmounted, provide, ref } from "vue";
+import { onMounted, onUnmounted, provide, ref, watch } from "vue";
 import { XMarkIcon } from "@heroicons/vue/24/solid";
 import router from "@/router"
 
-const collpase = ref(false);
+const collapse = ref(false);
 const dialog = ref<HTMLDivElement>();
 const props = defineProps({
+  show: Boolean,
   disableClose: {
     type: Boolean
   },
@@ -64,7 +93,7 @@ const props = defineProps({
 const emit = defineEmits(["close-modal"]);
 
 const setCollapseButton = (bool: boolean) => {
-  collpase.value = bool;
+  collapse.value = bool;
 };
 
 const onModalClose = () => {
@@ -94,8 +123,6 @@ const backButtonClicked = (event: Event) => {
 };
 
 onMounted(() => {
-  document.body.style.overflowY = "hidden";
-
   const element = dialog.value;
   if (element) {
     element.style.animation = 'fadeInAnimation 200ms';
@@ -110,6 +137,13 @@ onMounted(() => {
   window.addEventListener("popstate", backButtonClicked);
 
 });
+
+watch(
+  () => props.show,
+  (newValue) => {
+    document.body.style.overflowY = newValue ? "hidden" : "";
+  }
+);
 
 onUnmounted(() => {
   document.removeEventListener("keyup", escapeClicked);
@@ -133,22 +167,3 @@ provide("setCollapseButton", setCollapseButton);
 
 defineExpose({ onModalClose })
 </script>
-<style lang="scss">
-.modal{
-  backdrop-filter: blur(4px);
-  background-color: rgb(181 185 199 / 31%);
-}
-.btn-close-modal{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  border-radius: 100%;
-  width: 50px;
-  height: 50px;
-  padding: 0;
-  top: 24px;
-  right: 24px;
-  transform: translateZ(0);
-}
-</style>

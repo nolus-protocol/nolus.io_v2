@@ -3,7 +3,6 @@
     :class="{
       'pt-[15px]': !showHeader
     }"
-    class="text-center background w-full max-w-[516px] rounded-[12px] mx-auto mt-[52px] flex bg-white flex-col max-h-[75vh] self-start"
     @click.stop
   >
     <div v-if="showHeader" class="flex modal-header">
@@ -25,7 +24,7 @@
         >
           <ArrowLeftIcon aria-hidden="true" class="h-6 w-6 text-primary" />
         </button>
-        <h1 class="text-2xl font-600 text-center mx-8 mt-8">
+        <h1 class="text-3xl font-bold mb-10">
           {{ headerList[0] }}
         </h1>
       </div>

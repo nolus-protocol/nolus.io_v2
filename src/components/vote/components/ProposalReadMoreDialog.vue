@@ -1,7 +1,7 @@
 <template>
   <DialogHeader :headerList="[title]">
     <div
-      class="overflow-auto w-full md:max-h-[70vh] text-primary py-5 px-10 proposal-modal text-left"
+      class="overflow-auto w-full proposal-modal text-left"
       v-html="description"
     ></div>
   </DialogHeader>
@@ -36,7 +36,6 @@ const description = computed(() => {
 .proposal-modal {
   p {
     text-align: left;
-    font-size: 14px;
     margin-bottom: 18px;
 
     &.strong {

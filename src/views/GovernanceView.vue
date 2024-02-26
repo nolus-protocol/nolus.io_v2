@@ -37,11 +37,11 @@
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
           
           <div class="max-w-2xl lg:mx-0">
-            <h2 class="text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl mb-6 ">Recent proposals</h2>
+            <h2 class="text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl mb-12">Recent proposals</h2>
           </div>
 
           <div class="md:mt-0 mt-8">
-              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <ProposalItem
                   v-for="proposal in proposals"
                   :key="proposal.id"
@@ -64,7 +64,7 @@
                 Load more proposals
               </Button>
               </div>
-              <Modal v-if="state.showReadMoreModal" @close-modal="onCloseReadMoreModal">
+              <Modal :show="state.showReadMoreModal" @close-modal="onCloseReadMoreModal">
                 <ProposalReadMoreDialog :source="state.proposal.summary" :title="state.proposal.title" />
               </Modal>
           </div>
