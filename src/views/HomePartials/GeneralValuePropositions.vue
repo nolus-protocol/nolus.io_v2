@@ -34,24 +34,21 @@ import NolusContainer from '../../components/NolusContainer.vue'
 
 const features = [
   {
-    name: 'Cost efficient',
+    name: 'Cost Efficient',
     description:
-      'Trade efficiently with minimal spread and price impact, securing optimal prices without extra costs',
-    icon: icon1,
+      'Enter and exit leverage positions with minimal spread and low impact to secure the best prices with no extra costs',
     href: '#',
   },
   {
-    name: 'Less liquidation risk',
+    name: 'Less Risk',
     description:
-      'Nolus Protocol keeps LTV stable with strategic collateral liquidation, minimizing risk',
-    icon: icon2,
+      'Partial liquidation engine shields against volatility and full collateral loss while maintaining a healthy loan-to-value ratio',
     href: '#',
   },
   {
-    name: 'Seamless',
+    name: 'Effortless',
     description:
-      'Lease and transition seamlessly between supported assets with our user-friendly interface',
-    icon: icon3,
+      'Seamlessly lease and transition among supported assets into your chosen positions through a simple and intuitive interface',
     href: '#',
   },
 ]
