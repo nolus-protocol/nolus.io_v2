@@ -37,18 +37,21 @@ const features = [
     name: 'Cost Efficient',
     description:
       'Enter and exit leverage positions with minimal spread and low impact to secure the best prices with no extra costs',
+    icon: icon1,
     href: '#',
   },
   {
     name: 'Less Risk',
     description:
       'Partial liquidation engine shields against volatility and full collateral loss while maintaining a healthy loan-to-value ratio',
+    icon: icon2,
     href: '#',
   },
   {
     name: 'Effortless',
     description:
       'Seamlessly lease and transition among supported assets into your chosen positions through a simple and intuitive interface',
+    icon: icon3,
     href: '#',
   },
 ]
