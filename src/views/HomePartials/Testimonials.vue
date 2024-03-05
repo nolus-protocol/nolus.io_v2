@@ -34,7 +34,7 @@ import NolusContainer from '@/components/NolusContainer.vue';
 let testimonialsToShow = ref(2);
 
 function loadMore() {
-  testimonialsToShow.value += 4; // Increase by 2 each time
+  testimonialsToShow.value += 2; // Increase by 2 each time
 }
 
 const testimonials = [

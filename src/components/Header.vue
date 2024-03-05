@@ -91,6 +91,7 @@
                 </div>
               </div>
               <div class="bottom-0 w-full flex justify-between items-center mt-16 px-4 py-4">
+                Open is: {{ open }}
                 <Button size="md" :icon="SquareArrowUpRightSolidIcon" link="https://app.nolus.io/">Launch dApp</Button>
                 <PopoverLanguagePicker v-bind="{ bgColorClass: 'bg-white', fillColorClass: 'fill-neutral-900' }" />
               </div>

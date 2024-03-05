@@ -73,9 +73,11 @@
 </style>
 
 <script lang="ts" setup>
-import { onMounted, onUnmounted, provide, ref, watch } from "vue";
+import { onMounted, onUnmounted, provide, ref, watch, watchEffect, nextTick } from "vue";
 import { XMarkIcon } from "@heroicons/vue/24/solid";
 import router from "@/router"
+
+let previousActiveElement, focusableElements, firstFocusableElement, lastFocusableElement;
 
 const collapse = ref(false);
 const dialog = ref<HTMLDivElement>();
@@ -89,6 +91,40 @@ const props = defineProps({
     default: "dialog",
   },
 });
+
+watchEffect(() => {
+  if (props.show) {
+    previousActiveElement = document.activeElement;
+    nextTick(() => {
+      focusableElements = dialog.value.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      firstFocusableElement = focusableElements[0];
+      lastFocusableElement = focusableElements[focusableElements.length - 1];
+      firstFocusableElement.focus();
+    });
+  } else if (previousActiveElement) {
+    nextTick(() => {
+      previousActiveElement.focus();
+    });
+  }
+});
+
+const trapFocus = (event) => {
+  if (props.show && event.key === 'Tab') {
+    if (event.shiftKey) {
+      if (document.activeElement === firstFocusableElement) {
+        event.preventDefault();
+        lastFocusableElement.focus();
+      }
+    } else {
+      if (document.activeElement === lastFocusableElement) {
+        event.preventDefault();
+        firstFocusableElement.focus();
+      }
+    }
+  }
+};
 
 const emit = defineEmits(["close-modal"]);
 
@@ -104,6 +140,7 @@ const onModalClose = () => {
     emit("close-modal");
   }
 };
+
 
 const parseRoute = () => {
   const path = router.currentRoute.value.path;
@@ -135,7 +172,7 @@ onMounted(() => {
   });
   document.addEventListener("keyup", escapeClicked);
   window.addEventListener("popstate", backButtonClicked);
-
+  document.addEventListener('keydown', trapFocus);
 });
 
 watch(
@@ -148,6 +185,7 @@ watch(
 onUnmounted(() => {
   document.removeEventListener("keyup", escapeClicked);
   window.removeEventListener("popstate", backButtonClicked);
+  document.removeEventListener('keydown', trapFocus);
 });
 
 const close = () => {

@@ -6,12 +6,12 @@
       </div>
       
 
-      <div class="max-w-2xl md:max-w-xl lg:mx-0 lg:max-w-xl lg:flex-shrink-0 lg:pt-8 relative">
-        <h1 class="md:mt-10 text-5xl font-bold tracking-tighter  text-neutral-900 sm:text-7xl"
+      <div class="md:max-w-xl lg:mx-0 lg:max-w-xl lg:flex-shrink-0 lg:pt-8 relative">
+        <h1 class="max-w-64 sm:max-w-lg lg:max-w-none md:mt-10 text-4xl font-bold tracking-tighter  text-neutral-900 sm:text-7xl"
           v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="100"
         >Cross-Chain Lease Protocol</h1>
         
-        <p class="mt-6 text-xl leading-8 text-neutral-600"
+        <p class="max-w-64 sm:max-w-lg lg:max-w-none mt-6 text-base md:text-xl sm:leading-8 text-neutral-600"
           v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="300"
         >Triple your holdings without tripling your risk. Unlock the full potential of your assets</p>
 
@@ -27,11 +27,11 @@
         </div>
 
       </div>
-      <div class="w-full relative my-12 md:absolute scale-150 md:scale-100 left-0 md:left-auto md:-right-96 md:top-4 -z-10 mx-auto lg:mt-0">
-        <video ref="videoRef" @loadeddata="isVideoLoaded = true" :class="{ invisible: !isVideoLoaded, visible: isVideoLoaded }" muted autoplay playsinline data-timing="7" data-wait="240" style="transform: rotateY(180deg)" loop aria-hidden="true" v-motion :initial="{ opacity: 0 }" :enter="{ opacity: 1 }" :delay="100" :poster='videoPoster'>
+      <div class="w-full my-12 absolute md:scale-100 left-0 md:left-auto -right-48 sm:-right-56 lg:-right-72 top-20 md:top-10 -z-10 mx-auto lg:mt-0">
+        <video ref="videoRef" @loadeddata="isVideoLoaded = true" :class="{ invisible: !isVideoLoaded, visible: isVideoLoaded }" muted autoplay playsinline data-timing="7" data-wait="240" loop aria-hidden="true" v-motion :initial="{ opacity: 0 }" :enter="{ opacity: 1 }" :delay="100" :poster='videoPoster'>
           <source :src="videoSrc" type="video/mp4" />
         </video>
-        <img v-if="!isVideoLoaded" :src="videoPoster" alt="Video loading..." style="transform: rotateY(180deg)" v-motion :initial="{ opacity: 0 }" :enter="{ opacity: 1 }" :delay="100" />
+        <img v-if="!isVideoLoaded" :src="videoPoster" alt="Video loading..." v-motion :initial="{ opacity: 0 }" :enter="{ opacity: 1 }" :delay="100" />
       </div>
       <div class="md:pt-16 max-w-4xl">
           <dl class="flex flex-col md:flex-row gap-y-10 rounded-xl mt-16 md:my-0">
@@ -62,10 +62,10 @@ import { ref, onMounted } from 'vue';
 import SquareArrowTopRightIcon from '@/assets/icons/square-arrow-top-right-2.svg';
 import PlayCircleIcon from '@/assets/icons/play-circle.svg';
 import Button from '@/components/Button.vue';
-import videoPoster from '@/assets/videos/ball.jpg';
+import videoPoster from '@/assets/videos/header.jpg';
 import Modal from '@/components/modals/templates/Modal.vue';
 import VideoModal from '@/components/modals/VideoModal.vue';
-import videoSrc from '@/assets/videos/ball.mp4';
+import videoSrc from '@/assets/videos/header.mp4';
 
 const stats = [
   { id: 1, subtitle: 'Total value', description: 'Value locked across 15 assets distributed over 2 networks', value: '$1,170,869' },

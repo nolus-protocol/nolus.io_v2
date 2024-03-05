@@ -11,7 +11,7 @@
         <nav>
           <ul class="flex space-x-5">
             <li v-for="item in footer_navigation" :key="item.name" class="text-sm leading-5">
-              <a :href="item.href" @click="handleClick(item, $event)" class="text-neutral-600 hover:text-neutral-900 cursor-pointer">{{ item.name }}</a> 
+              <button @click="handleClick(item, $event)" class="text-neutral-600 hover:text-neutral-900 cursor-pointer">{{ item.name }}</button> 
             </li>
           </ul>
         </nav>

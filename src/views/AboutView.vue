@@ -105,16 +105,18 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import NolusContainer from '@/components/NolusContainer.vue';
-
-// Icons and illustrations
+// Icons
 import xIcon from '@/assets/icons/x.svg';
 import discordIcon from '@/assets/icons/discord.svg';
 import dots from '@/assets/images/dots.svg';
-import icon1 from  '@/assets/images/icon1.svg';
 import logoTunnel from '@/assets/images/about/logo-tunnel.png';
 import logoTunnelBalls from '@/assets/images/about/logo-tunnel-balls.png';
 import animatedLogo from '@/assets/videos/animated-logo.mp4';
 import videoPoster from '@/assets/videos/animated-logo.jpg';
+// Illustrations
+import icon1 from  '@/assets/images/about/icon1.svg';
+import icon2 from  '@/assets/images/about/icon2.svg';
+import icon3 from  '@/assets/images/about/icon3.svg';
 
 // Logo dependencies
 const videoRef = ref(null);
@@ -129,14 +131,14 @@ const visionMisionAndValues = [
       'We believe in a future where everyone will have the means to efficiently manage their wealth in decentralized, permissionless financial systems that create equal opportunities for prosperity',
   },
   {
-    icon: icon1,
+    icon: icon2,
     name: 'Mission',
     description:
       'At Nolus, we are committed to propelling the adoption of decentralized financial systems. Our approach centers on crafting user-centric solutions, harnessing the potential of DeFi.',
     href: '#',
   },
   {
-    icon: icon1,
+    icon: icon3,
     name: 'Values',
     description:
       'Nolus commits to bring mainstream adoption of that notion by creating novel user experience-driven solutions harnessing the power of DeFi',

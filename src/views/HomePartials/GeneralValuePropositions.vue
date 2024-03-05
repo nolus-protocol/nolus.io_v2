@@ -13,7 +13,7 @@
             :variants="{ custom: { scale: 2 } }"
             :delay="index*150"
           >
-            <component :is="icon1" class="h-24 w-24"></component>
+            <component :is="feature.icon" class="h-24 w-24"></component>
             <h3 class="text-3xl mt-8 font-bold tracking-tight text-neutral-900 sm:text-2xl mb-3">
               {{ feature.name }}
             </h3>
@@ -27,7 +27,9 @@
 </template>
   
 <script setup>
-import icon1 from  '@/assets/images/icon1.svg';
+import icon1 from  '@/assets/images/general-value-propositions/icon1.svg';
+import icon2 from  '@/assets/images/general-value-propositions/icon2.svg';
+import icon3 from  '@/assets/images/general-value-propositions/icon3.svg';
 import NolusContainer from '../../components/NolusContainer.vue'
 
 const features = [
@@ -35,18 +37,21 @@ const features = [
     name: 'Cost efficient',
     description:
       'Trade efficiently with minimal spread and price impact, securing optimal prices without extra costs',
+    icon: icon1,
     href: '#',
   },
   {
     name: 'Less liquidation risk',
     description:
       'Nolus Protocol keeps LTV stable with strategic collateral liquidation, minimizing risk',
+    icon: icon2,
     href: '#',
   },
   {
     name: 'Seamless',
     description:
       'Lease and transition seamlessly between supported assets with our user-friendly interface',
+    icon: icon3,
     href: '#',
   },
 ]
