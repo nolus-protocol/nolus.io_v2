@@ -68,9 +68,9 @@ import VideoModal from '@/components/modals/VideoModal.vue';
 import videoSrc from '@/assets/videos/header.mp4';
 
 const stats = [
-  { id: 1, subtitle: 'Total value', description: 'Value locked across 15 assets distributed over 2 networks', value: '$1,170,869' },
-  { id: 2, subtitle: 'APR Lease', description: 'Fixed interest for the entire term of a Lease Position', value: '14.00%' },
-  { id: 3, subtitle: 'APR Yield', description: 'Real yield interest returns on lent stablecoins', value: '6.24%' },
+  { id: 1, subtitle: 'Volume', description: 'being channeled through its Earn and Lease options', value: '$1,170,869' },
+  { id: 2, subtitle: 'Value Locked', description: 'across 15 assets distributed over 2 networks', value: '$1,170,869' },
+  { id: 3, subtitle: 'Earn APY ', description: 'from average interest returns on assets lent', value: '9.24%' },
 ]
 
 const showVideoDialog= ref(false);
