@@ -5,8 +5,8 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8 lg:gap-x-12 lg:gap-y-12 items-start">
         <div class="bg-white overflow-hidden rounded-2xl shadow-xl">
           <div class="p-6 md:p-12">
-            <p class="text-base font-medium leading-7 text-blue-600" aria-hidden="true">Deep liquidity</p>
-            <h2 class="mt-2 text-3xl font-bold tracking-tight text-neutral-900 lg:text-5xl" aria-hidden="true">Hubs</h2>
+            <p class="text-base font-medium leading-7 text-blue-600" aria-hidden="true">Liquidity</p>
+            <h2 class="mt-2 text-3xl font-bold tracking-tight text-neutral-900 lg:text-5xl" aria-hidden="true">Multiple Hubs</h2>
             <p class="mt-3 lg:mt-6 text-base lg:text-lg leading-8 text-neutral-600">Nolus maintains a real-time connection to various liquidity hubs, enabling immediate lending or asset swapping on any linked Decentralized Exchange</p>
           </div>
           <div>
@@ -25,8 +25,8 @@
         </div>
         <div class="bg-white rounded-2xl shadow-xl overflow-hidden pb-4">
           <div class="p-6 md:p-12">
-            <p class="text-base font-medium leading-7 text-blue-600" aria-hidden="true">Safety & Security</p>
-            <h2 class="mt-2 text-3xl font-bold tracking-tight text-neutral-900 lg:text-5xl" aria-hidden="true">Audits</h2>
+            <p class="text-base font-medium leading-7 text-blue-600" aria-hidden="true">Safety</p>
+            <h2 class="mt-2 text-3xl font-bold tracking-tight text-neutral-900 lg:text-5xl" aria-hidden="true">Audited</h2>
             <p class="mt-3 lg:mt-6 text-base lg:text-lg leading-8 text-neutral-600">Nolus adheres to the highest security standards and is audited by leading experts in the industry</p>
           </div>
           <div>
