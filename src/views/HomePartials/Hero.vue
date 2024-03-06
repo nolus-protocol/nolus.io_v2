@@ -13,7 +13,7 @@
         
         <p class="max-w-64 sm:max-w-lg lg:max-w-none mt-6 text-base md:text-xl sm:leading-8 text-neutral-600"
           v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="300"
-        >Triple your holdings without tripling your risk. Unlock the full potential of your assets</p>
+        >Triple your holdings without tripling the risk! Unlock the full potential of your assets</p>
 
         <div class="mt-10 flex flex-col md:flex-row gap-y-4 items-center gap-x-3"
           v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="400"
@@ -68,9 +68,9 @@ import VideoModal from '@/components/modals/VideoModal.vue';
 import videoSrc from '@/assets/videos/header.mp4';
 
 const stats = [
-  { id: 1, subtitle: 'Volume', description: 'channeled through Lease and Earn', value: '$1,170,869' },
-  { id: 2, subtitle: 'Value Locked', description: 'across 15 assets distributed over 2 networks', value: '$1,170,869' },
-  { id: 3, subtitle: 'Earn APY ', description: 'from average interest returns on assets lent', value: '9.24%' },
+  { id: 1, subtitle: 'Volume', description: 'channeled through Nolus', value: '$1,170,869' },
+  { id: 2, subtitle: 'Value', description: 'across 25 assets', value: '$1,170,869' },
+  { id: 3, subtitle: 'Earn', description: 'yield on assets lent', value: '9.24%' },
 ]
 
 const showVideoDialog= ref(false);
