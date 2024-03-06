@@ -68,7 +68,7 @@ import VideoModal from '@/components/modals/VideoModal.vue';
 import videoSrc from '@/assets/videos/header.mp4';
 
 const stats = [
-  { id: 1, subtitle: 'Volume', description: 'being channeled through its Earn and Lease options', value: '$1,170,869' },
+  { id: 1, subtitle: 'Volume', description: 'channeled through Lease and Earn', value: '$1,170,869' },
   { id: 2, subtitle: 'Value Locked', description: 'across 15 assets distributed over 2 networks', value: '$1,170,869' },
   { id: 3, subtitle: 'Earn APY ', description: 'from average interest returns on assets lent', value: '9.24%' },
 ]
