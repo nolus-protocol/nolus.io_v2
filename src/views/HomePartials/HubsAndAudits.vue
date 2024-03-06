@@ -27,7 +27,7 @@
           <div class="p-6 md:p-12">
             <p class="text-base font-medium leading-7 text-blue-600" aria-hidden="true">Externaly Verified</p>
             <h2 class="mt-2 text-3xl font-bold tracking-tight text-neutral-900 lg:text-5xl" aria-hidden="true">Audits</h2>
-            <p class="mt-3 lg:mt-6 text-base lg:text-lg leading-8 text-neutral-600">Best security practices and rigorous auditing by leading security experts in the industry</p>
+            <p class="mt-3 lg:mt-6 text-base lg:text-lg leading-8 text-neutral-600">Following best security practices and rigorous audited by leading security experts in the industry</p>
           </div>
           <div>
             <ul class="flex flex-col gap-px border-t border-neutral-200/50">
@@ -88,21 +88,21 @@ const hubs = [
 const audits = [
   {
     id: 1,
-    name: 'Clockchain audit',
+    name: 'Nolus Core',
     auditor: 'Oak Security',
     url: 'https://github.com/oak-security/audit-reports/blob/master/Nolus/2022-12-12%20Audit%20Report%20-%20Nolus%20Core%20v1.1.pdf',
     logoUrl: '/assets/images/auditors/oak_logo.jpeg'
   },
   {
     id: 2,
-    name: 'Money market report',
+    name: 'Money Market',
     auditor: 'Oak Security',
     url: 'https://github.com/oak-security/audit-reports/blob/master/Nolus/2023-01-27%20Audit%20Report%20-%20Nolus%20Money%20Market%20v1.1.pdf',
     logoUrl: '/assets/images/auditors/oak_logo.jpeg'
   },
   {
     id: 3,
-    name: 'Money market report',
+    name: 'Money Market',
     auditor: 'Halborn',
     url: 'https://github.com/HalbornSecurity/PublicReports/blob/master/CosmWasm%20Smart%20Contract%20Audits/Nolus_Money_Market_CosmWasm_Smart_Contract_Security_Assessment_Report_Halborn_Final.pdf',
     logoUrl: '/assets/images/auditors/halborn_logo.jpeg'
