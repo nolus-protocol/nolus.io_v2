@@ -7,7 +7,7 @@
           <div class="p-6 md:p-12">
             <p class="text-base font-medium leading-7 text-blue-600" aria-hidden="true">Deep liquidity</p>
             <h2 class="mt-2 text-3xl font-bold tracking-tight text-neutral-900 lg:text-5xl" aria-hidden="true">Hubs</h2>
-            <p class="mt-3 lg:mt-6 text-base lg:text-lg leading-8 text-neutral-600">Nolus connects to various liquidity hubs that allows for immediate lending or swapping of assets on any linked DEX</p>
+            <p class="mt-3 lg:mt-6 text-base lg:text-lg leading-8 text-neutral-600">Nolus maintains a real-time connection to various liquidity hubs, enabling immediate lending or asset swapping on any linked Decentralized Exchange</p>
           </div>
           <div>
             <ul class="flex flex-wrap gap-px text-center bg-neutral-200/70 border-t">
