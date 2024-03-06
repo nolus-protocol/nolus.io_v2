@@ -27,7 +27,7 @@
           <div class="p-6 md:p-12">
             <p class="text-base font-medium leading-7 text-blue-600" aria-hidden="true">Safety & Security</p>
             <h2 class="mt-2 text-3xl font-bold tracking-tight text-neutral-900 lg:text-5xl" aria-hidden="true">Audits</h2>
-            <p class="mt-3 lg:mt-6 text-base lg:text-lg leading-8 text-neutral-600">Nolus adheres to the highest security standards and is rigorous audited by leading experts in the industry</p>
+            <p class="mt-3 lg:mt-6 text-base lg:text-lg leading-8 text-neutral-600">Nolus adheres to the highest security standards and is audited by leading experts in the industry</p>
           </div>
           <div>
             <ul class="flex flex-col gap-px border-t border-neutral-200/50">
