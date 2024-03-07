@@ -45,26 +45,26 @@ const props = defineProps({
 const solutions = [
   { 
     name: 'Whitepaper', 
-    description: 'Learn more about our vision', 
+    description: 'Discover more about the vision behind Nolus', 
     href: 'https://nolus.io/Nolus-Whitepaper.pdf#',  
     icon: Newspaper2Icon,
   },
   {
     name: 'Tech documentation',
-    description: 'Get all of your questions answered in our forums of contact support',
-    href: '#',
+    description: 'All technical aspects, tailored for validators and developers',
+    href: 'https://hub.nolus.io/en_US/technical-documentation',
     icon: HeadphonesIcon,
   },
   { 
     name: 'Github', 
-    description: 'Learn how to maximize our platform to get the most out of it', 
+    description: 'Explore and contribute to the development of the Nolus Protocol', 
     href: 'https://github.com/nolus-protocol',
     icon: GithubIcon,
   },
   { 
     name: 'Audits', 
-    description: 'Check out webinars with experts and learn about our annual conference', 
-    href: '#',
+    description: 'Review all external security reports', 
+    href: 'https://hub.nolus.io/en_US/technical-documentation/security',
     icon: ShieldCheckIcon,
   },
   { 

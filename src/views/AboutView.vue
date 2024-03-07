@@ -39,7 +39,7 @@
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
           
           <div class="basis-2/5 shrink-0 mx-auto max-w-2xl lg:mx-0">
-            <h2 class="text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">Our team</h2>
+            <h2 class="text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">Core Contributors</h2>
           </div>
           <div class="basis-3/5 shrink-0">
             <!-- Core contributors -->
@@ -125,16 +125,16 @@ const isVideoLoaded = ref(false);
 // Define vision, mission and values
 const visionMisionAndValues = [
   {
-    icon: icon1,
-    name: 'Vision',
-    description:
-      'We envision a future where all assets are tokenized on-chain, offering people efficient means to manage their funds. At Nolus, we always look ahead which is why we’ve designed all protocol offerings to be seamless, secure and instant',
-  },
-  {
     icon: icon2,
     name: 'Mission',
     description:
       'Nolus is dedicated to effectively addressing inefficiencies in lending markets through innovative, convenient, and sustainable solutions, Leveraging the power of blockchain technology, Nolus is at the forefront of pioneering in decentralized finance',
+  },
+  {
+    icon: icon1,
+    name: 'Vision',
+    description:
+      'We envision a future where all assets are tokenized on-chain, offering people efficient means to manage their funds. At Nolus, we always look ahead which is why we’ve designed all protocol offerings to be seamless, secure and instant',
     href: '#',
   },
   {
@@ -205,7 +205,7 @@ const core_contributors = [
   },
   {
     name: 'Krum Christov',
-    role: 'Marketing & Community',
+    role: 'Community & Marketing',
     imageUrl: '/assets/images/about/team/krum_christov.jpg',
     xUrl: '',
     discordUrl: ''
@@ -228,7 +228,7 @@ const other_contributors = [
   },
   {
     name: 'Desislava Paunova',
-    role: 'Quality Assurance Engineer'
+    role: 'QA Engineer'
   },
   {
     name: 'Alexander Makedonski',

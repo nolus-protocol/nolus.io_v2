@@ -65,7 +65,7 @@ const props = defineProps({
 })
 
 const resources = [
-  { name: 'Knowledge Hub', description: 'Find solutions for your questions', href: 'https://hub.nolus.io/', icon: BookIcon },
+  { name: 'Knowledge Hub', description: 'Find answers to your questions', href: 'https://hub.nolus.io/', icon: BookIcon },
 ]
 
 const getImageUrl = (imageName) => {

@@ -12,8 +12,8 @@
             <div class="max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
               <div class="w-full max-w-xl lg:shrink-0 xl:max-w-3xl">
                 <h1 class="text-5xl font-bold tracking-tight text-neutral-900 leading-tight" v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="100">Governance</h1>
-                <p class="basis-1/2 relative mt-6 text-lg leading-8 text-neutral-800 sm:max-w-md lg:max-w-lg" v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="200">Nolus stands as a fully decentralized, community-governed protocol constructed atop a Proof-of-Stake consensus mechanism, forming the fundamental infrastructure of the Nolus network. The community assumes a pivotal role, driving decentralization, bolstering security</p>
-                <p class="basis-1/2 relative mt-6 text-lg leading-8 text-neutral-800 sm:max-w-md lg:max-w-lg" v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="300">Community members exert influence through active involvement in protocol governance, engaging in delegating and voting on critical proposals. These proposals span a wide range, from fine-tuning parameters to introducing cutting-edge protocol enhancements
+                <p class="basis-1/2 relative mt-6 text-lg leading-8 text-neutral-800 sm:max-w-md lg:max-w-lg" v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="200">Fully decentralized, community-governed protocol built on a Proof-of-Stake blockchain, where the community also plays a pivotal role in driving decentralization and enhancing security</p>
+                <p class="basis-1/2 relative mt-6 text-lg leading-8 text-neutral-800 sm:max-w-md lg:max-w-lg" v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="300">Members actively participate in protocol governance by delegating and voting on proposals. These range from fine-tuning parameters to implementing protocol enhancements
                 </p>
               </div>
             </div>
@@ -87,9 +87,9 @@ import PlusSmallIcon from '@/assets/icons/plus-small.svg';
 
 
 const stats = [
-  {description: "from a total of 432 are actively engaged in maintaining the network's integrity", value: '50 Validators' },
-  {description: 'actively engage in the governance of the protocol', value: '3,454 Delegators' },
-  {description: 'Real yield interest returns on lent stablecoins', value: '3,2323 voting addresses' },
+  {description: "maintaining the network's integrity", value: '50 Validators' },
+  {description: 'actively engaged in governance', value: '3,454 Delegators' },
+  {description: '', value: '' },
 ]
 
 let myCanvas = ref(null);
