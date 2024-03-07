@@ -68,9 +68,9 @@ import VideoModal from '@/components/modals/VideoModal.vue';
 import videoSrc from '@/assets/videos/header.mp4';
 
 const stats = [
-  { id: 1, subtitle: 'Volume', description: 'channeled through Nolus', value: '$1,170,869' },
-  { id: 2, subtitle: 'Value', description: 'across 25 assets', value: '$1,170,869' },
-  { id: 3, subtitle: 'Earn', description: 'yield on assets lent', value: '9.24%' },
+  { id: 1, subtitle: '', description: 'Tx Value channeled through Nolus', value: '+$100,000,000' },
+  { id: 2, subtitle: '', description: 'Value Locked across 25 assets distributed on 3 networks', value: '$1,170,869' },
+  { id: 3, subtitle: '', description: '# Sustainable yield returns on lent assets', value: '9.24%' },
 ]
 
 const showVideoDialog= ref(false);
