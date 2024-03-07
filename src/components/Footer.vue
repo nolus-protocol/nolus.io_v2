@@ -46,7 +46,7 @@ const footer_navigation = [
     click: 'showTosDialog = true'
   },
   {
-    name: 'Privacy Policy',
+    name: 'Cookie Policy',
     href: 'https://example.org',
   },
 ]
