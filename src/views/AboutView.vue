@@ -2,12 +2,14 @@
   <div class="bg-white">
     <main class="isolate">
       <!-- Hero section -->
-      <div class="overflow-hidden relative isolate -z-10 bg-blue-800 py-32 pb-24" id="hero-wrapper">
+      <div class="overflow-hidden relative isolate -z-10 bg-blue-800 py-40" id="hero-wrapper">
           <NolusContainer>
             <div class="hidden md:block">
+              <div class="absolute w-full sm:-right-48 lg:right-0 -top-8 lg:-top-20 lg:-right-56 -z-10 mx-auto">
                 <video ref="videoRef" @loadeddata="isVideoLoaded = true" @play="onVideoPlay" muted autoplay playsinline class="h-[1px] w-[1px]" data-timing="7" data-wait="240" style="width: 840px"  aria-hidden="true" v-motion :initial="{ opacity: 0 }" :enter="{ opacity: 1, }" :delay="100">
                 </video>
-                <canvas ref="canvasRef" aria-hidden="true" :class="{ invisible: !isVideoLoaded, visible: isVideoLoaded }" class="absolute -right-32 sm:-right-40 lg:right-0 -top-16 -z-10 mx-auto" style="width: 840px"></canvas>
+                <canvas ref="canvasRef" aria-hidden="true" :class="{ invisible: !isVideoLoaded, visible: isVideoLoaded }" class="w-full h-full"></canvas>
+              </div>
             </div>
             <div class="md:max-w-md lg:max-w-2xl gap-x-14 lg:flex lg:max-w-none lg:items-center">
               <div class="w-full max-w-xl lg:shrink-0 xl:max-w-2xl">
@@ -23,7 +25,7 @@
 
       <!-- Vision, mission and values -->
       <NolusContainer>
-        <div class="mx-auto py-24 max-w-2xl lg:mx-0 lg:max-w-none">
+        <div class="mx-auto py-16 max-w-2xl lg:mx-0 lg:max-w-none">
             <div class="mt-6 flex flex-col md:flex-row gap-x-10 gap-y-8">
               <div v-for="(item, index) in visionMisionAndValues" :key="index" class="md:basis-1/3">
                 <component :is="item.icon" class="h-24 w-24"></component>
