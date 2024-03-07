@@ -45,13 +45,13 @@ const props = defineProps({
 const solutions = [
   { 
     name: 'Whitepaper', 
-    description: 'Learn more about our vision', 
+    description: 'Discover more about the vision behind Nolus', 
     href: 'https://nolus.io/Nolus-Whitepaper.pdf#',  
     icon: Newspaper2Icon,
   },
   {
     name: 'Tech documentation',
-    description: 'Get all of your questions answered in our forums of contact support',
+    description: 'All technical aspects, tailored for validators and developers',
     href: '#',
     icon: HeadphonesIcon,
   },
