@@ -125,16 +125,16 @@ const isVideoLoaded = ref(false);
 // Define vision, mission and values
 const visionMisionAndValues = [
   {
-    icon: icon1,
-    name: 'Vision',
-    description:
-      'We envision a future where all assets are tokenized on-chain, offering people efficient means to manage their funds. At Nolus, we always look ahead which is why we’ve designed all protocol offerings to be seamless, secure and instant',
-  },
-  {
     icon: icon2,
     name: 'Mission',
     description:
       'Nolus is dedicated to effectively addressing inefficiencies in lending markets through innovative, convenient, and sustainable solutions, Leveraging the power of blockchain technology, Nolus is at the forefront of pioneering in decentralized finance',
+  },
+  {
+    icon: icon1,
+    name: 'Vision',
+    description:
+      'We envision a future where all assets are tokenized on-chain, offering people efficient means to manage their funds. At Nolus, we always look ahead which is why we’ve designed all protocol offerings to be seamless, secure and instant',
     href: '#',
   },
   {
