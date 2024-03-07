@@ -19,10 +19,10 @@
           v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="400"
         >
           <Button class="w-full md:w-auto" size="lg" variant="primary" link="https://app.nolus.io/" :icon="SquareArrowTopRightIcon">
-            Launch dApp
+            Launch App
           </Button>
           <Button class="w-full md:w-auto" size="lg" variant="secondary" :icon="PlayCircleIcon" @click="showVideoDialog = true">
-            Watch explainer
+            Watch Explainer
           </Button>
         </div>
 
