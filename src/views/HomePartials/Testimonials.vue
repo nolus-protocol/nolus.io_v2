@@ -2,8 +2,8 @@
   <div class="relative overflow-hidden isolate bg-neutral-50 py-16 lg:py-24">
     <NolusContainer>
       <div class="mx-auto">
-        <p class="text-lg font-medium leading-8 tracking-tight text-blue-600" aria-hidden="true">Testimonials</p>
-        <h2 class="mt-2 text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">What Others Say About Nolus</h2>
+        <!-- <p class="text-lg font-medium leading-8 tracking-tight text-blue-600" aria-hidden="true"></p> -->
+        <h2 class="mt-2 text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">What Others Say</h2>
       </div>
       <div class="mx-auto mt-12 md:mt-16 mb-8 grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-16">
         <figure v-for="testimonial in displayedTestimonials" :key="testimonial.author.handle" class="divide-y" v-motion :initial="{ opacity: 0, y: -100 }" :enter="{ opacity: 1, y: 0, scale: 1, transition: {duration: 400} }" :leave="{ opacity: 0, y: 100 }">
@@ -18,7 +18,7 @@
           </figcaption>
         </figure>
       </div>
-      <Button variant="secondary" :icon="PlusSmallIcon" size="md" v-if="testimonialsToShow < testimonials.length" @click="loadMore" class="mt-4">Load more testimonials</Button>
+      <Button variant="secondary" :icon="PlusSmallIcon" size="md" v-if="testimonialsToShow < testimonials.length" @click="loadMore" class="mt-4">Load More</Button>
     </NolusContainer>
   </div>
 </template>
