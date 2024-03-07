@@ -13,7 +13,7 @@
         
         <p class="max-w-64 sm:max-w-lg lg:max-w-none mt-6 text-base md:text-xl sm:leading-8 text-neutral-600"
           v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="300"
-        >Triple your holdings without tripling the risk! Unlock the full potential of your assets</p>
+        >Triple your holdings without tripling the risk! Unlock the full potential of your assets directly from your wallet</p>
 
         <div class="mt-10 flex flex-col md:flex-row gap-y-4 items-center gap-x-3"
           v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="400"
@@ -68,9 +68,9 @@ import VideoModal from '@/components/modals/VideoModal.vue';
 import videoSrc from '@/assets/videos/header.mp4';
 
 const stats = [
-  { id: 1, subtitle: '', description: 'Tx Value channeled through Nolus', value: '+$100,000,000' },
-  { id: 2, subtitle: '', description: 'Value Locked across 25 assets distributed on 3 networks', value: '$1,170,869' },
-  { id: 3, subtitle: '', description: '# Sustainable yield returns on lent assets', value: '9.24%' },
+  { id: 1, subtitle: '', description: 'Transactional value channeled through Nolus', value: '$100M+' },
+  { id: 2, subtitle: '', description: 'Liquidity locked across 25 assets distributed on 3 networks', value: '$1,170,869' },
+  { id: 3, subtitle: '', description: 'Sustanable annual percentage yield on lent assets', value: '9.24%' },
 ]
 
 const showVideoDialog= ref(false);
