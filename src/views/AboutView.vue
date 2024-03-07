@@ -13,8 +13,8 @@
               <div class="w-full max-w-xl lg:shrink-0 xl:max-w-2xl">
                 <h1 class="text-3xl md:text-3xl lg:text-5xl font-bold tracking-tight text-white leading-tight" v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="100">Advancing DeFi with a Lease Solution Built for the Web3 World</h1>
                 <div class="flex flex-col lg:flex-row gap-x-8">
-                  <p class="basis-1/2 relative mt-6 text-lg leading-8 text-white sm:max-w-md lg:max-w-lg" v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="200">Nolus bridges lenders and borrowers in DeFi money market. With Lease, borrowers secure up to 150% financing and retain access to leveraged assets via whitelisted strategies</p>
-                   <p class="basis-1/2 relative mt-6 text-lg leading-8 text-white sm:max-w-md lg:max-w-lg" v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="300">Inspired by traditional leasing, Nolus reduces DeFi's high over-collateralization standards, enhancing capital efficiency and improving loan terms for borrowers</p>
+                  <p class="basis-1/2 relative mt-6 text-lg leading-8 text-white sm:max-w-md lg:max-w-lg" v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="200">Nolus bridges lenders and borrowers in the DeFi money market. With Lease, borrowers secure up to 150% financing and retain access to leveraged assets via whitelisted strategies</p>
+                   <p class="basis-1/2 relative mt-6 text-lg leading-8 text-white sm:max-w-md lg:max-w-lg" v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="300">Inspired by traditional finance, Nolus' lease reduces high over-collateralization standards, enhancing capital efficiency, and improving loan terms for borrowers</p>
                 </div>
               </div>
             </div>
@@ -128,20 +128,20 @@ const visionMisionAndValues = [
     icon: icon1,
     name: 'Vision',
     description:
-      'We believe in a future where everyone will have the means to efficiently manage their wealth in decentralized, permissionless financial systems that create equal opportunities for prosperity',
+      'We envision a future in the financial world where all assets are tokenized on-chain, offering people efficient means to manage their funds. At Nolus, we always look ahead which is why we’ve designed all protocol offerings to be seamless, secure and instant',
   },
   {
     icon: icon2,
     name: 'Mission',
     description:
-      'At Nolus, we are committed to propelling the adoption of decentralized financial systems. Our approach centers on crafting user-centric solutions, harnessing the potential of DeFi.',
+      'Nolus is dedicated to effectively addressing inefficiencies in lending markets through innovative, convenient, and sustainable solutions. Leveraging the power of blockchain technology, Nolus is at the forefront of pioneering a new digital financial system',
     href: '#',
   },
   {
     icon: icon3,
     name: 'Values',
     description:
-      'Nolus commits to bring mainstream adoption of that notion by creating novel user experience-driven solutions harnessing the power of DeFi',
+      'Nolus is built upon the values of efficiency, transparency, and inclusivity, which are evident in our open-source technology, governance-driven decisions, and dedicated efforts to create a truly global service, providing wealth creation opportunities accessible to all',
   }
 ]
 
