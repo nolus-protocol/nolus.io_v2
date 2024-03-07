@@ -28,7 +28,7 @@
 
       </div>
       <div class="w-full my-12 absolute md:scale-100 left-0 md:left-auto -right-48 sm:-right-56 lg:-right-72 top-20 md:top-10 -z-10 mx-auto lg:mt-0">
-        <video ref="videoRef" @loadeddata="isVideoLoaded = true" class="h-0 w-0" muted autoplay playsinline data-timing="7" data-wait="240" loop aria-hidden="true" :poster='videoPoster'>
+        <video ref="videoRef" @loadeddata="isVideoLoaded = true" class="h-[1px] w-[1px]" muted autoplay playsinline data-timing="7" data-wait="240" loop aria-hidden="true" :poster='videoPoster'>
           <source :src="videoSrc" type="video/mp4" />
         </video>
         <canvas ref="canvasRef" :class="{ invisible: !isVideoLoaded, visible: isVideoLoaded }" v-motion :initial="{ opacity: 0 }" style="width: 100%" :enter="{ opacity: 1 }" :delay="100"></canvas>

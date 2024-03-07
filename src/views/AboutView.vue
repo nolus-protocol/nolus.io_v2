@@ -5,7 +5,7 @@
       <div class="overflow-hidden relative isolate -z-10 bg-blue-800 py-32 pb-24" id="hero-wrapper">
           <NolusContainer>
             <div class="hidden md:block">
-                <video ref="videoRef" @loadeddata="isVideoLoaded = true" @play="onVideoPlay" muted autoplay playsinline class="h-0 w-0" data-timing="7" data-wait="240" style="width: 840px"  aria-hidden="true" v-motion :initial="{ opacity: 0 }" :enter="{ opacity: 1, }" :delay="100">
+                <video ref="videoRef" @loadeddata="isVideoLoaded = true" @play="onVideoPlay" muted autoplay playsinline class="h-[1px] w-[1px]" data-timing="7" data-wait="240" style="width: 840px"  aria-hidden="true" v-motion :initial="{ opacity: 0 }" :enter="{ opacity: 1, }" :delay="100">
                 </video>
                 <canvas ref="canvasRef" aria-hidden="true" :class="{ invisible: !isVideoLoaded, visible: isVideoLoaded }" class="absolute -right-32 sm:-right-40 lg:right-0 -top-16 -z-10 mx-auto" style="width: 840px"></canvas>
             </div>
