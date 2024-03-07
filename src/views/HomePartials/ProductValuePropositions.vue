@@ -15,7 +15,7 @@
                 <div class="md:w-3/5" v-motion :initial="{ opacity: 0}" :enter="{ opacity: 1, scale: 1, transition: {duration: 600} }" :leave="{ opacity: 0}">
                   <h2 class="mt-2 text-3xl font-bold tracking-tight text-neutral-900 sm:text-5xl" aria-hidden="true">{{ tab.heading }}</h2>
                   <p class="mt-6 text-lg leading-8 text-neutral-600">{{ tab.content }}</p>
-                  <Button :link="tab.buttonLink" class="mt-5">Get the Nolus dApp</Button>
+                  <Button :link="tab.buttonLink" class="mt-5">Launch App</Button>
                 </div>
                 <img ref="imgRef" :src="tab.tabImage" alt="" class="block mt-8 sm:mt-0 md:absolute md:w-2/5 w-10/12 mx-auto md:mb-0 -z-10 -right-8 top-0" aria-hidden="true" v-motion :initial="{ opacity: 0}" :enter="{ opacity: 1, scale: 1, transition: {duration: 600} }" :leave="{ opacity: 0}" />
                 </div>

@@ -69,7 +69,7 @@ import videoSrc from '@/assets/videos/header.mp4';
 
 const stats = [
   { id: 1, subtitle: '', description: 'Transactional value channeled through Nolus', value: '$100M+' },
-  { id: 2, subtitle: '', description: 'Liquidity locked across 25 assets distributed on 3 networks', value: '$1,170,869' },
+  { id: 2, subtitle: '', description: 'Liquidity locked across 25 assets distributed on 3 chains', value: '$1,170,869' },
   { id: 3, subtitle: '', description: 'Sustanable annual percentage yield on lent assets', value: '9.24%' },
 ]
 
