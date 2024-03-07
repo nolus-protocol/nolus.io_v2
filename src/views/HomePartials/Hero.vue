@@ -1,5 +1,5 @@
 <template>
-  <div class="relative isolate overflow-hidden bg-neutral-100">
+  <div class="relative isolate overflow-hidden bg-neutral-100" id="hero-wrapper2">
     <div class="relative mx-auto max-w-7xl px-6 py-32 pb-24 lg:px-8 lg:pt-28">
       <div class="absolute bottom-0 left-0 -z-5 transform-gpu overflow-hidden blur-3xl" aria-hidden="true">
         <div class="relative aspect-[1/1] w-[66.125rem] bg-gradient-to-r from-white to-white opacity-100" style="clip-path: ellipse(50% 25% at center 100%);"></div>
@@ -28,9 +28,10 @@
 
       </div>
       <div class="w-full my-12 absolute md:scale-100 left-0 md:left-auto -right-48 sm:-right-56 lg:-right-72 top-20 md:top-10 -z-10 mx-auto lg:mt-0">
-        <video ref="videoRef" @loadeddata="isVideoLoaded = true" :class="{ invisible: !isVideoLoaded, visible: isVideoLoaded }" muted autoplay playsinline data-timing="7" data-wait="240" loop aria-hidden="true" v-motion :initial="{ opacity: 0 }" :enter="{ opacity: 1 }" :delay="100" :poster='videoPoster'>
+        <video ref="videoRef" @loadeddata="isVideoLoaded = true" class="h-0 w-0" muted autoplay playsinline data-timing="7" data-wait="240" loop aria-hidden="true" :poster='videoPoster'>
           <source :src="videoSrc" type="video/mp4" />
         </video>
+        <canvas ref="canvasRef" :class="{ invisible: !isVideoLoaded, visible: isVideoLoaded }" v-motion :initial="{ opacity: 0 }" style="width: 100%" :enter="{ opacity: 1 }" :delay="100"></canvas>
         <img v-if="!isVideoLoaded" :src="videoPoster" alt="Video loading..." v-motion :initial="{ opacity: 0 }" :enter="{ opacity: 1 }" :delay="100" />
       </div>
       <div class="md:pt-16 max-w-4xl">
@@ -75,6 +76,27 @@ const stats = [
 
 const showVideoDialog= ref(false);
 const videoRef = ref(null);
+const canvasRef = ref(null);
 const isVideoLoaded = ref(false);
+
+onMounted(() => {
+    let video = videoRef.value;
+    let canvas = canvasRef.value;
+    let context = canvas.getContext('2d');
+
+    video.addEventListener('loadeddata', () => {
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+    });
+
+    video.addEventListener('play', () => {
+      setInterval(() => {
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+        let pixelData = context.getImageData(10, 10, 1, 1).data;
+        let color = `${pixelData[0]},${pixelData[1]},${pixelData[2]}`;
+        document.getElementById('hero-wrapper2').style.backgroundColor = `rgb(${color})`;
+      }, 30); // Capture every second
+    });
+});
 
 </script>

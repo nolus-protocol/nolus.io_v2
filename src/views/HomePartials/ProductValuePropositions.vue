@@ -143,7 +143,7 @@ onMounted(async () => {
   observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        // startInterval();
+        startInterval();
       } else {
         stopInterval();
       }

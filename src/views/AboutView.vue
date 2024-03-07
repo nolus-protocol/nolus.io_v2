@@ -2,12 +2,12 @@
   <div class="bg-white">
     <main class="isolate">
       <!-- Hero section -->
-      <div class="overflow-hidden relative isolate -z-10 bg-[#203A80] py-32 pb-24" id="hero-wrapper">
+      <div class="overflow-hidden relative isolate -z-10 bg-blue-800 py-32 pb-24" id="hero-wrapper">
           <NolusContainer>
             <div class="hidden md:block">
-                <video ref="videoRef" @loadeddata="isVideoLoaded = true" @play="onVideoPlay" :class="{ invisible: !isVideoLoaded, visible: isVideoLoaded }" muted autoplay playsinline class="absolute -right-[250px] -top-16 -z-10 mx-auto" data-timing="7" data-wait="240" style="width: 1000px"  aria-hidden="true" v-motion :initial="{ opacity: 0 }" :enter="{ opacity: 1, }" :delay="100" :poster='videoPoster'>
+                <video ref="videoRef" @loadeddata="isVideoLoaded = true" @play="onVideoPlay" muted autoplay playsinline class="h-0 w-0" data-timing="7" data-wait="240" style="width: 840px"  aria-hidden="true" v-motion :initial="{ opacity: 0 }" :enter="{ opacity: 1, }" :delay="100">
                 </video>
-              <img v-if="!isVideoLoaded" :src="videoPoster" alt="Video loading..." class="absolute -right-[250px] -top-16 -z-10 mx-auto" style="width: 1000px" v-motion :initial="{ opacity: 0 }" :enter="{ opacity: 1, }" :delay="100" />
+                <canvas ref="canvasRef" aria-hidden="true" :class="{ invisible: !isVideoLoaded, visible: isVideoLoaded }" class="absolute -right-32 sm:-right-40 lg:right-0 -top-16 -z-10 mx-auto" style="width: 840px"></canvas>
             </div>
             <div class="md:max-w-md lg:max-w-2xl gap-x-14 lg:flex lg:max-w-none lg:items-center">
               <div class="w-full max-w-xl lg:shrink-0 xl:max-w-2xl">
@@ -49,20 +49,6 @@
                 <div>
                   <h3 class="text-base font-semibold leading-7 tracking-tight text-neutral-900">{{ person.name }}</h3>
                   <p class="text-sm leading-6 text-neutral-600">{{ person.role }}</p>
-                  <!-- <ul role="list" class="flex gap-x-2 mt-2">
-                    <li>
-                      <a :href="person.xUrl" class="text-neutral-400 fill-neutral-500 hover:fill-neutral-900 p-3 block bg-neutral-50 rounded-full transition-all hover:fill-blue-600 hover:bg-blue-100">
-                        <span class="sr-only">X</span>
-                        <component :is="xIcon" class="h-6 w-6 "></component>
-                      </a>
-                    </li>
-                    <li>
-                      <a :href="person.discordUrl" class="text-neutral-400 fill-neutral-500 p-3 block bg-neutral-50 rounded-full transition-all hover:fill-blue-600 hover:bg-blue-100">
-                        <span class="sr-only">Discord</span>
-                        <component :is="discordIcon" class="h-6 w-6 "></component>
-                      </a>
-                    </li>
-                  </ul> -->
                   </div>
               </li>
             </ul>
@@ -106,13 +92,8 @@
 import { onMounted, ref } from 'vue';
 import NolusContainer from '@/components/NolusContainer.vue';
 // Icons
-import xIcon from '@/assets/icons/x.svg';
-import discordIcon from '@/assets/icons/discord.svg';
-import dots from '@/assets/images/dots.svg';
-import logoTunnel from '@/assets/images/about/logo-tunnel.png';
-import logoTunnelBalls from '@/assets/images/about/logo-tunnel-balls.png';
-import animatedLogo from '@/assets/videos/animated-logo.mp4';
-import videoPoster from '@/assets/videos/animated-logo.jpg';
+import animatedLogo from '@/assets/videos/about-header.mp4';
+import videoPoster from '@/assets/videos/header.jpg';
 // Illustrations
 import icon1 from  '@/assets/images/about/icon1.svg';
 import icon2 from  '@/assets/images/about/icon2.svg';
@@ -120,7 +101,10 @@ import icon3 from  '@/assets/images/about/icon3.svg';
 
 // Logo dependencies
 const videoRef = ref(null);
+const canvasRef = ref(null);
 const isVideoLoaded = ref(false);
+
+
 
 // Define vision, mission and values
 const visionMisionAndValues = [
@@ -254,6 +238,24 @@ onMounted(() => {
     source.src = animatedLogo;
     source.type = "video/mp4";
     videoRef.value.appendChild(source);
+
+    let video = videoRef.value;
+    let canvas = canvasRef.value;
+    let context = canvas.getContext('2d');
+
+    video.addEventListener('loadeddata', () => {
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+    });
+
+    video.addEventListener('play', () => {
+      setInterval(() => {
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+        let pixelData = context.getImageData(10, 10, 1, 1).data;
+        let color = `${pixelData[0]},${pixelData[1]},${pixelData[2]}`;
+        document.getElementById('hero-wrapper').style.backgroundColor = `rgb(${color})`;
+      }, 30); // Capture every second
+    });
   }
 });
 </script>
