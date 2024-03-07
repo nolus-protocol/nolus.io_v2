@@ -12,9 +12,8 @@
             <div class="max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
               <div class="w-full max-w-xl lg:shrink-0 xl:max-w-3xl">
                 <h1 class="text-5xl font-bold tracking-tight text-neutral-900 leading-tight" v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="100">Governance</h1>
-                <p class="basis-1/2 relative mt-6 text-lg leading-8 text-neutral-800 sm:max-w-md lg:max-w-lg" v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="200">The Nolus Protocol is managed by a decentralized group of individuals who delegate their NLS tokens. This community suggests and votes on platform improvements.</p>
-                <p class="basis-1/2 relative mt-6 text-lg leading-8 text-neutral-800 sm:max-w-md lg:max-w-lg" v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="300">
-                  By allocating their NLS tokens to different validators, these delegators bolster the Nolus network's security. Validators play a crucial role in maintaining the network's integrity and protection.
+                <p class="basis-1/2 relative mt-6 text-lg leading-8 text-neutral-800 sm:max-w-md lg:max-w-lg" v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="200">Nolus stands as a fully decentralized, community-governed protocol constructed atop a Proof-of-Stake consensus mechanism, forming the fundamental infrastructure of the Nolus network. The community assumes a pivotal role, driving decentralization, bolstering security</p>
+                <p class="basis-1/2 relative mt-6 text-lg leading-8 text-neutral-800 sm:max-w-md lg:max-w-lg" v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="300">Community members exert influence through active involvement in protocol governance, engaging in delegating and voting on critical proposals. These proposals span a wide range, from fine-tuning parameters to introducing cutting-edge protocol enhancements
                 </p>
               </div>
             </div>
@@ -37,7 +36,7 @@
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
           
           <div class="max-w-2xl lg:mx-0">
-            <h2 class="text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl mb-12">Recent proposals</h2>
+            <h2 class="text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl mb-12">Recent Proposals</h2>
           </div>
 
           <div class="md:mt-0 mt-8">
@@ -61,7 +60,7 @@
                   size="md"  
                   class="mt-4"
                 >
-                Load more proposals
+                Load More
               </Button>
               </div>
               <Modal :show="state.showReadMoreModal" @close-modal="onCloseReadMoreModal">
@@ -88,8 +87,8 @@ import PlusSmallIcon from '@/assets/icons/plus-small.svg';
 
 
 const stats = [
-  {description: "A subset of 50 validators from a total of 432 are actively engaged in maintaining the network's integrity", value: '50 active validators' },
-  {description: 'Votes delegated', value: '1,323 delegators' },
+  {description: "from a total of 432 are actively engaged in maintaining the network's integrity", value: '50 Validators' },
+  {description: 'actively engage in the governance of the protocol', value: '3,454 Delegators' },
   {description: 'Real yield interest returns on lent stablecoins', value: '3,2323 voting addresses' },
 ]
 

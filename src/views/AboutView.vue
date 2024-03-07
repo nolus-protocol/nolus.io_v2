@@ -169,6 +169,13 @@ const core_contributors = [
     discordUrl: ''
   },
   {
+    name: 'Bilyana Christova',
+    role: 'Business Development',
+    imageUrl: '/assets/images/about/team/bilyana_christova.jpg',
+    xUrl: '',
+    discordUrl: ''
+  },
+  {
     name: 'Metodi Manov',
     role: 'Product Development',
     imageUrl: '/assets/images/about/team/metodi_manov.jpg',
@@ -179,13 +186,6 @@ const core_contributors = [
     name: 'Simon Chadwick',
     role: 'Investor Relations',
     imageUrl: '/assets/images/about/team/simon_chadwick.jpg',
-    xUrl: '',
-    discordUrl: ''
-  },
-  {
-    name: 'Bilyana Christova',
-    role: 'Business Development',
-    imageUrl: '/assets/images/about/team/bilyana_christova.jpg',
     xUrl: '',
     discordUrl: ''
   },
@@ -240,7 +240,7 @@ const other_contributors = [
   },
   {
     name: 'Alexander Efremov',
-    role: 'Data Science'
+    role: 'Data Scientist'
   },
   {
     name: 'Felicity',
