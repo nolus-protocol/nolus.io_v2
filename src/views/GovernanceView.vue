@@ -87,8 +87,8 @@ import PlusSmallIcon from '@/assets/icons/plus-small.svg';
 
 
 const stats = [
-  {description: "from a total of 432 are actively engaged in maintaining the network's integrity", value: '50 Validators' },
-  {description: 'actively engage in the governance of the protocol', value: '3,454 Delegators' },
+  {description: "maintaining the network's integrity", value: '50 Validators' },
+  {description: 'actively engaged in governance', value: '3,454 Delegators' },
   {description: '', value: '' },
 ]
 
