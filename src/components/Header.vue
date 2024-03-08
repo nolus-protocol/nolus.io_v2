@@ -59,7 +59,7 @@
             leave-from="opacity-100"
             leave-to="opacity-0 -translate-y-4 scale-95 md:translate-y-0 md:translate-x-12 md:scale-100"
           >
-            <DialogPanel class="h-full flex flex-col justify-between absolute inset-y-0 right-0 z-50 w-full overflow-y-auto bg-neutral-100/80 backdrop-blur-xl sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+            <DialogPanel class="h-full flex flex-col justify-between fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-neutral-100/80 backdrop-blur-xl sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
               <div>
                 <div class="flex items-center justify-between">
                   <button type="button" class="w-full px-4 py-6 border-b border-neutral-200/50 hover:bg-neutral-200/60  text-neutral-700" @click="isOpen = false">
