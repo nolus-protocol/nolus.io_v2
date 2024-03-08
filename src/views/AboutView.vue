@@ -114,7 +114,7 @@ const visionMisionAndValues = [
     icon: icon2,
     name: 'Mission',
     description:
-      'Nolus is dedicated to effectively addressing inefficiencies in lending markets through innovative, convenient, and sustainable solutions, Leveraging the power of blockchain technology, Nolus is at the forefront of pioneering in decentralized finance',
+      'Nolus is dedicated to effectively addressing inefficiencies in lending markets through innovative, convenient, and sustainable solutions. Leveraging the power of blockchain technology, Nolus is at the forefront of pioneering in decentralized finance',
   },
   {
     icon: icon1,

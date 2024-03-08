@@ -32,7 +32,7 @@
           </div>
         </div>
         <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-4 h-5">
-          <Button size="sm" v-bind:class="y==0?'hidden':''" :icon="SquareArrowTopRightIcon" link="https://app.nolus.io/" class=""><span class="hidden xl:inline">Launch</span> App</Button>
+          <Button size="sm" v-bind:class="y==0?'hidden':''" :icon="SquareArrowTopRightIcon" link="https://app.nolus.io/" class=""><span class="hidden xl:inline">Launch App</span></Button>
           <PopoverLanguagePicker v-bind="{ textColorClass, bgColorClass, fillColorClass, isHeaderScrolled, isHeroDark }" />
         </div>
         

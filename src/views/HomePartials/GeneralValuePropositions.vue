@@ -50,7 +50,7 @@ const features = [
   {
     name: 'Effortless',
     description:
-      'Seamlessly lease and transition among supported assets into your chosen positions through a simple and intuitive interface',
+      'Seamlessly manage your lent assets and leveraged lease positions through a simple and intuitive interface',
     icon: icon3,
     href: '#',
   },
