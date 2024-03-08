@@ -23,6 +23,12 @@
           @close-modal="showTosDialog = false"
         >
         <tosModal />
+      </Modal>
+      <Modal
+          :show="showCookiesDialog"
+          @close-modal="showCookiesDialog = false"
+        >
+        <cookiesModal />
       </Modal>   
     </div>
   </footer>
@@ -32,22 +38,24 @@
 import { defineComponent, h, ref } from 'vue';
 import Modal from '@/components/modals/templates/Modal.vue';
 import tosModal from '@/components/modals/TosModal.vue';
+import cookiesModal from '@/components/modals/cookiesModal.vue';
 
-const showTosDialog = ref(false);
+let showTosDialog = ref(false);
+let showCookiesDialog = ref(false);
 
 const handleClick = (item, event) => {
   !item.href && event.preventDefault()
-  item.click && (showTosDialog.value = true);
+  item.click && item.click();
 }
 
 const footer_navigation = [
   {
     name: 'Terms of Service',
-    click: 'showTosDialog = true'
+    click: () => {showTosDialog.value = true}
   },
   {
     name: 'Cookie Policy',
-    href: 'https://example.org',
+    click: () => {showCookiesDialog.value = true}
   },
 ]
 
