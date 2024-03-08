@@ -2,8 +2,8 @@
   <div class="relative bg-neutral-100 py-16 pt-0 lg:py-24 lg:pt-16" @mouseover="stopInterval" @mouseleave="startInterval">
     <NolusContainer class=" ">
       <div class="mb-8">
-          <p class="text-base font-medium leading-7 text-blue-600" aria-hidden="true">Some subtitle</p>
-          <h2 class="mt-2 text-3xl font-bold tracking-tight text-neutral-900 lg:text-5xl" aria-hidden="true">Our product</h2>
+          <p class="text-base font-medium leading-7 text-blue-600" aria-hidden="true"></p>
+          <h2 class="mt-2 text-3xl font-bold tracking-tight text-neutral-900 lg:text-5xl" aria-hidden="true">Unified UI</h2>
       </div>
       <div class="bg-white overflow-hidden rounded-2xl shadow-xl relative z-10">
         <div class="flex flex-col lg:flex-row justify-stretch w-full">

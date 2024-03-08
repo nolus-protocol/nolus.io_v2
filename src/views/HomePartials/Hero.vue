@@ -13,7 +13,7 @@
         
         <p class="max-w-64 sm:max-w-lg lg:max-w-none mt-6 text-base md:text-xl sm:leading-8 text-neutral-600"
           v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="300"
-        >Triple your holdings without tripling the risk! Unlock the full potential of your assets directly from your wallet</p>
+        >Triple your holdings without tripling the risk! Unlock the full potential of your crypto</p>
 
         <div class="mt-10 flex flex-col md:flex-row gap-y-4 items-center gap-x-3"
           v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="400"

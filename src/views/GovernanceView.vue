@@ -89,7 +89,7 @@ import PlusSmallIcon from '@/assets/icons/plus-small.svg';
 const stats = [
   {description: "Maintain the Nolus blockchain integrity", value: '50 Validators' },
   {description: 'Actively engage in governing the protocol\'s development', value: '3,454 Delegators' },
-  {description: 'NLS tokens secure the Nolus network', value: '272M' },
+  {description: 'NLS tokens secure the Nolus network', value: '272,000,000' },
 ]
 
 let myCanvas = ref(null);
