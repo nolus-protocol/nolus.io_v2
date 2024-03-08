@@ -7,9 +7,9 @@
       </div>
       <div class="bg-white overflow-hidden rounded-2xl shadow-xl relative z-10">
         <div class="flex flex-col lg:flex-row justify-stretch w-full">
-          <div class="shrink-0 border-b border-neutral-200/50 lg:border-b-0 lg:border-r bg-neutral-50 py-6 lg:py-12 lg:px-8">
+          <div class="shrink-0 border-b border-neutral-200/50 lg:border-b-0 lg:border-r bg-neutral-50 py-3 lg:py-12 lg:px-8">
             <ul class="p-4 items-center justify-center md:justify-start md:static md:w-auto lg:items-stretch flex gap-x-2 lg:flex-col flex-wrap gap-y-2 md:gap-y-3 text-neutral-80 ">
-              <li v-for="(tab, index) in tabs" :key="index" class=" text-base md:text-xl font-medium px-2 md:px-4 py-2 md:py-2 rounded-xl md:rounded-full cursor-pointer hover:bg-neutral-200/40 transition-all" :class="{ 'active bg-white shadow-xl text-blue-600 hover:bg-white': activeTab === index }" @click="setActiveTab(index)" @mouseover="stopInterval" @mouseout="startInterval">
+              <li v-for="(tab, index) in tabs" :key="index" class="text-base md:text-xl font-medium px-2 md:px-4 py-2 md:py-2 rounded-full cursor-pointer hover:bg-neutral-200/40 transition-all" :class="{ 'active bg-white shadow-xl text-blue-600 hover:bg-white': activeTab === index }" @click="setActiveTab(index)" @mouseover="stopInterval" @mouseout="startInterval">
                 <button><component :is="tab.tabIcon" fill="#ffcc00" alt="" class="inline-block icon w-7 md:w-9" aria-hidden="true" /> {{ tab.tabName }}</button>
               </li>
             </ul>
