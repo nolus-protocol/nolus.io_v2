@@ -83,7 +83,7 @@ const tabs = [
     tabName: 'Delegate',
     tabIcon: DelegateIcon,
     heading: 'One-Click NLS Token Delegation',
-    content: 'Skip the research, trust Nolus to select the best validator, and easily enjoy the rewards of participating in the Nolus blockchain',
+    content: 'Delegate your NLS tokens easily and enjoy the benefits of securing the Nolus blockchain',
     tabImage: DelegateImage
   },
   {
