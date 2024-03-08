@@ -6,7 +6,7 @@
     @click.stop
   >
     <div v-if="showHeader" class="flex modal-header">
-      <template v-if="isTabLayout">
+      <!-- <template v-if="isTabLayout">
         <button
           v-for="(tab, index) of headerList"
           :key="`${tab}-${index}`"
@@ -14,8 +14,8 @@
           @click="switchTab(index + 1)"
           v-text="tab"
         ></button>
-      </template>
-      <div v-else class="navigation-header">
+      </template> -->
+      <div class="navigation-header">
         <button
           v-if="back"
           class="align-baseline absolute left-0 top-2/4 -mt-3 px-4 md:px-10"
@@ -30,12 +30,13 @@
       </div>
     </div>
 
-    <template v-if="isTabLayout">
+    <!-- <template v-if="isTabLayout">
       <template v-for="(tab, index) in headerList">
         <slot v-if="index + 1 === activeTab" :key="index" :name="`tab-${index + 1}`"> </slot>
       </template>
     </template>
-    <slot v-else></slot>
+    <slot v-else></slot> -->
+    <div class="prose"><slot></slot></div>
   </div>
 </template>
 
