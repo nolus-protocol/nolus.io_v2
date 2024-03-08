@@ -201,6 +201,10 @@ const core_contributors = [
 // Define other contributors
 const other_contributors = [
   {
+    name: 'Boyan Kostov',
+    role: 'Product Design'
+  },
+  {
     name: 'Kiril Mihaylov',
     role: 'Rust Engineer'
   },
@@ -227,10 +231,6 @@ const other_contributors = [
   {
     name: 'Alexander Efremov',
     role: 'Data Scientist'
-  },
-  {
-    name: 'Felicity',
-    role: 'Community'
   },
 ]
 

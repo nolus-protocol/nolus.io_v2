@@ -50,7 +50,7 @@ const solutions = [
     icon: Newspaper2Icon,
   },
   {
-    name: 'Tech documentation',
+    name: 'Tech Documentation',
     description: 'All technical aspects, tailored for validators and developers',
     href: 'https://hub.nolus.io/en_US/technical-documentation',
     icon: HeadphonesIcon,
@@ -68,9 +68,9 @@ const solutions = [
     icon: ShieldCheckIcon,
   },
   { 
-    name: 'Brand assets', 
-    description: 'Understand how we take your privacy seriously', 
-    href: '#',
+    name: 'Brand Assets', 
+    description: 'Explore the Nolus Protocol brand assets here', 
+    href: 'https://drive.google.com/drive/folders/1kJb93A7jxTXM5_2qPyP5ZiooH8ODP253?usp=sharing',
     icon: ColorPaletteIcon,
   },
 ]
