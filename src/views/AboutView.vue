@@ -2,7 +2,7 @@
   <div class="bg-white">
     <main class="isolate">
       <!-- Hero section -->
-      <div class="overflow-hidden relative isolate -z-10 bg-blue-800 py-40" id="hero-wrapper">
+      <div class="overflow-hidden relative isolate -z-10 bg-blue-800 py-40" ref="heroWrapper">
           <NolusContainer>
             <div class="hidden md:block">
               <div class="absolute w-full sm:-right-48 lg:-right-56 -top-8 lg:-top-20 -z-10 mx-auto">
@@ -91,7 +91,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue';
 import NolusContainer from '@/components/NolusContainer.vue';
 // Icons
 import animatedLogo from '@/assets/videos/about-header.mp4';
@@ -105,8 +105,8 @@ import icon3 from  '@/assets/images/about/icon3.svg';
 const videoRef = ref(null);
 const canvasRef = ref(null);
 const isVideoLoaded = ref(false);
-
-
+let heroWrapper = ref(null);
+let intervalId = null;
 
 // Define vision, mission and values
 const visionMisionAndValues = [
@@ -243,7 +243,7 @@ onMounted(() => {
 
     let video = videoRef.value;
     let canvas = canvasRef.value;
-    let context = canvas.getContext('2d');
+    let context = canvas.getContext('2d', { willReadFrequently: true });
 
     video.addEventListener('loadeddata', () => {
       canvas.width = video.videoWidth;
@@ -251,13 +251,25 @@ onMounted(() => {
     });
 
     video.addEventListener('play', () => {
-      setInterval(() => {
+      intervalId = setInterval(() => {
         context.drawImage(video, 0, 0, canvas.width, canvas.height);
         let pixelData = context.getImageData(10, 10, 1, 1).data;
         let color = `${pixelData[0]},${pixelData[1]},${pixelData[2]}`;
-        document.getElementById('hero-wrapper').style.backgroundColor = `rgb(${color})`;
+        if (heroWrapper.value) {
+          heroWrapper.value.style.backgroundColor = `rgb(${color})`;
+        }
       }, 30); // Capture every second
     });
+  }
+});
+
+onUnmounted(() => {
+  if (intervalId) {
+    clearInterval(intervalId);
+  }
+  if (videoRef.value) {
+    videoRef.value.removeEventListener('loadeddata');
+    videoRef.value.removeEventListener('play');
   }
 });
 </script>

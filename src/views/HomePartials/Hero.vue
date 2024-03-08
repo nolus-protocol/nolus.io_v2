@@ -1,5 +1,5 @@
 <template>
-  <div class="relative isolate overflow-hidden bg-neutral-100" id="hero-wrapper2">
+  <div class="relative isolate overflow-hidden bg-neutral-100" ref="heroWrapper">
     <div class="relative mx-auto max-w-7xl px-6 py-32 pb-24 lg:px-8 lg:pt-28">
       <div class="absolute bottom-0 left-0 -z-5 transform-gpu overflow-hidden blur-3xl" aria-hidden="true">
         <div class="relative aspect-[1/1] w-[66.125rem] bg-gradient-to-r from-white to-white opacity-100" style="clip-path: ellipse(50% 25% at center 100%);"></div>
@@ -59,7 +59,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import SquareArrowTopRightIcon from '@/assets/icons/square-arrow-top-right-2.svg';
 import PlayCircleIcon from '@/assets/icons/play-circle.svg';
 import Button from '@/components/Button.vue';
@@ -78,25 +78,41 @@ const showVideoDialog= ref(false);
 const videoRef = ref(null);
 const canvasRef = ref(null);
 const isVideoLoaded = ref(false);
+let heroWrapper = ref(null);
+let intervalId = null;
 
 onMounted(() => {
+    heroWrapper = ref('heroWrapper');
+
     let video = videoRef.value;
     let canvas = canvasRef.value;
-    let context = canvas.getContext('2d');
+    let context = canvas.getContext('2d', { willReadFrequently: true });
 
     video.addEventListener('loadeddata', () => {
       canvas.width = video.videoWidth;
       canvas.height = video.videoHeight;
     });
-
+    
     video.addEventListener('play', () => {
-      setInterval(() => {
+      intervalId = setInterval(() => {
         context.drawImage(video, 0, 0, canvas.width, canvas.height);
         let pixelData = context.getImageData(10, 10, 1, 1).data;
         let color = `${pixelData[0]},${pixelData[1]},${pixelData[2]}`;
-        document.getElementById('hero-wrapper2').style.backgroundColor = `rgb(${color})`;
+        if (heroWrapper.value) {
+          heroWrapper.value.style.backgroundColor = `rgb(${color})`;
+        }
       }, 30); // Capture every second
     });
+});
+
+onUnmounted(() => {
+  if (intervalId) {
+    clearInterval(intervalId);
+  }
+  if (videoRef.value) {
+    videoRef.value.removeEventListener('loadeddata');
+    videoRef.value.removeEventListener('play');
+  }
 });
 
 </script>

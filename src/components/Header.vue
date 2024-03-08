@@ -69,7 +69,7 @@
                 </div>
                 <div class="mt-8 flex flex-col gap-y-4 px-4">
                   <div><router-link 
-                      :key="home" 
+                      key="home" 
                       :to="'/'" 
                       class="block rounded-2xl px-5 py-5 text-lg font-medium text-neutral-900 hover:bg-gray-50"
                       active-class="bg-white shadow-lg"
@@ -91,7 +91,7 @@
                 </div>
               </div>
               <div class="bottom-0 w-full flex justify-between items-center mt-16 px-4 py-4">
-                <Button size="md" :icon="SquareArrowUpRightSolidIcon" link="https://app.nolus.io/">Launch App</Button>
+                <Button size="md" :icon="SquareArrowTopRightIcon" link="https://app.nolus.io/">Launch App</Button>
                 <PopoverLanguagePicker v-bind="{ bgColorClass: 'bg-white', fillColorClass: 'fill-neutral-900' }" />
               </div>
             </DialogPanel>
