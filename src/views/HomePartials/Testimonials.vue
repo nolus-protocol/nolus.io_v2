@@ -61,6 +61,20 @@ const testimonials = [
         where: 'on X',
         link: 'https://twitter.com/tmventuresfund/status/1683597424638533632'
       },
+      {
+      body: 'Interchain account based liquidations on Osmosis. Pretty cool',
+      author: {
+        name: 'Zaki ⚛️🍷',
+        where: 'on X',
+        link: 'https://twitter.com/zmanian/status/1671435729925226496'
+      },
+      {
+      body: 'No matter the price in the short term, always look for opportunities from teams who are building and growing the ecosystem! NolusProtocol is a young project, and its had huge growth across the board',
+      author: {
+        name: 'Coach K Crypto',
+        where: 'on X',
+        link: 'https://twitter.com/Coachkcrypto/status/1749387979284717771'
+      },
     },
     {
       body: 'I like to call Nolus the "green-candle" appchain. In short, if you\'re bullish on an asset like ATOM or TIA but don\'t have as much money as you\'d like to invest, Nolus allows you to "lock the current price," buy, and unlock the assets afterwards',
