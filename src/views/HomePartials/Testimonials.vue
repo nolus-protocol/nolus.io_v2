@@ -39,35 +39,35 @@ function loadMore() {
 
 const testimonials = [
     {
-      body: 'Crypto lending reinvented: This solution can reduce liquidation and overcollateralization risks. The Nolus protocol represents a promising solution to the major issues hindering the adoption of DeFi lending. With its proactive strategies to mitigate overcollateralization and liquidation risks, Nolus paves the way for a safer and more user-friendly DeFi lending environment.',
+      body: 'By combining efficient lending practices with novel features like reduced liquidation thresholds and the partial liquidation mechanism, Nolus offers a safer and more intuitive experience for crypto traders looking to leverage DeFi opportunities',
       author: {
         name: 'CoinTelegraph',
         where: 'https://cointelegraph.com/',
-        link: 'https://cointelegraph.com/press-releases/nolus-protocol-reinvents-crypto-lending-with-its-decentralized-cross-chain-lease-protocol',
+        link: 'https://cointelegraph.com/news/how-is-defi-margin-trading-getting-safer-with-this-cross-chain-protocol',
       },
     },
     {
-      body: '@NolusProtocol $NLS has one of the cleanest IBC user interfaces. There is nowhere else in crypto that moving assets between sovereign chains is this quick and easy',
+      body: 'Overcollateralized loans lock up collateral that could be used to minimize counterparty risk. DeFi leasing on Nolus mitigates against this',
       author: {
-        name: 'Leonard Krasner',
-        where: 'on X',
-        link: 'https://twitter.com/DLeveraged/status/1713192924731859432 '
+        name: 'Decrypt',
+        where: 'https://decrypt.co/',
+        link: 'https://decrypt.co/resources/what-is-nolus-how-the-defi-leasing-platform-simplifies-crypto-lending'
       },
     },
     {
-      body: 'Explore endless possibilities with Nolus. It gets two thumbs up from me for its simplicity and straightforwardness of lending and leasing. 👍 🌐',
+      body: 'In our opinion, Nolus has the potential for significant growth as it seeks to address the limitations of current lending options in the crypto market and offers innovative solutions through its DeFi Lease and Nolus Protocol',
       author: {
-        name: 'CosmosHOSS',
+        name: 'Token Metrics',
         where: 'on X',
-        link: 'https://twitter.com/CosmosHOSS/status/1721906947879035257'
+        link: 'https://twitter.com/tmventuresfund/status/1683597424638533632'
       },
     },
     {
-      body: "Just looking at my @NolusProtocol position and it's looking good. Put down $100 axlWETH to open the position. Borrowed $100 to buy more WETH. As WETH is now up 28%, I'm actually up 56% on my initial investment. Defi Lease. Safe 🤜🤛",
+      body: 'I like to call Nolus the "green-candle" appchain. In short, if you\'re bullish on an asset like ATOM or TIA but don\'t have as much money as you\'d like to invest, Nolus allows you to "lock the current price," buy, and unlock the assets afterwards',
       author: {
-        name: 'Rebel Defi',
+        name: 'tøny',
         where: 'on X',
-        link: 'https://twitter.com/rebel_defi/status/1731968852286718357'
+        link: 'https://twitter.com/tonyler_/status/1745407696352759836'
       },
     },
 ]
