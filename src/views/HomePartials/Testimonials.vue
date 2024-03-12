@@ -86,6 +86,14 @@ const testimonials = [
         link: 'https://twitter.com/tonyler_/status/1745407696352759836'
       },
     },
+    {
+      body: 'Thanks to Nolus Protocol I am getting low-risk leveraged exposure and staking yield',
+      author: {
+        name: 'Degèn Dantès',
+        where: 'on X',
+        link: 'https://twitter.com/DLeveraged/status/1734585896333373766'
+      },
+    },
 ]
 const displayedTestimonials = computed(() => {
   return testimonials.slice(0, testimonialsToShow.value);
