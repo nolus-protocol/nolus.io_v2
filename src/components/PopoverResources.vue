@@ -45,7 +45,7 @@ const props = defineProps({
 const solutions = [
   { 
     name: 'Whitepaper', 
-    description: 'More about the vision behind Nolus',
+    description: 'The vision behind Nolus Protocol',
     href: 'https://nolus.io/Nolus-Whitepaper.pdf#',
     icon: Newspaper2Icon,
   },
@@ -57,13 +57,13 @@ const solutions = [
   },
   { 
     name: 'Github',
-    description: 'Source code for contributors and reviews',
+    description: 'Source code for contributors & reviewers',
     href: 'https://github.com/nolus-protocol',
     icon: GithubIcon,
   },
   { 
     name: 'Audits',
-    description: 'Еxternal security reports and bug bounty',
+    description: 'Еxternal security reports & bug bounty',
     href: 'https://hub.nolus.io/en_US/technical-documentation/security',
     icon: ShieldCheckIcon,
   },
