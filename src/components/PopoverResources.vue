@@ -57,7 +57,7 @@ const solutions = [
   },
   { 
     name: 'Github',
-    description: 'Nolus source code for contributors and reviews',
+    description: 'Source code for contributors and reviews',
     href: 'https://github.com/nolus-protocol',
     icon: GithubIcon,
   },
@@ -69,7 +69,7 @@ const solutions = [
   },
   { 
     name: 'Brand Assets',
-    description: 'Playbook for the holistic representation of Nolus',
+    description: 'Playbook for holistic Nolus',
     href: 'https://drive.google.com/drive/folders/1kJb93A7jxTXM5_2qPyP5ZiooH8ODP253?usp=sharing',
     icon: ColorPaletteIcon,
   },
