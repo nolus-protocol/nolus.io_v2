@@ -21,7 +21,7 @@ export const META = {
     "name": "Nolus Protocol",
     "alternateName": "Nolus",
     "url": "https://nolus.io/",
-    "logo": "",
+    "logo": "https://nolus.io/assets/images/meta/nolus-logo.svg",
     "sameAs": [
       "https://github.com/nolus-protocol",
       "https://nolus.io/",
