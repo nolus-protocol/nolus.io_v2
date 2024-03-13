@@ -120,7 +120,7 @@ const visionMisionAndValues = [
     icon: icon1,
     name: 'Vision',
     description:
-      'We envision a future where all assets are tokenized on-chain, offering people efficient means to manage their funds. At Nolus, we always look ahead which is why we’ve designed all protocol offerings to be seamless, secure and instant',
+      'We envision a future where all assets are tokenized on-chain, offering people efficiency in managing their funds. At Nolus, we always look ahead which is why we\’ve designed all protocol offerings to be seamless, secure and instant',
     href: '#',
   },
   {
