@@ -7,13 +7,13 @@ export const META = {
   "og:url":"https://nolus.io/",
   "og:title":"Nolus - Reshaping Money Markets",
   "og:description":"Triple your holdings without tripling the risk! Unlock the full potential of your crypto",
-  "og:image":"",
+  "og:image":"https://nolus.io/assets/images/meta/hero-homepage.png",
 
   "twitter:card":"summary_large_image" ,
   "twitter:url":"https://nolus.io/" ,
   "twitter:title":"Nolus - Reshaping Money Markets" ,
   "twitter:description":"Triple your holdings without tripling the risk! Unlock the full potential of your crypto" ,
-  "twitter:image":"" ,
+  "twitter:image":"https://nolus.io/assets/images/meta/hero-homepage.png" ,
 
   "script-organisation": 	{
     "@context": "https://schema.org",
@@ -21,7 +21,7 @@ export const META = {
     "name": "Nolus Protocol",
     "alternateName": "Nolus",
     "url": "https://nolus.io/",
-    "logo": "",
+    "logo": "https://nolus.io/assets/images/meta/nolus-logo.svg",
     "sameAs": [
       "https://github.com/nolus-protocol",
       "https://nolus.io/",
