@@ -3,21 +3,21 @@
     <main class="isolate">
       <!-- Hero section -->
       <div class="overflow-hidden relative isolate -z-10 bg-blue-800 py-40" ref="heroWrapper">
-          <NolusContainer>
-            <div class="hidden md:block">
-              <div class="absolute w-full sm:-right-48 lg:-right-56 -top-8 lg:-top-20 -z-10 mx-auto">
-                <video ref="videoRef" @loadeddata="isVideoLoaded = true" @play="onVideoPlay" muted autoplay playsinline class="h-[1px] w-[1px]" data-timing="7" data-wait="240" style="width: 840px"  aria-hidden="true" v-motion :initial="{ opacity: 0 }" :enter="{ opacity: 1, }" :delay="100">
-                </video>
-                <canvas ref="canvasRef" aria-hidden="true" :class="{ invisible: !isVideoLoaded, visible: isVideoLoaded }" class="w-full h-full"></canvas>
-              </div>
-            </div>
-            <div class="md:max-w-md lg:max-w-2xl gap-x-14 lg:flex lg:max-w-none lg:items-center">
+          <NolusContainer class="flex items-center">
+            <div class="md:max-w-[50%] lg:max-w-2xl gap-x-14 lg:flex lg:max-w-none lg:items-center">
               <div class="w-full max-w-xl lg:shrink-0 xl:max-w-2xl">
                 <h1 class="text-3xl md:text-3xl lg:text-5xl font-bold tracking-tight text-white leading-tight" v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="100">Enriching DeFi for a Better Web3 World</h1>
                 <div class="flex flex-col lg:flex-row gap-x-8">
                   <p class="basis-1/2 relative mt-6 text-lg leading-8 text-white sm:max-w-md lg:max-w-lg" v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="200">Nolus bridges lenders and borrowers in the DeFi money market. With Lease, borrowers secure up to 150% financing and retain access to leveraged assets via whitelisted strategies</p>
                    <p class="basis-1/2 relative mt-6 text-lg leading-8 text-white sm:max-w-md lg:max-w-lg" v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="300">Inspired by traditional finance, Nolus' lease reduces high over-collateralization standards, enhancing capital efficiency, and improving loan terms for borrowers</p>
                 </div>
+              </div>
+            </div>
+            <div class="hidden md:block" aria-hidden="true">
+              <div class="absolute w-9/12 sm:-right-8 lg:-right-20 top-4   lg:-top-20 -z-10 mx-auto">
+                <video ref="videoRef" @loadeddata="isVideoLoaded = true" @play="onVideoPlay" muted autoplay playsinline class="h-[1px] w-[1px]" data-timing="7" data-wait="240" style="width: 840px" v-motion :initial="{ opacity: 0 }" :enter="{ opacity: 1, }" :delay="100">
+                </video>
+                <canvas ref="canvasRef" :class="{ invisible: !isVideoLoaded, visible: isVideoLoaded }" class="w-full h-full"></canvas>
               </div>
             </div>
           </NolusContainer> 
