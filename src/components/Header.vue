@@ -31,10 +31,10 @@
             </a>
           </div>
         </div>
-        <!-- <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-4 h-5">
-          <Button size="sm" v-bind:class="y==0?'hidden':''" :icon="SquareArrowTopRightIcon" link="https://app.nolus.io/" class=""><span class="hidden xl:inline">Launch App</span></Button>
+        <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-4 h-5">
+          <Button size="sm" :icon="SquareArrowTopRightIcon" link="https://app.nolus.io/" class=""><span class="xl:inline">Launch App</span></Button>
           <PopoverLanguagePicker v-bind="{ textColorClass, bgColorClass, fillColorClass, isHeaderScrolled, isHeroDark }" />
-        </div> -->
+        </div>
 
       </nav>
       <TransitionRoot appear :show="isOpen" as="template">
@@ -86,13 +86,13 @@
                     >
                       {{ item.name }}
                     </router-link>
-                    <a v-else :href="item.href" class="text-lg font-medium"><component :is="item.name" :textColorClass="item.textColorClass" :fillColorClass="item.fillColorClass">{{ item.name}}</component></a>
+                    <a v-else :key="item.name" :href="item.href" class="text-lg font-medium"><component :is="item.name" :textColorClass="item.textColorClass" :fillColorClass="item.fillColorClass">{{ item.name}}</component></a>
                   </div>
                 </div>
               </div>
               <div class="bottom-0 w-full flex justify-between items-center mt-16 px-4 py-4">
                 <Button size="md" :icon="SquareArrowTopRightIcon" link="https://app.nolus.io/">Launch App</Button>
-                <!-- <PopoverLanguagePicker v-bind="{ bgColorClass: 'bg-white', fillColorClass: 'fill-neutral-900' }" /> -->
+                <PopoverLanguagePicker v-bind="{ bgColorClass: 'bg-white', fillColorClass: 'fill-neutral-900' }" />
               </div>
             </DialogPanel>
           </TransitionChild>
@@ -101,7 +101,7 @@
     </header>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 defineProps({
   currentPage: {
     type: String,

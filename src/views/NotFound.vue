@@ -20,6 +20,6 @@
   </main>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 import Button from '@/components/Button.vue';
 </script>

@@ -7,8 +7,9 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "declaration": true,
+    "noImplicitAny": false,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
-    "types": [],
+    "types": [""],
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]

@@ -48,11 +48,11 @@
         </div>
       </div>
     </NolusContainer>
-
+    
   </div>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 // For Hubs widget
 import NolusContainer from '@/components/NolusContainer.vue';
 import osmosisImage from '../../assets/images/hubs/osmosis.svg';

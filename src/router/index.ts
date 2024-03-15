@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import NotFound from "@/views/NotFound.vue";
-import { META as META_HOME } from "@/router/metadata/homepage";
-import { META as META_ABOUT } from "@/router/metadata/about";
-import { META as META_GOVERNANCE } from "@/router/metadata/governance";
+import { META as META_HOME } from "@/metadata/homepage";
+import { META as META_ABOUT } from "@/metadata/about";
+import { META as META_GOVERNANCE } from "@/metadata/governance";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

@@ -27,7 +27,7 @@
     </Popover>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 import { defineProps } from 'vue'
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
 import ChevronDownSmallIcon from '@/assets/icons/chevron-down-small.svg'
@@ -43,8 +43,8 @@ const props = defineProps({
 })
 
 const solutions = [
-  {
-    name: 'Whitepaper',
+  { 
+    name: 'Whitepaper', 
     description: 'The vision behind Nolus Protocol',
     href: 'https://nolus.io/Nolus-Whitepaper.pdf#',
     icon: Newspaper2Icon,
@@ -55,19 +55,19 @@ const solutions = [
     href: 'https://hub.nolus.io/en_US/technical-documentation',
     icon: HeadphonesIcon,
   },
-  {
+  { 
     name: 'Github',
     description: 'Source code for contributors & reviewers',
     href: 'https://github.com/nolus-protocol',
     icon: GithubIcon,
   },
-  {
+  { 
     name: 'Audits',
     description: 'Еxternal security reports & bug bounty',
     href: 'https://hub.nolus.io/en_US/technical-documentation/security',
     icon: ShieldCheckIcon,
   },
-  {
+  { 
     name: 'Brand Assets',
     description: 'Playbook for holistic Nolus',
     href: 'https://drive.google.com/drive/folders/1kJb93A7jxTXM5_2qPyP5ZiooH8ODP253?usp=sharing',

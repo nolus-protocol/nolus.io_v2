@@ -7,7 +7,7 @@
     </a>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 
 /* Define props */
 const props = defineProps({

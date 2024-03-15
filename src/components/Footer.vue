@@ -11,7 +11,7 @@
         <nav>
           <ul class="flex space-x-5">
             <li v-for="item in footer_navigation" :key="item.name" class="text-sm leading-5">
-              <button @click="handleClick(item, $event)" class="text-neutral-600 hover:text-neutral-900 cursor-pointer">{{ item.name }}</button>
+              <button @click="handleClick(item, $event)" class="text-neutral-600 hover:text-neutral-900 cursor-pointer">{{ item.name }}</button> 
             </li>
           </ul>
         </nav>
@@ -29,12 +29,12 @@
           @close-modal="showCookiesDialog = false"
         >
         <cookiesModal />
-      </Modal>
+      </Modal>   
     </div>
   </footer>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 import { defineComponent, h, ref } from 'vue';
 import Modal from '@/components/modals/templates/Modal.vue';
 import tosModal from '@/components/modals/TosModal.vue';

@@ -20,8 +20,8 @@
                 <canvas ref="canvasRef" :class="{ invisible: !isVideoLoaded, visible: isVideoLoaded }" class="w-full h-full"></canvas>
               </div>
             </div>
-          </NolusContainer>
-      </div>
+          </NolusContainer> 
+      </div>        
 
       <!-- Vision, mission and values -->
       <NolusContainer>
@@ -39,7 +39,7 @@
       <!-- Team section -->
       <div class="bg-neutral-100 py-24">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
-
+          
           <div class="basis-2/5 shrink-0 mx-auto max-w-2xl lg:mx-0">
             <h2 class="text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">Core Contributors</h2>
           </div>
@@ -85,12 +85,12 @@
           </NolusContainer>
       </div>
 
-
+      
     </main>
   </div>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 import { onMounted, onUnmounted, ref } from 'vue';
 import NolusContainer from '@/components/NolusContainer.vue';
 // Icons
@@ -106,7 +106,7 @@ const videoRef = ref(null);
 const canvasRef = ref(null);
 const isVideoLoaded = ref(false);
 let heroWrapper = ref(null);
-let intervalId: number | null | undefined = null;
+let intervalId = null;
 
 // Define vision, mission and values
 const visionMisionAndValues = [
