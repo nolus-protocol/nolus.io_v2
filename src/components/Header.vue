@@ -16,10 +16,10 @@
         </div>
         <div class="hidden lg:flex lg:gap-x-8">
           <div v-for="item in navigationWithTextColorClass" :key="item.name">
-            <router-link 
-              v-if="item.internal" 
-              :key="item.name" 
-              :to="item.href" 
+            <router-link
+              v-if="item.internal"
+              :key="item.name"
+              :to="item.href"
               class="block rounded-lg px-3 py-2 text-base font-medium hover:bg-neutral-200/50 transition-all"
               :class="textColorClass"
               active-class="bg-neutral-200/40"
@@ -31,11 +31,11 @@
             </a>
           </div>
         </div>
-        <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-4 h-5">
+        <!-- <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-4 h-5">
           <Button size="sm" v-bind:class="y==0?'hidden':''" :icon="SquareArrowTopRightIcon" link="https://app.nolus.io/" class=""><span class="hidden xl:inline">Launch App</span></Button>
           <PopoverLanguagePicker v-bind="{ textColorClass, bgColorClass, fillColorClass, isHeaderScrolled, isHeroDark }" />
-        </div>
-        
+        </div> -->
+
       </nav>
       <TransitionRoot appear :show="isOpen" as="template">
         <Dialog as="div" class="lg:hidden" @close="isOpen = false" >
@@ -68,31 +68,31 @@
                   </button>
                 </div>
                 <div class="mt-8 flex flex-col gap-y-4 px-4">
-                  <div><router-link 
-                      key="home" 
-                      :to="'/'" 
+                  <div><router-link
+                      key="home"
+                      :to="'/'"
                       class="block rounded-2xl px-5 py-5 text-lg font-medium text-neutral-900 hover:bg-gray-50"
                       active-class="bg-white shadow-lg"
                       @click="isOpen = false"
                     >Home</router-link></div>
                   <div v-for="item in navigation">
-                    <router-link 
-                      v-if="item.internal" 
-                      :key="item.name" 
-                      :to="item.href" 
+                    <router-link
+                      v-if="item.internal"
+                      :key="item.name"
+                      :to="item.href"
                       class="block rounded-2xl px-5 py-5 text-lg font-medium text-neutral-900 hover:bg-gray-50"
                       active-class="bg-white shadow-lg"
                       @click="isOpen = false"
                     >
                       {{ item.name }}
                     </router-link>
-                    <a v-else :key="item.name" :href="item.href" class="text-lg font-medium"><component :is="item.name" :textColorClass="item.textColorClass" :fillColorClass="item.fillColorClass">{{ item.name}}</component></a>
+                    <a v-else :href="item.href" class="text-lg font-medium"><component :is="item.name" :textColorClass="item.textColorClass" :fillColorClass="item.fillColorClass">{{ item.name}}</component></a>
                   </div>
                 </div>
               </div>
               <div class="bottom-0 w-full flex justify-between items-center mt-16 px-4 py-4">
                 <Button size="md" :icon="SquareArrowTopRightIcon" link="https://app.nolus.io/">Launch App</Button>
-                <PopoverLanguagePicker v-bind="{ bgColorClass: 'bg-white', fillColorClass: 'fill-neutral-900' }" />
+                <!-- <PopoverLanguagePicker v-bind="{ bgColorClass: 'bg-white', fillColorClass: 'fill-neutral-900' }" /> -->
               </div>
             </DialogPanel>
           </TransitionChild>
@@ -101,7 +101,7 @@
     </header>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 defineProps({
   currentPage: {
     type: String,

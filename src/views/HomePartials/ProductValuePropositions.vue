@@ -28,7 +28,7 @@
             </div>
           </div>
         </div>
-      </div>  
+      </div>
     </NolusContainer>
   </div>
 </template>
@@ -41,19 +41,16 @@
   @apply fill-blue-600;
 }
 </style>
-<script setup>
+<script lang="ts" setup>
 import { ref, onMounted, onUnmounted, onBeforeUnmount, nextTick, reactive } from 'vue';
 import Button from '@/components/Button.vue'
 import NolusContainer from '@/components/NolusContainer.vue'
-import SquareArrowTopRightIcon from '@/assets/icons/square-arrow-top-right-2.svg';
 import LeaseIcon from '@/assets/icons/lease.svg'
-import SwapIcon from '@/assets/icons/swap.svg'
 import EarnIcon from '@/assets/icons/earn.svg'
 import DelegateIcon from '@/assets/icons/delegate.svg'
 import GovernIcon from '@/assets/icons/govern.svg'
 import LeaseImage from '../../assets/images/product-value-propositions/lease.webp'
 import EarnImage from '../../assets/images/product-value-propositions/earn.webp'
-import SwapImage from '../../assets/images/product-value-propositions/swap.webp'
 import DelegateImage from '../../assets/images/product-value-propositions/delegate.webp'
 import GovernImage from '../../assets/images/product-value-propositions/govern.webp'
 

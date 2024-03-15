@@ -17,11 +17,11 @@
                 </p>
               </div>
             </div>
-          </NolusContainer> 
-      </div>        
+          </NolusContainer>
+      </div>
 
       <NolusContainer>
-        <div class="bg-white py-24">       
+        <div class="bg-white py-24">
           <dl class="grid grid-cols-1 gap-x-8 gap-y-16 md:grid-cols-2 lg:grid-cols-3">
             <div v-for="stat in stats" :key="stat.id" class="flex max-w-xs flex-col gap-y-4">
               <dt class="text-base leading-7 text-neutral-600">{{ stat.description }}</dt>
@@ -34,7 +34,7 @@
       <!-- Team section -->
       <div class="bg-neutral-100 py-24">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
-          
+
           <div class="max-w-2xl lg:mx-0">
             <h2 class="text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl mb-12">Recent Proposals</h2>
           </div>
@@ -52,12 +52,12 @@
                 />
               </div>
               <div class="text-center mt-6 lg:mt-8">
-                <Button 
+                <Button
                 v-if="visible"
-                  variant="secondary" 
+                  variant="secondary"
                   @click="loadMoreProposals"
-                  :icon="PlusSmallIcon" 
-                  size="md"  
+                  :icon="PlusSmallIcon"
+                  size="md"
                   class="mt-4"
                 >
                 Load More
@@ -69,14 +69,14 @@
           </div>
         </div>
       </div>
-      
+
     </main>
   </div>
 </template>
 
 <script lang="ts" setup>
 import type { Proposal } from '@/components/vote/Proposal';
-import { computed, onMounted, onUnmounted, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { Dec } from '@keplr-wallet/unit';
 import NolusContainer from '@/components/NolusContainer.vue';
 import Button from '@/components/Button.vue';
@@ -92,7 +92,7 @@ const stats = [
   {description: 'NLS tokens providing economic security to the Nolus blockchain', value: '272M' },
 ]
 
-let myCanvas = ref(null);
+let myCanvas = ref<HTMLCanvasElement | null>();
 let dotColor = '13,55,127'; // Change this to control the color of the dots
 
 const bondedTokens = ref(new Dec(0));
@@ -118,60 +118,65 @@ const proposals = ref([] as Proposal[]);
 
 onMounted(async () => {
   let canvas = myCanvas.value;
-  let ctx = canvas.getContext('2d');
-  let dotRadius = 7/2;
-  let dotSpacingX = 32; // Horizontal spacing
-  let dotSpacingY = 18; // Vertical spacing
-  let lineOffset = 16;
+  if(canvas){
 
-  let canvasWidth = 730;
-  let canvasHeight = 730;
-  let devicePixelRatio = window.devicePixelRatio || 1;
-  canvas.width = canvasWidth * devicePixelRatio;
-  canvas.height = canvasHeight * devicePixelRatio;
-  canvas.style.width = `${canvasWidth}px`;
-  canvas.style.height = `${canvasHeight}px`;
-  ctx.scale(devicePixelRatio, devicePixelRatio);
+    let ctx = canvas.getContext('2d')!;
+    let dotRadius = 7/2;
+    let dotSpacingX = 32; // Horizontal spacing
+    let dotSpacingY = 18; // Vertical spacing
+    let lineOffset = 16;
 
-  let dots = [];
+    let canvasWidth = 730;
+    let canvasHeight = 730;
+    let devicePixelRatio = window.devicePixelRatio || 1;
+    canvas.width = canvasWidth * devicePixelRatio;
+    canvas.height = canvasHeight * devicePixelRatio;
+    canvas.style.width = `${canvasWidth}px`;
+    canvas.style.height = `${canvasHeight}px`;
+    ctx.scale(devicePixelRatio, devicePixelRatio);
 
-  for (let y = 0; y < canvas.height; y += dotSpacingY) {
-    let xOffset = y % (2 * dotSpacingY) === 0 ? lineOffset : 0;
-    for (let x = xOffset; x < canvas.width; x += dotSpacingX) {
-      let dot = {
-        x: x,
-        y: y,
-        opacity: Math.random(),
-        direction: Math.random() < 0.5 ? -1 : 1
-      };
-      dots.push(dot);
-    }
-  }
+    let dots = [];
 
-  function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    dots.forEach(dot => {
-      ctx.beginPath();
-      ctx.arc(dot.x, dot.y, dotRadius, 0, Math.PI * 2, true);
-      ctx.fillStyle = `rgba(${dotColor},${dot.opacity})`;
-      ctx.fill();
-
-      // Update dot opacity
-      dot.opacity += dot.direction * 0.005;
-      if (dot.opacity > 1) {
-        dot.opacity = 1;
-        dot.direction = -1;
-      } else if (dot.opacity < 0) {
-        dot.opacity = 0;
-        dot.direction = 1;
+    for (let y = 0; y < canvas.height; y += dotSpacingY) {
+      let xOffset = y % (2 * dotSpacingY) === 0 ? lineOffset : 0;
+      for (let x = xOffset; x < canvas.width; x += dotSpacingX) {
+        let dot = {
+          x: x,
+          y: y,
+          opacity: Math.random(),
+          direction: Math.random() < 0.5 ? -1 : 1
+        };
+        dots.push(dot);
       }
-    });
 
-    requestAnimationFrame(animate);
+      function animate() {
+        ctx.clearRect(0, 0, canvas!.width, canvas!.height);
+
+        dots.forEach(dot => {
+          ctx.beginPath();
+          ctx.arc(dot.x, dot.y, dotRadius, 0, Math.PI * 2, true);
+          ctx.fillStyle = `rgba(${dotColor},${dot.opacity})`;
+          ctx.fill();
+
+          // Update dot opacity
+          dot.opacity += dot.direction * 0.005;
+          if (dot.opacity > 1) {
+            dot.opacity = 1;
+            dot.direction = -1;
+          } else if (dot.opacity < 0) {
+            dot.opacity = 0;
+            dot.direction = 1;
+          }
+        });
+
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    }
+
+
   }
-
-  animate();
 
   await Promise.allSettled([fetchGovernanceProposals(), loadBondedTokens(), loadTallying()]);
 

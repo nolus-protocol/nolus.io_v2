@@ -22,16 +22,14 @@
         </div>
       </div>
     </NolusContainer>
-    
+
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import NolusContainer from '@/components/NolusContainer.vue';
 import osmosisImage from '../../assets/images/hubs/osmosis.svg';
 import astroportImage from '../../assets/images/hubs/astroport.svg';
-import nolusImage from '../../assets/images/hubs/nolus.svg';
-import arbitrumImage from '../../assets/images/hubs/arbitrum.svg';
 
 const hubs = [
   {

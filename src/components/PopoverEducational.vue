@@ -12,7 +12,7 @@
             <a v-for="item in resources" :key="item.name" :href="item.href" class="rounded-lg">
               <div class="text-sm group relative flex gap-x-4 rounded-lg p-4 hover:bg-blue-100 transition-all">
                 <div class="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-blue-100 group-hover:bg-blue-200 transition-all">
-                  <component :is="item.icon" class="h-6 w-6 text-blue-500 fill-blue-500 hover:text-blue-900" aria-hidden="true" />  
+                  <component :is="item.icon" class="h-6 w-6 text-blue-500 fill-blue-500 hover:text-blue-900" aria-hidden="true" />
                 </div>
                 <div>
                   <p class="font-semibold text-neutral-900">
@@ -49,7 +49,7 @@
   </Popover>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { ref, onMounted, defineProps } from 'vue';
 import data from '../../rss-server/data/data.json';
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'

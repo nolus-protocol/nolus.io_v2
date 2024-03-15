@@ -8,11 +8,9 @@
   <Testimonials />
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import Hero from './HomePartials/Hero.vue'
 import GeneralValuePropositions from './HomePartials/GeneralValuePropositions.vue'
-import Hubs from './HomePartials/Hubs.vue'
-import Audits from './HomePartials/Audits.vue'
 import HubsAndAudits from './HomePartials/HubsAndAudits.vue'
 import ProductValuePropositions from './HomePartials/ProductValuePropositions.vue'
 import Testimonials from './HomePartials/Testimonials.vue'

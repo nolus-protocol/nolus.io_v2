@@ -15,7 +15,7 @@
   </Popover>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { onMounted, ref, computed, markRaw } from 'vue';
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
 import ChevronDownSmallIcon from '@/assets/icons/chevron-down-small.svg'
@@ -31,7 +31,7 @@ const props = defineProps({
 })
 
 const languages = [
-    {short_string: 'EN', lang: 'English', route: '', icon: 'en.svg', active: true}, 
+    {short_string: 'EN', lang: 'English', route: '', icon: 'en.svg', active: true},
     {short_string: 'RU', lang: 'Русский', route: '', icon: 'ru.svg', active: false},
     {short_string: 'CN', lang: '中文', route: '', icon: 'cn.svg', active: false},
     {short_string: 'ES', lang: 'Español', route: '', icon: 'es.svg', active: false},

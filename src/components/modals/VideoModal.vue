@@ -1,17 +1,17 @@
 <template>
-  <iframe class="w-full h-full max-w-full max-h-full" 
+  <iframe class="w-full h-full max-w-full max-h-full"
           :style="{ height: videoDimensions.height + 'px' }"
-          src="https://www.youtube.com/embed/k7QWPR0052g?si=bSgbKCpzBHSTLbXK" 
-          title="YouTube video player" 
-          frameborder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-          allowfullscreen 
+          src="https://www.youtube.com/embed/k7QWPR0052g?si=bSgbKCpzBHSTLbXK"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
           ref="iframeElement">
   </iframe>
-  
+
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { ref, onMounted, reactive } from 'vue';
 
 const iframeElement = ref(null);
