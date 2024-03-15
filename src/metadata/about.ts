@@ -1,17 +1,17 @@
 export const META = {
-  title: "Nolus - Bridging Lenders and Borrowers in a Novel Money Market",
+  title: "Nolus - Reshaping Money Markets",
   description: "Through Lease, borrowers get up to 150% financing while keeping access to leveraged assets, enabling lenders to earn #RealYield on idle assets",
   keywords: "what is nolus protocol, about nolus protocol, about nolus",
 
   "og:type":"website",
   "og:url":"https://nolus.io/about",
-  "og:title":"Nolus - Bridging Lenders and Borrowers in a Novel Money Market",
+  "og:title":"Nolus - Reshaping Money Markets",
   "og:description":"Through Lease, borrowers get up to 150% financing while keeping access to leveraged assets, enabling lenders to earn #RealYield on idle assets",
   "og:image":"",
 
   "twitter:card":"summary_large_image" ,
   "twitter:url":"https://nolus.io/about" ,
-  "twitter:title":"Nolus - Bridging Lenders and Borrowers in a Novel Money Market" ,
+  "twitter:title":"Nolus - Reshaping Money Markets" ,
   "twitter:description":"Through Lease, borrowers get up to 150% financing while keeping access to leveraged assets, enabling lenders to earn #RealYield on idle assets" ,
   "twitter:image":"" ,
 
