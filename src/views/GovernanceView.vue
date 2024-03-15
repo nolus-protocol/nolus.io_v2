@@ -12,9 +12,10 @@
             <div class="max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
               <div class="w-full max-w-xl lg:shrink-0 xl:max-w-3xl">
                 <h1 class="text-5xl font-bold tracking-tight text-neutral-900 leading-tight" v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="100">Exemplifying the Best of Community Governance</h1>
-                <p class="basis-1/2 relative mt-6 text-lg leading-8 text-neutral-800 sm:max-w-md lg:max-w-lg" v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="200">Built on a Proof-of-Stake blockchain, where the community also plays a pivotal role in driving decentralization and enhancing security</p>
-                <p class="basis-1/2 relative mt-6 text-lg leading-8 text-neutral-800 sm:max-w-md lg:max-w-lg" v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="300">Members actively participate in protocol governance by delegating and voting on proposals. These range from fine-tuning parameters to implementing protocol enhancements
-                </p>
+                <p class="basis-1/2 relative mt-6 text-lg leading-8 text-neutral-800 sm:max-w-md lg:max-w-lg" v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="200">
+Members actively participate in protocol governance by delegating and voting on proposals, which range from fine-tuning parameters to implementing protocol enhancements, all within a Proof-of-Stake blockchain framework where the community plays a pivotal role in driving decentralization and enhancing security</p>
+                <!-- <p class="basis-1/2 relative mt-6 text-lg leading-8 text-neutral-800 sm:max-w-md lg:max-w-lg" v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="300">Built on a Proof-of-Stake blockchain, where the community also plays a pivotal role in driving decentralization and enhancing security
+                </p> -->
               </div>
             </div>
           </NolusContainer> 
