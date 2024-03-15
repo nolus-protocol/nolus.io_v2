@@ -1,17 +1,17 @@
 export const META = {
-  title: "Nolus - Fully Decentralized, Community-Governed Protocol",
+  title: "Nolus - Exemplifying the Best of Community Governance",
   description: "Built on a Proof-of-Stake blockchain, where the community also plays a pivotal role in driving decentralization and enhancing security",
   keywords: "nolus protocol governance, nolus governance",
 
   "og:type":"website",
   "og:url":"https://nolus.io/governance",
-  "og:title":"Nolus - Fully Decentralized, Community-Governed Protocol",
+  "og:title":"Nolus - Exemplifying the Best of Community Governance",
   "og:description":"Built on a Proof-of-Stake blockchain, where the community also plays a pivotal role in driving decentralization and enhancing security",
   "og:image":"",
 
   "twitter:card":"summary_large_image" ,
   "twitter:url":"https://nolus.io/governance" ,
-  "twitter:title":"Nolus - Fully Decentralized, Community-Governed Protocol" ,
+  "twitter:title":"Nolus - Exemplifying the Best of Community Governance" ,
   "twitter:description":"Built on a Proof-of-Stake blockchain, where the community also plays a pivotal role in driving decentralization and enhancing security" ,
   "twitter:image":"" ,
 
