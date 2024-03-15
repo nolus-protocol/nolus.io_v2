@@ -6,7 +6,7 @@
           <NolusContainer class="flex items-center">
             <div class="md:max-w-[50%] lg:max-w-2xl gap-x-14 lg:flex lg:max-w-none lg:items-center">
               <div class="w-full max-w-xl lg:shrink-0 xl:max-w-2xl">
-                <h1 class="text-3xl md:text-3xl lg:text-5xl font-bold tracking-tight text-white leading-tight" v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="100">Enriching DeFi for a Better Web3 World</h1>
+                <h1 class="text-3xl md:text-3xl lg:text-5xl font-bold tracking-tight text-white leading-tight" v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="100">Reshaping Money Markets</h1>
                 <div class="flex flex-col lg:flex-row gap-x-8">
                   <p class="basis-1/2 relative mt-6 text-lg leading-8 text-white sm:max-w-md lg:max-w-lg" v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="200">Nolus bridges lenders and borrowers in the DeFi money market. With Lease, borrowers secure up to 150% financing and retain access to leveraged assets via whitelisted strategies</p>
                    <p class="basis-1/2 relative mt-6 text-lg leading-8 text-white sm:max-w-md lg:max-w-lg" v-motion :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :delay="300">Inspired by traditional finance, Nolus' lease reduces high over-collateralization standards, enhancing capital efficiency, and improving loan terms for borrowers</p>

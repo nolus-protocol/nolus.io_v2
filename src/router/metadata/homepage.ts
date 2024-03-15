@@ -1,17 +1,17 @@
 export const META = {
-  title: "Nolus - Reshaping Money Markets",
+  title: "Nolus - Cross-Chain Lease Protocol",
   description: "Triple your holdings without tripling the risk! Unlock the full potential of your crypto",
   keywords: "nolus, crypto lease, nolus defi, nolus defi lease, nolus crypto, nolus defi lease, money markets, nolus money market",
 
   "og:type":"website",
   "og:url":"https://nolus.io/",
-  "og:title":"Nolus - Reshaping Money Markets",
+  "og:title":"Nolus - Cross-Chain Lease Protocol",
   "og:description":"Triple your holdings without tripling the risk! Unlock the full potential of your crypto",
   "og:image":"https://nolus.io/assets/images/meta/hero-homepage.png",
 
   "twitter:card":"summary_large_image" ,
   "twitter:url":"https://nolus.io/" ,
-  "twitter:title":"Nolus - Reshaping Money Markets" ,
+  "twitter:title":"Nolus - Cross-Chain Lease Protocol" ,
   "twitter:description":"Triple your holdings without tripling the risk! Unlock the full potential of your crypto" ,
   "twitter:image":"https://nolus.io/assets/images/meta/hero-homepage.png" ,
 
