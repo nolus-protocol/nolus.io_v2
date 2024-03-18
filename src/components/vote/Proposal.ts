@@ -4,13 +4,13 @@ export interface Proposal {
   summary: string;
   messages: ProposalContent[];
   status: ProposalStatus;
-  tally: FinalTallyResult
+  tally: FinalTallyResult;
   submit_time: string;
   deposit_end_time: string;
   total_deposit: TotalDeposit[];
   voting_start_time: string;
   voting_end_time: string;
-  voted: boolean
+  voted: boolean;
 }
 
 export enum ProposalStatus {

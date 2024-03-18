@@ -1,24 +1,27 @@
 <template>
-  <iframe class="w-full h-full max-w-full max-h-full" 
-          :style="{ height: videoDimensions.height + 'px' }"
-          src="https://www.youtube.com/embed/k7QWPR0052g?si=bSgbKCpzBHSTLbXK" 
-          title="YouTube video player" 
-          frameborder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-          allowfullscreen 
-          ref="iframeElement">
+  <iframe
+    class="h-full max-h-full w-full max-w-full"
+    :style="{ height: videoDimensions.height + 'px' }"
+    src="https://www.youtube.com/embed/k7QWPR0052g?si=bSgbKCpzBHSTLbXK"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    ref="iframeElement"
+  >
   </iframe>
-  
 </template>
 
-<script setup>
-import { ref, onMounted, reactive } from 'vue';
+<script lang="ts" setup>
+import { ref, onMounted, reactive } from "vue";
 
-const iframeElement = ref(null);
-let videoDimensions = reactive({width: 0, height: 0});
+const iframeElement = ref<HTMLElement | null>(null);
+let videoDimensions = reactive({ width: 0, height: 0 });
 
 onMounted(() => {
-  videoDimensions.width = iframeElement.value.offsetWidth;
-  videoDimensions.height = videoDimensions.width / 1.78;
+  if(iframeElement.value){
+    videoDimensions.width = iframeElement.value.offsetWidth;
+    videoDimensions.height = videoDimensions.width / 1.78;
+  }
 });
 </script>

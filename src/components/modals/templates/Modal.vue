@@ -1,31 +1,33 @@
 <template>
   <Teleport to="body">
-    <Transition
-      name="fade"
-    >
+    <Transition name="fade">
       <div
         v-if="show"
         ref="modal"
-        class="fixed bottom-0 left-0 right-0 top-0 z-[999999999] flex justify-center items-start bg-neutral-600/80 backdrop-blur-sm"
-        style="-webkit-overflow-scrolling: touch;"
+        class="fixed bottom-0 left-0 right-0 top-0 z-[999999999] flex items-start justify-center bg-neutral-600/80 backdrop-blur-sm"
+        style="-webkit-overflow-scrolling: touch"
         @keydown.esc="onModalClose"
         @click="onModalClose"
-        >
+      >
         <button
-          class="bg-white fixed right-5 top-5 z-[5] rounded-full p-2 border hover:bg-neutral-100 transition-all"
+          class="fixed right-5 top-5 z-[5] rounded-full border bg-white p-2 transition-all hover:bg-neutral-100"
           @click="onModalClose"
         >
-          <XMarkIcon class="inline-block w-8 h-8 z-[5]" />
+          <XMarkIcon class="z-[5] inline-block h-8 w-8" />
         </button>
-        <div 
-          class="overflow-scroll h-full py-12 w-full"
-          :class="variant==='video' && 'flex justify-center items-center'" 
-          v-motion 
-          :initial="{ opacity: 0, y: 100 }" 
-          :enter="{ opacity: 1, y: 0, scale: 1, transition: {duration: 400}}"
-          :leave="{ opacity: 0, y: 100, scale: 0, transition: {duration: 400}}"
+        <div
+          class="h-full w-full overflow-scroll py-12"
+          :class="variant === 'video' && 'flex items-center justify-center'"
+          v-motion
+          :initial="{ opacity: 0, y: 100 }"
+          :enter="{ opacity: 1, y: 0, scale: 1, transition: { duration: 400 } }"
+          :leave="{ opacity: 0, y: 100, scale: 0, transition: { duration: 400 } }"
+        >
+          <div
+            class="relative mx-auto flex w-full flex-col items-center justify-start overflow-clip bg-white shadow-xl md:rounded-xl"
+            :class="[width, variant !== 'video' && 'p-12']"
+            @click.stop
           >
-          <div class="mx-auto flex w-full  flex-col justify-start items-center md:rounded-xl overflow-clip bg-white shadow-xl relative" :class="[ width, variant !== 'video' && 'p-12' ]" @click.stop>
             <slot></slot>
           </div>
         </div>
@@ -50,8 +52,8 @@
 import { onMounted, nextTick, onUnmounted, provide, watch, defineProps, ref, watchEffect } from "vue";
 import { XMarkIcon } from "@heroicons/vue/24/solid";
 
-const modal = ref(null);
-let previousActiveElement, focusableElements, firstFocusableElement, lastFocusableElement;
+const modal = ref<HTMLElement | null>(null);
+let previousActiveElement: HTMLElement | null, focusableElements: NodeListOf<HTMLElement> | undefined, firstFocusableElement: HTMLElement | undefined, lastFocusableElement: HTMLElement | undefined;
 
 const emit = defineEmits(["close-modal"]);
 const props = defineProps({
@@ -75,33 +77,33 @@ const escapeClicked = (event: KeyboardEvent) => {
 
 watchEffect(() => {
   if (props.show) {
-    previousActiveElement = document.activeElement;
+    previousActiveElement = document.activeElement as HTMLElement;
     nextTick(() => {
-      focusableElements = modal.value.querySelectorAll(
+      focusableElements = modal.value?.querySelectorAll(
         'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
       );
-      firstFocusableElement = focusableElements[0];
-      lastFocusableElement = focusableElements[focusableElements.length - 1];
-      firstFocusableElement.focus();
+      firstFocusableElement = focusableElements?.[0];
+      lastFocusableElement = focusableElements?.[focusableElements.length - 1];
+      firstFocusableElement?.focus();
     });
   } else if (previousActiveElement) {
     nextTick(() => {
-      previousActiveElement.focus();
+      previousActiveElement?.focus();
     });
   }
 });
 
-const trapFocus = (event) => {
-  if (props.show && event.key === 'Tab') {
+const trapFocus = (event: KeyboardEvent) => {
+  if (props.show && event.key === "Tab") {
     if (event.shiftKey) {
       if (document.activeElement === firstFocusableElement) {
         event.preventDefault();
-        lastFocusableElement.focus();
+        lastFocusableElement?.focus();
       }
     } else {
       if (document.activeElement === lastFocusableElement) {
         event.preventDefault();
-        firstFocusableElement.focus();
+        firstFocusableElement?.focus();
       }
     }
   }
@@ -109,7 +111,7 @@ const trapFocus = (event) => {
 
 onMounted(() => {
   document.addEventListener("keyup", escapeClicked);
-  document.addEventListener('keydown', trapFocus);
+  document.addEventListener("keydown", trapFocus);
 });
 
 watch(
@@ -121,9 +123,9 @@ watch(
 
 onUnmounted(() => {
   document.removeEventListener("keyup", escapeClicked);
-  document.removeEventListener('keydown', trapFocus);
+  document.removeEventListener("keydown", trapFocus);
 });
 
 provide("onModalClose", onModalClose);
-defineExpose({ onModalClose })
+defineExpose({ onModalClose });
 </script>
