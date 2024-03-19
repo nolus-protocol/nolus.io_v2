@@ -31,9 +31,8 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, type PropType, provide, ref } from "vue";
+import { type PropType, provide, ref } from "vue";
 import { ArrowLeftIcon } from "@heroicons/vue/24/solid";
-import router from "@/router";
 
 const props = defineProps({
   headerList: {
@@ -60,7 +59,6 @@ const props = defineProps({
   }
 });
 
-const activeTab = ref(props.activeTab);
 const showHeader = ref(true);
 
 const backClick = () => {
@@ -68,30 +66,6 @@ const backClick = () => {
     props.back();
   }
 };
-
-const isTabLayout = computed(() => {
-  return props.headerList.length > 1;
-});
-
-function switchTab(index: number) {
-  if (props.disabled.includes(index)) {
-    return false;
-  }
-  activeTab.value = index;
-  const route = props.routes[index - 1];
-  if (route != null) {
-    setRoute(route);
-  }
-}
-
-function setRoute(route: string) {
-  const path = router.currentRoute.value.path;
-  console.log(path);
-  router.replace({
-    path,
-    hash: `#${route}`
-  });
-}
 
 function setShowDialogHeader(shouldShow: boolean) {
   showHeader.value = shouldShow;

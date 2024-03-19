@@ -1,5 +1,5 @@
 <template>
-  <div class="relative isolate overflow-hidden bg-home-banner">
+  <div class="bg-home-banner relative isolate overflow-hidden">
     <div class="relative mx-auto max-w-7xl px-6 py-32 pb-24 lg:px-8 lg:pt-28">
       <div
         class="-z-5 absolute bottom-0 left-0 transform-gpu overflow-hidden blur-3xl"
@@ -92,22 +92,26 @@
       <div class="max-w-4xl md:pt-16">
         <dl class="mt-16 flex flex-col gap-y-10 rounded-xl md:my-0 md:flex-row">
           <div
-            v-for="stat in stats"
-            class="flex w-full max-w-xs flex-col gap-y-3 md:mx-auto md:pr-8"
-            v-motion
-            :initial="{ opacity: 0, y: 20 }"
-            :enter="{ opacity: 1, y: 0 }"
-            :delay="stat.id * 100"
+            v-for="(stat, index) in stats"
+            :key="index"
           >
-            <dt class="order-first font-medium leading-3 text-blue-600">
-              {{ stat.subtitle }}
-            </dt>
-            <dd class="text-3xl font-bold tracking-tight text-neutral-900">
-              {{ stat.value }}
-            </dd>
-            <dt class="text-base leading-6 text-neutral-600">
-              {{ stat.description }}
-            </dt>
+            <div
+              class="flex w-full max-w-xs flex-col gap-y-3 md:mx-auto md:pr-8"
+              v-motion
+              :initial="{ opacity: 0, y: 20 }"
+              :enter="{ opacity: 1, y: 0 }"
+              :delay="stat.id * 100"
+            >
+              <dt class="order-first font-medium leading-3 text-blue-600">
+                {{ stat.subtitle }}
+              </dt>
+              <dd class="text-3xl font-bold tracking-tight text-neutral-900">
+                {{ stat.value }}
+              </dd>
+              <dt class="text-base leading-6 text-neutral-600">
+                {{ stat.description }}
+              </dt>
+            </div>
           </div>
         </dl>
       </div>

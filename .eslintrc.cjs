@@ -3,9 +3,9 @@ require("@rushstack/eslint-patch/modern-module-resolution");
 
 module.exports = {
   root: true,
+  ignorePatterns: ["rss-server/**"],
   extends: [
     "plugin:vue/vue3-essential",
-    "plugin:vue/html-self-closing",
     "eslint:recommended",
     "@vue/eslint-config-typescript",
     "@vue/eslint-config-prettier/skip-formatting"
@@ -13,7 +13,7 @@ module.exports = {
   overrides: [
     {
       files: ["cypress/e2e/**/*.{cy,spec}.{js,ts,jsx,tsx}", "cypress/support/**/*.{js,ts,jsx,tsx}"],
-      extends: ["plugin:cypress/recommended"]
+      extends: []
     }
   ],
   parserOptions: {

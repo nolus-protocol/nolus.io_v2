@@ -7,4 +7,9 @@ export enum Stats {
   earn
 }
 
+export enum Theme {
+  light = "light",
+  dark = "dark"
+}
+
 export const PROTOCOLS = ["OSMOSIS-OSMOSIS-USDC_AXELAR", "NEUTRON-ASTROPORT-USDC_AXELAR"];

@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+import typography from "@tailwindcss/typography";
+
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx,vue}"],
   darkMode: false,
@@ -7,8 +9,8 @@ export default {
       colors: {
         transparent: "transparent",
         current: "currentColor",
-        "home-banner": "#eceff4",
-        "about-banner": "#27397d",
+        "home-banner": "var(--bg-banner-home)",
+        "about-banner": "var(--bg-banner-about)",
         neutral: {
           50: "#f7f9fc",
           100: "#ebeff5",
@@ -120,5 +122,5 @@ export default {
       }
     }
   },
-  plugins: [require("@tailwindcss/typography")]
+  plugins: [typography]
 };

@@ -141,7 +141,7 @@
                     >Home</router-link
                   >
                 </div>
-                <div v-for="item in navigation">
+                <div v-for="(item, index) in navigation" :key="index">
                   <router-link
                     v-if="item.internal"
                     :key="item.id"
@@ -251,7 +251,7 @@ onMounted(() => {
 
 })
 
-const scroll = (event: Event) => {
+const scroll = () => {
   if(window.scrollY > 0 && !y.value){
     y.value = true;
   }

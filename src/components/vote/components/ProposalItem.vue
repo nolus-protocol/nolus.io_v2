@@ -81,7 +81,6 @@ import { Dec } from "@keplr-wallet/unit";
 
 import ProposalVotingLine from "./ProposalVotingLine.vue";
 import ChevronRightSmallIcon from "@/assets/icons/chevron-right-small.svg";
-import Button from "@/components/Button.vue";
 
 const props = defineProps({
   state: {

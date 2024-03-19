@@ -99,8 +99,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, onUnmounted, onBeforeUnmount, nextTick, reactive } from "vue";
-import Button from "@/components/Button.vue";
+import { ref, onMounted, onUnmounted, onBeforeUnmount, nextTick } from "vue";
 import NolusContainer from "@/components/NolusContainer.vue";
 import LeaseIcon from "@/assets/icons/lease.svg";
 import EarnIcon from "@/assets/icons/earn.svg";

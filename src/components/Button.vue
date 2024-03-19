@@ -17,12 +17,8 @@
 </template>
 
 <script lang="ts" setup>
+import { Theme } from "@/config";
 import type { PropType } from "vue";
-
-enum Theme {
-  light = "light",
-  dark = "dark"
-}
 
 const props = defineProps({
   size: {
