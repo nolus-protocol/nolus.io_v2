@@ -146,7 +146,7 @@ const stats = ref([
     id: 2,
     key: Stats.tvl,
     subtitle: "Value Locked",
-    description: "Liquidity locked across 25 assets distributed on 3 chains",
+    description: "Liquidity locked across 28 assets distributed on 3 chains",
     value: "$--.--"
   },
   {

@@ -122,9 +122,9 @@ const tabs = [
   {
     tabName: "Earn",
     tabIcon: EarnIcon,
-    heading: "Earn #RealYield on Your Idle Assets",
+    heading: "Earn Real Yield on Your Idle Assets",
     content:
-      "Lend your idle assets for sustainable high-yield returns that vary between 8-12% APY, no matter the market conditions",
+      "Lend your idle assets for sustainable high-yield returns that vary between 8-15% APY, no matter the market conditions",
     tabImage: EarnImage
   },
   // {
@@ -145,7 +145,7 @@ const tabs = [
     tabName: "Govern",
     tabIcon: GovernIcon,
     heading: "Help Shape the Future of Nolus",
-    content: "Cast your vote and exert your influence to guide the future development and trajectory of the Protocol",
+    content: "Cast your vote and take part in influencing the future development and trajectory of the protocol",
     tabImage: GovernImage
   }
 ];
