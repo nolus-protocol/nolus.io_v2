@@ -26,7 +26,7 @@
                   :enter="{ opacity: 1, y: 0, scale: 1 }"
                   :delay="200"
                 >
-                  Nolus bridges lenders and borrowers in the DeFi money market. With Lease, borrowers secure up to 150%
+                  Nolus bridges lenders and borrowers in the DeFi money market. With lease, borrowers secure up to 150%
                   financing and retain access to leveraged assets via whitelisted strategies
                 </p>
                 <p
