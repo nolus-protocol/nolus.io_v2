@@ -122,7 +122,7 @@ const tabs = [
   {
     tabName: "Earn",
     tabIcon: EarnIcon,
-    heading: "Earn #RealYield on Your Idle Assets",
+    heading: "Earn Real Yield on Your Idle Assets",
     content:
       "Lend your idle assets for sustainable high-yield returns that vary between 8-12% APY, no matter the market conditions",
     tabImage: EarnImage
