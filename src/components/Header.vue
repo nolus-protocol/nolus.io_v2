@@ -74,7 +74,7 @@
       <div class="hidden h-5 lg:flex lg:flex-1 lg:items-center lg:justify-end lg:gap-4">
         <Button
           size="sm"
-          v-bind:class="y == 0 ? 'hidden' : ''"
+          v-bind:class="!y ? 'hidden' : ''"
           :icon="SquareArrowTopRightIcon"
           link="https://app.nolus.io/"
           class=""
@@ -189,10 +189,9 @@ defineProps({
   }
 });
 
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import { TransitionRoot, TransitionChild, Dialog, DialogPanel } from "@headlessui/vue";
-import { useWindowScroll } from "@vueuse/core";
 
 import BarsIcon from "@/assets/icons/bars.svg";
 import CrossLargeIcon from "@/assets/icons/cross-large.svg";
@@ -203,7 +202,7 @@ import Button from "./Button.vue";
 import PopoverEducational from "./PopoverEducational.vue";
 import PopoverResources from "./PopoverResources.vue";
 
-const { x, y } = useWindowScroll();
+const y = ref(false);
 
 const navigation = [
   { id: 1, type: "link", name: "About", href: "/about", internal: true, textColorClass: "", fillColorClass: "" },
@@ -222,7 +221,7 @@ const navigation = [
 
 const isOpen = ref(false);
 const router = useRouter();
-const isHeaderScrolled = computed(() => (y.value > 0 ? true : false));
+const isHeaderScrolled = computed(() => y.value);
 const isHeroDark = computed(() => (router.currentRoute.value.name === "about" ? true : false));
 
 const textColorClass = computed(() =>
@@ -246,4 +245,20 @@ const navigationWithTextColorClass = computed(() => {
     }
   });
 });
+
+onMounted(() => {
+  window.addEventListener("scroll", scroll, { passive: true });
+
+})
+
+const scroll = (event: Event) => {
+  if(window.scrollY > 0 && !y.value){
+    y.value = true;
+  }
+
+  if(window.scrollY == 0){
+    y.value = false;
+  }
+
+}
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="relative isolate overflow-hidden bg-neutral-100">
+  <div class="relative isolate overflow-hidden bg-home-banner">
     <div class="relative mx-auto max-w-7xl px-6 py-32 pb-24 lg:px-8 lg:pt-28">
       <div
         class="-z-5 absolute bottom-0 left-0 transform-gpu overflow-hidden blur-3xl"

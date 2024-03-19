@@ -3,7 +3,7 @@
     <main class="isolate">
       <!-- Hero section -->
       <div
-        class="relative isolate -z-10 overflow-hidden bg-blue-800 py-40"
+        class="relative isolate -z-10 overflow-hidden bg-about-banner py-40"
         ref="heroWrapper"
       >
         <NolusContainer class="flex items-center">
@@ -57,10 +57,10 @@
                 data-wait="240"
                 loop
               >
-                <!-- <source
+                <source
                   :src="videoSrc"
                   type="video/mp4"
-                /> -->
+                />
               </video>
             </div>
           </div>

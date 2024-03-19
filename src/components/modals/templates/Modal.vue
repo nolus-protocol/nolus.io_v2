@@ -4,7 +4,7 @@
       <div
         v-if="show"
         ref="modal"
-        class="fixed bottom-0 left-0 right-0 top-0 z-[999999999] flex items-start justify-center bg-neutral-600/80 backdrop-blur-sm items-center"
+        class="fixed bottom-0 left-0 right-0 top-0 z-[999999999] flex items-start justify-center bg-neutral-600/80 backdrop-blur-[2px] items-center"
         @keydown.esc="onModalClose"
         @click="onModalClose"
       >
@@ -18,13 +18,13 @@
           class="mt-0 lg:mt-12 h-full w-full max-w-3xl overflow-hidden bg-white md:rounded-xl lg:h-[85vh] mb-0 lg:mb-12"
           :class="variant === 'video' && 'flex items-center justify-center lg:h-auto h-auto lg:mt-[0px] bg-transparent'"
           v-motion
-          :initial="{ opacity: 0, y: 100 }"
-          :enter="{ opacity: 1, y: 0, transition: { duration: 100 } }"
-          :leave="{ opacity: 0, y: 100, transition: { duration: 100 } }"
+          :initial="{ opacity: 0, y: 50 }"
+          :enter="{ opacity: 1, y: 0, transition: { duration: 200 } }"
+          :leave="{ opacity: 0, y: 50, transition: { duration: 200 } }"
         >
           <div
             class="scroll relative h-full w-full overflow-y-auto break-all p-8 lg:p-12 shadow-xl"
-            :class="[width, variant === 'video' && 'p-0 flex items-center p-[0px]']"
+            :class="[width, variant === 'video' && 'p-0 flex items-center p-[0px] lg:p-[0px]']"
             @click.stop
           >
             <slot></slot>
@@ -34,18 +34,6 @@
     </Transition>
   </Teleport>
 </template>
-
-<style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.2s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-</style>
 
 <script lang="ts" setup>
 import { onMounted, nextTick, onUnmounted, provide, watch, ref, watchEffect } from "vue";
