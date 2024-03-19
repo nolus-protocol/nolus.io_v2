@@ -145,7 +145,7 @@ const tabs = [
     tabName: "Govern",
     tabIcon: GovernIcon,
     heading: "Help Shape the Future of Nolus",
-    content: "Cast your vote and exert your influence to guide the future development and trajectory of the Protocol",
+    content: "Cast your vote and take part in influencing the future development and trajectory of the protocol",
     tabImage: GovernImage
   }
 ];
