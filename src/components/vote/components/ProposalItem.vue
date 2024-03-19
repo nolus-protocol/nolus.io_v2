@@ -1,58 +1,86 @@
 <template>
-  <div
-    class="bg-white w-full flex flex-col shadow-lg rounded-xl justify-between overflow-clip gap-y-5"
-  >
+  <div class="flex w-full flex-col justify-between gap-y-5 overflow-clip rounded-xl bg-white shadow-lg">
     <div class="flex items-start justify-between p-5 pb-0">
-      <div class="basis-4/5 overflow-hidden text-xl md:text-2xl font-medium tracking-tight text-neutral-900 break-words">
+      <div
+        class="basis-4/5 overflow-hidden break-words text-xl font-medium tracking-tight text-neutral-900 md:text-2xl"
+      >
         &#35;{{ state.id }} {{ state.title }}
       </div>
-      <div class="flex items-center gap-2 px-3 py-1 rounded-md" :class="{[color.bg_parent]: color}">
-        <div :class="{ [color.bg]: color}" class="w-2.5 h-2.5 rounded-full" />
-        <div :class="{ [color.text]: color }" class="font-medium text-sm">
+      <div
+        class="flex items-center gap-2 rounded-md px-3 py-1"
+        :class="{ [color.bg_parent]: color }"
+      >
+        <div
+          :class="{ [color.bg]: color }"
+          class="h-2.5 w-2.5 rounded-full"
+        />
+        <div
+          :class="{ [color.text]: color }"
+          class="text-sm font-medium"
+        >
           {{ ProposalStatus[state.status].split("_")[2] }}
         </div>
       </div>
     </div>
-    <div class="border-b border-t py-4 flex flex-col gap-y-4 px-5"  v-if="isVotingPeriod">
-      <div class="flex flex-col md:flex-row gap-2 md:gap-0 justify-between items-center">
-        
+    <div
+      class="flex flex-col gap-y-4 border-b border-t px-5 py-4"
+      v-if="isVotingPeriod"
+    >
+      <div class="flex flex-col items-center justify-between gap-2 md:flex-row md:gap-0">
         <div class="flex gap-4">
-          <div><span class="block text-sm">Turnout:</span> <span class="font-medium text-base">{{ turnout }}%</span></div>
-          <div><span class="block text-sm">Quorum:</span> <span class="font-medium text-base">{{ quorumState }}%</span></div>
-          <div><span class="block text-sm">Voting ends:</span> <span class="font-medium text-base">{{ DateUtils.formatDateTime(state.voting_end_time) }}</span></div>
+          <div>
+            <span class="block text-sm">Turnout:</span> <span class="text-base font-medium">{{ turnout }}%</span>
+          </div>
+          <div>
+            <span class="block text-sm">Quorum:</span> <span class="text-base font-medium">{{ quorumState }}%</span>
+          </div>
+          <div>
+            <span class="block text-sm">Voting ends:</span>
+            <span class="text-base font-medium">{{ DateUtils.formatDateTime(state.voting_end_time) }}</span>
+          </div>
         </div>
       </div>
-      
+
       <ProposalVotingLine
         v-if="isVotingPeriod && Object.values(state.tally).filter((res) => !!Number(res)).length > 0"
         :voting="state.tally"
       />
     </div>
-    <div v-if="state.summary" class="text-neutral-900 px-5">
-      <div class="prose prose-h1:text-lg prose-h1:font-medium prose-h1:mb-2 prose-h2:text-lg prose-h2:font-medium prose-h2:my-1" v-html="StringUtils.truncateText(description, 156)"></div>
+    <div
+      v-if="state.summary"
+      class="px-5 text-neutral-900"
+    >
+      <div
+        class="prose prose-h1:mb-2 prose-h1:text-lg prose-h1:font-medium prose-h2:my-1 prose-h2:text-lg prose-h2:font-medium"
+        v-html="StringUtils.truncateText(description, 156)"
+      ></div>
     </div>
-    <div class="bg-neutral-50 border-t hover:bg-neutral-100 transition-colors">
+    <div class="border-t bg-neutral-50 transition-colors hover:bg-neutral-100">
       <button
         v-if="state.summary && state.summary.length > 156"
-        class="p-3 w-full font-medium text-sm hover:text-neutral-800 flex items-center justify-center"
+        class="flex w-full items-center justify-center p-3 text-sm font-medium hover:text-neutral-800"
         @click="$emit('read-more', { title: state.title, summary: state.summary })"
       >
-      Read more <ChevronRightSmallIcon class="h-5 w-5" aria-hidden="true" />
+        Read more
+        <ChevronRightSmallIcon
+          class="h-5 w-5"
+          aria-hidden="true"
+        />
       </button>
     </div>
-
   </div>
 </template>
 
 <script lang="ts" setup>
 import { computed, type PropType } from "vue";
+import { type Proposal, ProposalStatus, type FinalTallyResult } from "../Proposal";
 import { marked } from "marked";
 import { DateUtils, StringUtils } from "@/utils";
-import { type Proposal, ProposalStatus, type FinalTallyResult } from "../Proposal";
 import { ProposalState } from "../state";
 import { Dec } from "@keplr-wallet/unit";
+
 import ProposalVotingLine from "./ProposalVotingLine.vue";
-import ChevronRightSmallIcon from '@/assets/icons/chevron-right-small.svg';
+import ChevronRightSmallIcon from "@/assets/icons/chevron-right-small.svg";
 import Button from "@/components/Button.vue";
 
 const props = defineProps({
@@ -75,8 +103,8 @@ const description = computed(() => {
   return marked.parse(props.state.summary, {
     pedantic: true,
     gfm: true,
-    breaks: true,
-  });
+    breaks: true
+  }) as string;
 });
 
 const turnout = computed(() => {
@@ -105,12 +133,12 @@ const color = computed(() => {
       return { bg_parent: "bg-blue-500/15", bg: "bg-blue-500", text: "text-blue-500" };
     case ProposalStatus.PROPOSAL_STATUS_VOTING_PERIOD: {
       if (props.state.voted) {
-        return { bg: "bg-dark-500", text: "text-dark-500"};
+        return { bg_parent: "", bg: "bg-dark-500", text: "text-dark-500" };
       }
       return { bg_parent: "bg-orange-400/15", bg: "bg-orange-400", text: "text-orange-400" };
     }
     default:
-      return { bg_parent: "bg-neutral-500/15",bg: "bg-neutral-800", text: "text-neutral-800" };
+      return { bg_parent: "bg-neutral-500/15", bg: "bg-neutral-800", text: "text-neutral-800" };
   }
 });
 
@@ -122,8 +150,8 @@ defineEmits(["vote", "read-more"]);
 </script>
 
 <style lang="scss" scoped>
-  .proposal {
-    outline: none;
-    position: relative;
-  }
+.proposal {
+  outline: none;
+  position: relative;
+}
 </style>

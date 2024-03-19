@@ -12,7 +12,7 @@ export default {
         current: 'currentColor',
         'neutral': {
           50: '#f7f9fc',
-          100: '#ebeff5',
+          100: '#eef2f4',
           200: '#c1cad7',
           300: '#a4b2c5',
           400: '#8396b1',

@@ -1,12 +1,4 @@
 <template>
-  <!--
-    This example requires updating your template:
-
-    ```
-    <html class="h-full">
-    <body class="h-full">
-    ```
-  -->
   <main class="grid min-h-full place-items-center bg-neutral-100 px-6 py-24 sm:py-32 lg:px-8">
     <div class="text-center">
       <p class="text-base font-semibold text-blue-600">404</p>
@@ -20,6 +12,6 @@
   </main>
 </template>
 
-<script setup>
-import Button from '@/components/Button.vue';
+<script lang="ts" setup>
+import Button from "@/components/Button.vue";
 </script>

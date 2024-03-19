@@ -1,20 +1,9 @@
 export class StringUtils {
-  public static truncateString(
-    str: string,
-    front: number,
-    back: number
-  ): string {
-    return `${str.substring(0, front)}...${str.substring(
-      str.length - back,
-      str.length
-    )}`;
+  public static truncateString(str: string, front: number, back: number): string {
+    return `${str.substring(0, front)}...${str.substring(str.length - back, str.length)}`;
   }
 
-  public static truncateText(
-    text: string,
-    maxLength: number,
-    ellipsis: string = "..."
-  ): string {
+  public static truncateText(text: string, maxLength: number, ellipsis: string = "..."): string {
     if (text.length <= maxLength) {
       return text;
     }

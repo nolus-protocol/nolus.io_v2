@@ -1,7 +1,7 @@
 <template>
   <DialogHeader :headerList="[title]">
     <div
-      class="overflow-auto w-full proposal-modal text-left"
+      class="proposal-modal w-full overflow-auto text-left"
       v-html="description"
     ></div>
   </DialogHeader>
@@ -27,7 +27,7 @@ const description = computed(() => {
   return marked.parse(props.source, {
     pedantic: true,
     gfm: true,
-    breaks: true,
+    breaks: true
   });
 });
 </script>
@@ -45,7 +45,7 @@ const description = computed(() => {
 
   ul {
     margin-bottom: 18px;
-    list-style:  unset;
+    list-style: unset;
   }
 
   h1 {
@@ -75,9 +75,9 @@ const description = computed(() => {
   }
 
   & {
-				scrollbar-width: thin;
-      scrollbar-color: #9c9c9c #f5f5f5;
-    }
+    scrollbar-width: thin;
+    scrollbar-color: #9c9c9c #f5f5f5;
+  }
 
   &::-webkit-scrollbar-track {
     background-color: #f5f5f5;
@@ -90,7 +90,7 @@ const description = computed(() => {
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #C1CAD7;
+    background-color: #c1cad7;
     border: solid 1px white;
     border-radius: 4px;
   }

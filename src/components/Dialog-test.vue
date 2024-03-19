@@ -1,5 +1,5 @@
 <template>
-  <div class="relative top-96 h-24 inset-0 z-[99999] flex items-center justify-center">
+  <div class="relative inset-0 top-96 z-[99999] flex h-24 items-center justify-center">
     <button
       type="button"
       @click="openModal"
@@ -8,12 +8,18 @@
       Open dialog
     </button>
   </div>
-  <TransitionRoot appear :show="isOpen" as="template">
-    <Dialog as="div" @close="closeModal" class="relative z-10">
+  <TransitionRoot
+    appear
+    :show="isOpen"
+    as="template"
+  >
+    <Dialog
+      as="div"
+      @close="closeModal"
+      class="relative z-10"
+    >
       <div class="fixed inset-0 overflow-y-auto">
-        <div
-          class="flex min-h-full items-center justify-center p-4 text-center"
-        >
+        <div class="flex min-h-full items-center justify-center p-4 text-center">
           <TransitionChild
             as="template"
             enter="duration-300 ease-out"
@@ -34,8 +40,8 @@
               </DialogTitle>
               <div class="mt-2">
                 <p class="text-sm text-gray-500">
-                  Your payment has been successfully submitted. We’ve sent you
-                  an email with all of the details of your order.
+                  Your payment has been successfully submitted. We’ve sent you an email with all of the details of your
+                  order.
                 </p>
               </div>
 
@@ -56,22 +62,16 @@
   </TransitionRoot>
 </template>
 
-<script setup>
-import { ref } from 'vue'
-import {
-  TransitionRoot,
-  TransitionChild,
-  Dialog,
-  DialogPanel,
-  DialogTitle,
-} from '@headlessui/vue'
+<script lang="ts" setup>
+import { ref } from "vue";
+import { TransitionRoot, TransitionChild, Dialog, DialogPanel, DialogTitle } from "@headlessui/vue";
 
-const isOpen = ref(true)
+const isOpen = ref(true);
 
 function closeModal() {
-  isOpen.value = false
+  isOpen.value = false;
 }
 function openModal() {
-  isOpen.value = true
+  isOpen.value = true;
 }
 </script>

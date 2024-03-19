@@ -1,4 +1,4 @@
-import { ProposalStatus,type Proposal } from "./Proposal";
+import { ProposalStatus, type Proposal } from "./Proposal";
 
 export const ProposalState: Proposal = {
   id: "",

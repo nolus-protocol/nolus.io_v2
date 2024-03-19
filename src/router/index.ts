@@ -1,38 +1,41 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import NotFound from "@/views/NotFound.vue";
-import { META as META_HOME } from "@/metadata/homepage";
-import { META as META_ABOUT } from "@/metadata/about";
-import { META as META_GOVERNANCE } from "@/metadata/governance";
+import { META as META_HOME } from "@/router/metadata/homepage";
+import { META as META_ABOUT } from "@/router/metadata/about";
+import { META as META_GOVERNANCE } from "@/router/metadata/governance";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
+  scrollBehavior(to, from, savedPosition) {
+    return { top: 0 }
+  },
   routes: [
     {
       path: "/",
       name: "home",
       component: HomeView,
-      meta: META_HOME,
+      meta: META_HOME
     },
     {
       path: "/about",
       name: "about",
       component: () => import("../views/AboutView.vue"),
-      meta: META_ABOUT,
+      meta: META_ABOUT
     },
     {
       path: "/governance",
       name: "governance",
       component: () => import("../views/GovernanceView.vue"),
-      meta: META_GOVERNANCE,
+      meta: META_GOVERNANCE
     },
     {
       path: "/:pathMatch(.*)*",
       name: "NotFound",
       component: NotFound,
-      meta: META_HOME,
-    }, // 404 template
-  ],
+      meta: META_HOME
+    } // 404 template
+  ]
 });
 
 router.beforeEach((to, from, next) => {

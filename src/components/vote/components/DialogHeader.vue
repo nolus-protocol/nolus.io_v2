@@ -5,7 +5,10 @@
     }"
     @click.stop
   >
-    <div v-if="showHeader" class="flex modal-header">
+    <div
+      v-if="showHeader"
+      class="modal-header flex"
+    >
       <!-- <template v-if="isTabLayout">
         <button
           v-for="(tab, index) of headerList"
@@ -18,13 +21,16 @@
       <div class="navigation-header">
         <button
           v-if="back"
-          class="align-baseline absolute left-0 top-2/4 -mt-3 px-4 md:px-10"
+          class="absolute left-0 top-2/4 -mt-3 px-4 align-baseline md:px-10"
           type="button"
           @click="backClick"
         >
-          <ArrowLeftIcon aria-hidden="true" class="h-6 w-6 text-primary" />
+          <ArrowLeftIcon
+            aria-hidden="true"
+            class="text-primary h-6 w-6"
+          />
         </button>
-        <h1 class="text-3xl font-bold mb-10">
+        <h1 class="mb-10 text-3xl font-bold">
           {{ headerList[0] }}
         </h1>
       </div>
@@ -96,7 +102,7 @@ function switchTab(index: number) {
 
 function setRoute(route: string) {
   const path = router.currentRoute.value.path;
-  console.log(path)
+  console.log(path);
   router.replace({
     path,
     hash: `#${route}`
@@ -109,7 +115,4 @@ function setShowDialogHeader(shouldShow: boolean) {
 
 provide("setShowDialogHeader", setShowDialogHeader);
 </script>
-<style lang="scss">
-
-
-</style>
+<style lang="scss"></style>
