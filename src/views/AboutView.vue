@@ -48,26 +48,20 @@
           >
             <div class="absolute top-4 -z-10 mx-auto w-9/12 sm:-right-8 lg:-right-20 lg:-top-20">
               <video
-                ref="videoRef"
+                class="h-auto w-full"
                 @loadeddata="isVideoLoaded = true"
-                @play="onVideoPlay"
                 muted
                 autoplay
                 playsinline
-                class="h-[1px] w-[1px]"
                 data-timing="7"
                 data-wait="240"
-                style="width: 840px"
-                v-motion
-                :initial="{ opacity: 0 }"
-                :enter="{ opacity: 1 }"
-                :delay="100"
-              ></video>
-              <canvas
-                ref="canvasRef"
-                :class="{ invisible: !isVideoLoaded, visible: isVideoLoaded }"
-                class="h-full w-full"
-              ></canvas>
+                loop
+              >
+                <!-- <source
+                  :src="videoSrc"
+                  type="video/mp4"
+                /> -->
+              </video>
             </div>
           </div>
         </NolusContainer>
@@ -82,12 +76,11 @@
               :key="index"
               class="md:basis-1/3"
             >
-              <component
-                :is="item.icon"
-                class="h-24 w-24"
-              ></component>
-              <h2 class="mb-3 mt-8 text-3xl font-bold tracking-tight text-neutral-900 sm:text-2xl">{{ item.name }}</h2>
-              <p class="text-md leading-7 text-neutral-800">{{ item.description }}</p>
+              <Feature
+                :name="item.name"
+                :description="item.description"
+                :icon="item.icon"
+              />
             </div>
           </div>
         </div>
@@ -149,62 +142,62 @@
           >
             <img
               class="mx-auto w-4/5"
-              src="/assets/images/about/partners/cogitent_ventures.png"
+              src="@/assets/images/about/partners/cogitent_ventures.png"
               alt="Cogitent Ventures"
             />
             <img
               class="mx-auto w-4/5"
-              src="/assets/images/about/partners/cointelegraph.svg"
+              src="@/assets/images/about/partners/cointelegraph.svg?url"
               alt="CoinTelegraph"
             />
             <img
               class="mx-auto w-4/5"
-              src="/assets/images/about/partners/dorahacks.svg"
+              src="@/assets/images/about/partners/dorahacks.svg?url"
               alt="DoraHacks"
             />
             <img
               class="mx-auto w-4/5"
-              src="/assets/images/about/partners/tokenmetrics.svg"
+              src="@/assets/images/about/partners/tokenmetrics.svg?url"
               alt="TokenMetrics"
             />
             <img
               class="mx-auto w-4/5"
-              src="/assets/images/about/partners/kahuna.svg"
+              src="@/assets/images/about/partners/kahuna.svg?url"
               alt="Kahuna"
             />
             <img
               class="mx-auto w-4/5"
-              src="/assets/images/about/partners/everstake.svg"
+              src="@/assets/images/about/partners/everstake.svg?url"
               alt="Everstake"
             />
             <img
               class="mx-auto w-4/5"
-              src="/assets/images/about/partners/block_builders.svg"
+              src="@/assets/images/about/partners/block_builders.svg?url"
               alt="BlockBuilders"
             />
             <img
               class="mx-auto w-4/5"
-              src="/assets/images/about/partners/gt_capital.svg"
+              src="@/assets/images/about/partners/gt_capital.svg?url"
               alt="GT Capital"
             />
             <img
               class="mx-auto w-4/5"
-              src="/assets/images/about/partners/01node.svg"
+              src="@/assets/images/about/partners/01node.svg?url"
               alt="01Node"
             />
             <img
               class="mx-auto w-4/5"
-              src="/assets/images/about/partners/autonomy_capital.svg"
+              src="@/assets/images/about/partners/autonomy_capital.svg?url"
               alt="Autonomy Capital"
             />
             <img
               class="mx-auto w-4/5"
-              src="/assets/images/about/partners/nacion_crypto.svg"
+              src="@/assets/images/about/partners/nacion_crypto.svg?url"
               alt="NAcion Crypto"
             />
             <img
               class="mx-auto w-4/5"
-              src="/assets/images/about/partners/p-ops_team.png"
+              src="@/assets/images/about/partners/p-ops_team.png"
               alt="P-OPS Team"
             />
           </div>
@@ -215,22 +208,26 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, onUnmounted, ref } from "vue";
+import { ref } from "vue";
 import NolusContainer from "@/components/NolusContainer.vue";
-// Icons
-import animatedLogo from "@/assets/videos/about-header.mp4";
-import videoPoster from "@/assets/videos/header.jpg";
-// Illustrations
-import icon1 from "@/assets/images/about/icon1.svg";
-import icon2 from "@/assets/images/about/icon2.svg";
-import icon3 from "@/assets/images/about/icon3.svg";
+import icon1 from "@/assets/lotties/mission.json?url";
+import icon2 from "@/assets/lotties/vision.json?url";
+import icon3 from "@/assets/lotties/values.json?url";
+import Feature from "../components/Feature.vue";
+import videoSrc from "@/assets/videos/about-header.mp4";
+import contributors1 from "@/assets/images/about/team/kamen_trendafilov.jpg";
+import contributors2 from "@/assets/images/about/team/gancho_manev.jpg";
+import contributors3 from "@/assets/images/about/team/ivan_kostov.jpg";
+import contributors4 from "@/assets/images/about/team/bilyana_christova.jpg";
+import contributors5 from "@/assets/images/about/team/metodi_manov.jpg";
+import contributors6 from "@/assets/images/about/team/simon_chadwick.jpg";
+import contributors7 from "@/assets/images/about/team/nena_alba.jpg";
+import contributors8 from "@/assets/images/about/team/ves_zahariev.jpg";
+import contributors9 from "@/assets/images/about/team/krum_christov.jpg";
 
 // Logo dependencies
-const videoRef = ref(null);
-const canvasRef = ref(null);
 const isVideoLoaded = ref(false);
 let heroWrapper = ref(null);
-let intervalId: number | null | undefined = null;
 
 // Define vision, mission and values
 const visionMisionAndValues = [
@@ -260,63 +257,63 @@ const core_contributors = [
   {
     name: "Kamen Trendafilov",
     role: "Finance",
-    imageUrl: "/assets/images/about/team/kamen_trendafilov.jpg",
+    imageUrl: contributors1,
     xUrl: "",
     discordUrl: ""
   },
   {
     name: "Gancho Manev",
     role: "Tech Lead",
-    imageUrl: "/assets/images/about/team/gancho_manev.jpg",
+    imageUrl: contributors2,
     xUrl: "",
     discordUrl: ""
   },
   {
     name: "Ivan Kostov",
     role: "Product Development",
-    imageUrl: "/assets/images/about/team/ivan_kostov.jpg",
+    imageUrl: contributors3,
     xUrl: "",
     discordUrl: ""
   },
   {
     name: "Bilyana Christova",
     role: "Business Development",
-    imageUrl: "/assets/images/about/team/bilyana_christova.jpg",
+    imageUrl: contributors4,
     xUrl: "",
     discordUrl: ""
   },
   {
     name: "Metodi Manov",
     role: "Product Development",
-    imageUrl: "/assets/images/about/team/metodi_manov.jpg",
+    imageUrl: contributors5,
     xUrl: "",
     discordUrl: ""
   },
   {
     name: "Simon Chadwick",
     role: "Investor Relations",
-    imageUrl: "/assets/images/about/team/simon_chadwick.jpg",
+    imageUrl: contributors6,
     xUrl: "",
     discordUrl: ""
   },
   {
     name: "Nena Alba",
     role: "Growth",
-    imageUrl: "/assets/images/about/team/nena_alba.jpg",
+    imageUrl: contributors7,
     xUrl: "",
     discordUrl: ""
   },
   {
     name: "Ves Zahariev",
     role: "Social & Marketing",
-    imageUrl: "/assets/images/about/team/ves_zahariev.jpg",
+    imageUrl: contributors8,
     xUrl: "",
     discordUrl: ""
   },
   {
     name: "Krum Christov",
     role: "Community & Marketing",
-    imageUrl: "/assets/images/about/team/krum_christov.jpg",
+    imageUrl: contributors9,
     xUrl: "",
     discordUrl: ""
   }
@@ -357,43 +354,4 @@ const other_contributors = [
     role: "Data Scientist"
   }
 ];
-
-onMounted(() => {
-  if (window.matchMedia("(min-width: 768px)").matches) {
-    const source = document.createElement("source");
-    source.src = animatedLogo;
-    source.type = "video/mp4";
-    videoRef.value.appendChild(source);
-
-    let video = videoRef.value;
-    let canvas = canvasRef.value;
-    let context = canvas.getContext("2d", { willReadFrequently: true });
-
-    video.addEventListener("loadeddata", () => {
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
-    });
-
-    video.addEventListener("play", () => {
-      intervalId = setInterval(() => {
-        context.drawImage(video, 0, 0, canvas.width, canvas.height);
-        let pixelData = context.getImageData(10, 10, 1, 1).data;
-        let color = `${pixelData[0]},${pixelData[1]},${pixelData[2]}`;
-        if (heroWrapper.value) {
-          heroWrapper.value.style.backgroundColor = `rgb(${color})`;
-        }
-      }, 30); // Capture every second
-    });
-  }
-});
-
-onUnmounted(() => {
-  if (intervalId) {
-    clearInterval(intervalId);
-  }
-  if (videoRef.value) {
-    videoRef.value.removeEventListener("loadeddata");
-    videoRef.value.removeEventListener("play");
-  }
-});
 </script>

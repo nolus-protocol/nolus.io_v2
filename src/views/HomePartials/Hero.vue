@@ -114,10 +114,9 @@
       <Modal
         :show="showVideoDialog"
         :variant="'video'"
-        :width="'sm:w-full md:w-2/3'"
         @close-modal="showVideoDialog = false"
       >
-        <videoModal />
+        <VideoModal />
       </Modal>
     </div>
   </div>

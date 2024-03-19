@@ -112,7 +112,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, defineProps } from "vue";
+import { ref, onMounted } from "vue";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/vue";
 import data from "../../rss-server/data/data.json";
 import ChevronDownSmallIcon from "@/assets/icons/chevron-down-small.svg";

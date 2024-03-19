@@ -319,7 +319,7 @@
 
 <script lang="ts" setup>
 import type { Proposal } from "@/components/vote/Proposal";
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted, onUnmounted, ref } from "vue";
 import { Dec } from "@keplr-wallet/unit";
 import { MAINNET_RPC } from "@/config";
 
@@ -327,17 +327,21 @@ import NolusContainer from "@/components/NolusContainer.vue";
 import Button from "@/components/Button.vue";
 import ProposalItem from "@/components/vote/components/ProposalItem.vue";
 import ProposalReadMoreDialog from "@/components/vote/components/ProposalReadMoreDialog.vue";
-import Modal from "@/components/vote/components/Modal.vue";
+import Modal from "@/components/modals/templates/Modal.vue";
 import PlusSmallIcon from "@/assets/icons/plus-small.svg";
 
 const stats = [
-  { description: "Maintain the Nolus blockchain integrity and sustain the network's liveness", value: "50 Validators", id: 1 },
+  {
+    description: "Maintain the Nolus blockchain integrity and sustain the network's liveness",
+    value: "50 Validators",
+    id: 1
+  },
   { description: "Actively engage in governing the protocol's development", value: "3,454 Delegators", id: 2 },
   { description: "NLS tokens providing economic security to the Nolus blockchain", value: "272M", id: 3 }
 ];
 
 let myCanvas = ref<HTMLCanvasElement | null>();
-// let dotColor = "13,55,127"; // Change this to control the color of the dots
+let dotColor = "13,55,127"; // Change this to control the color of the dots
 
 const bondedTokens = ref(new Dec(0));
 const quorum = ref(new Dec(0));
@@ -358,69 +362,79 @@ const state = ref({
   }
 });
 
+let interval: number;
 const proposals = ref([] as Proposal[]);
+const dots: {
+  x: number;
+  y: number;
+  opacity: number;
+  direction: number;
+}[] = [];
 
 onMounted(async () => {
-  // let canvas = myCanvas.value;
-  // if (canvas) {
-  //   let ctx = canvas.getContext("2d")!;
-  //   let dotRadius = 7 / 2;
-  //   let dotSpacingX = 32; // Horizontal spacing
-  //   let dotSpacingY = 18; // Vertical spacing
-  //   let lineOffset = 16;
+  let canvas = myCanvas.value;
 
-  //   let canvasWidth = 730;
-  //   let canvasHeight = 730;
-  //   let devicePixelRatio = window.devicePixelRatio || 1;
-  //   canvas.width = canvasWidth * devicePixelRatio;
-  //   canvas.height = canvasHeight * devicePixelRatio;
-  //   canvas.style.width = `${canvasWidth}px`;
-  //   canvas.style.height = `${canvasHeight}px`;
-  //   ctx.scale(devicePixelRatio, devicePixelRatio);
+  if (canvas) {
+    let ctx = canvas.getContext("2d")!;
+    let dotSpacingX = 32; // Horizontal spacing
+    let dotSpacingY = 18; // Vertical spacing
+    let lineOffset = 16;
 
-  //   let dots = [];
+    let canvasWidth = 730;
+    let canvasHeight = 730;
+    let devicePixelRatio = window.devicePixelRatio || 1;
+    canvas.width = canvasWidth * devicePixelRatio;
+    canvas.height = canvasHeight * devicePixelRatio;
+    canvas.style.width = `${canvasWidth}px`;
+    canvas.style.height = `${canvasHeight}px`;
+    ctx.scale(devicePixelRatio, devicePixelRatio);
 
-  //   for (let y = 0; y < canvas.height; y += dotSpacingY) {
-  //     let xOffset = y % (2 * dotSpacingY) === 0 ? lineOffset : 0;
-  //     for (let x = xOffset; x < canvas.width; x += dotSpacingX) {
-  //       let dot = {
-  //         x: x,
-  //         y: y,
-  //         opacity: Math.random(),
-  //         direction: Math.random() < 0.5 ? -1 : 1
-  //       };
-  //       dots.push(dot);
-  //     }
-
-  //     function animate() {
-  //       ctx.clearRect(0, 0, canvas!.width, canvas!.height);
-
-  //       dots.forEach((dot) => {
-  //         ctx.beginPath();
-  //         ctx.arc(dot.x, dot.y, dotRadius, 0, Math.PI * 2, true);
-  //         ctx.fillStyle = `rgba(${dotColor},${dot.opacity})`;
-  //         ctx.fill();
-
-  //         // Update dot opacity
-  //         dot.opacity += dot.direction * 0.005;
-  //         if (dot.opacity > 1) {
-  //           dot.opacity = 1;
-  //           dot.direction = -1;
-  //         } else if (dot.opacity < 0) {
-  //           dot.opacity = 0;
-  //           dot.direction = 1;
-  //         }
-  //       });
-
-  //       requestAnimationFrame(animate);
-  //     }
-
-  //     animate();
-  //   }
-  // }
+    for (let y = 0; y < canvas.height; y += dotSpacingY) {
+      let xOffset = y % (2 * dotSpacingY) === 0 ? lineOffset : 0;
+      for (let x = xOffset; x < canvas.width; x += dotSpacingX) {
+        let dot = {
+          x: x,
+          y: y,
+          opacity: Math.random(),
+          direction: Math.random() < 0.5 ? -1 : 1
+        };
+        dots.push(dot);
+      }
+    }
+    animate();
+    interval = setInterval(animate, 100);
+  }
 
   await Promise.allSettled([fetchGovernanceProposals(), loadBondedTokens(), loadTallying()]);
 });
+
+onUnmounted(() => {
+  clearInterval(interval);
+})
+
+function animate() {
+  let canvas = myCanvas.value;
+  let ctx = canvas!.getContext("2d")!;
+  let dotRadius = 7 / 2;
+  ctx.clearRect(0, 0, canvas!.width, canvas!.height);
+
+  dots.forEach((dot) => {
+    ctx.beginPath();
+    ctx.arc(dot.x, dot.y, dotRadius, 0, Math.PI * 2, true);
+    ctx.fillStyle = `rgba(${dotColor},${dot.opacity})`;
+    ctx.fill();
+
+    // Update dot opacity
+    dot.opacity += dot.direction * 0.005;
+    if (dot.opacity > 1) {
+      dot.opacity = 1;
+      dot.direction = -1;
+    } else if (dot.opacity < 0) {
+      dot.opacity = 0;
+      dot.direction = 1;
+    }
+  });
+}
 
 const loadBondedTokens = async () => {
   const res = await fetch(`${MAINNET_RPC}/cosmos/staking/v1beta1/pool`);

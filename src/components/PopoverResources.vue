@@ -60,7 +60,6 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps } from "vue";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/vue";
 import ChevronDownSmallIcon from "@/assets/icons/chevron-down-small.svg";
 import GithubIcon from "../assets/icons/github.svg";

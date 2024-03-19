@@ -8,9 +8,9 @@
       aria-label="Global"
     >
       <div class="flex lg:flex-1">
-        <a
+        <router-link
           class="flex h-8 w-auto items-center p-4"
-          href="/"
+          to="/"
         >
           <span class="sr-only">Nolus Protocol</span>
           <component
@@ -26,7 +26,7 @@
             alt=""
             aria-hidden="true"
           ></component>
-        </a>
+        </router-link>
       </div>
       <div class="flex lg:hidden">
         <button

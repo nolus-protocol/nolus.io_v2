@@ -4,8 +4,7 @@
       <div
         v-if="show"
         ref="modal"
-        class="fixed bottom-0 left-0 right-0 top-0 z-[999999999] flex items-start justify-center bg-neutral-600/80 backdrop-blur-sm"
-        style="-webkit-overflow-scrolling: touch"
+        class="fixed bottom-0 left-0 right-0 top-0 z-[999999999] flex items-start justify-center bg-neutral-600/80 backdrop-blur-sm items-center"
         @keydown.esc="onModalClose"
         @click="onModalClose"
       >
@@ -16,16 +15,16 @@
           <XMarkIcon class="z-[5] inline-block h-8 w-8" />
         </button>
         <div
-          class="h-full w-full overflow-scroll py-12"
-          :class="variant === 'video' && 'flex items-center justify-center'"
+          class="mt-0 lg:mt-12 h-full w-full max-w-3xl overflow-hidden bg-white md:rounded-xl lg:h-[85vh] mb-0 lg:mb-12"
+          :class="variant === 'video' && 'flex items-center justify-center lg:h-auto h-auto lg:mt-[0px] bg-transparent'"
           v-motion
           :initial="{ opacity: 0, y: 100 }"
-          :enter="{ opacity: 1, y: 0, scale: 1, transition: { duration: 400 } }"
-          :leave="{ opacity: 0, y: 100, scale: 0, transition: { duration: 400 } }"
+          :enter="{ opacity: 1, y: 0, transition: { duration: 100 } }"
+          :leave="{ opacity: 0, y: 100, transition: { duration: 100 } }"
         >
           <div
-            class="relative mx-auto flex w-full flex-col items-center justify-start overflow-clip bg-white shadow-xl md:rounded-xl"
-            :class="[width, variant !== 'video' && 'p-12']"
+            class="scroll relative h-full w-full overflow-y-auto break-all p-8 lg:p-12 shadow-xl"
+            :class="[width, variant === 'video' && 'p-0 flex items-center p-[0px]']"
             @click.stop
           >
             <slot></slot>
@@ -39,7 +38,7 @@
 <style scoped>
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.5s ease;
+  transition: opacity 0.2s ease;
 }
 
 .fade-enter-from,
@@ -53,7 +52,10 @@ import { onMounted, nextTick, onUnmounted, provide, watch, defineProps, ref, wat
 import { XMarkIcon } from "@heroicons/vue/24/solid";
 
 const modal = ref<HTMLElement | null>(null);
-let previousActiveElement: HTMLElement | null, focusableElements: NodeListOf<HTMLElement> | undefined, firstFocusableElement: HTMLElement | undefined, lastFocusableElement: HTMLElement | undefined;
+let previousActiveElement: HTMLElement | null,
+  focusableElements: NodeListOf<HTMLElement> | undefined,
+  firstFocusableElement: HTMLElement | undefined,
+  lastFocusableElement: HTMLElement | undefined;
 
 const emit = defineEmits(["close-modal"]);
 const props = defineProps({
@@ -129,3 +131,28 @@ onUnmounted(() => {
 provide("onModalClose", onModalClose);
 defineExpose({ onModalClose });
 </script>
+
+<style lang="scss">
+.scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: #f5f5f5;
+}
+
+/* Track */
+.scroll::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
+}
+
+/* Handle */
+.scroll::-webkit-scrollbar-thumb {
+  background-color: #c1cad7;
+  border: solid 1px white;
+  border-radius: 4px;
+}
+
+/* Handle on hover */
+.scroll::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+</style>

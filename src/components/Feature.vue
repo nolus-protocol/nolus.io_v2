@@ -2,7 +2,7 @@
   <div @mouseenter="play">
     <div
       ref="animationRef"
-      class="h-[100px] w-[100px]"
+      class="h-[128px] w-[128px]"
     ></div>
     <h3 class="mb-3 mt-8 text-3xl font-bold tracking-tight text-neutral-900 sm:text-2xl">
       {{ name }}
