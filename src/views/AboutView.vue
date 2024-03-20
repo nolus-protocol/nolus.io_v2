@@ -55,7 +55,6 @@
                 playsinline
                 data-timing="7"
                 data-wait="240"
-                loop
               >
                 <source
                   :src="videoSrc"
