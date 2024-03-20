@@ -121,7 +121,7 @@ const tabs = [
   {
     tabName: "Earn",
     tabIcon: EarnIcon,
-    heading: "Earn Real Yield on Your Idle Assets",
+    heading: "Earn up to 15% APY on Your Idle Assets",
     content:
       "Lend your idle assets for sustainable high-yield returns that vary between 8-15% APY, no matter the market conditions",
     tabImage: EarnImage
@@ -185,7 +185,7 @@ const setActiveTab = async (index: number) => {
 const startInterval = () => {
   intervalId = setInterval(() => {
     activeTab.value = (activeTab.value + 1) % tabs.length;
-  }, 5000);
+  }, 10000);
 };
 
 // Stop the timer
