@@ -185,7 +185,7 @@ const setActiveTab = async (index: number) => {
 const startInterval = () => {
   intervalId = setInterval(() => {
     activeTab.value = (activeTab.value + 1) % tabs.length;
-  }, 5000);
+  }, 10000);
 };
 
 // Stop the timer
