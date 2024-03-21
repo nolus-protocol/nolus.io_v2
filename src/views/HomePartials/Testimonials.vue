@@ -61,7 +61,7 @@ const testimonials = [
     body: "By combining efficient lending practices with novel features like reduced liquidation thresholds and the partial liquidation mechanism, Nolus offers a safer and more intuitive experience for crypto traders looking to leverage DeFi opportunities",
     author: {
       name: "CoinTelegraph",
-      where: "https://cointelegraph.com/",
+      where: "Cointelegraph.com",
       link: "https://cointelegraph.com/news/how-is-defi-margin-trading-getting-safer-with-this-cross-chain-protocol"
     }
   },
@@ -70,12 +70,30 @@ const testimonials = [
     body: "Overcollateralized loans lock up collateral that could be used to minimize counterparty risk. DeFi leasing on Nolus mitigates against this",
     author: {
       name: "Decrypt",
-      where: "https://decrypt.co/",
+      where: "Decrypt.co",
       link: "https://decrypt.co/resources/what-is-nolus-how-the-defi-leasing-platform-simplifies-crypto-lending"
     }
   },
   {
     id: 3,
+    body: "The protocol’s unique approach to financing, combined with its native NLS token’s utility and governance features, creates a compelling ecosystem that incentivizes participation and growth",
+    author: {
+      name: "Blockonomi",
+      where: "Blockonomi.com",
+      link: "https://blockonomi.com/nolus/"
+    }
+  },
+  {
+    id: 4,
+    body: "Nolus doesn’t reactively liquidate users’ assets when prices fall either. Instead, it liquidates a small percentage (“partial liquidations”) to restore leases to healthy levels",
+    author: {
+      name: "Coingape",
+      where: "Coingape.com",
+      link: "https://coingape.com/blog/the-lay-of-the-land-in-crypto-lending-borrowing-what-to-know-for-todays-bull-run/"
+    }
+  },
+  {
+    id: 5,
     body: "In our opinion, Nolus has the potential for significant growth as it seeks to address the limitations of current lending options in the crypto market and offers innovative solutions through its DeFi Lease and Nolus Protocol",
     author: {
       name: "Token Metrics",
@@ -84,7 +102,7 @@ const testimonials = [
     }
   },
   {
-    id: 4,
+    id: 6,
     body: "Interchain account based liquidations on Osmosis. Pretty cool",
     author: {
       name: "Zaki ⚛️🍷",
@@ -93,7 +111,7 @@ const testimonials = [
     }
   },
   {
-    id: 5,
+    id: 7,
     body: "No matter the price in the short term, always look for opportunities from teams who are building and growing the ecosystem! NolusProtocol is a young project, and its had huge growth across the board",
     author: {
       name: "Coach K Crypto",
@@ -102,7 +120,7 @@ const testimonials = [
     }
   },
   {
-    id: 6,
+    id: 8,
     body: 'I like to call Nolus the "green-candle" appchain. In short, if you\'re bullish on an asset like ATOM or TIA but don\'t have as much money as you\'d like to invest, Nolus allows you to "lock the current price," buy, and unlock the assets afterwards',
     author: {
       name: "tøny",
@@ -111,7 +129,7 @@ const testimonials = [
     }
   },
   {
-    id: 7,
+    id: 9,
     body: "Thanks to Nolus Protocol I am getting low-risk leveraged exposure and staking yield",
     author: {
       name: "Degèn Dantès",
