@@ -9,14 +9,14 @@ export const META = {
   "og:title": "Nolus - Exemplifying the Best of Community Governance",
   "og:description":
     "Built on a Proof-of-Stake blockchain, where the community also plays a pivotal role in driving decentralization and enhancing security",
-  "og:image": "",
+  "og:image": "https://nolus.io/assets/images/meta/governance-meta.png",
 
   "twitter:card": "summary_large_image",
   "twitter:url": "https://nolus.io/governance",
   "twitter:title": "Nolus - Exemplifying the Best of Community Governance",
   "twitter:description":
     "Built on a Proof-of-Stake blockchain, where the community also plays a pivotal role in driving decentralization and enhancing security",
-  "twitter:image": "",
+  "twitter:image": "https://nolus.io/assets/images/meta/governance-meta.png",
 
   "script-organisation": {
     "@context": "https://schema.org",

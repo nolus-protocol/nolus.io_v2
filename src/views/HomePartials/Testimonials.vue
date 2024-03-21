@@ -61,7 +61,7 @@ const testimonials = [
     body: "By combining efficient lending practices with novel features like reduced liquidation thresholds and the partial liquidation mechanism, Nolus offers a safer and more intuitive experience for crypto traders looking to leverage DeFi opportunities",
     author: {
       name: "CoinTelegraph",
-      where: "Cointelegraph.com",
+      where: "https://cointelegraph.com",
       link: "https://cointelegraph.com/news/how-is-defi-margin-trading-getting-safer-with-this-cross-chain-protocol"
     }
   },
@@ -70,7 +70,7 @@ const testimonials = [
     body: "Overcollateralized loans lock up collateral that could be used to minimize counterparty risk. DeFi leasing on Nolus mitigates against this",
     author: {
       name: "Decrypt",
-      where: "Decrypt.co",
+      where: "https://decrypt.co",
       link: "https://decrypt.co/resources/what-is-nolus-how-the-defi-leasing-platform-simplifies-crypto-lending"
     }
   },
@@ -79,7 +79,7 @@ const testimonials = [
     body: "The protocol’s unique approach to financing, combined with its native NLS token’s utility and governance features, creates a compelling ecosystem that incentivizes participation and growth",
     author: {
       name: "Blockonomi",
-      where: "Blockonomi.com",
+      where: "https://blockonomi.com",
       link: "https://blockonomi.com/nolus/"
     }
   },
@@ -88,7 +88,7 @@ const testimonials = [
     body: "Nolus doesn’t reactively liquidate users’ assets when prices fall either. Instead, it liquidates a small percentage (“partial liquidations”) to restore leases to healthy levels",
     author: {
       name: "Coingape",
-      where: "Coingape.com",
+      where: "https://coingape.com",
       link: "https://coingape.com/blog/the-lay-of-the-land-in-crypto-lending-borrowing-what-to-know-for-todays-bull-run/"
     }
   },

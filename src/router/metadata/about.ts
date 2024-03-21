@@ -9,14 +9,14 @@ export const META = {
   "og:title": "Nolus - Reshaping Money Markets",
   "og:description":
     "Through Lease, borrowers get up to 150% financing while keeping access to leveraged assets, enabling lenders to earn #RealYield on idle assets",
-  "og:image": "",
+  "og:image": "https://nolus.io/assets/images/meta/about-meta.png",
 
   "twitter:card": "summary_large_image",
   "twitter:url": "https://nolus.io/about",
   "twitter:title": "Nolus - Reshaping Money Markets",
   "twitter:description":
     "Through Lease, borrowers get up to 150% financing while keeping access to leveraged assets, enabling lenders to earn #RealYield on idle assets",
-  "twitter:image": "",
+  "twitter:image": "https://nolus.io/assets/images/meta/about-meta.png",
 
   "script-organisation": {
     "@context": "https://schema.org",
