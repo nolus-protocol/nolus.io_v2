@@ -231,13 +231,13 @@ let heroWrapper = ref(null);
 // Define vision, mission and values
 const visionMisionAndValues = [
   {
-    icon: icon2,
+    icon: icon1,
     name: "Mission",
     description:
       "Nolus is dedicated to effectively addressing inefficiencies in lending markets through innovative, convenient, and sustainable solutions. Leveraging the power of blockchain technology, Nolus is at the forefront of pioneering in decentralized finance"
   },
   {
-    icon: icon1,
+    icon: icon2,
     name: "Vision",
     description:
       "We envision a future where all assets are tokenized on-chain, offering people efficiency in managing their funds. At Nolus, we gaze into the future which is why we designed all protocol offerings to be seamless, secure and instant",

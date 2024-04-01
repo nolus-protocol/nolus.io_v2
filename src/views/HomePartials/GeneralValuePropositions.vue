@@ -33,8 +33,8 @@ import NolusContainer from "../../components/NolusContainer.vue";
 import Feature from "../../components/Feature.vue";
 
 import icon1 from "@/assets/lotties/cost-efficient.json?url";
-import icon2 from "@/assets/lotties/effortless.json?url";
-import icon3 from "@/assets/lotties/less-risk.json?url";
+import icon2 from "@/assets/lotties/less-risk.json?url";
+import icon3 from "@/assets/lotties/effortless.json?url";
 
 const features = [
   {
