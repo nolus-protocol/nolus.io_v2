@@ -101,7 +101,7 @@ const solutions = [
   {
     name: "Brand Assets",
     description: "Playbook for holistic Nolus",
-    href: "https://drive.google.com/drive/folders/1kJb93A7jxTXM5_2qPyP5ZiooH8ODP253?usp=sharing",
+    href: "/Nolus-Brandkit.pdf",
     icon: ColorPaletteIcon
   }
 ];
