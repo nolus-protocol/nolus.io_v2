@@ -135,8 +135,15 @@
   <script>
     if (navigator.userAgent.indexOf('Mac OS X') != -1) {
       document.documentElement.style.setProperty('--bg-banner-home', `#edf2f4`);
-      document.documentElement.style.setProperty('--bg-banner-about', `#2b4288`);
-    }
+      if(window.safari){
+            document.documentElement.style.setProperty('--bg-banner-about', `#2b4287`);
+      }else if(/(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+            console.log('enter')
+            document.documentElement.style.setProperty('--bg-banner-about', `#273a7c`);
+      }else {
+            document.documentElement.style.setProperty('--bg-banner-about', `#2b4288`);
+      }
+}
   </script>
 </head>
 
