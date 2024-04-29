@@ -126,13 +126,13 @@ const tabs = [
       "Lend your idle assets for sustainable high-yield returns that vary between 8-15% APY, no matter the market conditions",
     tabImage: EarnImage
   },
-  // {
-  //   tabName: 'Swap',
-  //   tabIcon: SwapIcon,
-  //   heading: 'Seamless Cross-Chain Swaps',
-  //   content: 'Effortlessly exchange various assets without the hassle and complexity of bridging across chains',
-  //   tabImage: SwapImage
-  // },
+  {
+    tabName: 'Swap',
+    tabIcon: SwapIcon,
+    heading: 'Seamless Cross-Chain Swaps',
+    content: 'Effortlessly exchange various assets without the hassle and complexity of bridging across chains',
+    tabImage: SwapImage
+  },
   {
     tabName: "Delegate",
     tabIcon: DelegateIcon,
