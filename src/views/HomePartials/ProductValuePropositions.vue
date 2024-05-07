@@ -105,10 +105,12 @@ import LeaseIcon from "@/assets/icons/lease.svg";
 import EarnIcon from "@/assets/icons/earn.svg";
 import DelegateIcon from "@/assets/icons/delegate.svg";
 import GovernIcon from "@/assets/icons/govern.svg";
+import SwapIcon from "@/assets/icons/swap.svg";
 import LeaseImage from "../../assets/images/product-value-propositions/lease.webp";
 import EarnImage from "../../assets/images/product-value-propositions/earn.webp";
 import DelegateImage from "../../assets/images/product-value-propositions/delegate.webp";
 import GovernImage from "../../assets/images/product-value-propositions/govern.webp";
+import SwapImage from "../../assets/images/product-value-propositions/swap.webp";
 
 const tabs = [
   {
