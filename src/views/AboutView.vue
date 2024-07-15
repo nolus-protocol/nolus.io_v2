@@ -222,7 +222,7 @@ import contributors5 from "@/assets/images/about/team/metodi_manov.jpg";
 import contributors6 from "@/assets/images/about/team/simon_chadwick.jpg";
 import contributors7 from "@/assets/images/about/team/nena_alba.jpg";
 import contributors8 from "@/assets/images/about/team/ves_zahariev.jpg";
-import contributors9 from "@/assets/images/about/team/krum_christov.jpg";
+import contributors9 from "@/assets/images/about/team/monika_angelova.jpg";
 
 // Logo dependencies
 const isVideoLoaded = ref(false);
@@ -310,7 +310,7 @@ const core_contributors = [
     discordUrl: ""
   },
   {
-    name: "Krum Christov",
+    name: "Monika Angelova",
     role: "Community & Marketing",
     imageUrl: contributors9,
     xUrl: "",
