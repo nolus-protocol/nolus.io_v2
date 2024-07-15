@@ -310,7 +310,7 @@ const core_contributors = [
     discordUrl: ""
   },
   {
-    name: "Monika Angelova",
+    name: "Monika Angelova ",
     role: "Community & Marketing",
     imageUrl: contributors9,
     xUrl: "",
