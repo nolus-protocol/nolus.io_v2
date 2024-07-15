@@ -161,6 +161,11 @@
             />
             <img
               class="mx-auto w-4/5"
+              src="@/assets/images/about/partners/interop.svg?url"
+              alt="Interop Ventures"
+            />
+            <img
+              class="mx-auto w-4/5"
               src="@/assets/images/about/partners/kahuna.svg?url"
               alt="Kahuna"
             />
@@ -178,11 +183,6 @@
               class="mx-auto w-4/5"
               src="@/assets/images/about/partners/gt_capital.svg?url"
               alt="GT Capital"
-            />
-            <img
-              class="mx-auto w-4/5"
-              src="@/assets/images/about/partners/01node.svg?url"
-              alt="01Node"
             />
             <img
               class="mx-auto w-4/5"
