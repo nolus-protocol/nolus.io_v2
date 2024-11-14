@@ -19,7 +19,7 @@
           :enter="{ opacity: 1, y: 0, scale: 1 }"
           :delay="100"
         >
-          Cross-Chain Smart Leverage
+          Smart Leverage for Smart Portfolios
         </h1>
 
         <p
@@ -29,7 +29,7 @@
           :enter="{ opacity: 1, y: 0, scale: 1 }"
           :delay="300"
         >
-          Lever up smart with fixed interest and minimized margin call risk for optimal returns
+        Lever up with fixed interest rates and minimized margin call exposure for optimal returns
         </p>
 
         <div
