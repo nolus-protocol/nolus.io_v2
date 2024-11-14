@@ -22,9 +22,7 @@
               <span class="w-9 rounded-full bg-green-400 p-2"><CheckIcon class="w-full text-white" /></span>
               <span class="text-lg font-medium leading-5">
                 <span class="block">{{ audit.name }}</span>
-                <span class="text-sm font-light"
-                  >by <a href="https://www.oaksecurity.io/">{{ audit.auditor }}</a></span
-                >
+                <span class="text-sm font-light"> by {{ audit.auditor }}</span>
               </span>
             </div>
             <Button

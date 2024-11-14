@@ -26,8 +26,8 @@
                   :enter="{ opacity: 1, y: 0, scale: 1 }"
                   :delay="200"
                 >
-                  Nolus bridges lenders and borrowers in the DeFi money market. With lease, borrowers secure up to 150%
-                  financing and retain access to leveraged assets via whitelisted strategies
+                Nolus Protocol brings a fresh perspective to money markets, featuring a novel Web3 lease-based approach that propels DeFi forward.
+                This model reduces the high over-collateralization demands typical of the industry, delivering better capital efficiency and more attractive lending options
                 </p>
                 <p
                   class="relative mt-6 basis-1/2 text-lg leading-8 text-white sm:max-w-md lg:max-w-lg"
@@ -36,8 +36,8 @@
                   :enter="{ opacity: 1, y: 0, scale: 1 }"
                   :delay="300"
                 >
-                  Inspired by traditional finance, Nolus' lease reduces high over-collateralization standards, enhancing
-                  capital efficiency, and improving loan terms for borrowers
+                Nolus' DeFi Lease enables up to 150% financing on initial investments with reduced margin call risks
+                and access to underlying leveraged assets via curated yield-bearing strategies
                 </p>
               </div>
             </div>

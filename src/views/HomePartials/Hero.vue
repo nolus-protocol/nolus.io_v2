@@ -19,7 +19,7 @@
           :enter="{ opacity: 1, y: 0, scale: 1 }"
           :delay="100"
         >
-          Cross-Chain Lease Protocol
+          Leverage Done Right
         </h1>
 
         <p
@@ -29,7 +29,7 @@
           :enter="{ opacity: 1, y: 0, scale: 1 }"
           :delay="300"
         >
-          Triple your holdings without tripling the risk! Unlock the full potential of your crypto
+          Access 2.5x leverage with fixed interest and minimized margin call risk
         </p>
 
         <div
