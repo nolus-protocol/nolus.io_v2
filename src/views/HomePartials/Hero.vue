@@ -29,7 +29,7 @@
           :enter="{ opacity: 1, y: 0, scale: 1 }"
           :delay="300"
         >
-          Lever up with fixed interest and minimized margin call risk for 3x potential
+          Lever up with fixed interest and minimized margin call risk
         </p>
 
         <div
