@@ -29,7 +29,7 @@
           :enter="{ opacity: 1, y: 0, scale: 1 }"
           :delay="300"
         >
-          Lever up smart with fixed interest minimized margin call risk for optimal returns
+          Lever up smart with fixed interest and minimized margin call risk for optimal returns
         </p>
 
         <div
