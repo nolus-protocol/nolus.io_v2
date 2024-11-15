@@ -19,7 +19,7 @@
           :enter="{ opacity: 1, y: 0, scale: 1 }"
           :delay="100"
         >
-          Smart Leverage for Smart Portfolios
+          Smart Leverage for Optimal Returns
         </h1>
 
         <p
@@ -29,7 +29,7 @@
           :enter="{ opacity: 1, y: 0, scale: 1 }"
           :delay="300"
         >
-        Lever up with fixed interest rates and minimized margin call exposure for optimal returns
+          Trade with up to 3× buying power, fixed interest rates and reduced margin call risk
         </p>
 
         <div

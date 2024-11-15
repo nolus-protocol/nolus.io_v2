@@ -117,7 +117,7 @@ const tabs = [
     tabName: "Lease",
     tabIcon: LeaseIcon,
     heading: "Maximize Your Assets Potential",
-    content: "Secure up to 150% leverage and gain exclusive access to leveraged assets through whitelisted strategies",
+    content: "Access up to 3× leverage and unlock exclusive opportunities with leveraged assets through curated yield strategies",
     tabImage: LeaseImage
   },
   {
