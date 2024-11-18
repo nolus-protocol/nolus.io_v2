@@ -15,20 +15,10 @@ jobs:
   build:
     name: Build static files
     runs-on: ubuntu-latest
-    container: node:22.8.0
-
-    strategy:
-      matrix:
-        node-version: [22.x]
-
+    container: node:20.9.0
+    
     steps:
       - uses: actions/checkout@v3
-
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
-          registry-url: 'https://registry.npmjs.org'
 
       - name: Build
         run: |
@@ -36,7 +26,7 @@ jobs:
           npm run build
 
       - name: Archive src
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: src
           path: dist/
@@ -57,7 +47,7 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Download src
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: src
           path: dist/
