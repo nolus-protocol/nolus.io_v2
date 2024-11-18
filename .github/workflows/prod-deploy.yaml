@@ -6,7 +6,6 @@ on:
     # Only tags which match the protected tag pattern will trigger this workflow
     tags:
       - v*.*.*
-
 env:
   BUCKET_NAME: web.nolus.io
   CLOUDFRONT_ID: E1Y2X46MD29C6M
@@ -17,7 +16,7 @@ jobs:
   build:
     name: Build static files
     runs-on: ubuntu-latest
-    container: node:22.8.0
+    container: node:20.9.0
 
     steps:
       - uses: actions/checkout@v3
