@@ -27,7 +27,7 @@ export const META = {
       "https://github.com/nolus-protocol",
       "https://nolus.io/",
       "https://www.youtube.com/@NolusProtocol",
-      "https://twitter.com/NolusProtocol"
+      "https://twitter.com/NolusProtocol",
       "https://www.reddit.com/r/nolusprotocol/"
     ]
   },
