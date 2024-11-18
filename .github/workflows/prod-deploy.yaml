@@ -16,9 +16,9 @@ env:
 jobs:
   build:
     name: Build static files
-    runs-on: ubuntu-latest
-    container: node:20.9.0
-    
+    runs-on: ubuntu-22.04
+    container: node:20.9.0-bullseye-slim
+
     steps:
       - uses: actions/checkout@v3
 
@@ -28,28 +28,27 @@ jobs:
           npm run build
 
       - name: Archive src
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: src
           path: dist/
 
   deploy:
     name: Deploy to AWS
-    runs-on: ubuntu-latest
-    container: amazon/aws-cli
+    runs-on: ubuntu-22.04
     environment: production
     needs: build
 
     steps:
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1-node16
+        uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
-          
+
       - name: Download src
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v3
         with:
           name: src
           path: dist/
@@ -60,14 +59,13 @@ jobs:
 
   invalidate-cache:
     name: Invalidate cache
-    runs-on: ubuntu-latest
-    container: amazon/aws-cli
+    runs-on: ubuntu-22.04
     environment: production
     needs: deploy
 
     steps:
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1-node16
+        uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
