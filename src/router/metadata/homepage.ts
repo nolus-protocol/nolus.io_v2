@@ -1,19 +1,19 @@
 export const META = {
-  title: "Nolus - Cross-Chain Lease Protocol",
-  description: "Triple your holdings without tripling the risk! Unlock the full potential of your crypto",
+  title: "Nolus - Smart Leverage for Optimal Returns",
+  description: "Access up to 3× leverage and explore exclusive opportunities with leveraged assets through curated yield-bearing strategies",
   keywords:
     "nolus, crypto lease, nolus defi, nolus defi lease, nolus crypto, nolus defi lease, money markets, nolus money market",
 
   "og:type": "website",
   "og:url": "https://nolus.io/",
-  "og:title": "Nolus - Cross-Chain Lease Protocol",
-  "og:description": "Triple your holdings without tripling the risk! Unlock the full potential of your crypto",
+  "og:title": "Nolus - Smart Leverage for Optimal Returns",
+  "og:description": "Access up to 3× leverage and explore exclusive opportunities with leveraged assets through curated yield-bearing strategies",
   "og:image": "https://nolus.io/assets/images/meta/home-meta.png",
 
   "twitter:card": "summary_large_image",
   "twitter:url": "https://nolus.io/",
-  "twitter:title": "Nolus - Cross-Chain Lease Protocol",
-  "twitter:description": "Triple your holdings without tripling the risk! Unlock the full potential of your crypto",
+  "twitter:title": "Nolus - Smart Leverage for Optimal Returns",
+  "twitter:description": "Access up to 3× leverage and explore exclusive opportunities with leveraged assets through curated yield-bearing strategies",
   "twitter:image": "https://nolus.io/assets/images/meta/home-meta.png",
 
   "script-organisation": {
@@ -28,6 +28,7 @@ export const META = {
       "https://nolus.io/",
       "https://www.youtube.com/@NolusProtocol",
       "https://twitter.com/NolusProtocol"
+      "https://www.reddit.com/r/nolusprotocol/"
     ]
   },
   "script-video-object": {

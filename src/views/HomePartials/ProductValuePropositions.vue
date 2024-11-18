@@ -114,10 +114,10 @@ import SwapImage from "../../assets/images/product-value-propositions/swap.webp"
 
 const tabs = [
   {
-    tabName: "Lease",
+    tabName: "Lever Up",
     tabIcon: LeaseIcon,
     heading: "Maximize Your Assets Potential",
-    content: "Access up to 3× leverage and unlock exclusive opportunities with leveraged assets through curated yield strategies",
+    content: "Access up to 3× leveraged and unlock exclusive opportunities with the leveraged assets through curated yield-bearing strategies",
     tabImage: LeaseImage
   },
   {

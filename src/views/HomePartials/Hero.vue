@@ -19,7 +19,7 @@
           :enter="{ opacity: 1, y: 0, scale: 1 }"
           :delay="100"
         >
-          Smart Leverage for Optimal Returns
+          Smart Leverage, Optimal Returns
         </h1>
 
         <p
