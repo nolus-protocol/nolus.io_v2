@@ -132,7 +132,7 @@ const hubs = [
     fullName: "Astroport",
     comingSoon: false,
     image: astroportImage,
-    link: "https://astroport.finance/"
+    link: "https://astroport.fi/"
   }
 ];
 
