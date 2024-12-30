@@ -113,6 +113,7 @@ import osmosisImage from "../../assets/images/hubs/osmosis.svg";
 import astroportImage from "../../assets/images/hubs/astroport.svg";
 import halborn_logo from "../../assets/images/auditors/halborn_logo.jpeg";
 import oak_logo from "../../assets/images/auditors/oak_logo.jpeg";
+import hydroImage from "../../assets/images/hubs/hydro.svg";
 
 // For Audits widget
 import ChevronRightIcon from "@/assets/icons/chevron-right.svg";
@@ -133,6 +134,14 @@ const hubs = [
     comingSoon: false,
     image: astroportImage,
     link: "https://astroport.fi/"
+  },
+  {
+    id: 3,
+    shortName: "Neutron",
+    fullName: "Hydro",
+    comingSoon: false,
+    image: hydroImage,
+    link: "https://hydro.cosmos.network/"
   }
 ];
 
