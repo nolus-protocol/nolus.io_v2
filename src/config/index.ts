@@ -1,5 +1,5 @@
-export const ETL_API = "https://etl-cl.nolus.network:8080";
-export const MAINNET_RPC = "https://pirin-cl.nolus.network:1317";
+export const ETL_API = "https://etl.nolus.network";
+export const MAINNET_RPC = "https://rpc.nolus.network";
 
 export enum Stats {
   tx_volume,
@@ -12,4 +12,4 @@ export enum Theme {
   dark = "dark"
 }
 
-export const PROTOCOLS = ["OSMOSIS-OSMOSIS-USDC_AXELAR", "NEUTRON-ASTROPORT-USDC_AXELAR"];
+export const PROTOCOLS = ["OSMOSIS-OSMOSIS-NOBLE_USDC", "NEUTRON-ASTROPORT-USDC_NOBLE"];
