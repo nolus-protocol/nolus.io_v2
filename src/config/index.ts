@@ -12,4 +12,4 @@ export enum Theme {
   dark = "dark"
 }
 
-export const PROTOCOLS = ["OSMOSIS-OSMOSIS-NOBLE_USDC", "NEUTRON-ASTROPORT-USDC_NOBLE"];
+export const PROTOCOLS = ["OSMOSIS-OSMOSIS-USDC_NOBLE"];
