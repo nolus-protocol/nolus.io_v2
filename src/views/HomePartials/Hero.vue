@@ -48,15 +48,15 @@
           >
             Launch App
           </Button>
-          <Button
-//            class="w-full md:w-auto"
+          <!--Button
+            class="w-full md:w-auto"
             size="lg"
             variant="secondary"
             :icon="PlayCircleIcon"
             @click="showVideoDialog = true"
           >
             Watch Explainer
-          </Button>
+          </Button-->
         </div>
       </div>
       <div
