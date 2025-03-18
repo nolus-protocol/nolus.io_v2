@@ -19,7 +19,7 @@
           :enter="{ opacity: 1, y: 0, scale: 1 }"
           :delay="100"
         >
-          Smart Leverage, Optimal Returns
+        Next-Gen Margin Trading
         </h1>
 
         <p
@@ -29,7 +29,7 @@
           :enter="{ opacity: 1, y: 0, scale: 1 }"
           :delay="300"
         >
-          Trade with up to 3× buying power, fixed interest rates and reduced margin call risk
+        Supercharge your buying power with asset-backed leverage, fixed rates, and reduced margin call risk
         </p>
 
         <div
@@ -49,7 +49,7 @@
             Launch App
           </Button>
           <Button
-            class="w-full md:w-auto"
+//            class="w-full md:w-auto"
             size="lg"
             variant="secondary"
             :icon="PlayCircleIcon"
@@ -157,7 +157,7 @@ const stats = ref([
     id: 3,
     key: Stats.earn,
     subtitle: "Earn",
-    description: "Annual percentage yield on lent assets, sustained sustainably",
+    description: "Real yield fueled by interest-bearing margin leverage positions",
     value: "--.--%"
   }
 ]);
