@@ -63,7 +63,7 @@
               Audited
             </h2>
             <p class="mt-3 text-base leading-8 text-neutral-600 lg:mt-6 lg:text-lg">
-              Nolus adheres to the highest security standards and is audited by leading experts in the industry
+              Nolus adheres to the highest security standards, backed by audits from top industry experts
             </p>
           </div>
           <div>
