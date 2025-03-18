@@ -143,7 +143,7 @@ const stats = ref([
     id: 1,
     key: Stats.tx_volume,
     subtitle: "Tx Volume",
-    description: "Transactional value channeled through Nolus",
+    description: "Total transactional value channeled through Nolus",
     value: "$--.--M+"
   },
   {
