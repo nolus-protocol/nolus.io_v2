@@ -16,7 +16,7 @@
                 :enter="{ opacity: 1, y: 0, scale: 1 }"
                 :delay="100"
               >
-                Reshaping<br />Money Markets
+                Reshaping Onchain<br />Margin Trading
               </h1>
               <div class="flex flex-col gap-x-8 lg:flex-row">
                 <p
@@ -26,7 +26,7 @@
                   :enter="{ opacity: 1, y: 0, scale: 1 }"
                   :delay="200"
                 >
-                Nolus Protocol offers a fresh take on money markets with a Web3 lease-based approach, lowering over-collateralization demands for better capital efficiency and lending options
+                Inspired by traditional margin trading, Nolus introduces a novel primitive to DeFi through an asset-backed model that prioritizes predictability and risk control. With fixed rates, structured liquidity, and a controlled leverage mechanism, the protocol transforms how traders engage with crypto markets
                 </p>
                 <p
                   class="relative mt-6 basis-1/2 text-lg leading-8 text-white sm:max-w-md lg:max-w-lg"
@@ -35,7 +35,7 @@
                   :enter="{ opacity: 1, y: 0, scale: 1 }"
                   :delay="300"
                 >
-                Nolus' DeFi Lease enables up to 150% financing on initial investments with reduced margin call risks and access to underlying leveraged assets via curated yield-bearing strategies
+                Nolus provides a stable and accessible trading environment for both new and experienced users. Whether navigating volatile markets or capitalizing on strategic opportunities, traders can operate with confidence, supported by a system built for efficiency, reliability, and seamless execution
                 </p>
               </div>
             </div>
