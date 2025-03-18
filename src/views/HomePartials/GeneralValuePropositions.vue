@@ -54,7 +54,7 @@ const features = [
   {
     name: "Effortless",
     description:
-      "Manage your leveraged positions and yield-bearing assets through a refined, intuitive interface designed for precision and ease",
+      "Manage your leveraged positions and yield generating assets through a refined, intuitive UI designed for precision and ease",
     icon: icon3,
     href: "#"
   }

@@ -157,7 +157,7 @@ const stats = ref([
     id: 3,
     key: Stats.earn,
     subtitle: "Earn",
-    description: "Real yield fueled by interest-bearing margin leverage positions",
+    description: "Real yield fueled by interest generating margin positions",
     value: "--.--%"
   }
 ]);
