@@ -114,39 +114,39 @@ import SwapImage from "../../assets/images/product-value-propositions/swap.webp"
 
 const tabs = [
   {
-    tabName: "Lever Up",
+    tabName: '',
     tabIcon: LeaseIcon,
-    heading: "Maximize Your Assets Potential",
-    content: "Access up to 3× leveraged and unlock exclusive opportunities with the leveraged assets through curated yield-bearing strategies",
+    heading: 'Start Effortlessly',
+    content: "Designed for ease of use, Nolus offers you best-in-class onboarding and built-in guides, empowering you to start effortlessly or quickly refresh your knowledge",
     tabImage: LeaseImage
   },
   {
-    tabName: "Earn",
+    tabName: '',
     tabIcon: EarnIcon,
-    heading: "Earn up to 15% APY on Your Idle Assets",
+    heading: 'Personalized Insights',
     content:
-      "Lend your idle assets for sustainable high-yield returns that vary between 8-15% APY, no matter the market conditions",
+      "Kai, your AI companion, delivers personalized insights and real-time alerts using advanced LLM technology, keeping you informed and equipped for action",
     tabImage: EarnImage
   },
   {
-    tabName: 'Swap',
+    tabName: '',
     tabIcon: SwapIcon,
-    heading: 'Seamless Cross-Chain Swaps',
-    content: 'Effortlessly exchange various assets without the hassle and complexity of bridging across chains',
+    heading: 'Simplified Fees',
+    content: 'Fee abstraction enables you to pay network fees in virtually any supported asset, significantly enhancing flexibility and directly rewarding NLS stakers',
     tabImage: SwapImage
   },
   {
-    tabName: "Delegate",
+    tabName: '',
     tabIcon: DelegateIcon,
-    heading: "One-Click NLS Token Delegation",
-    content: "Delegate your NLS tokens easily and enjoy the benefits of securing the Nolus blockchain",
+    heading: 'Cross Chain Enabled',
+    content: "Experience near-instant, secure, and decentralized cross-chain transactions, powered by the trust-minimized Inter Blockchain Communication standard",
     tabImage: DelegateImage
   },
   {
-    tabName: "Govern",
+    tabName: '',
     tabIcon: GovernIcon,
-    heading: "Help Shape the Future of Nolus",
-    content: "Cast your vote and take part in influencing the future development and trajectory of the protocol",
+    heading: 'Wallet Compatibility',
+    content: 'Connect with your preferred non-custodial wallet via any supported extension or mobile app, thanks to the extensive wallet integrations',
     tabImage: GovernImage
   }
 ];
