@@ -114,39 +114,39 @@ import SwapImage from "../../assets/images/product-value-propositions/swap.webp"
 
 const tabs = [
   {
-    tabName: '',
+    tabName: 'Effortless',
     tabIcon: LeaseIcon,
-    heading: 'Start Effortlessly',
+    heading: '',
     content: "Designed for ease of use, Nolus offers you best-in-class onboarding and built-in guides, empowering you to start effortlessly or quickly refresh your knowledge",
     tabImage: LeaseImage
   },
   {
-    tabName: '',
+    tabName: 'Compatible',
     tabIcon: EarnIcon,
-    heading: 'Personalized Insights',
+    heading: '',
     content:
-      "Kai, your AI companion, delivers personalized insights and real-time alerts using advanced LLM technology, keeping you informed and equipped for action",
+      "Seamlessly connect your preferred non-custodial wallet via supported extensions or mobile apps, thanks to Nolus extensive wallet integrations",
     tabImage: EarnImage
   },
   {
-    tabName: '',
+    tabName: 'Personalized',
     tabIcon: SwapIcon,
-    heading: 'Simplified Fees',
-    content: 'Fee abstraction enables you to pay network fees in virtually any supported asset, significantly enhancing flexibility and directly rewarding NLS stakers',
+    heading: '',
+    content: 'Kai, your AI companion, delivers real-time insights and alerts powered by advanced LLM technology, keeping you informed and ready for action',
     tabImage: SwapImage
   },
   {
-    tabName: '',
+    tabName: 'Flexible',
     tabIcon: DelegateIcon,
-    heading: 'Cross Chain Enabled',
-    content: "Experience near-instant, secure, and decentralized cross-chain transactions, powered by the trust-minimized Inter Blockchain Communication standard",
+    heading: '',
+    content: "With fee abstraction, you can pay network fees in virtually any supported asset—enhancing flexibility while directly rewarding NLS stakers",
     tabImage: DelegateImage
   },
   {
-    tabName: '',
+    tabName: 'Cross-Chain',
     tabIcon: GovernIcon,
-    heading: 'Wallet Compatibility',
-    content: 'Connect with your preferred non-custodial wallet via any supported extension or mobile app, thanks to the extensive wallet integrations',
+    heading: '',
+    content: 'Enjoy fast, secure, and decentralized transactions across chains, powered by the trust-minimized Inter Blockchain Communication (IBC) standard',
     tabImage: GovernImage
   }
 ];
