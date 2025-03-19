@@ -294,13 +294,6 @@ const core_contributors = [
     discordUrl: ""
   },
   {
-    name: "Nena Alba",
-    role: "Growth",
-    imageUrl: contributors7,
-    xUrl: "",
-    discordUrl: ""
-  },
-  {
     name: "Ves Zahariev",
     role: "Social & Marketing",
     imageUrl: contributors8,
@@ -328,10 +321,6 @@ const other_contributors = [
   },
   {
     name: "Denislav Ivanov",
-    role: "Go Engineer"
-  },
-  {
-    name: "Ivan Ivanov",
     role: "Go Engineer"
   },
   {

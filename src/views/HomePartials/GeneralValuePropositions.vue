@@ -47,14 +47,14 @@ const features = [
   {
     name: "Less Risk",
     description:
-      "Partial liquidation engine shields against volatility and full collateral loss while maintaining a healthy loan-to-value ratio",
+      "Partial liquidation engine shields against volatility and full collateral loss while maintaining a healthy risk factor",
     icon: icon2,
     href: "#"
   },
   {
     name: "Effortless",
     description:
-      "Manage your leveraged positions and yield generating assets through a refined, intuitive UI designed for precision and ease",
+      "Manage leveraged positions and yielding assets through a refined, intuitive UI designed for precision and ease",
     icon: icon3,
     href: "#"
   }
