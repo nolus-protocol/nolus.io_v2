@@ -231,7 +231,7 @@
                 :enter="{ opacity: 1, y: 0, scale: 1 }"
                 :delay="100"
               >
-                Exemplifying the Best of Community Governance
+              Community Driven
               </h1>
               <p
                 class="relative mt-6 basis-1/2 text-lg leading-8 text-neutral-800 sm:max-w-md lg:max-w-lg"
@@ -240,10 +240,7 @@
                 :enter="{ opacity: 1, y: 0, scale: 1 }"
                 :delay="200"
               >
-                Members actively participate in protocol governance by delegating and voting on proposals, which range
-                from fine-tuning parameters to implementing protocol enhancements, all within a Proof-of-Stake
-                blockchain framework where the community plays a pivotal role in driving decentralization, ensuring
-                consensus, and enhancing security
+              Members govern the protocol by staking NLS tokens and voting on proposals, from parameter adjustments to upgrades. Built on a Proof-of-Stake blockchain, the community ensures decentralization, consensus, and security
               </p>
             </div>
           </div>
