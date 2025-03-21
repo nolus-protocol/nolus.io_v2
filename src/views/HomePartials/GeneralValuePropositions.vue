@@ -52,9 +52,9 @@ const features = [
     href: "#"
   },
   {
-    name: "Effortless",
+    name: "Asset Backed",
     description:
-      "Manage leveraged positions and yielding assets through a refined, intuitive UI designed for precision and ease",
+      "Margin positions are backed by an underlying asset, offering greater transparency, lower counterparty risk, and stronger alignment with asset value",
     icon: icon3,
     href: "#"
   }
