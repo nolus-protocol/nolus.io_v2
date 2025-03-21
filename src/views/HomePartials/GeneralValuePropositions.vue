@@ -54,7 +54,7 @@ const features = [
   {
     name: "Asset Backed",
     description:
-      "Margin positions are backed by an underlying asset, offering greater transparency, lower counterparty risk, and stronger alignment with asset value",
+      "Positions hold the actual asset, offering greater transparency, lower counterparty risk, and stronger alignment with its value",
     icon: icon3,
     href: "#"
   }
