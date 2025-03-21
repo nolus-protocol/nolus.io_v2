@@ -116,37 +116,37 @@ const tabs = [
   {
     tabName: 'Effortless',
     tabIcon: LeaseIcon,
-    heading: '',
-    content: "Designed for ease of use, Nolus offers you best-in-class onboarding and built-in guides, empowering you to start effortlessly or quickly refresh your knowledge",
+    heading: 'Intuitive & Informed Experience',
+    content: "Designed for a smooth and engaging journey, Nolus provides best-in-class onboarding and integrated guides, helping you get started easily and quickly refresh your knowledge whenever needed",
     tabImage: LeaseImage
   },
   {
     tabName: 'Compatible',
     tabIcon: EarnIcon,
-    heading: '',
+    heading: 'Broad Wallet Support',
     content:
-      "Seamlessly connect your preferred non-custodial wallet via supported extensions or mobile apps, thanks to Nolus extensive wallet integrations",
+      "Connect seamlessly with a wide range of non-custodial wallets through supported extensions or mobile apps, ensuring a smooth and flexible user experience",
     tabImage: EarnImage
   },
   {
     tabName: 'Personalized',
     tabIcon: SwapIcon,
-    heading: '',
-    content: 'Kai, your AI companion, delivers real-time insights and alerts powered by advanced LLM technology, keeping you informed and ready for action',
+    heading: 'AI-Infused Insights',
+    content: 'Meet Kai, your AI companion within Nolus, powered by advanced LLM technology to deliver tailored insights and real-time alerts—keeping you informed and ready to act at all times',
     tabImage: SwapImage
   },
   {
     tabName: 'Flexible',
     tabIcon: DelegateIcon,
-    heading: '',
-    content: "With fee abstraction, you can pay network fees in virtually any supported asset—enhancing flexibility while directly rewarding NLS stakers",
+    heading: 'Simplified Fees',
+    content: "Enjoy the flexibility to pay network fees with virtually any supported asset, making transactions more convenient while directly benefiting NLS stakers",
     tabImage: DelegateImage
   },
   {
     tabName: 'Cross-Chain',
     tabIcon: GovernIcon,
-    heading: '',
-    content: 'Enjoy fast, secure, and decentralized transactions across chains, powered by the trust-minimized Inter Blockchain Communication (IBC) standard',
+    heading: 'Instant & Secure',
+    content: 'Transact securely across chains, powered by the trust-minimized Inter Blockchain Communication standard, ensuring near-instant processing without centralized intermediaries',
     tabImage: GovernImage
   }
 ];
