@@ -16,7 +16,7 @@
           class="mt-2 text-3xl font-bold tracking-tight text-neutral-900 lg:text-5xl"
           aria-hidden="true"
         >
-          Unified UI
+        Build for You
         </h2>
       </div>
       <div class="relative z-10 overflow-hidden rounded-2xl bg-white shadow-xl">
@@ -116,7 +116,7 @@ const tabs = [
   {
     tabName: 'Effortless',
     tabIcon: LeaseIcon,
-    heading: 'Intuitive & Informed Experience',
+    heading: 'User-Centric UX',
     content: "Designed for a smooth and engaging journey, Nolus provides best-in-class onboarding and integrated guides, helping you get started easily and quickly refresh your knowledge whenever needed",
     tabImage: LeaseImage
   },
