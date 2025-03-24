@@ -123,7 +123,7 @@ const tabs = [
   {
     tabName: 'Compatible',
     tabIcon: EarnIcon,
-    heading: 'Broad Wallet Support',
+    heading: 'Broad Support',
     content:
       "Connect seamlessly with a wide range of non-custodial wallets through supported extensions or mobile apps, ensuring a smooth and flexible user experience",
     tabImage: EarnImage
