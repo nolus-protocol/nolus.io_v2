@@ -1,21 +1,21 @@
 export const META = {
-  title: "Nolus - Reshaping Money Markets",
+  title: "Nolus - Empowering Smart, Stable Crypto Trading",
   description:
-    "Through Lease, borrowers get up to 150% financing while keeping access to leveraged assets, enabling lenders to earn #RealYield on idle assets",
-  keywords: "what is nolus protocol, about nolus protocol, about nolus",
+    "Discover Nolus’ mission to transform DeFi with asset-backed, fixed-rate margin trading. Designed for confident, strategic participation in volatile markets",
+  keywords: "about Nolus, DeFi protocol, crypto company, blockchain trading platform, DeFi ecosystem, web3 trading, crypto finance, digital assets, DeFi transparency",
 
   "og:type": "website",
   "og:url": "https://nolus.io/about",
-  "og:title": "Nolus - Reshaping Money Markets",
+  "og:title": "Nolus - Empowering Smart, Stable Crypto Trading",
   "og:description":
-    "Through Lease, borrowers get up to 150% financing while keeping access to leveraged assets, enabling lenders to earn #RealYield on idle assets",
+    "Discover Nolus’ mission to transform DeFi with asset-backed, fixed-rate margin trading. Designed for confident, strategic participation in volatile markets",
   "og:image": "https://nolus.io/assets/images/meta/about-meta.png",
 
   "twitter:card": "summary_large_image",
   "twitter:url": "https://nolus.io/about",
-  "twitter:title": "Nolus - Reshaping Money Markets",
+  "twitter:title": "Nolus - Empowering Smart, Stable Crypto Trading",
   "twitter:description":
-    "Through Lease, borrowers get up to 150% financing while keeping access to leveraged assets, enabling lenders to earn #RealYield on idle assets",
+    "Discover Nolus’ mission to transform DeFi with asset-backed, fixed-rate margin trading. Designed for confident, strategic participation in volatile markets",
   "twitter:image": "https://nolus.io/assets/images/meta/about-meta.png",
 
   "script-organisation": {
