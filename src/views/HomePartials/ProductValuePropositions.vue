@@ -115,14 +115,14 @@ import PersonalizedImage from "../../assets/images/product-value-propositions/pe
 const tabs = [
   {
     tabName: 'Effortless',
-    tabIcon: LeaseIcon,
+    tabIcon: ,
     heading: 'User-First Experience',
     content: "Designed for a smooth and engaging journey, Nolus provides best-in-class onboarding and integrated guides, helping you get started easily and quickly refresh your knowledge whenever needed",
     tabImage: EfortlessImage
   },
   {
     tabName: 'Compatible',
-    tabIcon: EarnIcon,
+    tabIcon: ,
     heading: 'Broad Wallet Support',
     content:
       "Connect seamlessly with a wide range of non-custodial wallets through supported extensions or mobile apps, ensuring a smooth, secure, and flexible user experience",
@@ -130,21 +130,21 @@ const tabs = [
   },
   {
     tabName: 'Personalized',
-    tabIcon: SwapIcon,
+    tabIcon: ,
     heading: 'AI-Infused Data Insights',
     content: 'Meet Kai, your AI companion within Nolus, powered by advanced LLM technology to deliver tailored insights and real-time alerts—keeping you informed and ready to act at all times',
     tabImage: PersonalizedImage
   },
   {
     tabName: 'Flexible',
-    tabIcon: DelegateIcon,
+    tabIcon: ,
     heading: 'Simplified Network Fees',
     content: "Enjoy the flexibility to seamlessly pay network fees with virtually any supported asset, making transactions more convenient and inclusive while directly benefiting NLS stakers",
     tabImage: FlexibleImage
   },
   {
     tabName: 'Cross-Chain',
-    tabIcon: GovernIcon,
+    tabIcon: ,
     heading: 'Secure Trustless Interoparability',
     content: 'Transact securely across chains, powered by the trust-minimized Inter Blockchain Communication standard, ensuring near-instant processing without centralized intermediaries',
     tabImage: CrosschainImage
