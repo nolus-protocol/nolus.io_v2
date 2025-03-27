@@ -106,11 +106,11 @@ import EarnIcon from "@/assets/icons/earn.svg";
 import DelegateIcon from "@/assets/icons/delegate.svg";
 import GovernIcon from "@/assets/icons/govern.svg";
 import SwapIcon from "@/assets/icons/swap.svg";
-import LeaseImage from "../../assets/images/product-value-propositions/lease.webp";
-import EarnImage from "../../assets/images/product-value-propositions/earn.webp";
-import DelegateImage from "../../assets/images/product-value-propositions/delegate.webp";
-import GovernImage from "../../assets/images/product-value-propositions/govern.webp";
-import SwapImage from "../../assets/images/product-value-propositions/swap.webp";
+import CompatibleImage from "../../assets/images/product-value-propositions/compatible.webp";
+import CrosschainImage from "../../assets/images/product-value-propositions/cross-chain.webp";
+import EfortlessImage from "../../assets/images/product-value-propositions/effortless.webp";
+import FlexibleImage from "../../assets/images/product-value-propositions/flexible.webp";
+import PersonalizedImage from "../../assets/images/product-value-propositions/personalized.webp";
 
 const tabs = [
   {
@@ -118,7 +118,7 @@ const tabs = [
     tabIcon: LeaseIcon,
     heading: 'User-Centric UX',
     content: "Designed for a smooth and engaging journey, Nolus provides best-in-class onboarding and integrated guides, helping you get started easily and quickly refresh your knowledge whenever needed",
-    tabImage: LeaseImage
+    tabImage: EfortlessImage
   },
   {
     tabName: 'Compatible',
@@ -126,28 +126,28 @@ const tabs = [
     heading: 'Broad Support',
     content:
       "Connect seamlessly with a wide range of non-custodial wallets through supported extensions or mobile apps, ensuring a smooth and flexible user experience",
-    tabImage: EarnImage
+    tabImage: CompatibleImage
   },
   {
     tabName: 'Personalized',
     tabIcon: SwapIcon,
     heading: 'AI-Infused Insights',
     content: 'Meet Kai, your AI companion within Nolus, powered by advanced LLM technology to deliver tailored insights and real-time alerts—keeping you informed and ready to act at all times',
-    tabImage: SwapImage
+    tabImage: PersonalizedImage
   },
   {
     tabName: 'Flexible',
     tabIcon: DelegateIcon,
     heading: 'Simplified Fees',
     content: "Enjoy the flexibility to pay network fees with virtually any supported asset, making transactions more convenient while directly benefiting NLS stakers",
-    tabImage: DelegateImage
+    tabImage: FlexibleImage
   },
   {
     tabName: 'Cross-Chain',
     tabIcon: GovernIcon,
     heading: 'Instant & Secure',
     content: 'Transact securely across chains, powered by the trust-minimized Inter Blockchain Communication standard, ensuring near-instant processing without centralized intermediaries',
-    tabImage: GovernImage
+    tabImage: CrosschainImage
   }
 ];
 
