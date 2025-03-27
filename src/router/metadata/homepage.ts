@@ -1,19 +1,19 @@
 export const META = {
-  title: "Nolus - Smart Leverage for Optimal Returns",
-  description: "Access up to 3× leverage and explore exclusive opportunities with leveraged assets through curated yield-bearing strategies",
+  title: "Next-Gen Margin Trading | Asset-Backed Leverage & Fixed Rates",
+  description: "Boost your trading power with asset-backed margin leverage, fixed interest rates, and minimized margin call risk. Trade smarter with more control",
   keywords:
-    "nolus, crypto lease, nolus defi, nolus defi lease, nolus crypto, nolus defi lease, money markets, nolus money market",
+    "margin trading, crypto trading, leverage trading, DeFi trading, crypto margin trading, asset-backed leverage, fixed-rate margin, low-risk leverage, decentralized trading, Nolus",
 
   "og:type": "website",
   "og:url": "https://nolus.io/",
-  "og:title": "Nolus - Smart Leverage for Optimal Returns",
-  "og:description": "Access up to 3× leverage and explore exclusive opportunities with leveraged assets through curated yield-bearing strategies",
+  "og:title": "Next-Gen Margin Trading | Asset-Backed Leverage & Fixed Rates",
+  "og:description": "Boost your trading power with asset-backed margin leverage, fixed interest rates, and minimized margin call risk. Trade smarter with more control",
   "og:image": "https://nolus.io/assets/images/meta/home-meta.png",
 
   "twitter:card": "summary_large_image",
   "twitter:url": "https://nolus.io/",
-  "twitter:title": "Nolus - Smart Leverage for Optimal Returns",
-  "twitter:description": "Access up to 3× leverage and explore exclusive opportunities with leveraged assets through curated yield-bearing strategies",
+  "twitter:title": "Next-Gen Margin Trading | Asset-Backed Leverage & Fixed Rates",
+  "twitter:description": "Boost your trading power with asset-backed margin leverage, fixed interest rates, and minimized margin call risk. Trade smarter with more control",
   "twitter:image": "https://nolus.io/assets/images/meta/home-meta.png",
 
   "script-organisation": {
