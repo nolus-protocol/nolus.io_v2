@@ -115,7 +115,7 @@ import PersonalizedImage from "../../assets/images/product-value-propositions/pe
 const tabs = [
   {
     tabName: 'Effortless',
-//    tabIcon: LeaseIcon,
+    tabIcon: LeaseIcon,
     heading: 'User-First Experience',
     content: "Designed for a smooth and engaging journey, Nolus provides best-in-class onboarding and integrated guides, helping you get started easily and quickly refresh your knowledge whenever needed",
     tabImage: EfortlessImage
