@@ -26,7 +26,7 @@
                   :enter="{ opacity: 1, y: 0, scale: 1 }"
                   :delay="200"
                 >
-                Nolus delivers a novel primitive to DeFi through an asset-backed margin product that prioritizes predictability and risk control. With fixed rates, structured liquidity, and controlled leverage, the protocol transforms how users engage with crypto markets
+                Nolus Protocol introduces a novel DeFi primitive that delivers an asset-backed margin product combining predictability with risk management. By offering fixed interest rates, structured liquidity, and controlled leverage, Nolus redefines how users access and interact with capital in crypto markets.
                 </p>
                 <p
                   class="relative mt-6 basis-1/2 text-lg leading-8 text-white sm:max-w-md lg:max-w-lg"
@@ -35,7 +35,7 @@
                   :enter="{ opacity: 1, y: 0, scale: 1 }"
                   :delay="300"
                 >
-                Designed for those seeking both opportunity and stability, Nolus empowers new and experienced users alike to navigate volatile markets and seize strategic opportunities with confidence
+                Built for both seasoned users and new participants, the protocol enables confident decision-making in volatile environments—empowering users to capitalize on strategic opportunities while maintaining stability and control
                 </p>
               </div>
             </div>
