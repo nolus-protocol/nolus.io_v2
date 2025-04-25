@@ -318,7 +318,7 @@
 import type { Proposal } from "@/components/vote/Proposal";
 import { computed, onMounted, onUnmounted, ref } from "vue";
 import { Dec } from "@keplr-wallet/unit";
-import { MAINNET_RPC } from "@/config";
+import { API_MAINNET } from "@/config";
 
 import NolusContainer from "@/components/NolusContainer.vue";
 import Button from "@/components/Button.vue";
@@ -434,13 +434,13 @@ function animate() {
 }
 
 const loadBondedTokens = async () => {
-  const res = await fetch(`${MAINNET_RPC}/cosmos/staking/v1beta1/pool`);
+  const res = await fetch(`${API_MAINNET}/cosmos/staking/v1beta1/pool`);
   const data = await res.json();
   bondedTokens.value = new Dec(data.pool.bonded_tokens);
 };
 
 const loadTallying = async () => {
-  const res = await fetch(`${MAINNET_RPC}/cosmos/gov/v1/params/tallying`);
+  const res = await fetch(`${API_MAINNET}/cosmos/gov/v1/params/tallying`);
   const data = await res.json();
   quorum.value = new Dec(data.params.quorum);
 };
@@ -448,7 +448,7 @@ const loadTallying = async () => {
 const fetchProposalData = async (proposal: Proposal) => {
   try {
     const promises = [
-      fetch(`${MAINNET_RPC}/cosmos/gov/v1/proposals/${proposal.id}/tally`)
+      fetch(`${API_MAINNET}/cosmos/gov/v1/proposals/${proposal.id}/tally`)
         .then((d) => d.json())
         .then((item) => {
           proposal.tally = item.tally;
@@ -476,7 +476,7 @@ const fetchData = async (url: string) => {
 
 const fetchGovernanceProposals = async () => {
   const data = await fetchData(
-    `${MAINNET_RPC}/cosmos/gov/v1/proposals?pagination.limit=${state.value.limit}&pagination.reverse=true&pagination.countTotal=true`
+    `${API_MAINNET}/cosmos/gov/v1/proposals?pagination.limit=${state.value.limit}&pagination.reverse=true&pagination.countTotal=true`
   );
   if (!data) return;
 
@@ -510,7 +510,7 @@ const visible = computed(() => {
 
 const loadMoreProposals = async () => {
   const data = await fetchData(
-    `${MAINNET_RPC}/cosmos/gov/v1/proposals?pagination.limit=${state.value.limit}&pagination.key=${state.value.pagination.next_key}&pagination.reverse=true&pagination.countTotal=true`
+    `${API_MAINNET}/cosmos/gov/v1/proposals?pagination.limit=${state.value.limit}&pagination.key=${state.value.pagination.next_key}&pagination.reverse=true&pagination.countTotal=true`
   );
 
   if (!data) return;

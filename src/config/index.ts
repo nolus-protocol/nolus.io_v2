@@ -1,5 +1,6 @@
 export const ETL_API = "https://etl.nolus.network";
 export const MAINNET_RPC = "https://rpc.nolus.network";
+export const API_MAINNET  ="https://lcd.nolus.network";
 
 export enum Stats {
   tx_volume,
