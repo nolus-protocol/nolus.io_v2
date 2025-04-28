@@ -1,8 +1,7 @@
-const FEED_URL = "http://localhost:5051/api/feed";
+import { RSS_SERVER } from "@/config";
 
 export async function fetchFeed() {
-  // Otherwise fetch & parse
-  const res = await fetch(FEED_URL);
+  const res = await fetch(`${RSS_SERVER}/api/feed`);
   const body = await res.json();
   return body;
 }
