@@ -240,7 +240,7 @@
                 :enter="{ opacity: 1, y: 0, scale: 1 }"
                 :delay="200"
               >
-              Members govern the protocol by staking NLS tokens and participate in every development decision, from parameter adjustments to upgrades. Built on a Proof-of-Stake blockchain, the community ensures decentralization, consensus, and security
+                Members govern the protocol by staking NLS tokens and participate in every development decision, from parameter adjustments to upgrades. Built on a Proof-of-Stake blockchain, the community ensures decentralization, consensus, and security
               </p>
             </div>
           </div>

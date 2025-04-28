@@ -26,7 +26,7 @@
                   :enter="{ opacity: 1, y: 0, scale: 1 }"
                   :delay="200"
                 >
-                Nolus Protocol introduces a novel DeFi primitive that delivers an asset-backed margin product combining predictability with risk management. By offering fixed interest rates, structured liquidity, and controlled leverage, Nolus redefines how users access and interact with capital in crypto markets.
+                  Nolus delivers a novel primitive to DeFi through an asset-backed margin product that prioritizes predictability and risk control. With fixed rates, structured liquidity, and controlled leverage, the protocol transforms how users engage with crypto markets
                 </p>
                 <p
                   class="relative mt-6 basis-1/2 text-lg leading-8 text-white sm:max-w-md lg:max-w-lg"
@@ -35,7 +35,7 @@
                   :enter="{ opacity: 1, y: 0, scale: 1 }"
                   :delay="300"
                 >
-                Built for both seasoned users and new participants, the protocol enables confident decision-making in volatile environments—empowering users to capitalize on strategic opportunities while maintaining stability and control
+                Designed for those seeking both opportunity and stability, Nolus empowers new and experienced users alike to navigate volatile markets and seize strategic opportunities with confidence
                 </p>
               </div>
             </div>
@@ -221,6 +221,8 @@ import contributors6 from "@/assets/images/about/team/simon_chadwick.jpg";
 import contributors7 from "@/assets/images/about/team/nena_alba.jpg";
 import contributors8 from "@/assets/images/about/team/ves_zahariev.jpg";
 import contributors9 from "@/assets/images/about/team/monika_angelova.jpg";
+import contributors10 from "@/assets/images/about/team/tony.jpg";
+import contributors11 from "@/assets/images/about/team/lily.jpg";
 
 // Logo dependencies
 const isVideoLoaded = ref(false);
@@ -294,6 +296,13 @@ const core_contributors = [
     discordUrl: ""
   },
   {
+    name: "Lilia Ilieva",
+    role: "Marketing & Communication",
+    imageUrl: contributors11,
+    xUrl: "",
+    discordUrl: ""
+  },
+  {
     name: "Ves Zahariev",
     role: "Social & Marketing",
     imageUrl: contributors8,
@@ -301,9 +310,9 @@ const core_contributors = [
     discordUrl: ""
   },
   {
-    name: "Monika Angelova ",
-    role: "Community & Marketing",
-    imageUrl: contributors9,
+    name: "Tony Papailias",
+    role: "Community Lead",
+    imageUrl: contributors10,
     xUrl: "",
     discordUrl: ""
   }
