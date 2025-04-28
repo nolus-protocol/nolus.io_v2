@@ -1,56 +1,69 @@
-const express = require('express');
-const Parser = require('rss-parser');
-const cors = require('cors');
-const jsdom = require('jsdom');
-const { JSDOM } = jsdom;
-const axios = require('axios');
-const sharp = require('sharp');
-const fs = require('fs').promises;
-const path = require('path');
-const cron = require('node-cron');
+import http from 'http';
+import { XMLParser } from 'fast-xml-parser';
 
-const app = express();
-const parser = new Parser();
+const PORT     = 5051;
+const FEED_URL = 'https://medium.com/feed/nolusprotocol';
+const parser   = new XMLParser();
+const cacheInterval = 1 * 60 * 60 * 1000;
+let cache = [];
+let cacheTime = 0;
 
-const dataDir = path.join(__dirname, '../src/assets/blog');
+async function getFeedItems() {
 
-app.use(cors());
+  const isExpired = (cacheTime + cacheInterval - Date.now()) <= 0 ? true : false
 
-const updateRss = async () => {
-  await fs.mkdir(dataDir, { recursive: true });
+  if(isExpired){
+    const res = await fetch(FEED_URL);
+    const xml = await res.text();
+    const obj = parser.parse(xml);
+    const rawItems = obj.rss.channel.item ?? [];
+    cacheTime = Date.now()
+    cache = rawItems.map(i => {
+      const html  = i['content:encoded'] || '';
+      const match = html.match(/<img[^>]+src="([^">]+)"/i);
+      return {
+        title:   i.title || i.guid,
+        link:    i.link,
+        pubDate: i.pubDate,
+        author:  i['dc:creator'],
+        image:   match?.[1] || null,
+      };
+    }).slice(0, 3);
+  }
 
-  const feed = await parser.parseURL('https://medium.com/feed/nolusprotocol');
-  const items = feed.items.reverse().slice(-3).reverse().map(async (item, index) => {
-    const dom = new JSDOM(item['content:encoded']);
-    const imageUrl = dom.window.document.querySelector('img')?.src;
+  return cache;
 
-    let image;
-    if (imageUrl) {
-      const response = await axios.get(imageUrl, { responseType: 'arraybuffer' });
-      const resizedImage = await sharp(response.data).resize(200, null).toBuffer();
-      image = `image${index}.jpg`;
-      await fs.writeFile(path.join(dataDir, image), resizedImage);
+
+}
+
+const server = http.createServer(async (req, res) => {
+  if (req.method === 'GET' && req.url === '/api/feed') {
+    try {
+      const items = await getFeedItems();
+      res.writeHead(200, {
+        'Content-Type':                'application/json',
+        'Access-Control-Allow-Origin': '*',
+      });
+      res.end(JSON.stringify(items));
+    } catch (err) {
+      console.error(err);
+      res.writeHead(502, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: 'Failed to fetch feed' }));
     }
 
-    return {
-      id: item.guid,
-      title: item.title,
-      image: image,
-      href: item.link,
-      date: new Date(item.pubDate).toLocaleDateString(),
-      datetime: item.pubDate
-    };
-  });
+  } else if (req.method === 'OPTIONS') {
+    res.writeHead(204, {
+      'Access-Control-Allow-Origin':  '*',
+      'Access-Control-Allow-Methods': 'GET,OPTIONS',
+    });
+    res.end();
 
-  const data = await Promise.all(items);
-  await fs.writeFile(path.join(dataDir, 'data.json'), JSON.stringify(data, null, 2));
-};
+  } else {
+    res.writeHead(404);
+    res.end('Not Found');
+  }
+});
 
-// Run the updateRss function when the server starts
-updateRss();
-
-// Schedule the updateRss function to run once a week
-// The cron syntax '0 0 * * 0' means 'at 00:00 on Sunday'
-cron.schedule('0 0 * * 0', updateRss);
-
-app.listen(3000, () => console.log('Server running on port 3000'));
+server.listen(PORT, () => {
+  console.log(`Native Node.js RSS server running on http://localhost:${PORT}/api/feed`);
+});

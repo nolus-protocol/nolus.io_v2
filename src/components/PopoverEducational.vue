@@ -33,7 +33,7 @@
             <a
               v-for="item in resources"
               :key="item.name"
-              :href="item.href"
+              target="_blank"
               class="rounded-lg"
             >
               <div class="group relative flex gap-x-4 rounded-lg p-4 text-sm transition-all hover:bg-blue-100">
@@ -72,33 +72,28 @@
             >
               <li
                 v-for="post in recentPosts"
-                :key="post.id"
+                :key="post.title"
                 class="relative w-full"
               >
                 <a
-                  :href="post.href"
+                  :href="post.link"
+                  target="_blank"
                   class="flex items-center space-x-3 rounded-lg p-3 leading-6 text-neutral-900 transition-all hover:bg-blue-200/40"
                 >
                   <div class="relative h-16 shrink-0 basis-28 overflow-hidden rounded-xl">
                     <img
-                      v-if="post.isImageLoaded"
-                      :src="post.imageUrl"
+                      :src="post.image"
                       alt=""
                       aria-hidden="true"
                       class="absolute top-0 z-10 h-full w-full"
-                      @load="post.isImageLoaded = true"
                     />
-                    <div
-                      v-else
-                      class="z-5 absolute top-0 h-full w-full animate-pulse bg-neutral-200"
-                    ></div>
                   </div>
                   <div>
                     <h5 class="text-sm">{{ post.title }}</h5>
                     <time
-                      :datetime="post.datetime"
+                      :datetime="post.pubDate"
                       class="block text-xs font-normal leading-6 text-neutral-600"
-                      >{{ post.date }}</time
+                      >{{ post.pubDate }}</time
                     >
                   </div>
                 </a>
@@ -114,11 +109,11 @@
 <script lang="ts" setup>
 import { ref, onMounted } from "vue";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/vue";
-import data from "../../rss-server/data/data.json";
 import ChevronDownSmallIcon from "@/assets/icons/chevron-down-small.svg";
 import Button from "./Button.vue";
 import BookIcon from "../assets/icons/book.svg";
 import MediumIcon from "../assets/icons/medium.svg";
+import { fetchFeed } from "@/utils/RssUtil";
 
 const props = defineProps({
   textColorClass: String,
@@ -134,40 +129,38 @@ const resources = [
   }
 ];
 
-const getImageUrl = (imageName: string) => {
-  return new URL(`../assets/blog/${imageName}`, import.meta.url).href;
-};
-
 let recentPosts = ref<
   {
-    imageUrl: string;
-    isImageLoaded: boolean;
-    id: string;
     title: string;
+    link: string;
     image: string;
-    href: string;
-    date: string;
-    datetime: string;
+    pubDate: string;
   }[]
 >([]);
 
 onMounted(async () => {
-  const posts = await Promise.all(
-    data.slice(0, 3).map(async (post) => {
-      const imageUrl = await getImageUrl(post.image);
-      return { ...post, imageUrl, isImageLoaded: false };
-    })
-  );
-  recentPosts.value = posts;
-  posts.forEach((post) => {
-    const img = new window.Image();
-    img.onload = () => {
-      const postInRecentPosts = recentPosts.value.find((p) => p.id === post.id);
-      if (postInRecentPosts) {
-        postInRecentPosts.isImageLoaded = true;
-      }
-    };
-    img.src = post.imageUrl;
-  });
+  try{
+    recentPosts.value = await fetchFeed();
+
+  }catch(e){
+    console.log(e)
+  }
+  // const posts = await Promise.all(
+  //   data.slice(0, 3).map(async (post) => {
+  //     const imageUrl = await getImageUrl(post.image);
+  //     return { ...post, imageUrl, isImageLoaded: false };
+  //   })
+  // );
+  // recentPosts.value = posts;
+  // posts.forEach((post) => {
+  //   const img = new window.Image();
+  //   img.onload = () => {
+  //     const postInRecentPosts = recentPosts.value.find((p) => p.id === post.id);
+  //     if (postInRecentPosts) {
+  //       postInRecentPosts.isImageLoaded = true;
+  //     }
+  //   };
+  //   img.src = post.imageUrl;
+  // });
 });
 </script>

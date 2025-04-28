@@ -17,6 +17,7 @@
     "@heroicons/vue": "^2.1.1",
     "@keplr-wallet/unit": "^0.12.69",
     "@vueuse/motion": "^2.0.0",
+    "fast-xml-parser": "^5.2.1",
     "lottie-web": "^5.12.2",
     "marked": "^12.0.0",
     "vue": "^3.4.21",
