@@ -30,7 +30,7 @@ export default async function handler(req, res) {
       headers
     });
     const items = await data.json();
-    res.json(items);
+    res.status(data.status).json(items);
   } catch (error) {
     res.status(502).json({ error: "Failed to fetch", text: error.toString() });
   }
