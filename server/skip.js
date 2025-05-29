@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { format } from "node:url";
+import { SKIP_SECRET } from "./config.js";
 
 const URL = (path, query) => format({
   protocol: "https",
@@ -7,9 +8,6 @@ const URL = (path, query) => format({
   pathname: `/v2${path}`,
   query: query ?? {}
 })
-
-;
-const api_key = "a974b954-b27a-4bae-81db-9003a244b04b";
 
 const router = Router();
 
@@ -21,7 +19,7 @@ router.post("/{*path}", handler);
 export async function handler(req, res) {
   try {
     const headers = new Headers({
-      authorization: api_key
+      authorization: SKIP_SECRET
     });
 
     const url = URL(req.path, req.query);
