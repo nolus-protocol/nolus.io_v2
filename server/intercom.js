@@ -10,7 +10,6 @@ export async function handler(req, res) {
     const payload = {
       user_id: req.body.wallet,
     };
-    console.log(payload)
     const token = jwt.sign(payload, INTERCOM_SECRET, { expiresIn: "1h" });
     res.json({ token });
   } catch (error) {

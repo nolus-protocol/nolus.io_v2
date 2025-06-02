@@ -39,7 +39,7 @@ export async function handler(req, res) {
 export async function register(req, res) {
   try {
     const headers = new Headers({
-      authorization: api_key
+      authorization: SKIP_SECRET
     });
 
     const url = URL("/tx/track", req.query);
