@@ -34,6 +34,7 @@
               v-for="item in resources"
               :key="item.name"
               target="_blank"
+              :href="item.href"
               class="rounded-lg"
             >
               <div class="group relative flex gap-x-4 rounded-lg p-4 text-sm transition-all hover:bg-blue-100">
