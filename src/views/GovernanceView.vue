@@ -316,9 +316,11 @@
 
 <script lang="ts" setup>
 import type { Proposal } from "@/components/vote/Proposal";
+import type { StakingPoolResponse, GovernanceResponse, TallyingParamsResponse } from "@/types/governance";
 import { computed, onMounted, onUnmounted, ref } from "vue";
 import { Dec } from "@keplr-wallet/unit";
 import { API_MAINNET } from "@/config";
+import { ANIMATION_TIMINGS } from "@/constants/animations";
 
 import NolusContainer from "@/components/NolusContainer.vue";
 import Button from "@/components/Button.vue";
@@ -326,6 +328,7 @@ import ProposalItem from "@/components/vote/components/ProposalItem.vue";
 import ProposalReadMoreDialog from "@/components/vote/components/ProposalReadMoreDialog.vue";
 import Modal from "@/components/modals/templates/Modal.vue";
 import PlusSmallIcon from "@/assets/icons/plus-small.svg";
+import { usePageReady } from "@/composables/usePageReady";
 
 const stats = [
   {
@@ -342,8 +345,23 @@ let dotColor = "13,55,127"; // Change this to control the color of the dots
 
 const bondedTokens = ref(new Dec(0));
 const quorum = ref(new Dec(0));
+const { setPageReady } = usePageReady();
 
-const state = ref({
+const state = ref<{
+  showReadMoreModal: boolean,
+  showErrorDialog: boolean,
+  errorMessage: string,
+  proposal: {
+    id: string,
+    title: string,
+    summary: string
+  },
+  limit: number,
+  pagination: {
+    total: string,
+    next_key: string | null
+  }
+}>({
   showReadMoreModal: false,
   showErrorDialog: false,
   errorMessage: "",
@@ -354,12 +372,13 @@ const state = ref({
   },
   limit: 6,
   pagination: {
-    total: 0,
+    total: "0",
     next_key: ""
   }
 });
 
-let interval: number;
+let interval: NodeJS.Timeout;
+let observer: IntersectionObserver | null = null;
 const proposals = ref([] as Proposal[]);
 const dots: {
   x: number;
@@ -368,7 +387,21 @@ const dots: {
   direction: number;
 }[] = [];
 
+const startAnimation = () => {
+  if (!interval) {
+    animate();
+    interval = setInterval(animate, ANIMATION_TIMINGS.CANVAS_FRAME_RATE);
+  }
+};
+
+const stopAnimation = () => {
+  if (interval) {
+    clearInterval(interval);
+  }
+};
+
 onMounted(async () => {
+  try{
   let canvas = myCanvas.value;
 
   if (canvas) {
@@ -398,15 +431,37 @@ onMounted(async () => {
         dots.push(dot);
       }
     }
-    animate();
-    interval = setInterval(animate, 100);
+
+    // Use Intersection Observer to pause animation when not visible
+    observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            startAnimation();
+          } else {
+            stopAnimation();
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(canvas);
   }
 
-  await Promise.allSettled([fetchGovernanceProposals(), loadBondedTokens(), loadTallying()]);
+  setPageReady();
+
+  await Promise.all([fetchGovernanceProposals(), loadBondedTokens(), loadTallying()]);
+
+  }catch(e){
+    console.error(e)
+  }
 });
 
 onUnmounted(() => {
-  clearInterval(interval);
+  stopAnimation();
+  if (observer) {
+    observer.disconnect();
+  }
 })
 
 function animate() {
@@ -433,16 +488,16 @@ function animate() {
   });
 }
 
-const loadBondedTokens = async () => {
+const loadBondedTokens = async (): Promise<void> => {
   const res = await fetch(`${API_MAINNET}/cosmos/staking/v1beta1/pool`);
-  const data = await res.json();
+  const data: StakingPoolResponse = await res.json();
   bondedTokens.value = new Dec(data.pool.bonded_tokens);
 };
 
-const loadTallying = async () => {
+const loadTallying = async (): Promise<void> => {
   const res = await fetch(`${API_MAINNET}/cosmos/gov/v1/params/tallying`);
-  const data = await res.json();
-  quorum.value = new Dec(data.params.quorum);
+  const data: TallyingParamsResponse = await res.json();
+  quorum.value = new Dec(data.params?.quorum || data.tally_params?.quorum || "0");
 };
 
 const fetchProposalData = async (proposal: Proposal) => {
@@ -462,9 +517,12 @@ const fetchProposalData = async (proposal: Proposal) => {
   }
 };
 
-const fetchData = async (url: string) => {
+const fetchData = async (url: string): Promise<GovernanceResponse | null> => {
   try {
     const req = await fetch(url);
+    if (!req.ok) {
+      throw new Error(`HTTP ${req.status}: ${req.statusText}`);
+    }
     return await req.json();
   } catch (error: Error | any) {
     state.value.showErrorDialog = true;

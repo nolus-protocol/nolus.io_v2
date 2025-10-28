@@ -192,6 +192,7 @@ defineProps({
 import { ref, computed, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import { TransitionRoot, TransitionChild, Dialog, DialogPanel } from "@headlessui/vue";
+import { ANIMATION_TIMINGS } from "@/constants/animations";
 
 import BarsIcon from "@/assets/icons/bars.svg";
 import CrossLargeIcon from "@/assets/icons/cross-large.svg";
@@ -246,19 +247,16 @@ const navigationWithTextColorClass = computed(() => {
   });
 });
 
-onMounted(() => {
-  window.addEventListener("scroll", scroll, { passive: true });
-
-})
+let scrollTimeout: ReturnType<typeof setTimeout>;
 
 const scroll = () => {
-  if(window.scrollY > 0 && !y.value){
-    y.value = true;
-  }
-
-  if(window.scrollY == 0){
-    y.value = false;
-  }
-
+  clearTimeout(scrollTimeout);
+  scrollTimeout = setTimeout(() => {
+    y.value = window.scrollY > 0;
+  }, ANIMATION_TIMINGS.SCROLL_DEBOUNCE);
 }
+
+onMounted(() => {
+  window.addEventListener("scroll", scroll, { passive: true });
+})
 </script>

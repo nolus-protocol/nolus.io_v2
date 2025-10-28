@@ -101,6 +101,7 @@
 <script lang="ts" setup>
 import { ref, onMounted, onUnmounted, onBeforeUnmount, nextTick } from "vue";
 import NolusContainer from "@/components/NolusContainer.vue";
+import { ANIMATION_TIMINGS } from "@/constants/animations";
 import CompatibleIcon from "@/assets/icons/compatible.svg";
 import CrosschainIcon from "@/assets/icons/cross-chain.svg";
 import EffortlessIcon from "@/assets/icons/effortless.svg";
@@ -155,7 +156,7 @@ let activeTab = ref(0); // Initialize activeTab to 0
 let previousTabHeight = ref(0); // Initialize the height of the previously selected tab
 let tabsContainer = ref<HTMLElement | null>(null);
 let imgRef = ref(null);
-let intervalId: number, observer: IntersectionObserver;
+let intervalId: NodeJS.Timeout, observer: IntersectionObserver;
 let loading = ref(false);
 
 const updateHeight = (activeTabElement: Element) => {
@@ -187,7 +188,7 @@ const setActiveTab = async (index: number) => {
 const startInterval = () => {
   intervalId = setInterval(() => {
     activeTab.value = (activeTab.value + 1) % tabs.length;
-  }, 10000);
+  }, ANIMATION_TIMINGS.TAB_AUTO_ROTATE);
 };
 
 // Stop the timer

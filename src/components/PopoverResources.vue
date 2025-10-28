@@ -66,7 +66,6 @@ import GithubIcon from "../assets/icons/github.svg";
 import ShieldCheckIcon from "../assets/icons/shield-check.svg";
 import ColorPaletteIcon from "../assets/icons/color-palette.svg";
 import HeadphonesIcon from "../assets/icons/headphones.svg";
-import Newspaper2Icon from "../assets/icons/newspaper-2.svg";
 
 const props = defineProps({
   textColorClass: String,
@@ -74,12 +73,6 @@ const props = defineProps({
 });
 
 const solutions = [
-//  {
-//    name: "Whitepaper",
-//    description: "The vision behind Nolus Protocol",
-//    href: "https://nolus.io/Nolus-Whitepaper.pdf#",
-//    icon: Newspaper2Icon
-//  },
   {
     name: "Tech Documentation",
     description: "Tailored for developers & validators",

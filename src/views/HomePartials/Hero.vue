@@ -127,16 +127,62 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onBeforeMount } from "vue";
+import { ref, onBeforeMount, onMounted } from "vue";
 import { ETL_API, PROTOCOLS, Stats } from "@/config";
+import { usePageReady } from "@/composables/usePageReady";
 
 import SquareArrowTopRightIcon from "@/assets/icons/square-arrow-top-right-2.svg";
-import PlayCircleIcon from "@/assets/icons/play-circle.svg";
 import Button from "@/components/Button.vue";
 import videoPoster from "@/assets/videos/header.jpg";
 import Modal from "@/components/modals/templates/Modal.vue";
 import VideoModal from "@/components/modals/VideoModal.vue";
 import videoSrc from "@/assets/videos/header.mp4";
+
+const { setPageReady, initVideoPage } = usePageReady();
+
+// Initialize video page mode (hides page until color is sampled)
+initVideoPage();
+
+// Sample video background color and apply to page
+const sampleVideoColor = (video: HTMLVideoElement) => {
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+  
+  if (!ctx) return;
+  
+  canvas.width = video.videoWidth;
+  canvas.height = video.videoHeight;
+  
+  // Draw the current frame
+  ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+  
+  // Sample from the center-left area of the video (where background usually is)
+  const x = Math.floor(canvas.width * 0.1);
+  const y = Math.floor(canvas.height * 0.5);
+  
+  const imageData = ctx.getImageData(x, y, 1, 1).data;
+  const hex = `#${imageData[0].toString(16).padStart(2, '0')}${imageData[1].toString(16).padStart(2, '0')}${imageData[2].toString(16).padStart(2, '0')}`;
+  
+  // Apply the sampled color to the CSS variable
+  document.documentElement.style.setProperty('--bg-banner-home', hex);
+  
+  console.log('Sampled home video background color:', hex);
+  
+  // Mark as sampled to show content
+  setPageReady();
+};
+
+onMounted(() => {
+  // Wait for video to load and sample its color
+  const video = document.querySelector('video');
+  if (video) {
+    video.addEventListener('loadeddata', () => {
+      isVideoLoaded.value = true;
+      // Sample color immediately when video is ready
+      setTimeout(() => sampleVideoColor(video), 50);
+    });
+  }
+});
 
 const stats = ref([
   {

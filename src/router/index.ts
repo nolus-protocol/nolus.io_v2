@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
 import NotFound from "@/views/NotFound.vue";
 import { META as META_HOME } from "@/router/metadata/homepage";
 import { META as META_ABOUT } from "@/router/metadata/about";
@@ -14,7 +13,7 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
-      component: HomeView,
+      component: () => import("../views/HomeView.vue"),
       meta: META_HOME
     },
     {

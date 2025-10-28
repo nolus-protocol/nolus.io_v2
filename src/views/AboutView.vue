@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white">
+  <div class="bg-white transition-opacity duration-300" :class="{ 'opacity-0': !pageReady }">
     <main class="isolate">
       <!-- Hero section -->
       <div
@@ -45,20 +45,23 @@
             aria-hidden="true"
           >
             <div class="absolute top-4 -z-10 mx-auto w-9/12 sm:-right-8 lg:-right-20 lg:-top-20">
-              <video
-                class="h-auto w-full"
-                @loadeddata="isVideoLoaded = true"
-                muted
-                autoplay
-                playsinline
-                data-timing="7"
-                data-wait="240"
-              >
-                <source
-                  :src="videoSrc"
-                  type="video/mp4"
-                />
-              </video>
+              <div class="relative">
+                <video
+                  class="h-auto w-full"
+                  @loadeddata="isVideoLoaded = true"
+                  muted
+                  autoplay
+                  playsinline
+                  data-timing="7"
+                  data-wait="240"
+                >
+                  <source
+                    :src="videoSrc"
+                    type="video/mp4"
+                  />
+                </video>
+
+              </div>
             </div>
           </div>
         </NolusContainer>
@@ -104,6 +107,8 @@
                   class="mr-5 h-32 w-32 rounded-full brightness-110 grayscale group-hover:grayscale-0"
                   :src="person.imageUrl"
                   alt=""
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div>
                   <h3 class="text-base font-semibold leading-7 tracking-tight text-neutral-900">{{ person.name }}</h3>
@@ -141,61 +146,75 @@
               class="mx-auto w-4/5"
               src="@/assets/images/about/partners/cogitent_ventures.png"
               alt="Cogitent Ventures"
+              loading="lazy"
+              decoding="async"
             />
             <img
               class="mx-auto w-4/5"
               src="@/assets/images/about/partners/cointelegraph.svg?url"
               alt="CoinTelegraph"
+              loading="lazy"
             />
             <img
               class="mx-auto w-4/5"
               src="@/assets/images/about/partners/dorahacks.svg?url"
               alt="DoraHacks"
+              loading="lazy"
             />
             <img
               class="mx-auto w-4/5"
               src="@/assets/images/about/partners/tokenmetrics.svg?url"
               alt="TokenMetrics"
+              loading="lazy"
             />
             <img
               class="mx-auto w-4/5"
               src="@/assets/images/about/partners/interop.svg?url"
               alt="Interop Ventures"
+              loading="lazy"
             />
             <img
               class="mx-auto w-4/5"
               src="@/assets/images/about/partners/kahuna.svg?url"
               alt="Kahuna"
+              loading="lazy"
             />
             <img
               class="mx-auto w-4/5"
               src="@/assets/images/about/partners/everstake.svg?url"
               alt="Everstake"
+              loading="lazy"
             />
             <img
               class="mx-auto w-4/5"
               src="@/assets/images/about/partners/block_builders.svg?url"
               alt="BlockBuilders"
+              loading="lazy"
             />
             <img
               class="mx-auto w-4/5"
               src="@/assets/images/about/partners/gt_capital.svg?url"
               alt="GT Capital"
+              loading="lazy"
             />
             <img
               class="mx-auto w-4/5"
               src="@/assets/images/about/partners/autonomy_capital.svg?url"
               alt="Autonomy Capital"
+              loading="lazy"
             />
             <img
               class="mx-auto w-4/5"
               src="@/assets/images/about/partners/nacion_crypto.svg?url"
               alt="NAcion Crypto"
+              loading="lazy"
             />
             <img
               class="mx-auto w-4/5"
               src="@/assets/images/about/partners/p-ops_team.png"
               alt="P-OPS Team"
+              loading="lazy"
+              decoding="async"
             />
           </div>
         </NolusContainer>
@@ -204,8 +223,9 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-import { ref } from "vue";
+<script setup lang="ts">
+import { ref, onMounted } from "vue";
+import { usePageReady } from "@/composables/usePageReady";
 import NolusContainer from "@/components/NolusContainer.vue";
 import icon1 from "@/assets/lotties/mission.json?url";
 import icon2 from "@/assets/lotties/vision.json?url";
@@ -218,14 +238,58 @@ import contributors3 from "@/assets/images/about/team/ivan_kostov.jpg";
 import contributors4 from "@/assets/images/about/team/bilyana_christova.jpg";
 import contributors5 from "@/assets/images/about/team/metodi_manov.jpg";
 import contributors6 from "@/assets/images/about/team/simon_chadwick.jpg";
-import contributors7 from "@/assets/images/about/team/nena_alba.jpg";
 import contributors8 from "@/assets/images/about/team/ves_zahariev.jpg";
-import contributors9 from "@/assets/images/about/team/monika_angelova.jpg";
 import contributors10 from "@/assets/images/about/team/tony.jpg";
 import contributors11 from "@/assets/images/about/team/lily.jpg";
 
 // Logo dependencies
 const isVideoLoaded = ref(false);
+const { setPageReady, initVideoPage } = usePageReady();
+const { pageReady } = usePageReady();
+
+// Initialize video page mode (hides page until color is sampled)
+initVideoPage();
+
+// Sample video background color and apply to page
+const sampleVideoColor = (video: HTMLVideoElement) => {
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+
+  if (!ctx) return;
+
+  canvas.width = video.videoWidth;
+  canvas.height = video.videoHeight;
+
+  // Draw the current frame
+  ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+  // Sample from the center-left area of the video (where background usually is)
+  const x = Math.floor(canvas.width * 0.1);
+  const y = Math.floor(canvas.height * 0.5);
+
+  const imageData = ctx.getImageData(x, y, 1, 1).data;
+  const hex = `#${imageData[0].toString(16).padStart(2, '0')}${imageData[1].toString(16).padStart(2, '0')}${imageData[2].toString(16).padStart(2, '0')}`;
+
+  // Apply the sampled color to the CSS variable
+  document.documentElement.style.setProperty('--bg-banner-about', hex);
+
+  console.log('Sampled about video background color:', hex);
+
+  // Mark as sampled to show content
+  setPageReady();
+};
+
+onMounted(() => {
+  // Wait for video to load and sample its color
+  const video = document.querySelector('video');
+  if (video) {
+    video.addEventListener('loadeddata', () => {
+      isVideoLoaded.value = true;
+      // Sample color immediately when video is ready
+      setTimeout(() => sampleVideoColor(video), 50);
+    });
+  }
+});
 let heroWrapper = ref(null);
 
 // Define vision, mission and values
