@@ -328,6 +328,7 @@ import ProposalItem from "@/components/vote/components/ProposalItem.vue";
 import ProposalReadMoreDialog from "@/components/vote/components/ProposalReadMoreDialog.vue";
 import Modal from "@/components/modals/templates/Modal.vue";
 import PlusSmallIcon from "@/assets/icons/plus-small.svg";
+import { usePageReady } from "@/composables/usePageReady";
 
 const stats = [
   {
@@ -344,8 +345,23 @@ let dotColor = "13,55,127"; // Change this to control the color of the dots
 
 const bondedTokens = ref(new Dec(0));
 const quorum = ref(new Dec(0));
+const { setPageReady } = usePageReady();
 
-const state = ref({
+const state = ref<{
+  showReadMoreModal: boolean,
+  showErrorDialog: boolean,
+  errorMessage: string,
+  proposal: {
+    id: string,
+    title: string,
+    summary: string
+  },
+  limit: number,
+  pagination: {
+    total: string,
+    next_key: string | null
+  }
+}>({
   showReadMoreModal: false,
   showErrorDialog: false,
   errorMessage: "",
@@ -356,12 +372,12 @@ const state = ref({
   },
   limit: 6,
   pagination: {
-    total: 0,
+    total: "0",
     next_key: ""
   }
 });
 
-let interval: number;
+let interval: NodeJS.Timeout;
 let observer: IntersectionObserver | null = null;
 const proposals = ref([] as Proposal[]);
 const dots: {
@@ -381,11 +397,11 @@ const startAnimation = () => {
 const stopAnimation = () => {
   if (interval) {
     clearInterval(interval);
-    interval = 0;
   }
 };
 
 onMounted(async () => {
+  try{
   let canvas = myCanvas.value;
 
   if (canvas) {
@@ -432,7 +448,13 @@ onMounted(async () => {
     observer.observe(canvas);
   }
 
-  await Promise.allSettled([fetchGovernanceProposals(), loadBondedTokens(), loadTallying()]);
+  setPageReady();
+
+  await Promise.all([fetchGovernanceProposals(), loadBondedTokens(), loadTallying()]);
+
+  }catch(e){
+    console.error(e)
+  }
 });
 
 onUnmounted(() => {

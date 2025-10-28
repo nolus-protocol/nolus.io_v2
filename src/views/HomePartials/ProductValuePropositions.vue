@@ -156,7 +156,7 @@ let activeTab = ref(0); // Initialize activeTab to 0
 let previousTabHeight = ref(0); // Initialize the height of the previously selected tab
 let tabsContainer = ref<HTMLElement | null>(null);
 let imgRef = ref(null);
-let intervalId: number, observer: IntersectionObserver;
+let intervalId: NodeJS.Timeout, observer: IntersectionObserver;
 let loading = ref(false);
 
 const updateHeight = (activeTabElement: Element) => {
