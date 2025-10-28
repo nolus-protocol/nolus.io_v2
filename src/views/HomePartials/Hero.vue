@@ -138,8 +138,7 @@ import Modal from "@/components/modals/templates/Modal.vue";
 import VideoModal from "@/components/modals/VideoModal.vue";
 import videoSrc from "@/assets/videos/header.mp4";
 
-const { pageReady, setPageReady, initVideoPage } = usePageReady();
-const colorSampled = pageReady;
+const { setPageReady, initVideoPage } = usePageReady();
 
 // Initialize video page mode (hides page until color is sampled)
 initVideoPage();

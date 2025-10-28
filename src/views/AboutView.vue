@@ -244,8 +244,7 @@ import contributors11 from "@/assets/images/about/team/lily.jpg";
 
 // Logo dependencies
 const isVideoLoaded = ref(false);
-const { pageReady, setPageReady, initVideoPage } = usePageReady();
-const colorSampled = pageReady;
+const { setPageReady, initVideoPage } = usePageReady();
 
 // Initialize video page mode (hides page until color is sampled)
 initVideoPage();
