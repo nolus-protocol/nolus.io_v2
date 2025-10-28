@@ -50,34 +50,7 @@
 
 <script lang="ts" setup>
 import NolusContainer from "@/components/NolusContainer.vue";
-import osmosisImage from "../../assets/images/hubs/osmosis.svg";
-import astroportImage from "../../assets/images/hubs/astroport.svg";
-import hydroImage from "../../assets/images/hubs/hydro.svg";
+import { HUBS } from "@/constants/hubs";
 
-const hubs = [
-  {
-    id: 1,
-    shortName: "Osmosis",
-    fullName: "Osmosis DEX",
-    comingSoon: false,
-    image: osmosisImage,
-    link: "https://osmosis.zone/"
-  },
-  {
-    id: 2,
-    shortName: "Neutron",
-    fullName: "Astroport",
-    comingSoon: false,
-    image: astroportImage,
-    link: "https://astroport.finance/"
-  },
-  {
-    id: 3,
-    shortName: "Neutron",
-    fullName: "Hydro",
-    comingSoon: false,
-    image: hydroImage,
-    link: "https://hydro.cosmos.network/"
-  },
-];
+const hubs = HUBS;
 </script>

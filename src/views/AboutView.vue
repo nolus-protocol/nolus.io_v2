@@ -104,6 +104,8 @@
                   class="mr-5 h-32 w-32 rounded-full brightness-110 grayscale group-hover:grayscale-0"
                   :src="person.imageUrl"
                   alt=""
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div>
                   <h3 class="text-base font-semibold leading-7 tracking-tight text-neutral-900">{{ person.name }}</h3>
@@ -141,61 +143,75 @@
               class="mx-auto w-4/5"
               src="@/assets/images/about/partners/cogitent_ventures.png"
               alt="Cogitent Ventures"
+              loading="lazy"
+              decoding="async"
             />
             <img
               class="mx-auto w-4/5"
               src="@/assets/images/about/partners/cointelegraph.svg?url"
               alt="CoinTelegraph"
+              loading="lazy"
             />
             <img
               class="mx-auto w-4/5"
               src="@/assets/images/about/partners/dorahacks.svg?url"
               alt="DoraHacks"
+              loading="lazy"
             />
             <img
               class="mx-auto w-4/5"
               src="@/assets/images/about/partners/tokenmetrics.svg?url"
               alt="TokenMetrics"
+              loading="lazy"
             />
             <img
               class="mx-auto w-4/5"
               src="@/assets/images/about/partners/interop.svg?url"
               alt="Interop Ventures"
+              loading="lazy"
             />
             <img
               class="mx-auto w-4/5"
               src="@/assets/images/about/partners/kahuna.svg?url"
               alt="Kahuna"
+              loading="lazy"
             />
             <img
               class="mx-auto w-4/5"
               src="@/assets/images/about/partners/everstake.svg?url"
               alt="Everstake"
+              loading="lazy"
             />
             <img
               class="mx-auto w-4/5"
               src="@/assets/images/about/partners/block_builders.svg?url"
               alt="BlockBuilders"
+              loading="lazy"
             />
             <img
               class="mx-auto w-4/5"
               src="@/assets/images/about/partners/gt_capital.svg?url"
               alt="GT Capital"
+              loading="lazy"
             />
             <img
               class="mx-auto w-4/5"
               src="@/assets/images/about/partners/autonomy_capital.svg?url"
               alt="Autonomy Capital"
+              loading="lazy"
             />
             <img
               class="mx-auto w-4/5"
               src="@/assets/images/about/partners/nacion_crypto.svg?url"
               alt="NAcion Crypto"
+              loading="lazy"
             />
             <img
               class="mx-auto w-4/5"
               src="@/assets/images/about/partners/p-ops_team.png"
               alt="P-OPS Team"
+              loading="lazy"
+              decoding="async"
             />
           </div>
         </NolusContainer>
@@ -218,9 +234,7 @@ import contributors3 from "@/assets/images/about/team/ivan_kostov.jpg";
 import contributors4 from "@/assets/images/about/team/bilyana_christova.jpg";
 import contributors5 from "@/assets/images/about/team/metodi_manov.jpg";
 import contributors6 from "@/assets/images/about/team/simon_chadwick.jpg";
-import contributors7 from "@/assets/images/about/team/nena_alba.jpg";
 import contributors8 from "@/assets/images/about/team/ves_zahariev.jpg";
-import contributors9 from "@/assets/images/about/team/monika_angelova.jpg";
 import contributors10 from "@/assets/images/about/team/tony.jpg";
 import contributors11 from "@/assets/images/about/team/lily.jpg";
 

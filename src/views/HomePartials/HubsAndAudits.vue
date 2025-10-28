@@ -109,41 +109,14 @@
 <script lang="ts" setup>
 // For Hubs widget
 import NolusContainer from "@/components/NolusContainer.vue";
-import osmosisImage from "../../assets/images/hubs/osmosis.svg";
-import astroportImage from "../../assets/images/hubs/astroport.svg";
+import { HUBS } from "@/constants/hubs";
 import halborn_logo from "../../assets/images/auditors/halborn_logo.jpeg";
 import oak_logo from "../../assets/images/auditors/oak_logo.jpeg";
-import hydroImage from "../../assets/images/hubs/hydro.svg";
 
 // For Audits widget
 import ChevronRightIcon from "@/assets/icons/chevron-right.svg";
 
-const hubs = [
-  {
-    id: 1,
-    shortName: "Osmosis",
-    fullName: "Osmosis DEX",
-    comingSoon: false,
-    image: osmosisImage,
-    link: "https://osmosis.zone/"
-  },
-  {
-    id: 2,
-    shortName: "Neutron",
-    fullName: "Astroport",
-    comingSoon: false,
-    image: astroportImage,
-    link: "https://astroport.fi/"
-  },
-  {
-    id: 3,
-    shortName: "Neutron",
-    fullName: "Hydro",
-    comingSoon: false,
-    image: hydroImage,
-    link: "https://hydro.cosmos.network/"
-  }
-];
+const hubs = HUBS;
 
 const audits = [
   {

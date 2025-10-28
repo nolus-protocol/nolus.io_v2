@@ -316,9 +316,11 @@
 
 <script lang="ts" setup>
 import type { Proposal } from "@/components/vote/Proposal";
+import type { StakingPoolResponse, GovernanceResponse, TallyingParamsResponse } from "@/types/governance";
 import { computed, onMounted, onUnmounted, ref } from "vue";
 import { Dec } from "@keplr-wallet/unit";
 import { API_MAINNET } from "@/config";
+import { ANIMATION_TIMINGS } from "@/constants/animations";
 
 import NolusContainer from "@/components/NolusContainer.vue";
 import Button from "@/components/Button.vue";
@@ -360,6 +362,7 @@ const state = ref({
 });
 
 let interval: number;
+let observer: IntersectionObserver | null = null;
 const proposals = ref([] as Proposal[]);
 const dots: {
   x: number;
@@ -367,6 +370,20 @@ const dots: {
   opacity: number;
   direction: number;
 }[] = [];
+
+const startAnimation = () => {
+  if (!interval) {
+    animate();
+    interval = setInterval(animate, ANIMATION_TIMINGS.CANVAS_FRAME_RATE);
+  }
+};
+
+const stopAnimation = () => {
+  if (interval) {
+    clearInterval(interval);
+    interval = 0;
+  }
+};
 
 onMounted(async () => {
   let canvas = myCanvas.value;
@@ -398,15 +415,31 @@ onMounted(async () => {
         dots.push(dot);
       }
     }
-    animate();
-    interval = setInterval(animate, 100);
+
+    // Use Intersection Observer to pause animation when not visible
+    observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            startAnimation();
+          } else {
+            stopAnimation();
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(canvas);
   }
 
   await Promise.allSettled([fetchGovernanceProposals(), loadBondedTokens(), loadTallying()]);
 });
 
 onUnmounted(() => {
-  clearInterval(interval);
+  stopAnimation();
+  if (observer) {
+    observer.disconnect();
+  }
 })
 
 function animate() {
@@ -433,16 +466,16 @@ function animate() {
   });
 }
 
-const loadBondedTokens = async () => {
+const loadBondedTokens = async (): Promise<void> => {
   const res = await fetch(`${API_MAINNET}/cosmos/staking/v1beta1/pool`);
-  const data = await res.json();
+  const data: StakingPoolResponse = await res.json();
   bondedTokens.value = new Dec(data.pool.bonded_tokens);
 };
 
-const loadTallying = async () => {
+const loadTallying = async (): Promise<void> => {
   const res = await fetch(`${API_MAINNET}/cosmos/gov/v1/params/tallying`);
-  const data = await res.json();
-  quorum.value = new Dec(data.params.quorum);
+  const data: TallyingParamsResponse = await res.json();
+  quorum.value = new Dec(data.params?.quorum || data.tally_params?.quorum || "0");
 };
 
 const fetchProposalData = async (proposal: Proposal) => {
@@ -462,9 +495,12 @@ const fetchProposalData = async (proposal: Proposal) => {
   }
 };
 
-const fetchData = async (url: string) => {
+const fetchData = async (url: string): Promise<GovernanceResponse | null> => {
   try {
     const req = await fetch(url);
+    if (!req.ok) {
+      throw new Error(`HTTP ${req.status}: ${req.statusText}`);
+    }
     return await req.json();
   } catch (error: Error | any) {
     state.value.showErrorDialog = true;

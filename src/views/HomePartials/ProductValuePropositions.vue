@@ -101,6 +101,7 @@
 <script lang="ts" setup>
 import { ref, onMounted, onUnmounted, onBeforeUnmount, nextTick } from "vue";
 import NolusContainer from "@/components/NolusContainer.vue";
+import { ANIMATION_TIMINGS } from "@/constants/animations";
 import CompatibleIcon from "@/assets/icons/compatible.svg";
 import CrosschainIcon from "@/assets/icons/cross-chain.svg";
 import EffortlessIcon from "@/assets/icons/effortless.svg";
@@ -187,7 +188,7 @@ const setActiveTab = async (index: number) => {
 const startInterval = () => {
   intervalId = setInterval(() => {
     activeTab.value = (activeTab.value + 1) % tabs.length;
-  }, 10000);
+  }, ANIMATION_TIMINGS.TAB_AUTO_ROTATE);
 };
 
 // Stop the timer

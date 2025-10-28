@@ -131,7 +131,6 @@ import { ref, onBeforeMount } from "vue";
 import { ETL_API, PROTOCOLS, Stats } from "@/config";
 
 import SquareArrowTopRightIcon from "@/assets/icons/square-arrow-top-right-2.svg";
-import PlayCircleIcon from "@/assets/icons/play-circle.svg";
 import Button from "@/components/Button.vue";
 import videoPoster from "@/assets/videos/header.jpg";
 import Modal from "@/components/modals/templates/Modal.vue";

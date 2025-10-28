@@ -29,3 +29,6 @@ coverage
 
 *.tsbuildinfo
 server/config.js
+
+# Claude Code documentation
+CLAUDE.md
