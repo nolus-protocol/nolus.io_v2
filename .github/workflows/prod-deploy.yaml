@@ -17,7 +17,7 @@ jobs:
   build:
     name: Build static files
     runs-on: ubuntu-22.04
-    container: node:20.9.0-bullseye-slim
+    container: node:22.15.0-bullseye-slim
 
     steps:
       - uses: actions/checkout@v3
