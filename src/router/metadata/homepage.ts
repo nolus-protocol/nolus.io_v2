@@ -3,6 +3,7 @@ export const META = {
   description: "Boost your trading power with asset-backed margin leverage, fixed interest rates, and minimized margin call risk. Trade smarter with more control",
   keywords:
     "margin trading, crypto trading, leverage trading, DeFi trading, crypto margin trading, asset-backed leverage, fixed-rate margin, low-risk leverage, decentralized trading, Nolus",
+  canonical: "https://nolus.io/",
 
   "og:type": "website",
   "og:url": "https://nolus.io/",

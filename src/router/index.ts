@@ -40,6 +40,17 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   window.document.title = to.meta.title as string;
 
+  // Handle canonical URL
+  let canonicalLink = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+  if (!canonicalLink) {
+    canonicalLink = document.createElement('link');
+    canonicalLink.setAttribute('rel', 'canonical');
+    document.head.appendChild(canonicalLink);
+  }
+  if (to.meta.canonical) {
+    canonicalLink.setAttribute('href', to.meta.canonical as string);
+  }
+
   for (const key in to.meta) {
     const item: HTMLMetaElement | HTMLScriptElement | HTMLElement | null =
       document.querySelector(`meta[name="${key}"]`) ??

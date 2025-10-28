@@ -3,6 +3,7 @@ export const META = {
   description:
     "Built on a Proof-of-Stake blockchain, where the community also plays a pivotal role in driving decentralization and enhancing security",
   keywords: "nolus protocol governance, nolus governance",
+  canonical: "https://nolus.io/governance",
 
   "og:type": "website",
   "og:url": "https://nolus.io/governance",
@@ -36,7 +37,7 @@ export const META = {
   "script-video-object": {
     "@context": "http://schema.org/",
     "@type": "VideoObject",
-    name: "Nolus defines a money market between lenders looking to yield on stablecoins and borrowers looking to amplify their holdings. For borrowers, the Nolus DeFi Lease provides up to 150% financing on the initial investment with a lowered margin call risk and access to the underlying leveraged assets through whitelisted strategies. Inspired by traditional lease products where one can obtain a physical good by providing only a fraction of the cost upfront and use it throughout the lease duration, the Nolus DeFi Lease unlocks the full potential of crypto money markets by reducing the industry’s steep over-collateralization requirements, resulting in significantly improved capital efficiency",
+    name: "Nolus defines a money market between lenders looking to yield on stablecoins and borrowers looking to amplify their holdings. For borrowers, the Nolus DeFi Lease provides up to 150% financing on the initial investment with a lowered margin call risk and access to the underlying leveraged assets through whitelisted strategies. Inspired by traditional lease products where one can obtain a physical good by providing only a fraction of the cost upfront and use it throughout the lease duration, the Nolus DeFi Lease unlocks the full potential of crypto money markets by reducing the industry's steep over-collateralization requirements, resulting in significantly improved capital efficiency",
     uploadDate: "2022-10-24",
     duration: "PT0H1M47S",
     contentUrl: "https://www.youtube.com/watch?v=k7QWPR0052g",
