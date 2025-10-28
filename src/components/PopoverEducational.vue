@@ -7,7 +7,7 @@
       class="flex w-full items-center justify-between gap-x-1 rounded-t-2xl px-5 py-5 transition-all lg:rounded-lg lg:px-3 lg:py-2 lg:hover:bg-neutral-200/50"
       :class="{ 'bg-white shadow-lg lg:bg-neutral-200/40 lg:shadow-none': open }"
     >
-      <span :class="props.textColorClass">Educational</span>
+      <span class="font-medium" :class="props.textColorClass">{{ $t('popover_educational') }}</span>
       <ChevronDownSmallIcon
         class="h-7 w-7 fill-neutral-800 transition-all lg:h-5 lg:w-5"
         :class="[{ 'rotate-90 lg:rotate-0': !open }, props.fillColorClass]"
@@ -58,13 +58,13 @@
           </div>
           <div class="border-t border-blue-900/10 bg-blue-100/80 p-4">
             <div class="mb-2 flex flex-col justify-between gap-y-2 px-3 pr-0 md:flex-row md:items-center">
-              <h3 class="text-md font-medium leading-6 text-neutral-900">Recent blog posts</h3>
+              <h3 class="text-md font-medium leading-6 text-neutral-900">{{ $t('popover_educationalRecentBlogPosts') }}</h3>
               <Button
                 size="sm"
                 :icon="MediumIcon"
                 variant="secondary"
                 link="https://medium.com/nolusprotocol"
-                >View all posts</Button
+                >{{ $t('common_viewAllPosts') }}</Button
               >
             </div>
             <ul
@@ -108,7 +108,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/vue";
 import ChevronDownSmallIcon from "@/assets/icons/chevron-down-small.svg";
 import Button from "./Button.vue";
@@ -121,14 +121,18 @@ const props = defineProps({
   fillColorClass: String
 });
 
-const resources = [
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
+
+const resources = computed(() => [
   {
-    name: "Knowledge Hub",
-    description: "Find answers to your questions",
+    name: t("popover_educationalKnowledgeHub"),
+    description: t("popover_educationalKnowledgeHubDesc"),
     href: "https://hub.nolus.io/",
     icon: BookIcon
   }
-];
+]);
 
 let recentPosts = ref<
   {

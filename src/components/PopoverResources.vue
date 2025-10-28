@@ -7,7 +7,7 @@
       class="flex w-full items-center justify-between gap-x-1 rounded-t-2xl px-5 py-5 transition-all lg:rounded-lg lg:px-3 lg:py-2 lg:hover:bg-neutral-200/50"
       :class="{ 'bg-white shadow-lg lg:bg-neutral-200/40 lg:shadow-none': open }"
     >
-      <span :class="props.textColorClass">Resources</span>
+      <span class="font-medium" :class="props.textColorClass">{{ $t('popover_resources') }}</span>
       <ChevronDownSmallIcon
         class="h-7 w-7 fill-neutral-800 transition-all lg:h-5 lg:w-5"
         :class="[{ 'rotate-90 lg:rotate-0': !open }, props.fillColorClass]"
@@ -60,6 +60,8 @@
 </template>
 
 <script lang="ts" setup>
+import { computed } from "vue";
+import { useI18n } from "vue-i18n";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/vue";
 import ChevronDownSmallIcon from "@/assets/icons/chevron-down-small.svg";
 import GithubIcon from "../assets/icons/github.svg";
@@ -67,35 +69,37 @@ import ShieldCheckIcon from "../assets/icons/shield-check.svg";
 import ColorPaletteIcon from "../assets/icons/color-palette.svg";
 import HeadphonesIcon from "../assets/icons/headphones.svg";
 
+const { t } = useI18n();
+
 const props = defineProps({
   textColorClass: String,
   fillColorClass: String
 });
 
-const solutions = [
+const solutions = computed(() => [
   {
-    name: "Tech Documentation",
-    description: "Tailored for developers & validators",
+    name: t("popover_resourcesTechDoc"),
+    description: t("popover_resourcesTechDocDesc"),
     href: "https://hub.nolus.io/en_US/technical-documentation",
     icon: HeadphonesIcon
   },
   {
-    name: "Github",
-    description: "Source code for contributors & reviewers",
+    name: t("popover_resourcesGithub"),
+    description: t("popover_resourcesGithubDesc"),
     href: "https://github.com/nolus-protocol",
     icon: GithubIcon
   },
   {
-    name: "Audits",
-    description: "Еxternal security reports & bug bounty",
+    name: t("popover_resourcesAudits"),
+    description: t("popover_resourcesAuditsDesc"),
     href: "https://hub.nolus.io/en_US/technical-documentation/security",
     icon: ShieldCheckIcon
   },
   {
-    name: "Brand Assets",
-    description: "Playbook for holistic Nolus",
+    name: t("popover_resourcesBrandAssets"),
+    description: t("popover_resourcesBrandAssetsDesc"),
     href: "/Nolus-Brandkit.pdf",
     icon: ColorPaletteIcon
   }
-];
+]);
 </script>

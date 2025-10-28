@@ -36,25 +36,26 @@ import icon1 from "@/assets/lotties/cost-efficient.json?url";
 import icon2 from "@/assets/lotties/less-risk.json?url";
 import icon3 from "@/assets/lotties/effortless.json?url";
 
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
+
 const features = [
   {
-    name: "Cost Efficient",
-    description:
-      "Enter and exit leverage positions with minimal spread and low impact to secure the best prices with no extra costs",
+    name: t('home_valuePropositionsCostEfficient'),
+    description: t('home_valuePropositionsCostEfficientDesc'),
     icon: icon1,
     href: "#"
   },
   {
-    name: "Less Risk",
-    description:
-      "Partial liquidation engine shields against volatility and full collateral loss while maintaining a healthy risk factor",
+    name: t('home_valuePropositionsLessRisk'),
+    description: t('home_valuePropositionsLessRiskDesc'),
     icon: icon2,
     href: "#"
   },
   {
-    name: "Asset Backed",
-    description:
-      "Positions hold the actual asset, offering greater transparency, lower counterparty risk, and stronger alignment with its value",
+    name: t('home_valuePropositionsAssetBacked'),
+    description: t('home_valuePropositionsAssetBackedDesc'),
     icon: icon3,
     href: "#"
   }

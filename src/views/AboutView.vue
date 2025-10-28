@@ -7,7 +7,7 @@
         ref="heroWrapper"
       >
         <NolusContainer class="flex items-center">
-          <div class="gap-x-14 md:max-w-[50%] lg:flex lg:max-w-2xl lg:max-w-none lg:items-center">
+          <div class="gap-x-14 md:max-w-[50%] lg:flex lg:max-w-none lg:items-center">
             <div class="w-full max-w-xl lg:shrink-0 xl:max-w-2xl">
               <h1
                 class="text-3xl font-bold leading-tight tracking-tight text-white md:text-3xl lg:text-5xl"
@@ -15,8 +15,8 @@
                 :initial="{ opacity: 0, y: 10 }"
                 :enter="{ opacity: 1, y: 0, scale: 1 }"
                 :delay="100"
+                v-html="$t('about_heroTitle')"
               >
-                Reshaping Onchain<br />Margin Trading
               </h1>
               <div class="flex flex-col gap-x-8 lg:flex-row">
                 <p
@@ -26,7 +26,7 @@
                   :enter="{ opacity: 1, y: 0, scale: 1 }"
                   :delay="200"
                 >
-                  Nolus delivers a novel primitive to DeFi through an asset-backed margin product that prioritizes predictability and risk control. With fixed rates, structured liquidity, and controlled leverage, the protocol transforms how users engage with crypto markets
+                  {{ $t('about_heroDesc1') }}
                 </p>
                 <p
                   class="relative mt-6 basis-1/2 text-lg leading-8 text-white sm:max-w-md lg:max-w-lg"
@@ -35,7 +35,7 @@
                   :enter="{ opacity: 1, y: 0, scale: 1 }"
                   :delay="300"
                 >
-                Designed for those seeking both opportunity and stability, Nolus empowers new and experienced users alike to navigate volatile markets and seize strategic opportunities with confidence
+                {{ $t('about_heroDesc2') }}
                 </p>
               </div>
             </div>
@@ -90,7 +90,7 @@
       <div class="bg-neutral-100 py-24">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
           <div class="mx-auto max-w-2xl shrink-0 basis-2/5 lg:mx-0">
-            <h2 class="text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">Core Contributors</h2>
+            <h2 class="text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">{{ $t('about_coreContributorsHeading') }}</h2>
           </div>
           <div class="shrink-0 basis-3/5">
             <!-- Core contributors -->
@@ -145,74 +145,74 @@
             <img
               class="mx-auto w-4/5"
               src="@/assets/images/about/partners/cogitent_ventures.png"
-              alt="Cogitent Ventures"
+              :alt="$t('about_partnerCogitentVentures')"
               loading="lazy"
               decoding="async"
             />
             <img
               class="mx-auto w-4/5"
               src="@/assets/images/about/partners/cointelegraph.svg?url"
-              alt="CoinTelegraph"
+              :alt="$t('about_partnerCoinTelegraph')"
               loading="lazy"
             />
             <img
               class="mx-auto w-4/5"
               src="@/assets/images/about/partners/dorahacks.svg?url"
-              alt="DoraHacks"
+              :alt="$t('about_partnerDoraHacks')"
               loading="lazy"
             />
             <img
               class="mx-auto w-4/5"
               src="@/assets/images/about/partners/tokenmetrics.svg?url"
-              alt="TokenMetrics"
+              :alt="$t('about_partnerTokenMetrics')"
               loading="lazy"
             />
             <img
               class="mx-auto w-4/5"
               src="@/assets/images/about/partners/interop.svg?url"
-              alt="Interop Ventures"
+              :alt="$t('about_partnerInteropVentures')"
               loading="lazy"
             />
             <img
               class="mx-auto w-4/5"
               src="@/assets/images/about/partners/kahuna.svg?url"
-              alt="Kahuna"
+              :alt="$t('about_partnerKahuna')"
               loading="lazy"
             />
             <img
               class="mx-auto w-4/5"
               src="@/assets/images/about/partners/everstake.svg?url"
-              alt="Everstake"
+              :alt="$t('about_partnerEverstake')"
               loading="lazy"
             />
             <img
               class="mx-auto w-4/5"
               src="@/assets/images/about/partners/block_builders.svg?url"
-              alt="BlockBuilders"
+              :alt="$t('about_partnerBlockBuilders')"
               loading="lazy"
             />
             <img
               class="mx-auto w-4/5"
               src="@/assets/images/about/partners/gt_capital.svg?url"
-              alt="GT Capital"
+              :alt="$t('about_partnerGTCapital')"
               loading="lazy"
             />
             <img
               class="mx-auto w-4/5"
               src="@/assets/images/about/partners/autonomy_capital.svg?url"
-              alt="Autonomy Capital"
+              :alt="$t('about_partnerAutonomyCapital')"
               loading="lazy"
             />
             <img
               class="mx-auto w-4/5"
               src="@/assets/images/about/partners/nacion_crypto.svg?url"
-              alt="NAcion Crypto"
+              :alt="$t('about_partnerNacionCrypto')"
               loading="lazy"
             />
             <img
               class="mx-auto w-4/5"
               src="@/assets/images/about/partners/p-ops_team.png"
-              alt="P-OPS Team"
+              :alt="$t('about_partnerPOPSTeam')"
               loading="lazy"
               decoding="async"
             />
@@ -224,7 +224,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
+import { useI18n } from "vue-i18n";
 import { usePageReady } from "@/composables/usePageReady";
 import NolusContainer from "@/components/NolusContainer.vue";
 import icon1 from "@/assets/lotties/mission.json?url";
@@ -241,6 +242,8 @@ import contributors6 from "@/assets/images/about/team/simon_chadwick.jpg";
 import contributors8 from "@/assets/images/about/team/ves_zahariev.jpg";
 import contributors10 from "@/assets/images/about/team/tony.jpg";
 import contributors11 from "@/assets/images/about/team/lily.jpg";
+
+const { t } = useI18n();
 
 // Logo dependencies
 const isVideoLoaded = ref(false);
@@ -293,124 +296,121 @@ onMounted(() => {
 let heroWrapper = ref(null);
 
 // Define vision, mission and values
-const visionMisionAndValues = [
+const visionMisionAndValues = computed(() => [
   {
     icon: icon1,
-    name: "Mission",
-    description:
-      "Nolus is dedicated to effectively addressing inefficiencies in lending markets through innovative, convenient, and sustainable solutions. Leveraging the power of blockchain technology, Nolus is at the forefront of pioneering in decentralized finance"
+    name: t("about_missionTitle"),
+    description: t("about_missionDesc")
   },
   {
     icon: icon2,
-    name: "Vision",
-    description:
-      "We envision a future where all assets are tokenized on-chain, offering people efficiency in managing their funds. At Nolus, we gaze into the future which is why we designed all protocol offerings to be seamless, secure and instant",
+    name: t("about_visionTitle"),
+    description: t("about_visionDesc"),
     href: "#"
   },
   {
     icon: icon3,
-    name: "Values",
-    description:
-      "Nolus is founded on the principles of transparency, efficiency, and inclusivity, which are reflected in our open-source technology, governance-guided decision-making, and dedicated efforts to create a truly global service, providing wealth creation opportunities accessible to all"
+    name: t("about_valuesTitle"),
+    description: t("about_valuesDesc")
   }
-];
+]);
 
 // Define core contributors
-const core_contributors = [
+const core_contributors = computed(() => [
   {
     name: "Kamen Trendafilov",
-    role: "Finance",
+    role: t("about_roleFinance"),
     imageUrl: contributors1,
     xUrl: "",
     discordUrl: ""
   },
   {
     name: "Gancho Manev",
-    role: "Tech Lead",
+    role: t("about_roleTechLead"),
     imageUrl: contributors2,
     xUrl: "",
     discordUrl: ""
   },
   {
     name: "Ivan Kostov",
-    role: "Product Development",
+    role: t("about_roleProductDevelopment"),
     imageUrl: contributors3,
     xUrl: "",
     discordUrl: ""
   },
   {
     name: "Bilyana Christova",
-    role: "Business Development",
+    role: t("about_roleBusinessDevelopment"),
     imageUrl: contributors4,
     xUrl: "",
     discordUrl: ""
   },
   {
     name: "Metodi Manov",
-    role: "Product Development",
+    role: t("about_roleProductDevelopment"),
     imageUrl: contributors5,
     xUrl: "",
     discordUrl: ""
   },
   {
     name: "Simon Chadwick",
-    role: "Investor Relations",
+    role: t("about_roleInvestorRelations"),
     imageUrl: contributors6,
     xUrl: "",
     discordUrl: ""
   },
   {
     name: "Lilia Ilieva",
-    role: "Marketing & Communication",
+    role: t("about_roleMarketingCommunication"),
     imageUrl: contributors11,
     xUrl: "",
     discordUrl: ""
   },
   {
     name: "Ves Zahariev",
-    role: "Social & Marketing",
+    role: t("about_roleSocialMarketing"),
     imageUrl: contributors8,
     xUrl: "",
     discordUrl: ""
   },
   {
     name: "Tony Papailias",
-    role: "Community Lead",
+    role: t("about_roleCommunityLead"),
     imageUrl: contributors10,
     xUrl: "",
     discordUrl: ""
   }
-];
+]);
 
 // Define other contributors
-const other_contributors = [
+const other_contributors = computed(() => [
   {
     name: "Boyan Kostov",
-    role: "Product Design"
+    role: t("about_roleProductDesign")
   },
   {
     name: "Kiril Mihaylov",
-    role: "Rust Engineer"
+    role: t("about_roleRustEngineer")
   },
   {
     name: "Denislav Ivanov",
-    role: "Go Engineer"
+    role: t("about_roleGoEngineer")
   },
   {
     name: "Desislava Paunova",
-    role: "QA Engineer"
+    role: t("about_roleQAEngineer")
   },
   {
     name: "Alexander Makedonski",
-    role: "Web3 Engineer"
+    role: t("about_roleWeb3Engineer")
   },
   {
     name: "Lyubomir Blagov",
-    role: "Web3 Engineer"
+    role: t("about_roleWeb3Engineer")
   },
   {
     name: "Alexander Efremov",
-    role: "Data Scientist"
+    role: t("about_roleDataScientist")
   }
-];
+]);
 </script>

@@ -10,13 +10,13 @@
           class="text-base font-medium leading-7 text-blue-600"
           aria-hidden="true"
         >
-          Nolus App
+          {{ $t('home_productLabel') }}
         </p>
         <h2
           class="mt-2 text-3xl font-bold tracking-tight text-neutral-900 lg:text-5xl"
           aria-hidden="true"
         >
-        Build for You
+        {{ $t('home_productHeading') }}
         </h2>
       </div>
       <div class="relative z-10 overflow-hidden rounded-2xl bg-white shadow-xl">
@@ -112,42 +112,44 @@ import CrosschainImage from "../../assets/images/product-value-propositions/cros
 import EfortlessImage from "../../assets/images/product-value-propositions/effortless.webp";
 import FlexibleImage from "../../assets/images/product-value-propositions/flexible.webp";
 import PersonalizedImage from "../../assets/images/product-value-propositions/personalized.webp";
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 const tabs = [
   {
-    tabName: 'Effortless',
+    tabName: t('home_productTabEffortless'),
     tabIcon: EffortlessIcon,
-    heading: 'User-First Experience',
-    content: "Designed for a smooth and engaging journey, Nolus provides best-in-class onboarding and integrated guides, helping you get started easily and quickly refresh your knowledge whenever needed",
+    heading: t('home_productTabEffortlessHeading'),
+    content: t('home_productTabEffortlessDesc'),
     tabImage: EfortlessImage
   },
   {
-    tabName: 'Compatible',
+    tabName: t('home_productTabCompatible'),
     tabIcon: CompatibleIcon,
-    heading: 'Broad Wallet Support',
-    content:
-      "Connect seamlessly with a wide range of non-custodial wallets through supported extensions or mobile apps, ensuring a smooth, secure, and flexible user experience",
+    heading: t('home_productTabCompatibleHeading'),
+    content: t('home_productTabCompatibleDesc'),
     tabImage: CompatibleImage
   },
   {
-    tabName: 'Personalized',
+    tabName: t('home_productTabPersonalized'),
     tabIcon: PersonalizedIcon,
-    heading: 'AI-Infused Data Insights',
-    content: 'Meet Kai, your AI companion within Nolus, powered by advanced LLM technology to deliver tailored insights and real-time alerts—keeping you informed and ready to act at all times',
+    heading: t('home_productTabPersonalizedHeading'),
+    content: t('home_productTabPersonalizedDesc'),
     tabImage: PersonalizedImage
   },
   {
-    tabName: 'Flexible',
+    tabName: t('home_productTabFlexible'),
     tabIcon: FlexibleIcon,
-    heading: 'Simplified Network Fees',
-    content: "Enjoy the flexibility to seamlessly pay network fees with virtually any supported asset, making transactions more convenient and inclusive while directly benefiting NLS stakers",
+    heading: t('home_productTabFlexibleHeading'),
+    content: t('home_productTabFlexibleDesc'),
     tabImage: FlexibleImage
   },
   {
-    tabName: 'Cross-Chain',
+    tabName: t('home_productTabCrossChain'),
     tabIcon: CrosschainIcon,
-    heading: 'Secure Trustless Interoparability',
-    content: 'Transact securely across chains, powered by the trust-minimized Inter Blockchain Communication standard, ensuring near-instant processing without centralized intermediaries',
+    heading: t('home_productTabCrossChainHeading'),
+    content: t('home_productTabCrossChainDesc'),
     tabImage: CrosschainImage
   }
 ];

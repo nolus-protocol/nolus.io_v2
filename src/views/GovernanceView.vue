@@ -231,7 +231,7 @@
                 :enter="{ opacity: 1, y: 0, scale: 1 }"
                 :delay="100"
               >
-              Community Driven
+              {{ $t('governance_heroTitle') }}
               </h1>
               <p
                 class="relative mt-6 basis-1/2 text-lg leading-8 text-neutral-800 sm:max-w-md lg:max-w-lg"
@@ -240,7 +240,7 @@
                 :enter="{ opacity: 1, y: 0, scale: 1 }"
                 :delay="200"
               >
-                Members govern the protocol by staking NLS tokens and participate in every development decision, from parameter adjustments to upgrades. Built on a Proof-of-Stake blockchain, the community ensures decentralization, consensus, and security
+                {{ $t('governance_heroDesc') }}
               </p>
             </div>
           </div>
@@ -268,7 +268,7 @@
       <div class="bg-neutral-100 py-24">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
           <div class="max-w-2xl lg:mx-0">
-            <h2 class="mb-12 text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">Recent Proposals</h2>
+            <h2 class="mb-12 text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">{{ $t('governance_recentProposalsHeading') }}</h2>
           </div>
 
           <div class="mt-8 md:mt-0">
@@ -295,7 +295,7 @@
                 size="md"
                 class="mt-4"
               >
-                Load More
+                {{ $t('common_loadMore') }}
               </Button>
             </div>
             <Modal
@@ -330,15 +330,27 @@ import Modal from "@/components/modals/templates/Modal.vue";
 import PlusSmallIcon from "@/assets/icons/plus-small.svg";
 import { usePageReady } from "@/composables/usePageReady";
 
-const stats = [
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
+
+const stats = computed(() => [
   {
-    description: "Maintain the Nolus blockchain integrity and sustain the network's liveness",
-    value: "50 Validators",
+    description: t("governance_statsValidatorsDesc"),
+    value: t("governance_statsValidators"),
     id: 1
   },
-  { description: "Actively engage in governing the protocol's development", value: "3,454 Delegators", id: 2 },
-  { description: "NLS tokens providing economic security to the Nolus blockchain", value: "272M", id: 3 }
-];
+  { 
+    description: t("governance_statsDelegatorsDesc"), 
+    value: t("governance_statsDelegators"), 
+    id: 2 
+  },
+  { 
+    description: t("governance_statsStakedDesc"), 
+    value: t("governance_statsStaked"), 
+    id: 3 
+  }
+]);
 
 let myCanvas = ref<HTMLCanvasElement | null>();
 let dotColor = "13,55,127"; // Change this to control the color of the dots

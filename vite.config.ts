@@ -14,6 +14,26 @@ export default defineConfig({
     crittersOptions: {
       reduceInlineStyles: false,
     },
+    includedRoutes: async () => {
+      // Generate all language routes
+      const locales = ['en', 'ru', 'cn', 'es', 'fr', 'gr', 'tr', 'id', 'jp', 'kr'];
+      const pages = ['/', '/about', '/governance'];
+      const routes: string[] = [];
+      
+      locales.forEach(locale => {
+        pages.forEach(page => {
+          if (locale === 'en') {
+            // English pages without locale prefix
+            routes.push(page);
+          } else {
+            // Other languages with locale prefix
+            routes.push(`/${locale}${page}`);
+          }
+        });
+      });
+      
+      return routes;
+    },
   },
   resolve: {
     alias: {
@@ -23,7 +43,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks(id) {
+        manualChunks(id: string) {
           // Skip manualChunks for SSR build
           if (id.includes('node_modules')) {
             if (id.includes('vue') || id.includes('vue-router')) {
@@ -61,4 +81,4 @@ export default defineConfig({
   optimizeDeps: {
     include: ['vue', 'vue-router', '@headlessui/vue', 'lottie-web', 'marked']
   }
-})
+} as any)

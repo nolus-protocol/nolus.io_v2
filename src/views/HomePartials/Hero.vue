@@ -19,7 +19,7 @@
           :enter="{ opacity: 1, y: 0, scale: 1 }"
           :delay="100"
         >
-        Next-Gen Margin Trading
+        {{ $t('home_heroTitle') }}
         </h1>
 
         <p
@@ -29,7 +29,7 @@
           :enter="{ opacity: 1, y: 0, scale: 1 }"
           :delay="300"
         >
-        Supercharge your buying power with asset-backed leverage, fixed rates, and reduced margin call risk
+        {{ $t('home_heroSubtitle') }}
         </p>
 
         <div
@@ -46,7 +46,7 @@
             link="https://app.nolus.io/"
             :icon="SquareArrowTopRightIcon"
           >
-            Launch App
+            {{ $t('common_launchApp') }}
           </Button>
           <!--Button
             class="w-full md:w-auto"
@@ -82,7 +82,7 @@
         <img
           v-if="!isVideoLoaded"
           :src="videoPoster"
-          alt="Video loading..."
+          :alt="$t('home_heroVideoLoading')"
           v-motion
           :initial="{ opacity: 0 }"
           :enter="{ opacity: 1 }"
@@ -128,8 +128,11 @@
 
 <script lang="ts" setup>
 import { ref, onBeforeMount, onMounted } from "vue";
+import { useI18n } from "vue-i18n";
 import { ETL_API, PROTOCOLS, Stats } from "@/config";
 import { usePageReady } from "@/composables/usePageReady";
+
+const { t } = useI18n();
 
 import SquareArrowTopRightIcon from "@/assets/icons/square-arrow-top-right-2.svg";
 import Button from "@/components/Button.vue";
@@ -188,22 +191,22 @@ const stats = ref([
   {
     id: 1,
     key: Stats.tx_volume,
-    subtitle: "Tx Volume",
-    description: "Total transactional value channeled through Nolus",
+    subtitle: t('home_statsVolume'),
+    description: t('home_statsVolumeDesc'),
     value: "$--.--M+"
   },
   {
     id: 2,
     key: Stats.tvl,
-    subtitle: "Value Locked",
-    description: "Liquidity locked across 28 assets distributed on 3 chains",
+    subtitle: t('home_statsValueLocked'),
+    description: t('home_statsValueLockedDesc'),
     value: "$--.--"
   },
   {
     id: 3,
     key: Stats.earn,
-    subtitle: "Earn",
-    description: "Real yield fueled by interest generating margin positions",
+    subtitle: t('home_statsEarn'),
+    description: t('home_statsEarnDesc'),
     value: "--.--%"
   }
 ]);

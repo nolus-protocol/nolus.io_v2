@@ -10,9 +10,9 @@
       <div class="flex lg:flex-1">
         <router-link
           class="flex h-8 w-auto items-center p-4"
-          to="/"
+          :to="getLocalePath('/')"
         >
-          <span class="sr-only">Nolus Protocol</span>
+          <span class="sr-only">{{ $t('header_nolusProtocol') }}</span>
           <component
             :is="NolusLogoSymbol"
             class="mr-3 h-8 fill-orange-400"
@@ -35,7 +35,7 @@
           :class="textColorClass"
           @click="isOpen = true"
         >
-          <span class="sr-only">Open main menu</span>
+          <span class="sr-only">{{ $t('header_openMainMenu') }}</span>
           <BarsIcon
             class="h-6 w-6"
             aria-hidden="true"
@@ -48,27 +48,21 @@
           :key="item.id"
         >
           <router-link
-            v-if="item.internal"
+            v-if="item.internal && item.nameKey"
             :key="item.id"
             :to="item.href!"
             class="block rounded-lg px-3 py-2 text-base font-medium transition-all hover:bg-neutral-200/50"
             :class="textColorClass"
             active-class="bg-neutral-200/40"
           >
-            {{ item.name }}
+            {{ $t(item.nameKey) }}
           </router-link>
-          <a
-            v-else
-            :href="item.href"
-            class="rounded-lg font-medium tracking-tight text-neutral-900 transition-all hover:bg-neutral-200/50"
-          >
-            <component
-              :is="item.name"
-              :textColorClass="item.textColorClass"
-              :fillColorClass="item.fillColorClass"
-              >{{ item.name }}</component
-            >
-          </a>
+          <component
+            v-else-if="!item.internal && item.name"
+            :is="item.name"
+            :textColorClass="item.textColorClass"
+            :fillColorClass="item.fillColorClass"
+          />
         </div>
       </div>
       <div class="hidden h-5 lg:flex lg:flex-1 lg:items-center lg:justify-end lg:gap-4">
@@ -78,9 +72,9 @@
           :icon="SquareArrowTopRightIcon"
           link="https://app.nolus.io/"
           class=""
-          >Launch App</Button
+          >{{ $t('common_launchApp') }}</Button
         >
-        <!-- <PopoverLanguagePicker v-bind="{ textColorClass, bgColorClass, fillColorClass, isHeaderScrolled, isHeroDark }" /> -->
+        <PopoverLanguagePicker v-bind="{ textColorClass, bgColorClass, fillColorClass, isHeaderScrolled, isHeroDark }" />
       </div>
     </nav>
     <TransitionRoot
@@ -123,7 +117,7 @@
                   class="w-full border-b border-neutral-200/50 px-4 py-6 text-neutral-700 hover:bg-neutral-200/60"
                   @click="isOpen = false"
                 >
-                  <span class="sr-only">Close menu</span>
+                  <span class="sr-only">{{ $t('header_closeMenu') }}</span>
                   <CrossLargeIcon
                     class="mx-auto h-5 w-5 fill-neutral-800"
                     aria-hidden="true"
@@ -134,35 +128,30 @@
                 <div>
                   <router-link
                     key="home"
-                    :to="'/'"
+                    :to="getLocalePath('/')"
                     class="block rounded-2xl px-5 py-5 text-lg font-medium text-neutral-900 hover:bg-gray-50"
                     active-class="bg-white shadow-lg"
                     @click="isOpen = false"
-                    >Home</router-link
+                    >{{ $t('header_home') }}</router-link
                   >
                 </div>
                 <div v-for="(item, index) in navigation" :key="index">
                   <router-link
-                    v-if="item.internal"
+                    v-if="item.internal && item.nameKey"
                     :key="item.id"
                     :to="item.href!"
                     class="block rounded-2xl px-5 py-5 text-lg font-medium text-neutral-900 hover:bg-gray-50"
                     active-class="bg-white shadow-lg"
                     @click="isOpen = false"
                   >
-                    {{ item.name }}
+                    {{ $t(item.nameKey) }}
                   </router-link>
-                  <a
-                    v-else
-                    :href="item.href"
-                    class="text-lg font-medium"
-                    ><component
-                      :is="item.name"
-                      :textColorClass="item.textColorClass"
-                      :fillColorClass="item.fillColorClass"
-                      >{{ item.name }}</component
-                    ></a
-                  >
+                  <component
+                    v-else-if="!item.internal && item.name"
+                    :is="item.name"
+                    :textColorClass="item.textColorClass"
+                    :fillColorClass="item.fillColorClass"
+                  />
                 </div>
               </div>
             </div>
@@ -171,8 +160,17 @@
                 size="md"
                 :icon="SquareArrowTopRightIcon"
                 link="https://app.nolus.io/"
-                >Launch App</Button
+                >{{ $t('common_launchApp') }}</Button
               >
+              <PopoverLanguagePicker 
+                v-bind="{ 
+                  textColorClass: 'text-neutral-900', 
+                  bgColorClass: 'bg-white', 
+                  fillColorClass: 'fill-neutral-900', 
+                  isHeaderScrolled: true, 
+                  isHeroDark: false 
+                }" 
+              />
             </div>
           </DialogPanel>
         </TransitionChild>
@@ -191,6 +189,7 @@ defineProps({
 
 import { ref, computed, onMounted } from "vue";
 import { useRouter } from "vue-router";
+import { useI18n } from "vue-i18n";
 import { TransitionRoot, TransitionChild, Dialog, DialogPanel } from "@headlessui/vue";
 
 import BarsIcon from "@/assets/icons/bars.svg";
@@ -201,28 +200,42 @@ import NolusLogoType from "@/assets/images/logo-type.svg";
 import Button from "./Button.vue";
 import PopoverEducational from "./PopoverEducational.vue";
 import PopoverResources from "./PopoverResources.vue";
+import PopoverLanguagePicker from "./PopoverLanguagePicker.vue";
 
 const y = ref(false);
+const { locale } = useI18n();
+const router = useRouter();
 
-const navigation = [
-  { id: 1, type: "link", name: "About", href: "/about", internal: true, textColorClass: "", fillColorClass: "" },
+// Helper to generate locale-aware paths
+const getLocalePath = (path: string) => {
+  const currentLocale = locale.value;
+  if (currentLocale === 'en') {
+    return path;
+  }
+  return `/${currentLocale}${path}`;
+};
+
+const navigation = computed(() => [
+  { id: 1, type: "link", nameKey: "header_about", href: getLocalePath("/about"), internal: true, textColorClass: "", fillColorClass: "" },
   {
     id: 2,
     type: "link",
-    name: "Governance",
-    href: "/governance",
+    nameKey: "header_governance",
+    href: getLocalePath("/governance"),
     internal: true,
     textColorClass: "",
     fillColorClass: ""
   },
   { id: 3, type: "menu", name: PopoverEducational, internal: false, textColorClass: "", fillColorClass: "" },
   { id: 4, type: "menu", name: PopoverResources, internal: false, textColorClass: "", fillColorClass: "" }
-];
+]);
 
 const isOpen = ref(false);
-const router = useRouter();
 const isHeaderScrolled = computed(() => y.value);
-const isHeroDark = computed(() => (router.currentRoute.value.name === "about" ? true : false));
+const isHeroDark = computed(() => {
+  const routeName = router.currentRoute.value.name as string;
+  return routeName === "about" || routeName === "about-localized";
+});
 
 const textColorClass = computed(() =>
   isHeroDark.value && !isHeaderScrolled.value ? "text-white" : "text-neutral-900"
@@ -232,8 +245,12 @@ const fillColorClass = computed(() =>
   isHeroDark.value && !isHeaderScrolled.value ? "fill-white" : "fill-neutral-900"
 );
 
+const bgColorClass = computed(() =>
+  isHeroDark.value && !isHeaderScrolled.value ? "bg-white/10" : "bg-white"
+);
+
 const navigationWithTextColorClass = computed(() => {
-  return navigation.map((item) => {
+  return navigation.value.map((item) => {
     if (item.name === PopoverEducational || item.name === PopoverResources) {
       return {
         ...item,

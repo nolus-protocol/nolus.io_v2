@@ -3,7 +3,7 @@
     <NolusContainer>
       <div class="mx-auto">
         <!-- <p class="text-lg font-medium leading-8 tracking-tight text-blue-600" aria-hidden="true"></p> -->
-        <h2 class="mt-2 text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">What Others Say</h2>
+        <h2 class="mt-2 text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">{{ $t('home_testimonialsHeading') }}</h2>
       </div>
       <div class="mx-auto mb-8 mt-12 grid grid-cols-1 gap-x-20 gap-y-16 md:mt-16 md:grid-cols-2">
         <figure
@@ -24,7 +24,7 @@
               <a
                 :href="testimonial.author.link"
                 class="block text-blue-700 hover:text-neutral-900"
-                >View {{ testimonial.author.where }}</a
+                >{{ $t('home_testimonialsViewSource', { source: testimonial.author.where }) }}</a
               >
             </div>
           </figcaption>
@@ -37,7 +37,7 @@
         v-if="testimonialsToShow < testimonials.length"
         @click="loadMore"
         class="mt-4"
-        >Load More</Button
+        >{{ $t('common_loadMore') }}</Button
       >
     </NolusContainer>
   </div>

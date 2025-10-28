@@ -1,25 +1,24 @@
 <template>
   <Popover
     class="relative"
-    v-slot="{ open }"
+    v-slot="{ open, close }"
   >
     <PopoverButton
-      class="inline-flex items-center gap-x-1 rounded-lg px-3 py-2.5 leading-6 text-neutral-900 transition-all"
+      class="inline-flex items-center gap-x-1 rounded-lg px-3 py-2.5 leading-6 transition-all hover:bg-neutral-200/50"
       :class="[
-        {
-          'bg-neutral-200/40': open,
-          'shadow-none hover:bg-neutral-200/50': isHeroDark,
-          'hover:bg-neutral-50': !isHeroDark
-        },
-        buttonScrollStyles
+        open ? 'bg-neutral-200/40' : '',
+        textColorClass
       ]"
     >
       <span
         :class="`${props.textColorClass} font-medium`"
-        class="overflow-hidden rounded-sm"
+        class="flex h-4 w-[21px] flex-shrink-0 items-center justify-center overflow-hidden rounded-sm"
+        style="transform: translateZ(0);"
         ><component
-          :is="flagIcons['en.svg']"
-          aria-label="English"
+          :is="flagIcons[currentLanguage.icon]"
+          :aria-label="currentLanguage.lang"
+          class="block h-full w-full"
+          style="transform: translateZ(0);"
       /></span>
       <ChevronDownSmallIcon
         class="h-5 w-5 rotate-180 fill-neutral-800 lg:rotate-0"
@@ -36,14 +35,14 @@
       leave-from-class="opacity-100 translate-y-0"
       leave-to-class="opacity-0 translate-y-1 scale-95 origin-bottom"
     >
-      <PopoverPanel class="absolute bottom-14 right-0 z-10 mt-5 flex w-screen max-w-min md:bottom-auto">
+      <PopoverPanel class="absolute bottom-14 right-0 z-50 mt-5 flex w-screen max-w-min md:bottom-auto md:right-0">
         <div
           class="flex w-56 shrink flex-col gap-y-1 rounded-xl bg-white p-4 text-sm font-semibold leading-6 text-gray-900 shadow-lg ring-1 ring-gray-900/5"
         >
-          <a
+          <button
             v-for="language in languages"
             :key="language.short_string"
-            :href="language.route"
+            @click="switchLanguage(language.code, close)"
             class="flex items-center gap-x-2 rounded-md p-2 transition-all hover:bg-blue-100 hover:text-blue-600"
             :class="{ 'bg-neutral-100': language.active }"
             :aria-label="language.lang"
@@ -52,7 +51,7 @@
               class="overflow-clip rounded-sm"
               aria-hidden="true"
             />
-            {{ language.lang }}</a
+            {{ language.lang }}</button
           >
         </div>
       </PopoverPanel>
@@ -62,10 +61,14 @@
 
 <script lang="ts" setup>
 import { onMounted, ref, computed, markRaw } from "vue";
+import { useI18n } from "vue-i18n";
+import { useRouter, useRoute } from "vue-router";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/vue";
 import ChevronDownSmallIcon from "@/assets/icons/chevron-down-small.svg";
 
-const buttonScrollStyles = computed(() => (!props.isHeaderScrolled ? `shadow-md ${props.bgColorClass}` : ""));
+const { locale } = useI18n();
+const router = useRouter();
+const route = useRoute();
 
 const props = defineProps({
   textColorClass: String,
@@ -75,15 +78,57 @@ const props = defineProps({
   isHeroDark: Boolean
 });
 
-const languages = [
-  { short_string: "EN", lang: "English", route: "", icon: "en.svg", active: true },
-  { short_string: "RU", lang: "Русский", route: "", icon: "ru.svg", active: false },
-  { short_string: "CN", lang: "中文", route: "", icon: "cn.svg", active: false },
-  { short_string: "ES", lang: "Español", route: "", icon: "es.svg", active: false },
-  { short_string: "GR", lang: "Ελληνικά", route: "", icon: "gr.svg", active: false },
-  { short_string: "TR", lang: "Türkçe", route: "", icon: "tr.svg", active: false },
-  { short_string: "FR", lang: "Français", route: "", icon: "fr.svg", active: false }
+const languageData = [
+  { code: "en", short_string: "EN", lang: "English", icon: "en.svg" },
+  { code: "ru", short_string: "RU", lang: "Русский", icon: "ru.svg" },
+  { code: "cn", short_string: "CN", lang: "中文", icon: "cn.svg" },
+  { code: "es", short_string: "ES", lang: "Español", icon: "es.svg" },
+  { code: "gr", short_string: "GR", lang: "Ελληνικά", icon: "gr.svg" },
+  { code: "tr", short_string: "TR", lang: "Türkçe", icon: "tr.svg" },
+  { code: "fr", short_string: "FR", lang: "Français", icon: "fr.svg" },
+  { code: "id", short_string: "ID", lang: "Bahasa Indonesia", icon: "id.svg" },
+  { code: "jp", short_string: "JP", lang: "日本語", icon: "jp.svg" },
+  { code: "kr", short_string: "KR", lang: "한국어", icon: "kr.svg" }
 ];
+
+const languages = computed(() =>
+  languageData.map((lang) => ({
+    ...lang,
+    active: locale.value === lang.code
+  }))
+);
+
+const currentLanguage = computed(() => 
+  languageData.find(lang => lang.code === locale.value) || languageData[0]
+);
+
+const switchLanguage = (langCode: string, closePopover?: () => void) => {
+  locale.value = langCode;
+  localStorage.setItem('user-locale', langCode);
+  
+  // Get current path without locale prefix
+  let currentPath = route.path;
+  const localeRegex = /^\/(ru|cn|es|fr|gr|tr|id|jp|kr)/;
+  if (localeRegex.test(currentPath)) {
+    currentPath = currentPath.replace(localeRegex, '');
+  }
+  
+  // Build new path with locale prefix (except for English)
+  let newPath;
+  if (langCode === 'en') {
+    newPath = currentPath || '/';
+  } else {
+    newPath = `/${langCode}${currentPath || '/'}`;
+  }
+  
+  // Close the popover
+  if (closePopover) {
+    closePopover();
+  }
+  
+  // Navigate to the new URL
+  router.push(newPath);
+};
 
 const flagIcons = ref<{[key: string]: string}>({});
 

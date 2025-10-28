@@ -29,7 +29,7 @@
             >
               <a class="flex flex-col items-center px-4 py-7">
                 <figure
-                  class="mx-auto mb-4 h-20 w-20 rounded-full bg-white p-4 text-xs shadow-inner shadow-sm shadow-neutral-200"
+                  class="mx-auto mb-4 h-20 w-20 rounded-full bg-white p-4 text-xs shadow-inner shadow-neutral-200"
                   aria-hidden="true"
                 >
                   <component

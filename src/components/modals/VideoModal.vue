@@ -3,7 +3,7 @@
     class="h-full max-h-full w-full max-w-full bg-white"
     :style="{ height: videoDimensions.height + 'px' }"
     src="https://www.youtube.com/embed/k7QWPR0052g?si=bSgbKCpzBHSTLbXK"
-    title="YouTube video player"
+    :title="$t('modal_videoTitle')"
     frameborder="0"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
     allowfullscreen

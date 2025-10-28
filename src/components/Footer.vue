@@ -5,11 +5,11 @@
         <div class="flex space-x-10">
           <a
             v-for="item in social_navigation"
-            :key="item.name"
+            :key="item.nameKey"
             :href="item.href"
             class="text-blue-600 hover:text-neutral-500"
           >
-            <span class="sr-only">{{ item.name }}</span>
+            <span class="sr-only">{{ $t(item.nameKey) }}</span>
             <component
               :is="item.icon"
               class="h-6 w-6"
@@ -21,31 +21,26 @@
           <ul class="flex space-x-5">
             <li
               v-for="item in footer_navigation"
-              :key="item.name"
+              :key="item.nameKey"
               class="text-sm leading-5"
             >
               <button
                 @click="handleClick(item, $event)"
                 class="cursor-pointer text-neutral-600 hover:text-neutral-900"
               >
-                {{ item.name }}
+                {{ $t(item.nameKey) }}
               </button>
             </li>
           </ul>
         </nav>
       </div>
       <p class="mt-10 border-t border-neutral-100 pt-7 text-xs leading-5 text-neutral-600">
-        The information provided on this website is for general informational purposes only. It does not constitute, and
-        should not be considered, a formal offer to sell or a solicitation of an offer to buy any security in any
-        jurisdiction, legal advice, investment advice, or tax advice. If you need legal, investment, or tax advice,
-        please consult with a professional adviser. The Nolus protocol is under development and is subject to change. As
-        such, the protocol documentation and contents of this website may not reflect the current state of the protocol
-        at any given time. The protocol documentation and website content are not final and are subject to change
+        {{ $t('footer_legalDisclaimer') }}
       </p>
       <a
         href="#"
         class="sr-only"
-        >Go back to top</a
+        >{{ $t('footer_goBackToTop') }}</a
       >
       <Modal
         :show="showTosDialog"
@@ -72,20 +67,20 @@ import cookiesModal from "@/components/modals/cookiesModal.vue";
 let showTosDialog = ref(false);
 let showCookiesDialog = ref(false);
 
-const handleClick = (item: { name: string; href?: string; click: Function }, event: MouseEvent) => {
+const handleClick = (item: { nameKey: string; href?: string; click: Function }, event: MouseEvent) => {
   !item.href && event.preventDefault();
   item.click && item.click();
 };
 
 const footer_navigation = [
   {
-    name: "Terms of Service",
+    nameKey: "footer_termsOfService",
     click: () => {
       showTosDialog.value = true;
     }
   },
   {
-    name: "Cookie Policy",
+    nameKey: "footer_cookiePolicy",
     click: () => {
       showCookiesDialog.value = true;
     }
@@ -94,7 +89,7 @@ const footer_navigation = [
 
 const social_navigation = [
   {
-    name: "X",
+    nameKey: "footer_socialX",
     href: "https://twitter.com/NolusProtocol",
     icon: defineComponent({
       render: () =>
@@ -106,7 +101,7 @@ const social_navigation = [
     })
   },
   {
-    name: "Discord",
+    nameKey: "footer_socialDiscord",
     href: "https://discord.com/invite/nolus-protocol",
     icon: defineComponent({
       render: () =>
@@ -118,7 +113,7 @@ const social_navigation = [
     })
   },
   {
-    name: "Telegram",
+    nameKey: "footer_socialTelegram",
     href: "https://t.me/NolusProtocol",
     icon: defineComponent({
       render: () =>
