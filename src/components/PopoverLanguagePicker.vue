@@ -37,7 +37,7 @@
     >
       <PopoverPanel class="absolute bottom-14 right-0 z-50 mt-5 flex w-screen max-w-min md:bottom-auto md:right-0">
         <div
-          class="flex w-56 shrink flex-col gap-y-1 rounded-xl bg-white p-4 text-sm font-semibold leading-6 text-gray-900 shadow-lg ring-1 ring-gray-900/5"
+          class="flex w-56 shrink flex-col gap-y-1 rounded-xl bg-white p-4 text-sm leading-6 text-gray-900 shadow-lg ring-1 ring-gray-900/5"
         >
           <button
             v-for="language in languages"
