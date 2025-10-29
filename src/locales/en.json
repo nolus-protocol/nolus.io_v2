@@ -36,18 +36,18 @@
   "home_heroVideoLoading": "Video loading...",
 
   "home_statsVolume": "Transaction Volume",
-  "home_statsVolumeDesc": "Combined protocol activity across all positions",
+  "home_statsVolumeDesc": "Combined transaction activity across all products",
   "home_statsValueLocked": "Value Locked",
   "home_statsValueLockedDesc": "Liquidity secured across 28 assets on 3 networks",
   "home_statsEarn": "Earn Rate",
-  "home_statsEarnDesc": "Yield generated directly by protocol operations",
+  "home_statsEarnDesc": "Unincentivized yield generated from borrowing activity",
 
   "home_valuePropositionsCostEfficient": "Efficient Execution",
   "home_valuePropositionsCostEfficientDesc": "Access margin positions with tight spreads and minimal slippage through direct liquidity hub routing",
   "home_valuePropositionsLessRisk": "Controlled Risk",
   "home_valuePropositionsLessRiskDesc": "During volatility, partial liquidations protect capital by adjusting your position incrementally",
   "home_valuePropositionsAssetBacked": "Asset-Backed",
-  "home_valuePropositionsAssetBackedDesc": "Margin positions holds the underlying asset directly, eliminating synthetic exposure and counterparty risk",
+  "home_valuePropositionsAssetBackedDesc": "Margin positions hold the underlying asset directly, eliminating synthetic exposure and counterparty risk",
 
   "home_liquidity": "Liquidity",
   "home_liquidityHeading": "Connected Hubs",
@@ -133,12 +133,12 @@
   "governance_heroTitle": "Stake-Governed Protocol",
   "governance_heroDesc": "Stake NLS to govern protocol parameters, upgrades, and treasury allocation. The Proof-of-Stake consensus model aligns security with your economic participation",
 
-  "governance_statsValidators": "50 Validators",
-  "governance_statsValidatorsDesc": "Secure the Nolus blockchain and process your transactions",
+  "governance_statsValidators": "40 Validators",
+  "governance_statsValidatorsDesc": "Maintain network consensus and operations",
   "governance_statsDelegators": "3,454 Stakers",
-  "governance_statsDelegatorsDesc": "Participate in protocol governance and security",
-  "governance_statsStaked": "272M Staked",
-  "governance_statsStakedDesc": "NLS tokens securing network consensus and operations",
+  "governance_statsDelegatorsDesc": "Govern protocol parameters and upgrades",
+  "governance_statsStaked": "273M Staked",
+  "governance_statsStakedDesc": "NLS tokens providing economic security",
 
   "governance_recentProposalsHeading": "Recent Proposals",
 
