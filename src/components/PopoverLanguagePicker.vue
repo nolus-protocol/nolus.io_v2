@@ -62,12 +62,11 @@
 <script lang="ts" setup>
 import { onMounted, ref, computed, markRaw } from "vue";
 import { useI18n } from "vue-i18n";
-import { useRouter, useRoute } from "vue-router";
+import { useRoute } from "vue-router";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/vue";
 import ChevronDownSmallIcon from "@/assets/icons/chevron-down-small.svg";
 
 const { locale } = useI18n();
-const router = useRouter();
 const route = useRoute();
 
 const props = defineProps({
@@ -126,8 +125,8 @@ const switchLanguage = (langCode: string, closePopover?: () => void) => {
     closePopover();
   }
   
-  // Navigate to the new URL
-  router.push(newPath);
+  // Reload the page with the new language
+  window.location.href = newPath;
 };
 
 const flagIcons = ref<{[key: string]: string}>({});

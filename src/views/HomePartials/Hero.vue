@@ -106,7 +106,8 @@
                 {{ stat.subtitle }}
               </dt>
               <dd class="text-3xl font-bold tracking-tight text-neutral-900">
-                {{ stat.value }}
+                <span v-if="!isStatsLoading">{{ stat.value }}</span>
+                <span v-else class="inline-block h-8 w-32 animate-pulse rounded-md bg-neutral-200"></span>
               </dd>
               <dt class="text-base leading-6 text-neutral-600">
                 {{ stat.description }}
@@ -213,6 +214,7 @@ const stats = ref([
 
 const showVideoDialog = ref(false);
 const isVideoLoaded = ref(false);
+const isStatsLoading = ref(true);
 
 onBeforeMount(() => {
   fetchData();
@@ -220,6 +222,7 @@ onBeforeMount(() => {
 
 async function fetchData() {
   try {
+    isStatsLoading.value = true;
     const [total_tx_value, tvl, earnApr] = await Promise.all([
       fetch(`${ETL_API}/api/total-tx-value`)
         .then((r) => r.json())
@@ -263,8 +266,10 @@ async function fetchData() {
         }
       }
     }
+    isStatsLoading.value = false;
   } catch (error) {
     console.log(error);
+    isStatsLoading.value = false;
   }
 }
 

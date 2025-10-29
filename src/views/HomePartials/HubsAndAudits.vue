@@ -32,7 +32,7 @@
                   class="flex flex-col items-center px-4 py-7 transition-all hover:bg-neutral-100"
                 >
                   <figure
-                    class="mx-auto mb-4 h-20 w-20 rounded-full bg-white p-4 text-xs shadow-inner shadow-neutral-200"
+                    class="mx-auto mb-4 h-20 w-20 rounded-full bg-white p-4 text-xs"
                     aria-hidden="true"
                   >
                     <component
