@@ -43,7 +43,7 @@
             v-for="language in languages"
             :key="language.short_string"
             @click="switchLanguage(language.code, close)"
-            class="flex items-center gap-x-2 rounded-md p-2 transition-all hover:bg-blue-100 hover:text-blue-600"
+            class="flex items-center gap-x-2 rounded-md p-2 font-medium transition-all hover:bg-blue-100 hover:text-blue-600"
             :class="{ 'bg-neutral-100': language.active }"
             :aria-label="language.lang"
             ><component

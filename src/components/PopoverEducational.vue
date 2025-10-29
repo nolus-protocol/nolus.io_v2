@@ -90,7 +90,7 @@
                     />
                   </div>
                   <div>
-                    <h5 class="text-sm">{{ post.title }}</h5>
+                    <h5 class="text-sm font-medium">{{ post.title }}</h5>
                     <time
                       :datetime="post.pubDate"
                       class="block text-xs font-normal leading-6 text-neutral-600"
