@@ -1,8 +1,8 @@
 <template>
   <div class="relative bg-neutral-100">
     <NolusContainer class="relative -top-24 z-10 md:-mb-20">
-      <div class="grid grid-cols-1 items-start gap-x-8 gap-y-8 md:grid-cols-2 lg:gap-x-12 lg:gap-y-12">
-        <div class="overflow-hidden rounded-2xl bg-white shadow-xl">
+      <div class="grid grid-cols-1 items-stretch gap-x-8 gap-y-8 md:grid-cols-2 lg:gap-x-12 lg:gap-y-12">
+        <div class="flex flex-col overflow-hidden rounded-2xl bg-white shadow-xl">
           <div class="p-6 md:p-12">
             <p
               class="text-base font-medium leading-7 text-blue-600"
@@ -20,8 +20,8 @@
               {{ $t('home_liquidityDesc') }}
             </p>
           </div>
-          <div>
-            <ul class="flex flex-wrap gap-px border-t bg-neutral-200/70 text-center">
+          <div class="flex-grow">
+            <ul class="flex h-full flex-wrap gap-px border-t bg-neutral-200/70 text-center">
               <li
                 v-for="hub in hubs"
                 :key="hub.id"
@@ -47,7 +47,7 @@
             </ul>
           </div>
         </div>
-        <div class="overflow-hidden rounded-2xl bg-white pb-4 shadow-xl">
+        <div class="flex flex-col overflow-hidden rounded-2xl bg-white pb-4 shadow-xl">
           <div class="p-6 md:p-12">
             <p
               class="text-base font-medium leading-7 text-blue-600"
@@ -65,8 +65,8 @@
               {{ $t('home_safetyDesc') }}
             </p>
           </div>
-          <div>
-            <ul class="flex flex-col gap-px border-t border-neutral-200/50">
+          <div class="flex-grow">
+            <ul class="flex h-full flex-col gap-px border-t border-neutral-200/50">
               <li
                 v-for="audit in audits"
                 :key="audit.id"
