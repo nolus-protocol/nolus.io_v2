@@ -102,7 +102,7 @@ const currentLanguage = computed(() =>
 );
 
 const switchLanguage = (langCode: string, closePopover?: () => void) => {
-  locale.value = langCode;
+  // Save language preference to localStorage
   localStorage.setItem('user-locale', langCode);
   
   // Get current path without locale prefix
@@ -126,6 +126,7 @@ const switchLanguage = (langCode: string, closePopover?: () => void) => {
   }
   
   // Reload the page with the new language
+  // The router guard will set locale.value based on the URL
   window.location.href = newPath;
 };
 
