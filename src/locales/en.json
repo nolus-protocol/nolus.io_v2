@@ -32,7 +32,7 @@
   "footer_socialTelegram": "Telegram",
 
   "home_heroTitle": "Margin That Makes Sense",
-  "home_heroSubtitle": "No surprise liquidations. No hidden costs. Just transparent, capital-efficient leverage.",
+  "home_heroSubtitle": "No surprise liquidations. No hidden costs. Just transparent, capital-efficient leverage",
   "home_heroVideoLoading": "Video loading...",
 
   "home_statsVolume": "Transaction Volume",
@@ -78,14 +78,14 @@
   "home_productTabCompatibleHeading": "Full Control",
   "home_productTabCompatibleDesc": "Connect seamlessly through your preferred wallet extension or via mobile device. You maintain full custody and control throughout every interaction",
   "home_productTabPersonalized": "Intelligent",
-  "home_productTabPersonalizedHeading": "Kai Assistant",
+  "home_productTabPersonalizedHeading": "Context Aware",
   "home_productTabPersonalizedDesc": "Embedded LLM assistant with deep protocol knowledge. Navigate mechanics, track portfolio health, access market intelligence all via natural conversation",
   "home_productTabFlexible": "Flexible",
-  "home_productTabFlexibleHeading": "Fee Abstraction",
+  "home_productTabFlexibleHeading": "Asset Agnostic",
   "home_productTabFlexibleDesc": "Execute transactions using any supported asset for network fees. The protocol handles conversion seamlessly while channeling value to NLS stakers",
   "home_productTabCrossChain": "Interoperable",
   "home_productTabCrossChainHeading": "IBC Native",
-  "home_productTabCrossChainDesc": "Move assets and execute positions across chains through IBC's trust-minimized architecture, eliminating reliance on centralized counterparts and bridge operators",
+  "home_productTabCrossChainDesc": "Move assets and execute positions across chains through IBC's trust-minimized architecture, eliminating reliance on centralized counterparts",
 
   "home_testimonialsHeading": "What Others Say",
   "home_testimonialsViewSource": "View {source}",
