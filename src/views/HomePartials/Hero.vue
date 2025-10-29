@@ -107,7 +107,7 @@
               </dt>
               <dd class="text-3xl font-bold tracking-tight text-neutral-900">
                 <span v-if="!isStatsLoading">{{ stat.value }}</span>
-                <span v-else class="inline-block h-8 w-32 animate-pulse rounded-md bg-neutral-200"></span>
+                <span v-else class="inline-block h-7 w-32 animate-pulse rounded-md bg-neutral-200"></span>
               </dd>
               <dt class="text-base leading-6 text-neutral-600">
                 {{ stat.description }}
