@@ -17,7 +17,7 @@
 @font-face {
   font-family: 'Garet';
   src: url('./fonts/garet-medium-webfont.woff2') format('woff2'),
-       url('./fontsgaret-medium-webfont.woff') format('woff');
+       url('./fonts/garet-medium-webfont.woff') format('woff');
   font-weight: 500;
   font-style: normal;
 }

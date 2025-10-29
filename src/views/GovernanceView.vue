@@ -2,7 +2,7 @@
   <div class="bg-white">
     <main class="isolate">
       <!-- Hero section -->
-      <div class="relative isolate -z-10 overflow-hidden bg-blue-100 py-32 pb-24 md:pt-40">
+      <section class="relative isolate -z-10 overflow-hidden bg-blue-100 py-32 pb-24 md:pt-40" aria-labelledby="governance-hero-heading">
         <NolusContainer>
           <div class="-top-12 hidden scale-75 md:absolute md:-right-96 md:block lg:-right-64 lg:scale-100 xl:-right-16">
             <canvas
@@ -225,6 +225,7 @@
           <div class="max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
             <div class="w-full max-w-xl lg:shrink-0 xl:max-w-3xl">
               <h1
+                id="governance-hero-heading"
                 class="text-5xl font-bold leading-tight tracking-tight text-neutral-900"
                 v-motion
                 :initial="{ opacity: 0, y: 10 }"
@@ -245,8 +246,9 @@
             </div>
           </div>
         </NolusContainer>
-      </div>
+      </section>
 
+      <section aria-label="Governance statistics">
       <NolusContainer>
         <div class="bg-white py-24">
           <dl class="grid grid-cols-1 gap-x-8 gap-y-16 md:grid-cols-2 lg:grid-cols-3">
@@ -263,12 +265,13 @@
           </dl>
         </div>
       </NolusContainer>
+      </section>
 
       <!-- Team section -->
-      <div class="bg-neutral-100 py-24">
+      <section class="bg-neutral-100 py-24" aria-labelledby="proposals-heading">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
           <div class="max-w-2xl lg:mx-0">
-            <h2 class="mb-12 text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">{{ $t('governance_recentProposalsHeading') }}</h2>
+            <h2 id="proposals-heading" class="mb-12 text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">{{ $t('governance_recentProposalsHeading') }}</h2>
           </div>
 
           <div class="mt-8 md:mt-0">
@@ -309,7 +312,7 @@
             </Modal>
           </div>
         </div>
-      </div>
+      </section>
     </main>
   </div>
 </template>

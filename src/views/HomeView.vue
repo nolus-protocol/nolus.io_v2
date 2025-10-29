@@ -1,11 +1,11 @@
 <template>
-  <div class="transition-opacity duration-300" :class="{ 'opacity-0': !pageReady }">
+  <main class="transition-opacity duration-300" :class="{ 'opacity-0': !pageReady }">
     <Hero />
     <GeneralValuePropositions />
     <HubsAndAudits />
     <ProductValuePropositions />
     <Testimonials />
-  </div>
+  </main>
 </template>
 
 <script lang="ts" setup>

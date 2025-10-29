@@ -3,7 +3,7 @@ import typography from "@tailwindcss/typography";
 
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx,vue}"],
-  darkMode: false,
+  darkMode: "media",
   theme: {
     extend: {
       colors: {

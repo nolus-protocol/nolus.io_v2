@@ -2,14 +2,16 @@
   <div class="bg-white transition-opacity duration-300" :class="{ 'opacity-0': !pageReady }">
     <main class="isolate">
       <!-- Hero section -->
-      <div
+      <section
         class="relative isolate -z-10 overflow-hidden bg-about-banner py-40"
         ref="heroWrapper"
+        aria-labelledby="about-hero-heading"
       >
         <NolusContainer class="flex items-center">
           <div class="gap-x-14 md:max-w-[50%] lg:flex lg:max-w-none lg:items-center">
             <div class="w-full max-w-xl lg:shrink-0 xl:max-w-2xl">
               <h1
+                id="about-hero-heading"
                 class="text-3xl font-bold leading-tight tracking-tight text-white md:text-3xl lg:text-5xl"
                 v-motion
                 :initial="{ opacity: 0, y: 10 }"
@@ -65,9 +67,10 @@
             </div>
           </div>
         </NolusContainer>
-      </div>
+      </section>
 
       <!-- Vision, mission and values -->
+      <section aria-labelledby="mission-vision-heading">
       <NolusContainer>
         <div class="mx-auto max-w-2xl py-16 lg:mx-0 lg:max-w-none">
           <div class="mt-6 flex flex-col gap-x-10 gap-y-8 md:flex-row">
@@ -85,12 +88,13 @@
           </div>
         </div>
       </NolusContainer>
+      </section>
 
       <!-- Team section -->
-      <div class="bg-neutral-100 py-24">
+      <section class="bg-neutral-100 py-24" aria-labelledby="team-heading">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
           <div class="mx-auto max-w-2xl shrink-0 basis-2/5 lg:mx-0">
-            <h2 class="text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">{{ $t('about_coreContributorsHeading') }}</h2>
+            <h2 id="team-heading" class="text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">{{ $t('about_coreContributorsHeading') }}</h2>
           </div>
           <div class="shrink-0 basis-3/5">
             <!-- Core contributors -->
@@ -134,10 +138,10 @@
             </ul>
           </div>
         </div>
-      </div>
+      </section>
 
       <!-- Logo cloud -->
-      <div class="relative isolate -z-10 overflow-hidden bg-blue-800 py-16">
+      <section class="relative isolate -z-10 overflow-hidden bg-blue-800 py-16" aria-label="Partners and backers">
         <NolusContainer>
           <div
             class="mx-auto grid max-w-lg grid-cols-2 items-center justify-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-4 sm:gap-x-10 md:grid-cols-4 lg:mx-0 lg:max-w-none lg:grid-cols-6"
@@ -218,7 +222,7 @@
             />
           </div>
         </NolusContainer>
-      </div>
+      </section>
     </main>
   </div>
 </template>
