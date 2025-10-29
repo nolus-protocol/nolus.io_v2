@@ -26,7 +26,7 @@ export const HUBS: Hub[] = [
     fullName: "Astroport",
     comingSoon: false,
     image: astroportImage,
-    link: "https://astroport.finance/"
+    link: "https://astroport.fi"
   },
   {
     id: 3,
