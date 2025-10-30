@@ -114,7 +114,7 @@ import FlexibleImage from "../../assets/images/product-value-propositions/flexib
 import PersonalizedImage from "../../assets/images/product-value-propositions/personalized.webp";
 import { useI18n } from 'vue-i18n';
 
-const { t } = useI18n();
+const { t } = useI18n({ useScope: 'global' });
 
 const tabs = [
   {

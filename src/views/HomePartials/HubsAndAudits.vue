@@ -114,7 +114,7 @@ import oak_logo from "../../assets/images/auditors/oak_logo.jpeg";
 import ChevronRightIcon from "@/assets/icons/chevron-right.svg";
 import { useI18n } from 'vue-i18n';
 
-const { t } = useI18n();
+const { t } = useI18n({ useScope: 'global' });
 
 const hubs = HUBS;
 

@@ -38,7 +38,7 @@ import icon3 from "@/assets/lotties/effortless.json?url";
 
 import { useI18n } from 'vue-i18n';
 
-const { t } = useI18n();
+const { t } = useI18n({ useScope: 'global' });
 
 const features = [
   {

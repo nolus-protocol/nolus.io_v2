@@ -8,6 +8,10 @@ export default defineConfig({
     vue(),
     svgLoader(),
   ],
+  ssr: {
+    // CRITICAL: vue-i18n must not be externalized for SSR to work correctly
+    noExternal: [/vue-i18n/]
+  },
   ssgOptions: {
     script: 'async',
     formatting: 'minify',
@@ -16,12 +20,16 @@ export default defineConfig({
     },
     includedRoutes: async () => {
       // Generate all language routes
-      const locales = ['en', 'ru', 'cn', 'es', 'fr', 'gr', 'tr', 'id', 'jp', 'kr'];
+      // IMPORTANT: Generate routes by PAGE first, then by LOCALE
+      // This ensures each page renders with all locales before moving to the next page
+      // With English last in each group to preserve correct default locale state
+      const locales = ['ru', 'cn', 'es', 'fr', 'gr', 'tr', 'id', 'jp', 'kr', 'en'];
       const pages = ['/', '/about', '/governance'];
       const routes: string[] = [];
       
-      locales.forEach(locale => {
-        pages.forEach(page => {
+      // Generate routes grouped by page (not by locale)
+      pages.forEach(page => {
+        locales.forEach(locale => {
           if (locale === 'en') {
             // English pages without locale prefix
             routes.push(page);

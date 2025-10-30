@@ -247,7 +247,7 @@ import contributors8 from "@/assets/images/about/team/ves_zahariev.jpg";
 import contributors10 from "@/assets/images/about/team/tony.jpg";
 import contributors11 from "@/assets/images/about/team/lily.jpg";
 
-const { t } = useI18n();
+const { t } = useI18n({ useScope: 'global' });
 
 // Logo dependencies
 const isVideoLoaded = ref(false);

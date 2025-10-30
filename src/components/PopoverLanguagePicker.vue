@@ -66,7 +66,7 @@ import { useRoute } from "vue-router";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/vue";
 import ChevronDownSmallIcon from "@/assets/icons/chevron-down-small.svg";
 
-const { locale } = useI18n();
+const { locale } = useI18n({ useScope: 'global' });
 const route = useRoute();
 
 const props = defineProps({

@@ -133,7 +133,8 @@ import { useI18n } from "vue-i18n";
 import { ETL_API, PROTOCOLS, Stats } from "@/config";
 import { usePageReady } from "@/composables/usePageReady";
 
-const { t } = useI18n();
+// In legacy mode, useI18n returns the global instance by default
+const { t } = useI18n({ useScope: 'global' });
 
 import SquareArrowTopRightIcon from "@/assets/icons/square-arrow-top-right-2.svg";
 import Button from "@/components/Button.vue";

@@ -69,7 +69,7 @@ import ShieldCheckIcon from "../assets/icons/shield-check.svg";
 import ColorPaletteIcon from "../assets/icons/color-palette.svg";
 import HeadphonesIcon from "../assets/icons/headphones.svg";
 
-const { t } = useI18n();
+const { t } = useI18n({ useScope: 'global' });
 
 const props = defineProps({
   textColorClass: String,

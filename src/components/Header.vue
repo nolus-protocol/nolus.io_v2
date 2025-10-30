@@ -203,12 +203,17 @@ import PopoverResources from "./PopoverResources.vue";
 import PopoverLanguagePicker from "./PopoverLanguagePicker.vue";
 
 const y = ref(false);
-const { locale } = useI18n();
 const router = useRouter();
+
+// SSR-safe locale detection: derive from route, not from global i18n state
+const getCurrentLocale = computed(() => {
+  const routeLocale = router.currentRoute.value.params.locale as string;
+  return routeLocale || 'en';
+});
 
 // Helper to generate locale-aware paths
 const getLocalePath = (path: string) => {
-  const currentLocale = locale.value;
+  const currentLocale = getCurrentLocale.value;
   if (currentLocale === 'en') {
     return path;
   }
