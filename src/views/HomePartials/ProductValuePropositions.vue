@@ -77,18 +77,27 @@
                     </h2>
                     <p class="mt-6 text-lg leading-8 text-neutral-600">{{ tab.content }}</p>
                   </div>
-                  <img
-                    ref="imgRef"
-                    :src="tab.tabImage"
-                    alt=""
-                    loading="lazy"
-                    class="w-8/12 md:ml-auto md:w-2/5 lg:w-6/12"
-                    aria-hidden="true"
-                    v-motion
-                    :initial="{ opacity: 0 }"
-                    :enter="{ opacity: 1, scale: 1, transition: { duration: 600 } }"
-                    :leave="{ opacity: 0 }"
-                  />
+                  <div class="relative w-8/12 md:ml-auto md:w-2/5 lg:w-6/12">
+                    <img
+                      ref="imgRef"
+                      :src="tab.tabImage"
+                      alt=""
+                      :loading="index === 0 ? 'eager' : 'lazy'"
+                      class="h-auto w-full animate-float"
+                      :class="{ 'opacity-0 transition-opacity duration-200': !imageLoaded[index], 'opacity-100': imageLoaded[index] }"
+                      aria-hidden="true"
+                      @load="onImageLoad(index)"
+                      v-motion
+                      :initial="{ opacity: 0 }"
+                      :enter="{ opacity: 1, scale: 1, transition: { duration: 600 } }"
+                      :leave="{ opacity: 0 }"
+                    />
+                    <div 
+                      v-if="!imageLoaded[index]"
+                      class="absolute inset-0 animate-pulse rounded-lg bg-neutral-200"
+                      aria-hidden="true"
+                    ></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -161,6 +170,20 @@ let tabsContainer = ref<HTMLElement | null>(null);
 let imgRef = ref(null);
 let intervalId: NodeJS.Timeout, observer: IntersectionObserver;
 let loading = ref(false);
+let imageLoaded = ref<Record<number, boolean>>({});
+
+const onImageLoad = (index: number) => {
+  imageLoaded.value[index] = true;
+  // Recalculate height after image loads
+  if (activeTab.value === index) {
+    nextTick(() => {
+      if (tabsContainer.value) {
+        const activeTabElement = tabsContainer.value.children[index];
+        updateHeight(activeTabElement);
+      }
+    });
+  }
+};
 
 const updateHeight = (activeTabElement: Element) => {
   if (tabsContainer.value) {
@@ -172,10 +195,19 @@ const updateHeight = (activeTabElement: Element) => {
 const initHeightUpdate = (index: number) => {
   if (tabsContainer.value) {
     const activeTabElement = tabsContainer.value.children[index];
-    const img = new Image();
-    img.src = tabs[index].tabImage;
-    img.onload = () => updateHeight(activeTabElement);
-    img.complete && updateHeight(activeTabElement);
+    // If image is already loaded, update height immediately
+    if (imageLoaded.value[index]) {
+      updateHeight(activeTabElement);
+    } else {
+      // Otherwise, set a temporary height and wait for image to load
+      const img = new Image();
+      img.src = tabs[index].tabImage;
+      img.onload = () => updateHeight(activeTabElement);
+      if (img.complete) {
+        imageLoaded.value[index] = true;
+        updateHeight(activeTabElement);
+      }
+    }
   }
 };
 
@@ -200,6 +232,22 @@ const stopInterval = () => {
 };
 
 onMounted(async () => {
+  // Preload all images
+  tabs.forEach((tab, index) => {
+    const img = new Image();
+    img.src = tab.tabImage;
+    img.onload = () => {
+      imageLoaded.value[index] = true;
+      // Update height for active tab when its image loads
+      if (index === activeTab.value) {
+        initHeightUpdate(index);
+      }
+    };
+    if (img.complete) {
+      imageLoaded.value[index] = true;
+    }
+  });
+
   await nextTick(); // Wait for the DOM to update
   initHeightUpdate(0); // Initialize tab height update
 
@@ -238,5 +286,18 @@ onUnmounted(() => {
 }
 .active .icon {
   @apply fill-blue-600;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
 }
 </style>

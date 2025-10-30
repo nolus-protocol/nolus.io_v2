@@ -81,13 +81,15 @@
                   target="_blank"
                   class="flex items-center space-x-3 rounded-lg p-3 leading-6 text-neutral-900 transition-all hover:bg-blue-200/40"
                 >
-                  <div class="relative h-16 shrink-0 basis-28 overflow-hidden rounded-xl">
+                  <div class="relative h-16 shrink-0 basis-28 overflow-hidden rounded-xl bg-neutral-200">
                     <img
                       :src="post.image"
                       :alt="post.title"
                       loading="lazy"
                       aria-hidden="true"
-                      class="absolute top-0 z-10 h-full w-full"
+                      class="absolute top-0 z-10 h-full w-full object-cover opacity-0 transition-opacity duration-200"
+                      :class="{ 'opacity-100': imageLoaded[post.link] }"
+                      @load="onImageLoad(post.link)"
                     />
                   </div>
                   <div>
@@ -143,6 +145,12 @@ let recentPosts = ref<
     pubDate: string;
   }[]
 >([]);
+
+let imageLoaded = ref<Record<string, boolean>>({});
+
+const onImageLoad = (link: string) => {
+  imageLoaded.value[link] = true;
+};
 
 onMounted(async () => {
   try{
