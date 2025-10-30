@@ -293,7 +293,7 @@ onUnmounted(() => {
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-3px);
+    transform: translateY(-8px);
   }
 }
 
