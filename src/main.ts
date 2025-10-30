@@ -221,7 +221,6 @@ export const createApp = ViteSSG(
     // Client-only code
     if (isClient) {
       // Any client-specific initialization can go here
-      console.log('Running in client mode')
     }
   }
 )

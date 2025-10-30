@@ -4,7 +4,6 @@
       <!-- Hero section -->
       <section
         class="relative isolate -z-10 overflow-hidden bg-about-banner py-40"
-        ref="heroWrapper"
         aria-labelledby="about-hero-heading"
       >
         <NolusContainer class="flex items-center">
@@ -230,7 +229,6 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from "vue";
 import { useI18n } from "vue-i18n";
-import { usePageReady } from "@/composables/usePageReady";
 import NolusContainer from "@/components/NolusContainer.vue";
 import icon1 from "@/assets/lotties/mission.json?url";
 import icon2 from "@/assets/lotties/vision.json?url";
@@ -249,75 +247,69 @@ import contributors11 from "@/assets/images/about/team/lily.jpg";
 
 const { t } = useI18n({ useScope: 'global' });
 
-// Logo dependencies
-const isVideoLoaded = ref(false);
 const aboutVideo = ref<HTMLVideoElement | null>(null);
 
-// Sample video background color and apply to page (non-blocking but fast)
-const sampleVideoColor = (video: HTMLVideoElement) => {
-  // Use requestAnimationFrame for next frame (fast and non-blocking)
-  requestAnimationFrame(() => {
-    try {
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d', { willReadFrequently: true });
+// Sample image/video color and apply to page
+const sampleImageColor = (imageSource: HTMLImageElement | HTMLVideoElement) => {
+  try {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
 
-      if (!ctx) return;
+    if (!ctx) return;
 
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
+    // For video, use video dimensions; for image, use natural dimensions
+    const width = imageSource instanceof HTMLVideoElement ? imageSource.videoWidth : imageSource.naturalWidth;
+    const height = imageSource instanceof HTMLVideoElement ? imageSource.videoHeight : imageSource.naturalHeight;
 
-      if (canvas.width === 0 || canvas.height === 0) return;
+    canvas.width = width;
+    canvas.height = height;
 
-      // Draw the current frame
-      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    if (canvas.width === 0 || canvas.height === 0) return;
 
-      // Sample from the center-left area of the video (where background usually is)
-      const x = Math.floor(canvas.width * 0.1);
-      const y = Math.floor(canvas.height * 0.5);
+    // Draw the current frame/image
+    ctx.drawImage(imageSource, 0, 0, canvas.width, canvas.height);
 
-      const imageData = ctx.getImageData(x, y, 1, 1).data;
-      const hex = `#${imageData[0].toString(16).padStart(2, '0')}${imageData[1].toString(16).padStart(2, '0')}${imageData[2].toString(16).padStart(2, '0')}`;
+    // Sample from the center-left area (where background usually is)
+    const x = Math.floor(canvas.width * 0.1);
+    const y = Math.floor(canvas.height * 0.5);
 
-      // Apply the sampled color to the CSS variable
-      document.documentElement.style.setProperty('--bg-banner-about', hex);
-    } catch (error) {
-      // Silently fail - use default CSS color
-    }
-  });
+    const imageData = ctx.getImageData(x, y, 1, 1).data;
+    const hex = `#${imageData[0].toString(16).padStart(2, '0')}${imageData[1].toString(16).padStart(2, '0')}${imageData[2].toString(16).padStart(2, '0')}`;
+
+    // Apply the sampled color to the CSS variable
+    document.documentElement.style.setProperty('--bg-banner-about', hex);
+  } catch (error) {
+    // Silently fail - use default CSS color
+  }
 };
 
 onMounted(() => {
-  // Sample video color when loaded, but don't block rendering
+  // Sample video color when loaded
   const video = aboutVideo.value;
   
   if (video) {
-    // Try multiple events to ensure we catch when video is ready
     const handleVideoReady = () => {
       if (video.videoWidth > 0 && video.videoHeight > 0) {
-        isVideoLoaded.value = true;
-        sampleVideoColor(video);
+        // Use requestAnimationFrame for smooth transition
+        requestAnimationFrame(() => {
+          sampleImageColor(video);
+        });
       }
     };
     
     // Check if already loaded
     if (video.readyState >= 2 && video.videoWidth > 0) {
-      isVideoLoaded.value = true;
-      sampleVideoColor(video);
+      requestAnimationFrame(() => {
+        sampleImageColor(video);
+      });
     } else {
       // Listen to multiple events
       video.addEventListener('loadeddata', handleVideoReady, { once: true });
       video.addEventListener('canplay', handleVideoReady, { once: true });
       video.addEventListener('loadedmetadata', handleVideoReady, { once: true });
-      // Fallback: try after a short delay
-      setTimeout(() => {
-        if (video.videoWidth > 0) {
-          handleVideoReady();
-        }
-      }, 500);
     }
   }
 });
-let heroWrapper = ref(null);
 
 // Define vision, mission and values
 const visionMisionAndValues = computed(() => [

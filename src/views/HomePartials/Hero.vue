@@ -48,15 +48,6 @@
           >
             {{ $t('common_launchApp') }}
           </Button>
-          <!--Button
-            class="w-full md:w-auto"
-            size="lg"
-            variant="secondary"
-            :icon="PlayCircleIcon"
-            @click="showVideoDialog = true"
-          >
-            Watch Explainer
-          </Button-->
         </div>
       </div>
       <div
@@ -106,13 +97,6 @@
           </div>
         </dl>
       </div>
-      <Modal
-        :show="showVideoDialog"
-        :variant="'video'"
-        @close-modal="showVideoDialog = false"
-      >
-        <VideoModal />
-      </Modal>
     </div>
   </div>
 </template>
@@ -128,69 +112,66 @@ const { t } = useI18n({ useScope: 'global' });
 import SquareArrowTopRightIcon from "@/assets/icons/square-arrow-top-right-2.svg";
 import Button from "@/components/Button.vue";
 import videoPoster from "@/assets/videos/header.jpg";
-import Modal from "@/components/modals/templates/Modal.vue";
-import VideoModal from "@/components/modals/VideoModal.vue";
 import videoSrc from "@/assets/videos/header.mp4";
 
-// Sample video background color and apply to page (non-blocking but fast)
-const sampleVideoColor = (video: HTMLVideoElement) => {
-  // Use requestAnimationFrame for next frame (fast and non-blocking)
-  requestAnimationFrame(() => {
-    try {
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d', { willReadFrequently: true });
-      
-      if (!ctx) return;
-      
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
-      
-      if (canvas.width === 0 || canvas.height === 0) return;
-      
-      // Draw the current frame
-      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-      
-      // Sample from the center-left area of the video (where background usually is)
-      const x = Math.floor(canvas.width * 0.1);
-      const y = Math.floor(canvas.height * 0.5);
-      
-      const imageData = ctx.getImageData(x, y, 1, 1).data;
-      const hex = `#${imageData[0].toString(16).padStart(2, '0')}${imageData[1].toString(16).padStart(2, '0')}${imageData[2].toString(16).padStart(2, '0')}`;
-      
-      // Apply the sampled color to the CSS variable
-      document.documentElement.style.setProperty('--bg-banner-home', hex);
-    } catch (error) {
-      // Silently fail - use default CSS color
-    }
-  });
+// Sample image/video color and apply to page
+const sampleImageColor = (imageSource: HTMLImageElement | HTMLVideoElement) => {
+  try {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
+    
+    if (!ctx) return;
+    
+    // For video, use video dimensions; for image, use natural dimensions
+    const width = imageSource instanceof HTMLVideoElement ? imageSource.videoWidth : imageSource.naturalWidth;
+    const height = imageSource instanceof HTMLVideoElement ? imageSource.videoHeight : imageSource.naturalHeight;
+    
+    canvas.width = width;
+    canvas.height = height;
+    
+    if (canvas.width === 0 || canvas.height === 0) return;
+    
+    // Draw the current frame/image
+    ctx.drawImage(imageSource, 0, 0, canvas.width, canvas.height);
+    
+    // Sample from the center-left area (where background usually is)
+    const x = Math.floor(canvas.width * 0.1);
+    const y = Math.floor(canvas.height * 0.5);
+    
+    const imageData = ctx.getImageData(x, y, 1, 1).data;
+    const hex = `#${imageData[0].toString(16).padStart(2, '0')}${imageData[1].toString(16).padStart(2, '0')}${imageData[2].toString(16).padStart(2, '0')}`;
+    
+    // Apply the sampled color to the CSS variable
+    document.documentElement.style.setProperty('--bg-banner-home', hex);
+  } catch (error) {
+    // Silently fail - use default CSS color
+  }
 };
 
 onMounted(() => {
-  // Sample video color when loaded, but don't block rendering
+  // Sample video color when loaded
   const video = heroVideo.value;
   
   if (video) {
-    // Try multiple events to ensure we catch when video is ready
     const handleVideoReady = () => {
       if (video.videoWidth > 0 && video.videoHeight > 0) {
-        sampleVideoColor(video);
+        // Use requestAnimationFrame for smooth transition
+        requestAnimationFrame(() => {
+          sampleImageColor(video);
+        });
       }
     };
     
     // Check if already loaded
     if (video.readyState >= 2 && video.videoWidth > 0) {
-      sampleVideoColor(video);
+      requestAnimationFrame(() => {
+        sampleImageColor(video);
+      });
     } else {
       // Listen to multiple events
       video.addEventListener('loadeddata', handleVideoReady, { once: true });
       video.addEventListener('canplay', handleVideoReady, { once: true });
       video.addEventListener('loadedmetadata', handleVideoReady, { once: true });
-      // Fallback: try after a short delay
-      setTimeout(() => {
-        if (video.videoWidth > 0) {
-          handleVideoReady();
-        }
-      }, 500);
     }
   }
 });
@@ -219,7 +200,6 @@ const stats = ref([
   }
 ]);
 
-const showVideoDialog = ref(false);
 const isStatsLoading = ref(true);
 const heroVideo = ref<HTMLVideoElement | null>(null);
 
