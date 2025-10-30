@@ -49,6 +49,7 @@
             <div class="absolute top-4 -z-10 mx-auto w-9/12 sm:-right-8 lg:-right-20 lg:-top-20">
               <div class="relative">
                 <video
+                  ref="aboutVideo"
                   class="h-auto w-full"
                   muted
                   autoplay
@@ -250,54 +251,69 @@ const { t } = useI18n({ useScope: 'global' });
 
 // Logo dependencies
 const isVideoLoaded = ref(false);
+const aboutVideo = ref<HTMLVideoElement | null>(null);
 
-// Sample video background color and apply to page (non-blocking)
+// Sample video background color and apply to page (non-blocking but fast)
 const sampleVideoColor = (video: HTMLVideoElement) => {
-  // Use requestIdleCallback to run this when browser is idle (non-blocking)
-  const callback = () => {
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
+  // Use requestAnimationFrame for next frame (fast and non-blocking)
+  requestAnimationFrame(() => {
+    try {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d', { willReadFrequently: true });
 
-    if (!ctx) return;
+      if (!ctx) return;
 
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
 
-    // Draw the current frame
-    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+      if (canvas.width === 0 || canvas.height === 0) return;
 
-    // Sample from the center-left area of the video (where background usually is)
-    const x = Math.floor(canvas.width * 0.1);
-    const y = Math.floor(canvas.height * 0.5);
+      // Draw the current frame
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-    const imageData = ctx.getImageData(x, y, 1, 1).data;
-    const hex = `#${imageData[0].toString(16).padStart(2, '0')}${imageData[1].toString(16).padStart(2, '0')}${imageData[2].toString(16).padStart(2, '0')}`;
+      // Sample from the center-left area of the video (where background usually is)
+      const x = Math.floor(canvas.width * 0.1);
+      const y = Math.floor(canvas.height * 0.5);
 
-    // Apply the sampled color to the CSS variable
-    document.documentElement.style.setProperty('--bg-banner-about', hex);
-  };
-  
-  // Use requestIdleCallback if available, otherwise setTimeout with low priority
-  if ('requestIdleCallback' in window) {
-    requestIdleCallback(callback);
-  } else {
-    setTimeout(callback, 100);
-  }
+      const imageData = ctx.getImageData(x, y, 1, 1).data;
+      const hex = `#${imageData[0].toString(16).padStart(2, '0')}${imageData[1].toString(16).padStart(2, '0')}${imageData[2].toString(16).padStart(2, '0')}`;
+
+      // Apply the sampled color to the CSS variable
+      document.documentElement.style.setProperty('--bg-banner-about', hex);
+    } catch (error) {
+      // Silently fail - use default CSS color
+    }
+  });
 };
 
 onMounted(() => {
   // Sample video color when loaded, but don't block rendering
-  const video = document.querySelector('video');
+  const video = aboutVideo.value;
+  
   if (video) {
-    if (video.readyState >= 2) {
-      // Video already loaded
-      sampleVideoColor(video);
-    } else {
-      // Wait for video to load
-      video.addEventListener('loadeddata', () => {
+    // Try multiple events to ensure we catch when video is ready
+    const handleVideoReady = () => {
+      if (video.videoWidth > 0 && video.videoHeight > 0) {
         isVideoLoaded.value = true;
         sampleVideoColor(video);
-      }, { once: true });
+      }
+    };
+    
+    // Check if already loaded
+    if (video.readyState >= 2 && video.videoWidth > 0) {
+      isVideoLoaded.value = true;
+      sampleVideoColor(video);
+    } else {
+      // Listen to multiple events
+      video.addEventListener('loadeddata', handleVideoReady, { once: true });
+      video.addEventListener('canplay', handleVideoReady, { once: true });
+      video.addEventListener('loadedmetadata', handleVideoReady, { once: true });
+      // Fallback: try after a short delay
+      setTimeout(() => {
+        if (video.videoWidth > 0) {
+          handleVideoReady();
+        }
+      }, 500);
     }
   }
 });
