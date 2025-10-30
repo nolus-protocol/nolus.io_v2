@@ -81,6 +81,7 @@
                       ><img
                         :src="audit.logoUrl"
                         alt=""
+                        loading="lazy"
                         aria-hidden="true"
                     /></span>
                     <p class="font-medium leading-5">

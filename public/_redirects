@@ -1,0 +1,18 @@
+# Cloudflare Pages Redirects for locale code migration
+# Old locale codes → New ISO 639-1 standard codes
+
+# Chinese: cn → zh
+/cn/* /zh/:splat 301
+/cn /zh/ 301
+
+# Greek: gr → el
+/gr/* /el/:splat 301
+/gr /el/ 301
+
+# Japanese: jp → ja
+/jp/* /ja/:splat 301
+/jp /ja/ 301
+
+# Korean: kr → ko
+/kr/* /ko/:splat 301
+/kr /ko/ 301

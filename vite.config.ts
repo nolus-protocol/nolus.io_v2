@@ -23,7 +23,7 @@ export default defineConfig({
       // IMPORTANT: Generate routes by PAGE first, then by LOCALE
       // This ensures each page renders with all locales before moving to the next page
       // With English last in each group to preserve correct default locale state
-      const locales = ['ru', 'cn', 'es', 'fr', 'gr', 'tr', 'id', 'jp', 'kr', 'en'];
+      const locales = ['ru', 'zh', 'es', 'fr', 'el', 'tr', 'id', 'ja', 'ko', 'en'];
       const pages = ['/', '/about', '/governance'];
       const routes: string[] = [];
       

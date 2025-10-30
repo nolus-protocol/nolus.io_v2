@@ -81,6 +81,7 @@
                     ref="imgRef"
                     :src="tab.tabImage"
                     alt=""
+                    loading="lazy"
                     class="w-8/12 md:ml-auto md:w-2/5 lg:w-6/12"
                     aria-hidden="true"
                     v-motion

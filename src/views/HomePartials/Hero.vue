@@ -83,6 +83,7 @@
           v-if="!isVideoLoaded"
           :src="videoPoster"
           :alt="$t('home_heroVideoLoading')"
+          fetchpriority="high"
           v-motion
           :initial="{ opacity: 0 }"
           :enter="{ opacity: 1 }"

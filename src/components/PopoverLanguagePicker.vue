@@ -80,14 +80,14 @@ const props = defineProps({
 const languageData = [
   { code: "en", short_string: "EN", lang: "English", icon: "en.svg" },
   { code: "ru", short_string: "RU", lang: "Русский", icon: "ru.svg" },
-  { code: "cn", short_string: "CN", lang: "中文", icon: "cn.svg" },
+  { code: "zh", short_string: "ZH", lang: "中文", icon: "cn.svg" },
   { code: "es", short_string: "ES", lang: "Español", icon: "es.svg" },
-  { code: "gr", short_string: "GR", lang: "Ελληνικά", icon: "gr.svg" },
+  { code: "el", short_string: "EL", lang: "Ελληνικά", icon: "gr.svg" },
   { code: "tr", short_string: "TR", lang: "Türkçe", icon: "tr.svg" },
   { code: "fr", short_string: "FR", lang: "Français", icon: "fr.svg" },
   { code: "id", short_string: "ID", lang: "Bahasa Indonesia", icon: "id.svg" },
-  { code: "jp", short_string: "JP", lang: "日本語", icon: "jp.svg" },
-  { code: "kr", short_string: "KR", lang: "한국어", icon: "kr.svg" }
+  { code: "ja", short_string: "JA", lang: "日本語", icon: "jp.svg" },
+  { code: "ko", short_string: "KO", lang: "한국어", icon: "kr.svg" }
 ];
 
 const languages = computed(() =>
@@ -107,7 +107,7 @@ const switchLanguage = (langCode: string, closePopover?: () => void) => {
   
   // Get current path without locale prefix
   let currentPath = route.path;
-  const localeRegex = /^\/(ru|cn|es|fr|gr|tr|id|jp|kr)/;
+  const localeRegex = /^\/(ru|zh|es|fr|el|tr|id|ja|ko)/;
   if (localeRegex.test(currentPath)) {
     currentPath = currentPath.replace(localeRegex, '');
   }

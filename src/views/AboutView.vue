@@ -110,7 +110,7 @@
                 <img
                   class="mr-5 h-32 w-32 rounded-full brightness-110 grayscale group-hover:grayscale-0"
                   :src="person.imageUrl"
-                  alt=""
+                  :alt="person.name"
                   loading="lazy"
                   decoding="async"
                 />

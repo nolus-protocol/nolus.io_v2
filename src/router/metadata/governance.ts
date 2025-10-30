@@ -17,13 +17,13 @@ export const getMeta = (i18n: I18n) => {
     "og:url": `${baseUrl}${localePrefix}/governance`,
     "og:title": t('meta_governance_ogTitle'),
     "og:description": t('meta_governance_ogDescription'),
-    "og:image": `${baseUrl}/assets/images/meta/governance-meta.png`,
+    "og:image": `${baseUrl}/assets/images/meta/governance-meta.jpg`,
 
     "twitter:card": "summary_large_image",
     "twitter:url": `${baseUrl}${localePrefix}/governance`,
     "twitter:title": t('meta_governance_twitterTitle'),
     "twitter:description": t('meta_governance_twitterDescription'),
-    "twitter:image": `${baseUrl}/assets/images/meta/governance-meta.png`,
+    "twitter:image": `${baseUrl}/assets/images/meta/governance-meta.jpg`,
 
     "script-organisation": {
       "@context": "https://schema.org",
@@ -50,6 +50,46 @@ export const getMeta = (i18n: I18n) => {
       embedUrl: "https://www.youtube.com/embed/k7QWPR0052g",
       thumbnailUrl:
         "https://i9.ytimg.com/vi/k7QWPR0052g/mqdefault.jpg?v=635641f9&sqp=CPC145oG&rs=AOn4CLBNhkTA4nD9T6Pb9_Jmi4UfQeQzsg"
+    },
+    "script-webpage": {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: t('meta_governance_title'),
+      description: t('meta_governance_description'),
+      url: `${baseUrl}${localePrefix}/governance`,
+      inLanguage: locale,
+      isPartOf: {
+        "@type": "WebSite",
+        "@id": "https://nolus.io/#website",
+        url: "https://nolus.io/",
+        name: "Nolus Protocol"
+      },
+      about: {
+        "@type": "Organization",
+        name: "Nolus Protocol"
+      },
+      primaryImageOfPage: {
+        "@type": "ImageObject",
+        url: `${baseUrl}/assets/images/meta/governance-meta.jpg`
+      }
+    },
+    "script-breadcrumb": {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: `${baseUrl}${localePrefix}/`
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Governance",
+          item: `${baseUrl}${localePrefix}/governance`
+        }
+      ]
     }
   };
 };

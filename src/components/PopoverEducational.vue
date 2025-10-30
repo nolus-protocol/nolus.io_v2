@@ -84,7 +84,8 @@
                   <div class="relative h-16 shrink-0 basis-28 overflow-hidden rounded-xl">
                     <img
                       :src="post.image"
-                      alt=""
+                      :alt="post.title"
+                      loading="lazy"
                       aria-hidden="true"
                       class="absolute top-0 z-10 h-full w-full"
                     />

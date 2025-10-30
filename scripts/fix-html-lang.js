@@ -12,8 +12,8 @@ const __dirname = path.dirname(__filename);
 
 const distDir = path.join(__dirname, '../dist');
 
-// Locale mapping
-const locales = ['ru', 'cn', 'es', 'fr', 'gr', 'tr', 'id', 'jp', 'kr'];
+// Locale mapping (updated to ISO 639-1 standard codes)
+const locales = ['ru', 'zh', 'es', 'fr', 'el', 'tr', 'id', 'ja', 'ko'];
 
 // Function to fix lang attribute in HTML file
 function fixLangAttribute(filePath, locale) {

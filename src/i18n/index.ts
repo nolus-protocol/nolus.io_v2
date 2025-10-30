@@ -22,7 +22,7 @@ const getBrowserLocale = (): string => {
     return 'en';
   }
   const browserLang = navigator.language.split('-')[0];
-  const supportedLocales = ['en', 'ru', 'cn', 'es', 'fr', 'gr', 'tr', 'id', 'jp', 'kr'];
+  const supportedLocales = ['en', 'ru', 'zh', 'es', 'fr', 'el', 'tr', 'id', 'ja', 'ko'];
   return supportedLocales.includes(browserLang) ? browserLang : 'en';
 };
 

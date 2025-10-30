@@ -29,17 +29,17 @@ const routes: RouteRecordRaw[] = [
   },
   // Localized routes (with locale prefix for non-English)
   {
-    path: '/:locale(ru|cn|es|fr|gr|tr|id|jp|kr)',
+    path: '/:locale(ru|zh|es|fr|el|tr|id|ja|ko)',
     name: 'home-localized',
     component: () => import('./views/HomeView.vue')
   },
   {
-    path: '/:locale(ru|cn|es|fr|gr|tr|id|jp|kr)/about',
+    path: '/:locale(ru|zh|es|fr|el|tr|id|ja|ko)/about',
     name: 'about-localized',
     component: () => import('./views/AboutView.vue')
   },
   {
-    path: '/:locale(ru|cn|es|fr|gr|tr|id|jp|kr)/governance',
+    path: '/:locale(ru|zh|es|fr|el|tr|id|ja|ko)/governance',
     name: 'governance-localized',
     component: () => import('./views/GovernanceView.vue')
   },
@@ -66,7 +66,7 @@ export const createApp = ViteSSG(
     router.beforeEach((to, from, next) => {
       // Detect and set locale from URL
       const urlLocale = to.params.locale as string;
-      if (urlLocale && ['ru', 'cn', 'es', 'fr', 'gr', 'tr', 'id', 'jp', 'kr'].includes(urlLocale)) {
+      if (urlLocale && ['ru', 'zh', 'es', 'fr', 'el', 'tr', 'id', 'ja', 'ko'].includes(urlLocale)) {
         i18n.global.locale.value = urlLocale;
         if (isClient) {
           localStorage.setItem('user-locale', urlLocale);
@@ -115,13 +115,13 @@ export const createApp = ViteSSG(
       contentLangTag.setAttribute('content', currentLocale);
       
       // Add hreflang link tags for all supported languages
-      const supportedLanguages = ['en', 'ru', 'cn', 'es', 'fr', 'gr', 'tr', 'id', 'jp', 'kr'];
+      const supportedLanguages = ['en', 'ru', 'zh', 'es', 'fr', 'el', 'tr', 'id', 'ja', 'ko'];
       
       // Remove existing hreflang tags
       document.querySelectorAll('link[hreflang]').forEach(link => link.remove());
       
       // Get current path without locale prefix
-      const pathWithoutLocale = to.path.replace(/^\/(en|ru|cn|es|fr|gr|tr|id|jp|kr)/, '');
+      const pathWithoutLocale = to.path.replace(/^\/(en|ru|zh|es|fr|el|tr|id|ja|ko)/, '');
       
       // Add hreflang for each language
       supportedLanguages.forEach(lang => {
@@ -188,14 +188,14 @@ export const createApp = ViteSSG(
       const localeMap: Record<string, string> = {
         'en': 'en_US',
         'ru': 'ru_RU',
-        'cn': 'zh_CN',
+        'zh': 'zh_CN',
         'es': 'es_ES',
         'fr': 'fr_FR',
-        'gr': 'el_GR',
+        'el': 'el_GR',
         'tr': 'tr_TR',
         'id': 'id_ID',
-        'jp': 'ja_JP',
-        'kr': 'ko_KR'
+        'ja': 'ja_JP',
+        'ko': 'ko_KR'
       };
       
       // Set primary locale
