@@ -331,7 +331,6 @@ import ProposalItem from "@/components/vote/components/ProposalItem.vue";
 import ProposalReadMoreDialog from "@/components/vote/components/ProposalReadMoreDialog.vue";
 import Modal from "@/components/modals/templates/Modal.vue";
 import PlusSmallIcon from "@/assets/icons/plus-small.svg";
-import { usePageReady } from "@/composables/usePageReady";
 
 import { useI18n } from "vue-i18n";
 
@@ -360,7 +359,6 @@ let dotColor = "13,55,127"; // Change this to control the color of the dots
 
 const bondedTokens = ref(new Dec(0));
 const quorum = ref(new Dec(0));
-const { setPageReady } = usePageReady();
 
 const state = ref<{
   showReadMoreModal: boolean,
@@ -462,8 +460,6 @@ onMounted(async () => {
     );
     observer.observe(canvas);
   }
-
-  setPageReady();
 
   await Promise.all([fetchGovernanceProposals(), loadBondedTokens(), loadTallying()]);
 

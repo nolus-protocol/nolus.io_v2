@@ -64,13 +64,11 @@
         aria-hidden="true"
       >
         <video
-          @loadeddata="isVideoLoaded = true"
           class="h-auto w-full"
           muted
           autoplay
           playsinline
-          data-timing="7"
-          data-wait="240"
+          preload="auto"
           loop
           :poster="videoPoster"
         >
@@ -79,16 +77,6 @@
             type="video/mp4"
           />
         </video>
-        <img
-          v-if="!isVideoLoaded"
-          :src="videoPoster"
-          :alt="$t('home_heroVideoLoading')"
-          fetchpriority="high"
-          v-motion
-          :initial="{ opacity: 0 }"
-          :enter="{ opacity: 1 }"
-          :delay="100"
-        />
       </div>
       <div class="max-w-4xl md:pt-16">
         <dl class="mt-16 flex flex-col gap-y-10 rounded-xl md:my-0 md:flex-row">
@@ -132,7 +120,6 @@
 import { ref, onBeforeMount, onMounted } from "vue";
 import { useI18n } from "vue-i18n";
 import { ETL_API, PROTOCOLS, Stats } from "@/config";
-import { usePageReady } from "@/composables/usePageReady";
 
 // In legacy mode, useI18n returns the global instance by default
 const { t } = useI18n({ useScope: 'global' });
@@ -144,49 +131,51 @@ import Modal from "@/components/modals/templates/Modal.vue";
 import VideoModal from "@/components/modals/VideoModal.vue";
 import videoSrc from "@/assets/videos/header.mp4";
 
-const { setPageReady, initVideoPage } = usePageReady();
-
-// Initialize video page mode (hides page until color is sampled)
-initVideoPage();
-
-// Sample video background color and apply to page
+// Sample video background color and apply to page (non-blocking)
 const sampleVideoColor = (video: HTMLVideoElement) => {
-  const canvas = document.createElement('canvas');
-  const ctx = canvas.getContext('2d');
+  // Use requestIdleCallback to run this when browser is idle (non-blocking)
+  const callback = () => {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    
+    if (!ctx) return;
+    
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    
+    // Draw the current frame
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    
+    // Sample from the center-left area of the video (where background usually is)
+    const x = Math.floor(canvas.width * 0.1);
+    const y = Math.floor(canvas.height * 0.5);
+    
+    const imageData = ctx.getImageData(x, y, 1, 1).data;
+    const hex = `#${imageData[0].toString(16).padStart(2, '0')}${imageData[1].toString(16).padStart(2, '0')}${imageData[2].toString(16).padStart(2, '0')}`;
+    
+    // Apply the sampled color to the CSS variable
+    document.documentElement.style.setProperty('--bg-banner-home', hex);
+  };
   
-  if (!ctx) return;
-  
-  canvas.width = video.videoWidth;
-  canvas.height = video.videoHeight;
-  
-  // Draw the current frame
-  ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-  
-  // Sample from the center-left area of the video (where background usually is)
-  const x = Math.floor(canvas.width * 0.1);
-  const y = Math.floor(canvas.height * 0.5);
-  
-  const imageData = ctx.getImageData(x, y, 1, 1).data;
-  const hex = `#${imageData[0].toString(16).padStart(2, '0')}${imageData[1].toString(16).padStart(2, '0')}${imageData[2].toString(16).padStart(2, '0')}`;
-  
-  // Apply the sampled color to the CSS variable
-  document.documentElement.style.setProperty('--bg-banner-home', hex);
-  
-  console.log('Sampled home video background color:', hex);
-  
-  // Mark as sampled to show content
-  setPageReady();
+  // Use requestIdleCallback if available, otherwise setTimeout with low priority
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(callback);
+  } else {
+    setTimeout(callback, 100);
+  }
 };
 
 onMounted(() => {
-  // Wait for video to load and sample its color
+  // Sample video color when loaded, but don't block rendering
   const video = document.querySelector('video');
   if (video) {
-    video.addEventListener('loadeddata', () => {
-      isVideoLoaded.value = true;
-      // Sample color immediately when video is ready
-      setTimeout(() => sampleVideoColor(video), 50);
-    });
+    if (video.readyState >= 2) {
+      // Video already loaded
+      sampleVideoColor(video);
+    } else {
+      // Wait for video to load
+      video.addEventListener('loadeddata', () => sampleVideoColor(video), { once: true });
+    }
   }
 });
 
@@ -215,7 +204,6 @@ const stats = ref([
 ]);
 
 const showVideoDialog = ref(false);
-const isVideoLoaded = ref(false);
 const isStatsLoading = ref(true);
 
 onBeforeMount(() => {

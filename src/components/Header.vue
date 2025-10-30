@@ -268,8 +268,16 @@ const navigationWithTextColorClass = computed(() => {
   });
 });
 
+let ticking = false;
+
 const scroll = () => {
-  y.value = window.scrollY > 0;
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      y.value = window.scrollY > 0;
+      ticking = false;
+    });
+    ticking = true;
+  }
 }
 
 onMounted(() => {
