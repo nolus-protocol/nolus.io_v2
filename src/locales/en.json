@@ -32,7 +32,7 @@
   "footer_socialTelegram": "Telegram",
 
   "home_heroTitle": "Margin That Makes Sense",
-  "home_heroSubtitle": "No surprise liquidations. No hidden costs. Just transparent, capital-efficient leverage",
+  "home_heroSubtitle": "No unexpected liquidations, no hidden costs, just transparent and capital-efficient leverage",
   "home_heroVideoLoading": "Video loading...",
 
   "home_statsVolume": "Transaction Volume",
@@ -51,7 +51,7 @@
 
   "home_liquidity": "Liquidity",
   "home_liquidityHeading": "Connected Hubs",
-  "home_liquidityDesc": "The protocol sources liquidity from a diverse set of interconnected hubs. This architecture enables immediate lending and swaps without asset fragmentation",
+  "home_liquidityDesc": "The protocol sources liquidity from a diverse network of interconnected hubs, enabling immediate lending and swaps without asset fragmentation",
   "home_liquidityLogoAlt": "Logo of {name}",
 
   "home_safety": "Security",
@@ -69,20 +69,20 @@
   "home_auditOakSecurity": "Oak Security",
   "home_auditHalborn": "Halborn",
 
-  "home_productLabel": "Nolus App",
+  "home_productLabel": "Application",
   "home_productHeading": "Built for You",
   "home_productTabEffortless": "Intuitive",
   "home_productTabEffortlessHeading": "Maximum Clarity",
-  "home_productTabEffortlessDesc": "Navigate margin positions through a refined interface. Guided workflows and contextual help eliminate friction from onboarding to execution",
+  "home_productTabEffortlessDesc": "Navigate through a refined interface where guided workflows and contextual assistance remove friction from onboarding to execution",
   "home_productTabCompatible": "Sovereign",
   "home_productTabCompatibleHeading": "Full Control",
   "home_productTabCompatibleDesc": "Connect seamlessly through your preferred wallet extension or via mobile device. You maintain full custody and control throughout every interaction",
   "home_productTabPersonalized": "Intelligent",
   "home_productTabPersonalizedHeading": "Context Aware",
-  "home_productTabPersonalizedDesc": "Embedded LLM assistant with deep protocol knowledge. Navigate mechanics, track portfolio health, access market intelligence all via natural conversation",
+  "home_productTabPersonalizedDesc": "A built-in LLM assistant guides you through protocol mechanics, portfolio insights, strategies, and market intelligence via natural conversation",
   "home_productTabFlexible": "Flexible",
   "home_productTabFlexibleHeading": "Asset Agnostic",
-  "home_productTabFlexibleDesc": "Execute transactions using any supported asset for network fees. The protocol handles conversion seamlessly while channeling value to NLS stakers",
+  "home_productTabFlexibleDesc": "Execute transactions with any supported asset as network fees, with seamless conversion handled by the protocol while channeling value to NLS stakers",
   "home_productTabCrossChain": "Interoperable",
   "home_productTabCrossChainHeading": "IBC Native",
   "home_productTabCrossChainDesc": "Move assets and execute positions across chains through IBC's trust-minimized architecture, eliminating reliance on centralized counterparts",
@@ -99,7 +99,7 @@
   "about_visionTitle": "Vision",
   "about_visionDesc": "We envision onchain markets where capital flows efficiently without sacrificing risk controls. As tokenization accelerates, Nolus provides the margin infrastructure that scales from retail accessibility to institutional standards",
   "about_valuesTitle": "Values",
-  "about_valuesDesc": "Transparency, inclusivity, and accountability define our approach. We operate as open-source infrastructure governed by community consensus—where every parameter is auditable and every upgrade flows through collective decision-making",
+  "about_valuesDesc": "Transparency, inclusivity, and accountability define our approach. We operate as open-source infrastructure governed by community consensus, where every parameter is auditable and every upgrade flows through collective decision-making",
 
   "about_coreContributorsHeading": "Core Contributors",
   "about_roleFinance": "Finance",
