@@ -356,13 +356,13 @@ const core_contributors = computed(() => [
     xUrl: "",
     discordUrl: ""
   },
-  {
-    name: "Simon Chadwick",
-    role: t("about_roleInvestorRelations"),
-    imageUrl: contributors6,
-    xUrl: "",
-    discordUrl: ""
-  },
+  // {
+  //   name: "Simon Chadwick",
+  //   role: t("about_roleInvestorRelations"),
+  //   imageUrl: contributors6,
+  //   xUrl: "",
+  //   discordUrl: ""
+  // },
   {
     name: "Lilia Ilieva",
     role: t("about_roleMarketingCommunication"),
