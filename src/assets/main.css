@@ -5,7 +5,9 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --bg-banner-home: #eceff4;
-  --bg-banner-about: #27397d;
+@layer base {
+  :root {
+    --bg-banner-home: #eceff4;
+    --bg-banner-about: #27397d;
+  }
 }

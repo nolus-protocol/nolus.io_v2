@@ -284,30 +284,18 @@ const sampleImageColor = (imageSource: HTMLImageElement | HTMLVideoElement) => {
 };
 
 onMounted(() => {
-  // Sample video color when loaded
+  // Sample video color only when it has actually played and rendered a frame
   const video = aboutVideo.value;
   
   if (video) {
-    const handleVideoReady = () => {
+    // Wait for 'playing' event - this ensures video has started and first frame is rendered
+    video.addEventListener('playing', () => {
       if (video.videoWidth > 0 && video.videoHeight > 0) {
-        // Use requestAnimationFrame for smooth transition
         requestAnimationFrame(() => {
           sampleImageColor(video);
         });
       }
-    };
-    
-    // Check if already loaded
-    if (video.readyState >= 2 && video.videoWidth > 0) {
-      requestAnimationFrame(() => {
-        sampleImageColor(video);
-      });
-    } else {
-      // Listen to multiple events
-      video.addEventListener('loadeddata', handleVideoReady, { once: true });
-      video.addEventListener('canplay', handleVideoReady, { once: true });
-      video.addEventListener('loadedmetadata', handleVideoReady, { once: true });
-    }
+    }, { once: true });
   }
 });
 
