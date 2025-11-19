@@ -73,6 +73,13 @@
   <!-- Preload hero video poster for faster LCP -->
   <link rel="preload" href="/src/assets/videos/header.jpg" as="image" fetchpriority="high">
   
+  <!-- Critical CSS: Prevent FOUC before Vue mounts -->
+  <style>
+    [v-cloak] {
+      display: none !important;
+    }
+  </style>
+  
   <meta name="viewport"
         content="width=device-width,initial-scale=1">
   <meta name="theme-color"
