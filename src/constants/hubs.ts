@@ -28,12 +28,12 @@ export const HUBS: Hub[] = [
     image: astroportImage,
     link: "https://astroport.fi"
   },
-  {
-    id: 3,
-    shortName: "Neutron",
-    fullName: "Hydro",
-    comingSoon: false,
-    image: hydroImage,
-    link: "https://hydro.cosmos.network/"
-  }
+ // {
+ //   id: 3,
+ //   shortName: "Neutron",
+ //   fullName: "Hydro",
+ //   comingSoon: false,
+ //   image: hydroImage,
+ //   link: "https://hydro.cosmos.network/"
+ // }
 ];

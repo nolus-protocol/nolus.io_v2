@@ -31,19 +31,19 @@
   "footer_socialDiscord": "Discord",
   "footer_socialTelegram": "Telegram",
 
-  "home_heroTitle": "Margin That Makes Sense",
-  "home_heroSubtitle": "No unexpected liquidations, no hidden costs, just transparent and capital-efficient leverage",
+  "home_heroTitle": "Fixed-Rate Margin Engine",
+  "home_heroSubtitle": " Built for predictability and structured risk management",
   "home_heroVideoLoading": "Video loading...",
 
   "home_statsVolume": "Transaction Volume",
-  "home_statsVolumeDesc": "Combined transaction activity across all products",
+  "home_statsVolumeDesc": "Combined transaction activity across products",
   "home_statsValueLocked": "Value Locked",
-  "home_statsValueLockedDesc": "Liquidity secured across 28 assets on 3 networks",
+  "home_statsValueLockedDesc": "Liquidity secured over 28 assets on 3 networks",
   "home_statsEarn": "Earn Rate",
   "home_statsEarnDesc": "Unincentivized yield generated from borrowing activity",
 
-  "home_valuePropositionsCostEfficient": "Efficient Execution",
-  "home_valuePropositionsCostEfficientDesc": "Access margin positions with tight spreads and minimal slippage through direct liquidity hub routing",
+  "home_valuePropositionsCostEfficient": "Fixed Costs",
+  "home_valuePropositionsCostEfficientDesc": "Fixed interest keeps your borrowing costs flat throughout each margin position’s lifecycle",
   "home_valuePropositionsLessRisk": "Controlled Risk",
   "home_valuePropositionsLessRiskDesc": "During volatility, partial liquidations protect capital by adjusting your position incrementally",
   "home_valuePropositionsAssetBacked": "Asset-Backed",
@@ -92,7 +92,7 @@
 
   "about_heroTitle": "Novel Margin Primitive",
   "about_heroDesc1": "Nolus is a novel trading primitive designed to deliver capital-efficient spot margin with a strong focus on predictability and risk mitigation. Through fixed protocol interest and controlled leverage, Nolus reduces uncertainty for both retail and institutional participants",
-  "about_heroDesc2": "Built on the Cosmos SDK, Nolus leverages IBC to source liquidity and execute margin positions directly across connected networks. Core protocol logic operates on a semi-permissioned chain—ensuring enhanced security and operational integrity",
+  "about_heroDesc2": "Nolus leverages IBC to source liquidity and execute margin positions directly across connected networks. Core protocol logic operates on a sovereign permissioned chain, ensuring enhanced security and operational integrity",
 
   "about_missionTitle": "Mission",
   "about_missionDesc": "Nolus addresses systemic inefficiencies in crypto lending through structured margin product and transparent infrastructure. We're building a sustainable solution that prioritizes long-term protocol viability over short-term extraction",
