@@ -151,5 +151,12 @@
   "meta_governance_ogDescription": "NLS staker'larının topluluk konsensüsü yoluyla protokol parametrelerini, yükseltmeleri ve hazine tahsisini kontrol ettiği Proof-of-Stake yönetişimi.",
   "meta_governance_twitterTitle": "Nolus Yönetişim | Stake ile Yönetilen Marjin Protokolü",
   "meta_governance_twitterDescription": "NLS staker'larının topluluk konsensüsü yoluyla protokol parametrelerini, yükseltmeleri ve hazine tahsisini kontrol ettiği Proof-of-Stake yönetişimi.",
-  "meta_governance_videoName": "Nolus defines a money market between lenders looking to yield on stablecoins and borrowers looking to amplify their holdings. For borrowers, the Nolus DeFi Lease provides up to 150% financing on the initial investment with a lowered margin call risk and access to the underlying leveraged assets through whitelisted strategies. Inspired by traditional lease products where one can obtain a physical good by providing only a fraction of the cost upfront and use it throughout the lease duration, the Nolus DeFi Lease unlocks the full potential of crypto money markets by reducing the industry's steep over-collateralization requirements, resulting in significantly improved capital efficiency"
+  "meta_governance_videoName": "Nolus defines a money market between lenders looking to yield on stablecoins and borrowers looking to amplify their holdings. For borrowers, the Nolus DeFi Lease provides up to 150% financing on the initial investment with a lowered margin call risk and access to the underlying leveraged assets through whitelisted strategies. Inspired by traditional lease products where one can obtain a physical good by providing only a fraction of the cost upfront and use it throughout the lease duration, the Nolus DeFi Lease unlocks the full potential of crypto money markets by reducing the industry's steep over-collateralization requirements, resulting in significantly improved capital efficiency",
+  "home_heroTitle": "Sabit Faizli Marjin Motoru",
+  "home_heroSubtitle": "Öngörülebilirlik ve yapılandırılmış risk yönetimi için tasarlanmış spot marjin",
+  "home_statsVolumeDesc": "Ürünler genelindeki toplam işlem aktivitesi",
+  "home_statsValueLockedDesc": "3 ağda 28'den fazla varlıkta güvence altına alınmış likidite",
+  "home_valuePropositionsCostEfficient": "Sabit Maliyetler",
+  "home_valuePropositionsCostEfficientDesc": "Sabit faiz, her marjin pozisyonunun yaşam döngüsü boyunca borçlanma maliyetlerinizi sabit tutar",
+  "about_heroDesc2": "Nolus, IBC'den yararlanarak likidite sağlar ve marjin pozisyonlarını doğrudan bağlı ağlar arasında yürütür. Temel protokol mantığı, artırılmış güvenlik ve operasyonel bütünlük sağlayarak egemen, izinli bir zincir üzerinde çalışır"
 }

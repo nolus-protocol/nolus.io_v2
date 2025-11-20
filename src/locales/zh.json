@@ -151,5 +151,12 @@
   "meta_governance_ogDescription": "PoS 治理，其中 NLS 质押者通过社区共识控制协议参数、升级和金库分配。",
   "meta_governance_twitterTitle": "Nolus 治理 | 质押治理的保证金协议",
   "meta_governance_twitterDescription": "PoS 治理，其中 NLS 质押者通过社区共识控制协议参数、升级和金库分配。",
-  "meta_governance_videoName": "Nolus 在寻求稳定币收益的出借方与希望放大持仓的借款方之间构建了一个货币市场。对于借款方，Nolus DeFi Lease 可在初始投入上提供最高 150% 的融资，降低爆仓风险，并通过白名单策略访问底层杠杆资产。受传统租赁产品启发，人们仅需预付部分成本即可获得实物并在整个租期内使用。Nolus DeFi Lease 通过降低行业高企的超额抵押要求，释放加密货币货币市场的全部潜力，从而显著提升资本效率"
+  "meta_governance_videoName": "Nolus 在寻求稳定币收益的出借方与希望放大持仓的借款方之间构建了一个货币市场。对于借款方，Nolus DeFi Lease 可在初始投入上提供最高 150% 的融资，降低爆仓风险，并通过白名单策略访问底层杠杆资产。受传统租赁产品启发，人们仅需预付部分成本即可获得实物并在整个租期内使用。Nolus DeFi Lease 通过降低行业高企的超额抵押要求，释放加密货币货币市场的全部潜力，从而显著提升资本效率",
+  "home_heroTitle": "固定利率保证金引擎",
+  "home_heroSubtitle": "为可预测性与结构化风险管理打造的现货保证金",
+  "home_statsVolumeDesc": "跨产品合计的交易量",
+  "home_statsValueLockedDesc": "覆盖 3 条网络、28 种资产的已保障流动性",
+  "home_valuePropositionsCostEfficient": "固定成本",
+  "home_valuePropositionsCostEfficientDesc": "固定利率让您的借款成本在每个保证金头寸的整个生命周期内保持不变",
+  "about_heroDesc2": "Nolus 利用 IBC 在互联网络之间直接引入流动性并执行保证金头寸。协议核心逻辑运行在一条主权型许可链上，确保更高的安全性与运营完整性"
 }
