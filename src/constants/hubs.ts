@@ -1,6 +1,6 @@
 import osmosisImage from "@/assets/images/hubs/osmosis.svg";
 import astroportImage from "@/assets/images/hubs/astroport.svg";
-import hydroImage from "@/assets/images/hubs/hydro.svg";
+import jupiterImage from "@/assets/images/hubs/jupiter.svg";
 
 export interface Hub {
   id: number;
@@ -14,6 +14,14 @@ export interface Hub {
 export const HUBS: Hub[] = [
   {
     id: 1,
+    shortName: "Solana",
+    fullName: "Jupiter Exchange",
+    comingSoon: true,
+    image: osmosisImage,
+    link: "https://osmosis.zone/"
+  },
+  {
+    id: 2,
     shortName: "Osmosis",
     fullName: "Osmosis DEX",
     comingSoon: false,
@@ -21,19 +29,11 @@ export const HUBS: Hub[] = [
     link: "https://osmosis.zone/"
   },
   {
-    id: 2,
-    shortName: "Neutron",
-    fullName: "Astroport",
-    comingSoon: false,
-    image: astroportImage,
-    link: "https://astroport.fi"
-  },
- // {
- //   id: 3,
- //   shortName: "Neutron",
- //   fullName: "Hydro",
- //   comingSoon: false,
- //   image: hydroImage,
- //   link: "https://hydro.cosmos.network/"
- // }
+  id: 3,
+  shortName: "Neutron",
+  fullName: "Astroport",
+  comingSoon: false,
+  image: astroportImage,
+  link: "https://astroport.fi"
+  }
 ];

@@ -45,7 +45,7 @@
   "home_valuePropositionsCostEfficient": "Fixed Costs",
   "home_valuePropositionsCostEfficientDesc": "Fixed protocol interest keeps borrowing costs predictable for the full lifecycle of each position",
   "home_valuePropositionsLessRisk": "Controlled Risk",
-  "home_valuePropositionsLessRiskDesc": "During volatility, safeguards like partial liquidations, EMA oracle pricing, and MAG help protect capital from abrupt market swings",
+  "home_valuePropositionsLessRiskDesc": "Safeguards like partial liquidations, EMA oracle pricing, and MAG help protect capital from abrupt market swings",
   "home_valuePropositionsAssetBacked": "Asset-Backed",
   "home_valuePropositionsAssetBackedDesc": "Positions hold the underlying asset directly, removing synthetic exposure and counterparty risk",
 
