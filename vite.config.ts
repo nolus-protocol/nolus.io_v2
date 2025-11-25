@@ -6,7 +6,20 @@ import { resolve } from 'path'
 export default defineConfig({
   plugins: [
     vue(),
-    svgLoader(),
+    svgLoader({
+      svgoConfig: {
+        plugins: [
+          {
+            name: 'prefixIds',
+            params: {
+              delim: '_',
+              prefixIds: true,
+              prefixClassNames: true
+            }
+          }
+        ]
+      }
+    }),
   ],
   ssr: {
     // CRITICAL: vue-i18n must not be externalized for SSR to work correctly
