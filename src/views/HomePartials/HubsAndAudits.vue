@@ -42,6 +42,7 @@
                   </figure>
                   <h3 class="text-sm leading-3 text-neutral-600">{{ hub.shortName }}</h3>
                   <p class="text-lg leading-7 tracking-tight text-neutral-900">{{ hub.fullName }}</p>
+                  <span v-if="hub.comingSoon" class="text-sm text-neutral-500">(Coming Soon)</span>
                 </a>
               </li>
             </ul>

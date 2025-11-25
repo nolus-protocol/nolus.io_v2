@@ -17,8 +17,8 @@ export const HUBS: Hub[] = [
     shortName: "Solana",
     fullName: "Jupiter Exchange",
     comingSoon: true,
-    image: osmosisImage,
-    link: "https://osmosis.zone/"
+    image: jupiterImage,
+    link: "https://jup.ag/"
   },
   {
     id: 2,
