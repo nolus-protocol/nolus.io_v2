@@ -51,7 +51,7 @@
 
   "home_liquidity": "Liquidity",
   "home_liquidityHeading": "Connected Hubs",
-  "home_liquidityDesc": "The protocol taps external liquidity from an aggregated network of interconnected hubs, allowing the money market to operate with minimal in-house liquidity while still enabling lending at scale",
+  "home_liquidityDesc": "The protocol taps external liquidity from an aggregated network of interconnected hubs, allowing the margin market to operate with minimal in-house liquidity while enabling lending at scale",
   "home_liquidityLogoAlt": "Logo of {name}",
 
   "home_safety": "Security",

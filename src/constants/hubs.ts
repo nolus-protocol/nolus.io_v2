@@ -1,5 +1,5 @@
 import osmosisImage from "@/assets/images/hubs/osmosis.svg";
-import astroportImage from "@/assets/images/hubs/astroport.svg";
+import neutronImage from "@/assets/images/hubs/neutron.svg";
 import solanaImage from "@/assets/images/hubs/solana.svg";
 
 export interface Hub {
@@ -15,7 +15,7 @@ export const HUBS: Hub[] = [
   {
     id: 1,
     shortName: "Solana",
-    fullName: "Jupiter Exchange",
+    fullName: "Jupiter Ultra",
     comingSoon: true,
     image: solanaImage,
     link: "https://jup.ag/"
@@ -33,7 +33,7 @@ export const HUBS: Hub[] = [
     shortName: "Neutron",
     fullName: "Astroport",
     comingSoon: false,
-    image: astroportImage,
+    image: neutronImage,
     link: "https://astroport.fi"
   }
 ];
