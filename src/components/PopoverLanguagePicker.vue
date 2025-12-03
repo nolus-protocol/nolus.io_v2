@@ -3,39 +3,48 @@
     class="relative"
     v-slot="{ open, close }"
   >
-    <PopoverButton
-      class="inline-flex items-center gap-x-1 rounded-lg px-3 py-2.5 leading-6 transition-all hover:bg-neutral-200/50 focus:outline-none"
-      :class="[
-        open ? 'bg-neutral-200/40' : '',
-        textColorClass
-      ]"
+    <div
+      @mouseenter="onMouseEnter"
+      @mouseleave="onMouseLeave(close)"
     >
-      <span
-        :class="`${props.textColorClass} font-medium`"
-        class="flex h-4 w-[21px] flex-shrink-0 items-center justify-center overflow-hidden rounded-sm"
-        style="transform: translateZ(0);"
-        ><component
-          :is="flagIcons[currentLanguage.icon]"
-          :aria-label="currentLanguage.lang"
-          class="block h-full w-full"
+      <PopoverButton
+        ref="buttonRef"
+        class="inline-flex items-center gap-x-1 rounded-lg px-3 py-2.5 leading-6 transition-all hover:bg-neutral-200/50 focus:outline-none"
+        :class="[
+          open ? 'bg-neutral-200/40' : '',
+          textColorClass
+        ]"
+      >
+        <span
+          :class="`${props.textColorClass} font-medium`"
+          class="flex h-4 w-[21px] flex-shrink-0 items-center justify-center overflow-hidden rounded-sm"
           style="transform: translateZ(0);"
-      /></span>
-      <ChevronDownSmallIcon
-        class="h-5 w-5 rotate-180 fill-neutral-800 lg:rotate-0"
-        :class="props.fillColorClass"
-        aria-hidden="true"
-      />
-    </PopoverButton>
+          ><component
+            :is="flagIcons[currentLanguage.icon]"
+            :aria-label="currentLanguage.lang"
+            class="block h-full w-full"
+            style="transform: translateZ(0);"
+        /></span>
+        <ChevronDownSmallIcon
+          class="h-5 w-5 fill-neutral-800 transition-transform duration-200"
+          :class="[open ? 'rotate-180' : 'rotate-0', props.fillColorClass]"
+          aria-hidden="true"
+        />
+      </PopoverButton>
 
-    <transition
-      enter-active-class="transition ease-out duration-200"
-      enter-from-class="opacity-0 translate-y-1 scale-95 origin-bottom"
-      enter-to-class="opacity-100 translate-y-0"
-      leave-active-class="transition ease-in duration-150"
-      leave-from-class="opacity-100 translate-y-0"
-      leave-to-class="opacity-0 translate-y-1 scale-95 origin-bottom"
-    >
-      <PopoverPanel class="absolute bottom-14 right-0 z-50 mt-5 flex w-screen max-w-min md:bottom-auto md:right-0">
+      <transition
+        enter-active-class="transition ease-out duration-200"
+        enter-from-class="opacity-0 translate-y-1 scale-95 origin-bottom"
+        enter-to-class="opacity-100 translate-y-0"
+        leave-active-class="transition ease-in duration-150"
+        leave-from-class="opacity-100 translate-y-0"
+        leave-to-class="opacity-0 translate-y-1 scale-95 origin-bottom"
+      >
+        <PopoverPanel
+          static
+          v-show="open"
+          class="absolute bottom-14 right-0 z-50 mt-5 flex w-screen max-w-min md:bottom-auto md:right-0"
+        >
         <div
           class="flex w-56 shrink flex-col gap-y-1 rounded-xl bg-white p-4 text-sm font-semibold leading-6 text-gray-900 shadow-lg ring-1 ring-gray-900/5"
         >
@@ -54,8 +63,9 @@
             {{ language.lang }}</button
           >
         </div>
-      </PopoverPanel>
-    </transition>
+        </PopoverPanel>
+      </transition>
+    </div>
   </Popover>
 </template>
 
@@ -64,7 +74,10 @@ import { onMounted, ref, computed, markRaw } from "vue";
 import { useI18n } from "vue-i18n";
 import { useRoute } from "vue-router";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/vue";
+import { usePopoverHover } from "@/composables/usePopoverHover";
 import ChevronDownSmallIcon from "@/assets/icons/chevron-down-small.svg";
+
+const { buttonRef, onMouseEnter, onMouseLeave } = usePopoverHover('language');
 
 const { locale } = useI18n({ useScope: 'global' });
 const route = useRoute();

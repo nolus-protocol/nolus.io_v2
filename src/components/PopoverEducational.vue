@@ -1,31 +1,38 @@
 <template>
   <Popover
     class="relative"
-    v-slot="{ open }"
+    v-slot="{ open, close }"
   >
-    <PopoverButton
-      class="flex w-full items-center justify-between gap-x-1 rounded-t-2xl px-5 py-5 transition-all lg:rounded-lg lg:px-3 lg:py-2 lg:hover:bg-neutral-200/50 focus:outline-none"
-      :class="{ 'bg-white shadow-lg lg:bg-neutral-200/40 lg:shadow-none': open }"
+    <div
+      @mouseenter="onMouseEnter"
+      @mouseleave="onMouseLeave(close)"
     >
-      <span class="font-medium" :class="props.textColorClass">{{ $t('popover_educational') }}</span>
-      <ChevronDownSmallIcon
-        class="h-7 w-7 fill-neutral-800 transition-all lg:h-5 lg:w-5"
-        :class="[{ 'rotate-90 lg:rotate-0': !open }, props.fillColorClass]"
-        aria-hidden="true"
-      />
-    </PopoverButton>
-
-    <transition
-      enter-active-class="transition ease-in-out duration-200"
-      enter-from-class="opacity-0 translate-y-3 md:scale-95 origin-bottom"
-      enter-to-class="opacity-100 translate-y-0"
-      leave-active-class="transition ease-in duration-150"
-      leave-from-class="opacity-100 translate-y-0"
-      leave-to-class="opacity-0 translate-y-3 md:scale-95 origin-bottom"
-    >
-      <PopoverPanel
-        class="flex max-w-max lg:absolute lg:left-1/2 lg:z-10 lg:mt-5 lg:w-screen lg:-translate-x-1/2 lg:px-4"
+      <PopoverButton
+        ref="buttonRef"
+        class="flex w-full items-center justify-between gap-x-1 rounded-t-2xl px-5 py-5 transition-all lg:rounded-lg lg:px-3 lg:py-2 lg:hover:bg-neutral-200/50 focus:outline-none"
+        :class="{ 'bg-white shadow-lg lg:bg-neutral-200/40 lg:shadow-none': open }"
       >
+        <span class="font-medium" :class="props.textColorClass">{{ $t('popover_educational') }}</span>
+        <ChevronDownSmallIcon
+          class="h-7 w-7 fill-neutral-800 transition-transform duration-200 lg:h-5 lg:w-5"
+          :class="[open ? 'rotate-90 lg:rotate-180' : 'rotate-0', props.fillColorClass]"
+          aria-hidden="true"
+        />
+      </PopoverButton>
+
+      <transition
+        enter-active-class="transition ease-in-out duration-200"
+        enter-from-class="opacity-0 translate-y-3 md:scale-95 origin-bottom"
+        enter-to-class="opacity-100 translate-y-0"
+        leave-active-class="transition ease-in duration-150"
+        leave-from-class="opacity-100 translate-y-0"
+        leave-to-class="opacity-0 translate-y-3 md:scale-95 origin-bottom"
+      >
+        <PopoverPanel
+          static
+          v-show="open"
+          class="flex max-w-max lg:absolute lg:left-1/2 lg:z-10 lg:mt-5 lg:w-screen lg:-translate-x-1/2 lg:px-4"
+        >
         <div
           class="w-screen max-w-md flex-auto overflow-hidden rounded-b-2xl bg-white leading-6 shadow-2xl ring-1 ring-neutral-900/5 lg:rounded-3xl"
         >
@@ -105,15 +112,19 @@
             </ul>
           </div>
         </div>
-      </PopoverPanel>
-    </transition>
+        </PopoverPanel>
+      </transition>
+    </div>
   </Popover>
 </template>
 
 <script lang="ts" setup>
 import { ref, onMounted, computed } from "vue";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/vue";
+import { usePopoverHover } from "@/composables/usePopoverHover";
 import ChevronDownSmallIcon from "@/assets/icons/chevron-down-small.svg";
+
+const { buttonRef, onMouseEnter, onMouseLeave } = usePopoverHover('educational');
 import Button from "./Button.vue";
 import BookIcon from "../assets/icons/book.svg";
 import MediumIcon from "../assets/icons/medium.svg";
