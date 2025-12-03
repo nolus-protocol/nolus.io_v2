@@ -12,6 +12,8 @@
             v-motion
             :initial="{ opacity: 0, y: 20 }"
             :visible-once="{ opacity: 1, y: 0, scale: 1 }"
+            :enter="{ opacity: 1, y: 0, scale: 1 }"
+            :variants="{ custom: { scale: 2 } }"
             :delay="index * 150"
           >
             <Feature
