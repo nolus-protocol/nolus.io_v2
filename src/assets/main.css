@@ -15,9 +15,4 @@
   [v-cloak] {
     display: none !important;
   }
-
-  /* Prevent flash of content before v-motion animations initialize */
-  [v-motion] {
-    opacity: 0;
-  }
 }
