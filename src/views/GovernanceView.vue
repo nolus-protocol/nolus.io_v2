@@ -216,6 +216,7 @@
                   67.482% 74.997%
                 );
               "
+              class="motion-hidden"
               v-motion
               :initial="{ opacity: 0 }"
               :enter="{ opacity: 1 }"
@@ -226,7 +227,7 @@
             <div class="w-full max-w-xl lg:shrink-0 xl:max-w-3xl">
               <h1
                 id="governance-hero-heading"
-                class="text-5xl font-bold leading-tight tracking-tight text-neutral-900"
+                class="motion-hidden text-5xl font-bold leading-tight tracking-tight text-neutral-900"
                 v-motion
                 :initial="{ opacity: 0, y: 10 }"
                 :enter="{ opacity: 1, y: 0, scale: 1 }"
@@ -235,7 +236,7 @@
               {{ $t('governance_heroTitle') }}
               </h1>
               <p
-                class="relative mt-6 basis-1/2 text-lg leading-8 text-neutral-800 sm:max-w-md lg:max-w-lg"
+                class="motion-hidden relative mt-6 basis-1/2 text-lg leading-8 text-neutral-800 sm:max-w-md lg:max-w-lg"
                 v-motion
                 :initial="{ opacity: 0, y: 10 }"
                 :enter="{ opacity: 1, y: 0, scale: 1 }"

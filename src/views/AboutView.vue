@@ -11,7 +11,7 @@
             <div class="w-full max-w-xl lg:shrink-0 xl:max-w-2xl">
               <h1
                 id="about-hero-heading"
-                class="text-3xl font-bold leading-tight tracking-tight text-white md:text-3xl lg:text-5xl"
+                class="motion-hidden text-3xl font-bold leading-tight tracking-tight text-white md:text-3xl lg:text-5xl"
                 v-motion
                 :initial="{ opacity: 0, y: 10 }"
                 :enter="{ opacity: 1, y: 0, scale: 1 }"
@@ -21,7 +21,7 @@
               </h1>
               <div class="flex flex-col gap-x-8 lg:flex-row">
                 <p
-                  class="relative mt-6 basis-1/2 text-lg leading-8 text-white sm:max-w-md lg:max-w-lg"
+                  class="motion-hidden relative mt-6 basis-1/2 text-lg leading-8 text-white sm:max-w-md lg:max-w-lg"
                   v-motion
                   :initial="{ opacity: 0, y: 10 }"
                   :enter="{ opacity: 1, y: 0, scale: 1 }"
@@ -30,7 +30,7 @@
                   {{ $t('about_heroDesc1') }}
                 </p>
                 <p
-                  class="relative mt-6 basis-1/2 text-lg leading-8 text-white sm:max-w-md lg:max-w-lg"
+                  class="motion-hidden relative mt-6 basis-1/2 text-lg leading-8 text-white sm:max-w-md lg:max-w-lg"
                   v-motion
                   :initial="{ opacity: 0, y: 10 }"
                   :enter="{ opacity: 1, y: 0, scale: 1 }"

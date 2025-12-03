@@ -13,7 +13,7 @@
 
       <div class="relative md:max-w-xl lg:mx-0 lg:max-w-xl lg:flex-shrink-0 lg:pt-8">
         <h1
-          class="max-w-64 text-4xl font-bold tracking-tighter text-neutral-900 sm:max-w-lg sm:text-7xl md:mt-10 lg:max-w-none"
+          class="motion-hidden max-w-64 text-4xl font-bold tracking-tighter text-neutral-900 sm:max-w-lg sm:text-7xl md:mt-10 lg:max-w-none"
           v-motion
           :initial="{ opacity: 0, y: 10 }"
           :enter="{ opacity: 1, y: 0, scale: 1 }"
@@ -23,7 +23,7 @@
         </h1>
 
         <p
-          class="mt-6 max-w-64 text-base text-neutral-600 sm:max-w-lg sm:leading-8 md:text-xl lg:max-w-none"
+          class="motion-hidden mt-6 max-w-64 text-base text-neutral-600 sm:max-w-lg sm:leading-8 md:text-xl lg:max-w-none"
           v-motion
           :initial="{ opacity: 0, y: 10 }"
           :enter="{ opacity: 1, y: 0, scale: 1 }"
@@ -33,7 +33,7 @@
         </p>
 
         <div
-          class="mt-10 flex flex-col items-center gap-x-3 gap-y-4 md:flex-row"
+          class="motion-hidden mt-10 flex flex-col items-center gap-x-3 gap-y-4 md:flex-row"
           v-motion
           :initial="{ opacity: 0, y: 10 }"
           :enter="{ opacity: 1, y: 0, scale: 1 }"
@@ -77,7 +77,7 @@
             :key="index"
           >
             <div
-              class="flex w-full max-w-xs flex-col gap-y-3 md:mx-auto md:pr-8"
+              class="motion-hidden flex w-full max-w-xs flex-col gap-y-3 md:mx-auto md:pr-8"
               v-motion
               :initial="{ opacity: 0, y: 20 }"
               :enter="{ opacity: 1, y: 0 }"

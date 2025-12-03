@@ -15,4 +15,13 @@
   [v-cloak] {
     display: none !important;
   }
+
+  /* 
+   * Prevent flash of content before v-motion animations initialize.
+   * Elements with v-motion start hidden and are revealed by the animation.
+   * This CSS sets the initial state to match :initial="{ opacity: 0 }".
+   */
+  .motion-hidden {
+    opacity: 0;
+  }
 }

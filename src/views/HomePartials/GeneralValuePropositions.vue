@@ -8,7 +8,7 @@
           <div
             v-for="(feature, index) in features"
             :key="feature.name"
-            class="h-full overflow-clip rounded-2xl"
+            class="motion-hidden h-full overflow-clip rounded-2xl"
             v-motion
             :initial="{ opacity: 0, y: 20 }"
             :visible-once="{ opacity: 1, y: 0, scale: 1 }"
