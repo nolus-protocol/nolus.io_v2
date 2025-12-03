@@ -14,7 +14,7 @@
                 class="text-3xl font-bold leading-tight tracking-tight text-white md:text-3xl lg:text-5xl"
                 v-motion
                 :initial="{ opacity: 0, y: 10 }"
-                :enter="{ opacity: 1, y: 0, scale: 1 }"
+                :visible="{ opacity: 1, y: 0, scale: 1 }"
                 :delay="100"
                 v-html="$t('about_heroTitle')"
               >
@@ -24,7 +24,7 @@
                   class="relative mt-6 basis-1/2 text-lg leading-8 text-white sm:max-w-md lg:max-w-lg"
                   v-motion
                   :initial="{ opacity: 0, y: 10 }"
-                  :enter="{ opacity: 1, y: 0, scale: 1 }"
+                  :visible="{ opacity: 1, y: 0, scale: 1 }"
                   :delay="200"
                 >
                   {{ $t('about_heroDesc1') }}
@@ -33,7 +33,7 @@
                   class="relative mt-6 basis-1/2 text-lg leading-8 text-white sm:max-w-md lg:max-w-lg"
                   v-motion
                   :initial="{ opacity: 0, y: 10 }"
-                  :enter="{ opacity: 1, y: 0, scale: 1 }"
+                  :visible="{ opacity: 1, y: 0, scale: 1 }"
                   :delay="300"
                 >
                 {{ $t('about_heroDesc2') }}

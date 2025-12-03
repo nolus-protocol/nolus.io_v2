@@ -12,8 +12,7 @@
           class="divide-y"
           v-motion
           :initial="{ opacity: 0, y: -100 }"
-          :enter="{ opacity: 1, y: 0, scale: 1, transition: { duration: 400 } }"
-          :leave="{ opacity: 0, y: 100 }"
+          :visible-once="{ opacity: 1, y: 0, scale: 1, transition: { duration: 400 } }"
         >
           <blockquote class="text-base leading-8 text-neutral-900 md:text-xl md:leading-9">
             <p>{{ testimonial.body }}</p>
