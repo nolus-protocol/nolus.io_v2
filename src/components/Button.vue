@@ -1,7 +1,7 @@
 <template>
   <a
     :href="link"
-    class="flex inline-flex cursor-pointer items-center justify-center gap-x-2 font-medium transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+    class="flex inline-flex cursor-pointer items-center justify-center gap-x-2 font-medium transition-all focus:outline-none"
     :class="[size(), variant().buttonStyles[props.theme]]"
     v-bind="$attrs"
     @click="handleClick"
@@ -69,8 +69,8 @@ const variant = () => {
   } = {
     primary: {
       buttonStyles: {
-        light: "bg-blue-500 text-white hover:bg-blue-600 focus-visible:outline-blue-600 shadow-blue-200",
-        dark: "bg-blue-600 text-white hover:bg-blue-600 focus-visible:outline-blue-600 shadow-blue-800"
+        light: "bg-blue-500 text-white hover:bg-blue-600 shadow-blue-200",
+        dark: "bg-blue-600 text-white hover:bg-blue-600 shadow-blue-800"
       },
       iconColor: {
         light: "text-white fill-white",
@@ -79,8 +79,8 @@ const variant = () => {
     },
     secondary: {
       buttonStyles: {
-        light: "text-neutral-900 hover:bg-neutral-100 focus-visible:outline-neutral-500 bg-white",
-        dark: "text-neutral-50 hover:bg-neutral-950 focus-visible:outline-neutral-500 shadow-neutral-200/80 bg-neutral-900 border border-neutral-600"
+        light: "text-neutral-900 hover:bg-neutral-100 bg-white",
+        dark: "text-neutral-50 hover:bg-neutral-950 shadow-neutral-200/80 bg-neutral-900 border border-neutral-600"
       },
       iconColor: {
         light: "text-blue-500 fill-blue-500",
@@ -89,8 +89,8 @@ const variant = () => {
     },
     clean: {
       buttonStyles: {
-        light: "text-neutral-900 hover:bg-neutral-100 focus-visible:outline-neutral-500 shadow-none",
-        dark: "text-neutral-50 hover:bg-neutral-100 focus-visible:outline-neutral-500 shadow-none"
+        light: "text-neutral-900 hover:bg-neutral-100 shadow-none",
+        dark: "text-neutral-50 hover:bg-neutral-100 shadow-none"
       },
       iconColor: {
         light: "text-blue-500 fill-blue-500",

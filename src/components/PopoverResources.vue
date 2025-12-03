@@ -4,7 +4,7 @@
     v-slot="{ open }"
   >
     <PopoverButton
-      class="flex w-full items-center justify-between gap-x-1 rounded-t-2xl px-5 py-5 transition-all lg:rounded-lg lg:px-3 lg:py-2 lg:hover:bg-neutral-200/50"
+      class="flex w-full items-center justify-between gap-x-1 rounded-t-2xl px-5 py-5 transition-all lg:rounded-lg lg:px-3 lg:py-2 lg:hover:bg-neutral-200/50 focus:outline-none"
       :class="{ 'bg-white shadow-lg lg:bg-neutral-200/40 lg:shadow-none': open }"
     >
       <span class="font-medium" :class="props.textColorClass">{{ $t('popover_resources') }}</span>

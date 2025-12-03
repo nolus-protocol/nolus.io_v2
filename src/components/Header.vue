@@ -31,7 +31,7 @@
       <div class="flex lg:hidden">
         <button
           type="button"
-          class="inline-flex items-center justify-center p-4 py-5 hover:bg-neutral-200/50"
+          class="inline-flex items-center justify-center p-4 py-5 active:bg-neutral-200/50 focus:outline-none"
           :class="textColorClass"
           @click="isOpen = true"
         >
@@ -51,7 +51,7 @@
             v-if="item.internal && item.nameKey"
             :key="item.id"
             :to="item.href!"
-            class="block rounded-lg px-3 py-2 text-base font-medium transition-all hover:bg-neutral-200/50"
+            class="block rounded-lg px-3 py-2 text-base font-medium transition-all hover:bg-neutral-200/50 focus:outline-none"
             :class="textColorClass"
             active-class="bg-neutral-200/40"
           >
@@ -114,7 +114,7 @@
               <div class="flex items-center justify-between">
                 <button
                   type="button"
-                  class="w-full border-b border-neutral-200/50 px-4 py-6 text-neutral-700 hover:bg-neutral-200/60"
+                  class="w-full border-b border-neutral-200/50 px-4 py-6 text-neutral-700 active:bg-neutral-200/60 focus:outline-none"
                   @click="isOpen = false"
                 >
                   <span class="sr-only">{{ $t('header_closeMenu') }}</span>
@@ -129,7 +129,7 @@
                   <router-link
                     key="home"
                     :to="getLocalePath('/')"
-                    class="block rounded-2xl px-5 py-5 text-lg font-medium text-neutral-900 hover:bg-gray-50"
+                    class="block rounded-2xl px-5 py-5 text-lg font-medium text-neutral-900 active:bg-gray-50 focus:outline-none"
                     active-class="bg-white shadow-lg"
                     @click="isOpen = false"
                     >{{ $t('header_home') }}</router-link
@@ -140,7 +140,7 @@
                     v-if="item.internal && item.nameKey"
                     :key="item.id"
                     :to="item.href!"
-                    class="block rounded-2xl px-5 py-5 text-lg font-medium text-neutral-900 hover:bg-gray-50"
+                    class="block rounded-2xl px-5 py-5 text-lg font-medium text-neutral-900 active:bg-gray-50 focus:outline-none"
                     active-class="bg-white shadow-lg"
                     @click="isOpen = false"
                   >

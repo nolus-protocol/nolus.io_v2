@@ -4,7 +4,7 @@
     v-slot="{ open, close }"
   >
     <PopoverButton
-      class="inline-flex items-center gap-x-1 rounded-lg px-3 py-2.5 leading-6 transition-all hover:bg-neutral-200/50"
+      class="inline-flex items-center gap-x-1 rounded-lg px-3 py-2.5 leading-6 transition-all hover:bg-neutral-200/50 focus:outline-none"
       :class="[
         open ? 'bg-neutral-200/40' : '',
         textColorClass

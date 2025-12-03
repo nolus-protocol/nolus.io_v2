@@ -32,7 +32,7 @@
   "footer_socialTelegram": "Telegram",
 
   "home_heroTitle": "Fixed Rate Margin Engine",
-  "home_heroSubtitle": "Spot margin built for extended exposure with fixed rates and structured risk management",
+  "home_heroSubtitle": "Built for long-lasting exposure with advanced safeguards to protect capital in volatile markets",
   "home_heroVideoLoading": "Video loading...",
 
   "home_statsVolume": "Transaction Volume",
@@ -130,7 +130,7 @@
   "about_partnerNacionCrypto": "NAcion Crypto",
   "about_partnerPOPSTeam": "P-OPS Team",
 
-  "governance_heroTitle": "Stake-Governed Protocol",
+  "governance_heroTitle": "Stake Governed Protocol",
   "governance_heroDesc": "Stake NLS to govern protocol parameters, upgrades, and treasury allocation. The Proof-of-Stake consensus model aligns security with your economic participation",
 
   "governance_statsValidators": "40 Validators",
@@ -167,7 +167,7 @@
   "meta_home_twitterTitle": "Nolus – Fixed Rate Spot Margin With Structured Risk Controls",
   "meta_home_twitterDescription": "Stay positioned through market cycles with fixed costs that remain unchanged and structured safeguards that protect capital during high volatility",
 
-  "meta_about_title": "About Nolus | Novel Spot Margin Primitive Built on Cosmos",
+  "meta_about_title": "About Nolus | Capital Efficient Margin With Cross-Chain Execution",
   "meta_about_description": "Nolus delivers capital-efficient spot margin through IBC-native architecture. Fixed protocol interest, partial liquidations, and trust-minimized cross-chain execution",
   "meta_about_keywords": "Nolus protocol, DeFi margin protocol, Cosmos margin trading, IBC protocol, spot margin infrastructure, decentralized leverage, blockchain trading platform, crypto margin protocol, fixed rate DeFi, trust-minimized trading",
   "meta_about_ogTitle": "About Nolus | Novel Spot Margin Primitive",
