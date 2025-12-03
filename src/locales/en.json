@@ -159,13 +159,13 @@
 
   "modal_videoTitle": "YouTube video player",
 
-  "meta_home_title": "Spot Margin Trading Protocol | Fixed Rates & Partial Liquidation | Nolus",
-  "meta_home_description": "DeFi spot margin with fixed borrowing costs and partial liquidation protection. Trade crypto with controlled leverage across chains via IBC",
+  "meta_home_title": "Nolus – Fixed Rate Spot Margin With Structured Risk Controls",
+  "meta_home_description": "Stay positioned through market cycles with fixed costs that remain unchanged and structured safeguards that protect capital during high volatility",
   "meta_home_keywords": "spot margin trading, crypto margin, DeFi margin protocol, fixed rate leverage, asset-backed margin, partial liquidation, decentralized margin trading, IBC margin trading, blockchain leverage, controlled leverage, cross-chain margin, spot leverage protocol",
-  "meta_home_ogTitle": "Spot Margin Trading With Fixed Rates | Nolus Protocol",
-  "meta_home_ogDescription": "Capital-efficient spot margin with fixed borrowing costs and partial liquidation safeguards. No centralized counterparties, no hidden fees",
-  "meta_home_twitterTitle": "Spot Margin Trading With Fixed Rates | Nolus Protocol",
-  "meta_home_twitterDescription": "Capital-efficient spot margin with fixed borrowing costs and partial liquidation safeguards. No centralized counterparties, no hidden fees",
+  "meta_home_ogTitle": "Nolus – Fixed Rate Spot Margin With Structured Risk Controls",
+  "meta_home_ogDescription": "Stay positioned through market cycles with fixed costs that remain unchanged and structured safeguards that protect capital during high volatility",
+  "meta_home_twitterTitle": "Nolus – Fixed Rate Spot Margin With Structured Risk Controls",
+  "meta_home_twitterDescription": "Stay positioned through market cycles with fixed costs that remain unchanged and structured safeguards that protect capital during high volatility",
 
   "meta_about_title": "About Nolus | Novel Spot Margin Primitive Built on Cosmos",
   "meta_about_description": "Nolus delivers capital-efficient spot margin through IBC-native architecture. Fixed protocol interest, partial liquidations, and trust-minimized cross-chain execution",
