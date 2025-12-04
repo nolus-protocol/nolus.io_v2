@@ -56,7 +56,7 @@ export const createApp = ViteSSG(
   App,
   { 
     routes
-  } as any,
+  },
   ({ app, router, isClient }) => {
     // Add plugins
     app.use(i18n)
@@ -218,9 +218,11 @@ export const createApp = ViteSSG(
       next();
     });
     
-    // Client-only code
-    if (isClient) {
-      // Any client-specific initialization can go here
-    }
+    // Scroll to top on route change
+    router.afterEach(() => {
+      if (isClient) {
+        window.scrollTo({ top: 0 });
+      }
+    });
   }
 )

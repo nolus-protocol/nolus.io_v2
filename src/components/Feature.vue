@@ -7,9 +7,7 @@
     <h3 class="mb-3 mt-8 text-3xl font-bold tracking-tight text-neutral-900 sm:text-2xl">
       {{ name }}
     </h3>
-    <p class="text-md leading-7 text-neutral-800">
-      {{ description }}
-    </p>
+    <p class="text-md leading-7 text-neutral-800" v-html="description"></p>
   </div>
 </template>
 
