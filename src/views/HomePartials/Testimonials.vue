@@ -49,7 +49,7 @@ import Button from "@/components/Button.vue";
 import PlusSmallIcon from "@/assets/icons/plus-small.svg";
 import NolusContainer from "@/components/NolusContainer.vue";
 
-let testimonialsToShow = ref(2);
+const testimonialsToShow = ref(2);
 
 function loadMore() {
   testimonialsToShow.value += 2; // Increase by 2 each time

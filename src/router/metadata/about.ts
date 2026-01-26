@@ -1,8 +1,9 @@
 import type { I18n } from 'vue-i18n';
+import type { Composer } from 'vue-i18n';
 
 export const getMeta = (i18n: I18n) => {
   const locale = typeof i18n.global.locale === 'string' ? i18n.global.locale : i18n.global.locale.value;
-  const t = (key: string) => (i18n.global as any).t(key) as string;
+  const t = (key: string) => (i18n.global as Composer).t(key) as string;
   
   const baseUrl = 'https://nolus.io';
   const localePrefix = locale !== 'en' ? `/${locale}` : '';

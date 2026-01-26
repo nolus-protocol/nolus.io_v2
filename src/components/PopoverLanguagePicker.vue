@@ -149,9 +149,9 @@ onMounted(async () => {
   const flags = import.meta.glob("@/assets/icons/flags/*.svg");
 
   for (const [path, importFn] of Object.entries(flags)) {
-    const module = await importFn();
+    const module = (await importFn()) as { default: object };
     const flag = path.split("/").pop();
-    flagIcons.value[flag as string] = markRaw((module as any).default);
+    flagIcons.value[flag as string] = markRaw(module.default);
   }
 });
 </script>

@@ -53,7 +53,7 @@
                   muted
                   autoplay
                   playsinline
-                  preload="auto"
+                  preload="metadata"
                   loop
                 >
                   <source
@@ -229,73 +229,30 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from "vue";
 import { useI18n } from "vue-i18n";
+import { setupVideoColorSampling } from "@/utils";
 import NolusContainer from "@/components/NolusContainer.vue";
+import Feature from "@/components/Feature.vue";
 import icon1 from "@/assets/lotties/mission.json?url";
 import icon2 from "@/assets/lotties/vision.json?url";
 import icon3 from "@/assets/lotties/values.json?url";
-import Feature from "../components/Feature.vue";
 import videoSrc from "@/assets/videos/about-header.mp4";
 import contributors1 from "@/assets/images/about/team/kamen_trendafilov.jpg";
 import contributors2 from "@/assets/images/about/team/gancho_manev.jpg";
 import contributors3 from "@/assets/images/about/team/ivan_kostov.jpg";
 import contributors4 from "@/assets/images/about/team/bilyana_christova.jpg";
 import contributors5 from "@/assets/images/about/team/metodi_manov.jpg";
-import contributors6 from "@/assets/images/about/team/simon_chadwick.jpg";
 import contributors8 from "@/assets/images/about/team/ves_zahariev.jpg";
 import contributors10 from "@/assets/images/about/team/tony.jpg";
 import contributors11 from "@/assets/images/about/team/lily.jpg";
 
-const { t } = useI18n({ useScope: 'global' });
+const { t } = useI18n({ useScope: "global" });
 
 const aboutVideo = ref<HTMLVideoElement | null>(null);
 
-// Sample image/video color and apply to page
-const sampleImageColor = (imageSource: HTMLImageElement | HTMLVideoElement) => {
-  try {
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d', { willReadFrequently: true });
-
-    if (!ctx) return;
-
-    // For video, use video dimensions; for image, use natural dimensions
-    const width = imageSource instanceof HTMLVideoElement ? imageSource.videoWidth : imageSource.naturalWidth;
-    const height = imageSource instanceof HTMLVideoElement ? imageSource.videoHeight : imageSource.naturalHeight;
-
-    canvas.width = width;
-    canvas.height = height;
-
-    if (canvas.width === 0 || canvas.height === 0) return;
-
-    // Draw the current frame/image
-    ctx.drawImage(imageSource, 0, 0, canvas.width, canvas.height);
-
-    // Sample from the center-left area (where background usually is)
-    const x = Math.floor(canvas.width * 0.1);
-    const y = Math.floor(canvas.height * 0.5);
-
-    const imageData = ctx.getImageData(x, y, 1, 1).data;
-    const hex = `#${imageData[0].toString(16).padStart(2, '0')}${imageData[1].toString(16).padStart(2, '0')}${imageData[2].toString(16).padStart(2, '0')}`;
-
-    // Apply the sampled color to the CSS variable
-    document.documentElement.style.setProperty('--bg-banner-about', hex);
-  } catch (error) {
-    // Silently fail - use default CSS color
-  }
-};
-
 onMounted(() => {
-  // Sample video color only when it has actually played and rendered a frame
   const video = aboutVideo.value;
-  
   if (video) {
-    // Wait for 'playing' event - this ensures video has started and first frame is rendered
-    video.addEventListener('playing', () => {
-      if (video.videoWidth > 0 && video.videoHeight > 0) {
-        requestAnimationFrame(() => {
-          sampleImageColor(video);
-        });
-      }
-    }, { once: true });
+    setupVideoColorSampling(video, "--bg-banner-about");
   }
 });
 
@@ -356,13 +313,6 @@ const core_contributors = computed(() => [
     xUrl: "",
     discordUrl: ""
   },
-  // {
-  //   name: "Simon Chadwick",
-  //   role: t("about_roleInvestorRelations"),
-  //   imageUrl: contributors6,
-  //   xUrl: "",
-  //   discordUrl: ""
-  // },
   {
     name: "Lilia Ilieva",
     role: t("about_roleMarketingCommunication"),

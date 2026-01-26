@@ -68,26 +68,5 @@ const audits = [
     url: "https://github.com/HalbornSecurity/PublicReports/blob/master/CosmWasm%20Smart%20Contract%20Audits/Nolus_Money_Market_CosmWasm_Smart_Contract_Security_Assessment_Report_Halborn_Final.pdf",
     scale: 100
   }
-  // {
-  //   id: 1,
-  //   name: 'Nolus Core Audit',
-  //   auditor: 'Oak Security',
-  //   url: 'https://github.com/oak-security/audit-reports/blob/master/Nolus/2022-12-12%20Audit%20Report%20-%20Nolus%20Core%20v1.1.pdf',
-  //   scale: 90
-  // },
-  // {
-  //   id: 2,
-  //   name: 'Nolus Money Market',
-  //   auditor: 'Oak Security',
-  //   url: 'https://github.com/oak-security/audit-reports/blob/master/Nolus/2023-01-27%20Audit%20Report%20-%20Nolus%20Money%20Market%20v1.1.pdf',
-  //   scale: 95
-  // },
-  // {
-  //   id: 3,
-  //   name: 'Nolus Money Market',
-  //   auditor: 'Halborn',
-  //   url: 'https://github.com/HalbornSecurity/PublicReports/blob/master/CosmWasm%20Smart%20Contract%20Audits/Nolus_Money_Market_CosmWasm_Smart_Contract_Security_Assessment_Report_Halborn_Final.pdf',
-  //   scale: 100
-  // },
 ];
 </script>

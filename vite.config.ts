@@ -102,4 +102,5 @@ export default defineConfig({
   optimizeDeps: {
     include: ['vue', 'vue-router', '@headlessui/vue', 'lottie-web', 'marked']
   }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 } as any)

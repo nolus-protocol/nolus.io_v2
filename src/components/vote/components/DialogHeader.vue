@@ -44,7 +44,7 @@ const props = defineProps({
     default: 1
   },
   disabled: {
-    type: Array<Number>,
+    type: Array<number>,
     default: []
   },
   back: {

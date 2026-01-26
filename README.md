@@ -1,49 +1,82 @@
-# NolusWebsite
+# Nolus Website
 
-This template should help get you started developing with Vue 3 in Vite.
+The official marketing website for [Nolus Protocol](https://nolus.io), built with Vue 3, TypeScript, and Vite. Uses Static Site Generation (SSG) for optimal performance and SEO.
 
-## Recommended IDE Setup
+## Tech Stack
 
-[VSCode](https://code.visualstudio.com/)
+- **Framework:** Vue 3 (Composition API)
+- **Language:** TypeScript
+- **Build Tool:** Vite + vite-ssg
+- **Styling:** Tailwind CSS
+- **i18n:** vue-i18n (10 languages)
+- **Animation:** @vueuse/motion, Lottie
 
-https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig
-https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
-https://marketplace.visualstudio.com/items?itemName=Vue.volar
+## Prerequisites
 
-&nbsp;
-&nbsp;
+- Node.js 22+
+- npm 9+
 
+## Getting Started
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
+```bash
+# Install dependencies
 npm install
-```
 
-### Compile and Hot-Reload for Development
-
-```sh
+# Start development server
 npm run dev
-```
 
-### Compile and Minify for Production
-
-```sh
+# Build for production (SSG)
 npm run build
+
+# Preview production build
+npm run preview
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+## Available Scripts
 
-```sh
-npm run test:unit
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start dev server with hot-reload |
+| `npm run build` | Build SSG (30 routes across 10 languages) |
+| `npm run preview` | Preview production build on port 8080 |
+| `npm run lint` | Run ESLint with auto-fix |
+| `npm run format` | Format code with Prettier |
+
+## Project Structure
+
+```
+src/
+├── views/           # Page components
+├── components/      # Reusable UI components
+├── router/          # Vue Router configuration
+├── i18n/            # Internationalization setup
+├── locales/         # Translation JSON files
+├── composables/     # Vue composables
+├── utils/           # Utility functions
+├── config/          # API endpoints and constants
+├── assets/          # Images, Lottie animations
+└── types/           # TypeScript interfaces
+
+server/              # Express backend (RSS, Intercom)
+scripts/             # Build scripts
+public/              # Static assets
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+## IDE Setup
 
-```sh
-npm run lint
-```
+**VSCode** with the following extensions:
+
+- [EditorConfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
+- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+- [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+
+## Deployment
+
+- **Development:** Push to `main` branch
+- **Production:** Create a tag matching `v*.*.*`
+
+Both environments use GitHub Actions with self-hosted runners.
+
+## Configuration
+
+See [Vite Configuration Reference](https://vitejs.dev/config/) for build customization.

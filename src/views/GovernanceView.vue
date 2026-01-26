@@ -355,8 +355,8 @@ const stats = computed(() => [
   }
 ]);
 
-let myCanvas = ref<HTMLCanvasElement | null>();
-let dotColor = "13,55,127"; // Change this to control the color of the dots
+const myCanvas = ref<HTMLCanvasElement | null>();
+const dotColor = "13,55,127"; // Change this to control the color of the dots
 
 const bondedTokens = ref(new Dec(0));
 const quorum = ref(new Dec(0));
@@ -416,17 +416,17 @@ const stopAnimation = () => {
 
 onMounted(async () => {
   try{
-  let canvas = myCanvas.value;
+  const canvas = myCanvas.value;
 
   if (canvas) {
-    let ctx = canvas.getContext("2d")!;
-    let dotSpacingX = 32; // Horizontal spacing
-    let dotSpacingY = 18; // Vertical spacing
-    let lineOffset = 16;
+    const ctx = canvas.getContext("2d")!;
+    const dotSpacingX = 32; // Horizontal spacing
+    const dotSpacingY = 18; // Vertical spacing
+    const lineOffset = 16;
 
-    let canvasWidth = 730;
-    let canvasHeight = 730;
-    let devicePixelRatio = window.devicePixelRatio || 1;
+    const canvasWidth = 730;
+    const canvasHeight = 730;
+    const devicePixelRatio = window.devicePixelRatio || 1;
     canvas.width = canvasWidth * devicePixelRatio;
     canvas.height = canvasHeight * devicePixelRatio;
     canvas.style.width = `${canvasWidth}px`;
@@ -434,9 +434,9 @@ onMounted(async () => {
     ctx.scale(devicePixelRatio, devicePixelRatio);
 
     for (let y = 0; y < canvas.height; y += dotSpacingY) {
-      let xOffset = y % (2 * dotSpacingY) === 0 ? lineOffset : 0;
+      const xOffset = y % (2 * dotSpacingY) === 0 ? lineOffset : 0;
       for (let x = xOffset; x < canvas.width; x += dotSpacingX) {
-        let dot = {
+        const dot = {
           x: x,
           y: y,
           opacity: Math.random(),
@@ -477,9 +477,9 @@ onUnmounted(() => {
 })
 
 function animate() {
-  let canvas = myCanvas.value;
-  let ctx = canvas!.getContext("2d")!;
-  let dotRadius = 7 / 2;
+  const canvas = myCanvas.value;
+  const ctx = canvas!.getContext("2d")!;
+  const dotRadius = 7 / 2;
   ctx.clearRect(0, 0, canvas!.width, canvas!.height);
 
   dots.forEach((dot) => {
@@ -523,9 +523,9 @@ const fetchProposalData = async (proposal: Proposal) => {
     ];
 
     await Promise.allSettled(promises);
-  } catch (error: Error | any) {
+  } catch (error: unknown) {
     state.value.showErrorDialog = true;
-    state.value.errorMessage = error?.message;
+    state.value.errorMessage = error instanceof Error ? error.message : String(error);
   }
 };
 
@@ -536,9 +536,9 @@ const fetchData = async (url: string): Promise<GovernanceResponse | null> => {
       throw new Error(`HTTP ${req.status}: ${req.statusText}`);
     }
     return await req.json();
-  } catch (error: Error | any) {
+  } catch (error: unknown) {
     state.value.showErrorDialog = true;
-    state.value.errorMessage = error.message;
+    state.value.errorMessage = error instanceof Error ? error.message : String(error);
     console.error(error);
     return null;
   }

@@ -1,14 +1,16 @@
 import { createI18n } from 'vue-i18n';
 
+type LocaleMessages = Record<string, string | Record<string, unknown>>;
+
 // Lazy load locale files
 const loadLocaleMessages = () => {
   const locales = import.meta.glob('../locales/*.json', { eager: true });
-  const messages: Record<string, any> = {};
+  const messages: Record<string, LocaleMessages> = {};
 
   for (const [path, module] of Object.entries(locales)) {
     const locale = path.match(/locales\/(.+)\.json$/)?.[1];
     if (locale) {
-      messages[locale] = (module as any).default;
+      messages[locale] = (module as { default: LocaleMessages }).default;
     }
   }
 
@@ -43,7 +45,7 @@ const messages = loadLocaleMessages();
 Object.keys(messages).forEach(locale => {
   if (locale !== 'en') {
     const localeMessages = messages[locale];
-    const wrappedMessages: Record<string, any> = {};
+    const wrappedMessages: LocaleMessages = {};
     
     Object.keys(localeMessages).forEach(key => {
       if (key === '_metadata') {

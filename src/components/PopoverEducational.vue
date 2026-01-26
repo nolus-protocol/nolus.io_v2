@@ -148,7 +148,7 @@ const resources = computed(() => [
   }
 ]);
 
-let recentPosts = ref<
+const recentPosts = ref<
   {
     title: string;
     link: string;
@@ -157,35 +157,17 @@ let recentPosts = ref<
   }[]
 >([]);
 
-let imageLoaded = ref<Record<string, boolean>>({});
+const imageLoaded = ref<Record<string, boolean>>({});
 
 const onImageLoad = (link: string) => {
   imageLoaded.value[link] = true;
 };
 
 onMounted(async () => {
-  try{
+  try {
     recentPosts.value = await fetchFeed();
-
-  }catch(e){
-    console.log(e)
+  } catch (e) {
+    console.error(e);
   }
-  // const posts = await Promise.all(
-  //   data.slice(0, 3).map(async (post) => {
-  //     const imageUrl = await getImageUrl(post.image);
-  //     return { ...post, imageUrl, isImageLoaded: false };
-  //   })
-  // );
-  // recentPosts.value = posts;
-  // posts.forEach((post) => {
-  //   const img = new window.Image();
-  //   img.onload = () => {
-  //     const postInRecentPosts = recentPosts.value.find((p) => p.id === post.id);
-  //     if (postInRecentPosts) {
-  //       postInRecentPosts.isImageLoaded = true;
-  //     }
-  //   };
-  //   img.src = post.imageUrl;
-  // });
 });
 </script>

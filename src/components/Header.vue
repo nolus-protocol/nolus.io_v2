@@ -189,7 +189,6 @@ defineProps({
 
 import { ref, computed, onMounted } from "vue";
 import { useRouter } from "vue-router";
-import { useI18n } from "vue-i18n";
 import { TransitionRoot, TransitionChild, Dialog, DialogPanel } from "@headlessui/vue";
 
 import BarsIcon from "@/assets/icons/bars.svg";

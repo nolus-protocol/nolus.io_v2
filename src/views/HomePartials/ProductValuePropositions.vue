@@ -25,26 +25,38 @@
             class="shrink-0 border-b border-neutral-200/50 bg-neutral-50 py-3 lg:border-b-0 lg:border-r lg:px-8 lg:py-12"
           >
             <ul
+              role="tablist"
+              aria-label="Product features"
               class="text-neutral-80 flex flex-wrap items-center justify-center gap-x-2 gap-y-2 p-4 md:static md:w-auto md:justify-start md:gap-y-3 lg:flex-col lg:items-stretch"
             >
               <li
                 v-for="(tab, index) in tabs"
                 :key="index"
-                class="cursor-pointer rounded-full px-2 py-2 text-base font-medium transition-all hover:bg-neutral-200/40 md:px-4 md:py-2 md:text-xl"
-                :class="{ 'active bg-white text-blue-600 shadow-xl hover:bg-white': activeTab === index }"
-                @click="setActiveTab(index)"
-                @mouseover="stopInterval"
-                @mouseout="startInterval"
+                role="presentation"
               >
-                <button>
+                <button
+                  role="tab"
+                  :id="`tab-${index}`"
+                  :aria-selected="activeTab === index"
+                  :aria-controls="`tabpanel-${index}`"
+                  :tabindex="activeTab === index ? 0 : -1"
+                  class="flex w-full cursor-pointer items-center rounded-full px-2 py-2 text-base font-medium transition-all hover:bg-neutral-200/40 md:px-4 md:py-2 md:text-xl"
+                  :class="{ 'active bg-white text-blue-600 shadow-xl hover:bg-white': activeTab === index }"
+                  @click="setActiveTab(index)"
+                  @mouseover="stopInterval"
+                  @mouseout="startInterval"
+                  @keydown.arrow-right.prevent="setActiveTab((index + 1) % tabs.length)"
+                  @keydown.arrow-left.prevent="setActiveTab((index - 1 + tabs.length) % tabs.length)"
+                  @keydown.home.prevent="setActiveTab(0)"
+                  @keydown.end.prevent="setActiveTab(tabs.length - 1)"
+                >
                   <component
                     :is="tab.tabIcon"
                     fill="#ffcc00"
-                    alt=""
                     class="icon inline-block w-7 md:w-9"
                     aria-hidden="true"
                   />
-                  {{ tab.tabName }}
+                  <span class="ml-2">{{ tab.tabName }}</span>
                 </button>
               </li>
             </ul>
@@ -57,6 +69,10 @@
               <div
                 v-for="(tab, index) in tabs"
                 :key="index"
+                role="tabpanel"
+                :id="`tabpanel-${index}`"
+                :aria-labelledby="`tab-${index}`"
+                :hidden="activeTab !== index"
               >
                 <div
                   v-if="activeTab === index"
@@ -164,13 +180,13 @@ const tabs = [
   }
 ];
 
-let activeTab = ref(0); // Initialize activeTab to 0
-let previousTabHeight = ref(0); // Initialize the height of the previously selected tab
-let tabsContainer = ref<HTMLElement | null>(null);
-let imgRef = ref(null);
+const activeTab = ref(0); // Initialize activeTab to 0
+const previousTabHeight = ref(0); // Initialize the height of the previously selected tab
+const tabsContainer = ref<HTMLElement | null>(null);
+const imgRef = ref(null);
 let intervalId: NodeJS.Timeout, observer: IntersectionObserver;
-let loading = ref(false);
-let imageLoaded = ref<Record<number, boolean>>({});
+const loading = ref(false);
+const imageLoaded = ref<Record<number, boolean>>({});
 
 const onImageLoad = (index: number) => {
   imageLoaded.value[index] = true;

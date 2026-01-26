@@ -60,7 +60,7 @@
           muted
           autoplay
           playsinline
-          preload="auto"
+          preload="metadata"
           loop
           :poster="videoPoster"
         >
@@ -105,69 +105,20 @@
 import { ref, onBeforeMount, onMounted } from "vue";
 import { useI18n } from "vue-i18n";
 import { ETL_API, PROTOCOLS, Stats } from "@/config";
+import { setupVideoColorSampling } from "@/utils";
+import type { TotalTxValueResponse, TotalValueLockedResponse, PoolsResponse, PoolData } from "@/types/api";
 
-// In legacy mode, useI18n returns the global instance by default
-const { t } = useI18n({ useScope: 'global' });
+const { t } = useI18n({ useScope: "global" });
 
 import SquareArrowTopRightIcon from "@/assets/icons/square-arrow-top-right-2.svg";
 import Button from "@/components/Button.vue";
 import videoPoster from "@/assets/videos/header.jpg";
 import videoSrc from "@/assets/videos/header.mp4";
 
-// Sample image/video color and apply to page
-const sampleImageColor = (imageSource: HTMLImageElement | HTMLVideoElement) => {
-  try {
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d', { willReadFrequently: true });
-    
-    if (!ctx) return;
-    
-    // For video, use video dimensions; for image, use natural dimensions
-    const width = imageSource instanceof HTMLVideoElement ? imageSource.videoWidth : imageSource.naturalWidth;
-    const height = imageSource instanceof HTMLVideoElement ? imageSource.videoHeight : imageSource.naturalHeight;
-    
-    canvas.width = width;
-    canvas.height = height;
-    
-    if (canvas.width === 0 || canvas.height === 0) return;
-    
-    // Draw the current frame/image
-    ctx.drawImage(imageSource, 0, 0, canvas.width, canvas.height);
-    
-    // Sample from the center-left area (where background usually is)
-    const x = Math.floor(canvas.width * 0.1);
-    const y = Math.floor(canvas.height * 0.5);
-    
-    const imageData = ctx.getImageData(x, y, 1, 1).data;
-    const hex = `#${imageData[0].toString(16).padStart(2, '0')}${imageData[1].toString(16).padStart(2, '0')}${imageData[2].toString(16).padStart(2, '0')}`;
-    
-    // Apply the sampled color to the CSS variable
-    document.documentElement.style.setProperty('--bg-banner-home', hex);
-  } catch (error) {
-    // Silently fail - use default CSS color
-  }
-};
-
 onMounted(() => {
-  // Sample poster image color first (fast and reliable)
-  const img = new Image();
-  img.crossOrigin = 'anonymous';
-  img.onload = () => {
-    sampleImageColor(img);
-  };
-  img.src = videoPoster;
-  
-  // Optionally refine with video color once it actually plays (for perfect accuracy)
   const video = heroVideo.value;
   if (video) {
-    // Only sample when video has actually played and rendered a frame
-    video.addEventListener('playing', () => {
-      if (video.videoWidth > 0 && video.videoHeight > 0) {
-        requestAnimationFrame(() => {
-          sampleImageColor(video);
-        });
-      }
-    }, { once: true });
+    setupVideoColorSampling(video, "--bg-banner-home", videoPoster);
   }
 });
 
@@ -205,44 +156,40 @@ onBeforeMount(() => {
 async function fetchData() {
   try {
     isStatsLoading.value = true;
-    const [total_tx_value, tvl, earnApr] = await Promise.all([
+    const [txValueRes, tvlRes, earnApr] = await Promise.all([
       fetch(`${ETL_API}/api/total-tx-value`)
-        .then((r) => r.json())
-        .catch(() => ({ total_tx_value: 0 })),
+        .then((r) => r.json() as Promise<TotalTxValueResponse>)
+        .catch((): TotalTxValueResponse => ({ total_tx_value: "0" })),
       fetch(`${ETL_API}/api/total-value-locked`)
-        .then((r) => r.json())
-        .catch(() => ({ total_value_locked: 0 })),
+        .then((r) => r.json() as Promise<TotalValueLockedResponse>)
+        .catch((): TotalValueLockedResponse => ({ total_value_locked: "0" })),
       fetchEarnApr().catch(() => 0)
     ]);
     for (const s of stats.value) {
       switch (s.key) {
         case Stats.tx_volume: {
-          if (total_tx_value.total_tx_value == 0) {
+          const txValue = Number(txValueRes.total_tx_value);
+          if (txValue === 0) {
             s.value = "$--.--M+";
           } else {
-            s.value = `$${Number(total_tx_value.total_tx_value).toLocaleString("en-EN", {
-              maximumFractionDigits: 0
-            })}`;
+            s.value = `$${txValue.toLocaleString("en-US", { maximumFractionDigits: 0 })}`;
           }
           break;
         }
         case Stats.tvl: {
-          if (tvl.total_value_locked == 0) {
+          const tvlValue = Number(tvlRes.total_value_locked);
+          if (tvlValue === 0) {
             s.value = "$--.--";
           } else {
-            s.value = `$${Number(tvl.total_value_locked).toLocaleString("en-EN", {
-              maximumFractionDigits: 0
-            })}`;
+            s.value = `$${tvlValue.toLocaleString("en-US", { maximumFractionDigits: 0 })}`;
           }
           break;
         }
         case Stats.earn: {
-          if (earnApr == 0) {
+          if (earnApr === 0) {
             s.value = "--.--%";
           } else {
-            s.value = `${Number(earnApr).toLocaleString("en-EN", {
-              maximumFractionDigits: 2
-            })}%`;
+            s.value = `${earnApr.toLocaleString("en-US", { maximumFractionDigits: 2 })}%`;
           }
           break;
         }
@@ -255,16 +202,17 @@ async function fetchData() {
   }
 }
 
-async function fetchEarnApr() {
-  const promises = [];
-  for (const p of PROTOCOLS) {
-    promises.push(fetch(`${ETL_API}/api/earn-apr?protocol=${p}`).then((r) => r.json()));
+async function fetchEarnApr(): Promise<number> {
+  const res: PoolsResponse = await fetch(`${ETL_API}/api/pools`).then((r) => r.json());
+  const protocols = res.protocols || [];
+
+  const filteredProtocols = protocols.filter((p: PoolData) => PROTOCOLS.includes(p.protocol));
+
+  if (filteredProtocols.length === 0) {
+    return 0;
   }
-  const res = await Promise.all(promises);
-  let totalEarnApr = 0;
-  for (const apr of res) {
-    totalEarnApr += Number(apr.earn_apr);
-  }
-  return totalEarnApr / PROTOCOLS.length;
+
+  const totalEarnApr = filteredProtocols.reduce((sum, p) => sum + Number(p.earn_apr || 0), 0);
+  return totalEarnApr / filteredProtocols.length;
 }
 </script>

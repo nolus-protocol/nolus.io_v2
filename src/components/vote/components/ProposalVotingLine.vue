@@ -41,7 +41,7 @@ const props = defineProps({
 
 const showTooltips = ref(Array(Object.values(props.voting).length).fill(false));
 
-const colors: { [key: string]: any } = {
+const colors: { [key: string]: { bg: string; before: string; text: string } } = {
   yes_count: {
     bg: "bg-[#1AB171]",
     before: "before:bg-[#1AB171]",

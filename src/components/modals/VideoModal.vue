@@ -16,7 +16,7 @@
 import { ref, onMounted, reactive } from "vue";
 
 const iframeElement = ref<HTMLElement | null>(null);
-let videoDimensions = reactive({ width: 0, height: 0 });
+const videoDimensions = reactive({ width: 0, height: 0 });
 
 onMounted(() => {
   if(iframeElement.value){

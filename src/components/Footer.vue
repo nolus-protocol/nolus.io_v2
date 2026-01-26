@@ -64,12 +64,16 @@ import Modal from "@/components/modals/templates/Modal.vue";
 import tosModal from "@/components/modals/TosModal.vue";
 import cookiesModal from "@/components/modals/cookiesModal.vue";
 
-let showTosDialog = ref(false);
-let showCookiesDialog = ref(false);
+const showTosDialog = ref(false);
+const showCookiesDialog = ref(false);
 
-const handleClick = (item: { nameKey: string; href?: string; click: Function }, event: MouseEvent) => {
-  !item.href && event.preventDefault();
-  item.click && item.click();
+const handleClick = (item: { nameKey: string; href?: string; click?: () => void }, event: MouseEvent) => {
+  if (!item.href) {
+    event.preventDefault();
+  }
+  if (item.click) {
+    item.click();
+  }
 };
 
 const footer_navigation = [
