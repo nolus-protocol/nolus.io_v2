@@ -133,11 +133,11 @@
   "governance_heroTitle": "Stake Governed Protocol",
   "governance_heroDesc": "Stake NLS to govern protocol parameters, upgrades, and treasury allocation. The Proof-of-Stake consensus model aligns security with your economic participation",
 
-  "governance_statsValidators": "40 Validators",
+  "governance_statsValidatorsLabel": "Validators",
   "governance_statsValidatorsDesc": "Maintain network consensus and operations",
   "governance_statsDelegators": "3,454 Stakers",
   "governance_statsDelegatorsDesc": "Govern protocol parameters and upgrades",
-  "governance_statsStaked": "273M Staked",
+  "governance_statsStakedLabel": "Staked",
   "governance_statsStakedDesc": "NLS tokens providing economic security",
 
   "governance_recentProposalsHeading": "Recent Proposals",

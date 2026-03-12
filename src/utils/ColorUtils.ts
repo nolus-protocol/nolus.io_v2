@@ -1,15 +1,18 @@
 /**
- * Samples a color from an image or video element and applies it to a CSS variable.
- * Used to dynamically set background colors based on media content.
+ * Samples colors along the left edge of an image or video and applies the
+ * average to a CSS variable. Averaging multiple points along the edge produces
+ * a much more stable and representative background color than a single pixel.
  *
  * @param imageSource - The image or video element to sample from
  * @param cssVariable - The CSS variable name to set (e.g., '--bg-banner-home')
- * @param samplePosition - Optional position to sample from (default: { x: 0.1, y: 0.5 })
+ * @param sampleX - Horizontal position to sample at (0–1, default 0.05 = near left edge)
+ * @param sampleCount - Number of points to sample vertically (default 10)
  */
 export function sampleImageColor(
   imageSource: HTMLImageElement | HTMLVideoElement,
   cssVariable: string,
-  samplePosition: { x: number; y: number } = { x: 0.1, y: 0.5 }
+  sampleX = 0.05,
+  sampleCount = 10
 ): void {
   try {
     const canvas = document.createElement("canvas");
@@ -29,11 +32,22 @@ export function sampleImageColor(
 
     ctx.drawImage(imageSource, 0, 0, canvas.width, canvas.height);
 
-    const x = Math.floor(canvas.width * samplePosition.x);
-    const y = Math.floor(canvas.height * samplePosition.y);
+    const x = Math.floor(canvas.width * sampleX);
+    let r = 0, g = 0, b = 0;
 
-    const imageData = ctx.getImageData(x, y, 1, 1).data;
-    const hex = `#${imageData[0].toString(16).padStart(2, "0")}${imageData[1].toString(16).padStart(2, "0")}${imageData[2].toString(16).padStart(2, "0")}`;
+    for (let i = 0; i < sampleCount; i++) {
+      const y = Math.floor((canvas.height * (i + 0.5)) / sampleCount);
+      const pixel = ctx.getImageData(x, y, 1, 1).data;
+      r += pixel[0];
+      g += pixel[1];
+      b += pixel[2];
+    }
+
+    r = Math.round(r / sampleCount);
+    g = Math.round(g / sampleCount);
+    b = Math.round(b / sampleCount);
+
+    const hex = `#${r.toString(16).padStart(2, "0")}${g.toString(16).padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
 
     document.documentElement.style.setProperty(cssVariable, hex);
   } catch {

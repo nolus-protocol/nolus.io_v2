@@ -337,21 +337,28 @@ import { useI18n } from "vue-i18n";
 
 const { t } = useI18n({ useScope: 'global' });
 
+const validatorCount = ref<number | null>(null);
+const stakedAmount = ref<string | null>(null);
+
 const stats = computed(() => [
   {
     description: t("governance_statsValidatorsDesc"),
-    value: t("governance_statsValidators"),
+    value: validatorCount.value !== null
+      ? `${validatorCount.value} ${t("governance_statsValidatorsLabel")}`
+      : `– ${t("governance_statsValidatorsLabel")}`,
     id: 1
   },
-  { 
-    description: t("governance_statsDelegatorsDesc"), 
-    value: t("governance_statsDelegators"), 
-    id: 2 
+  {
+    description: t("governance_statsDelegatorsDesc"),
+    value: t("governance_statsDelegators"),
+    id: 2
   },
-  { 
-    description: t("governance_statsStakedDesc"), 
-    value: t("governance_statsStaked"), 
-    id: 3 
+  {
+    description: t("governance_statsStakedDesc"),
+    value: stakedAmount.value !== null
+      ? `${stakedAmount.value} ${t("governance_statsStakedLabel")}`
+      : `– ${t("governance_statsStakedLabel")}`,
+    id: 3
   }
 ]);
 
@@ -462,7 +469,7 @@ onMounted(async () => {
     observer.observe(canvas);
   }
 
-  await Promise.all([fetchGovernanceProposals(), loadBondedTokens(), loadTallying()]);
+  await Promise.all([fetchGovernanceProposals(), loadBondedTokens(), loadTallying(), loadValidatorCount()]);
 
   }catch(e){
     console.error(e)
@@ -504,6 +511,19 @@ const loadBondedTokens = async (): Promise<void> => {
   const res = await fetch(`${API_MAINNET}/cosmos/staking/v1beta1/pool`);
   const data: StakingPoolResponse = await res.json();
   bondedTokens.value = new Dec(data.pool.bonded_tokens);
+
+  // Convert from unls (6 decimals) to millions
+  const totalNls = Number(data.pool.bonded_tokens) / 1_000_000;
+  const millions = Math.round(totalNls / 1_000_000);
+  stakedAmount.value = `${millions}M`;
+};
+
+const loadValidatorCount = async (): Promise<void> => {
+  const res = await fetch(
+    `${API_MAINNET}/cosmos/staking/v1beta1/validators?status=BOND_STATUS_BONDED&pagination.count_total=true&pagination.limit=1`
+  );
+  const data = await res.json();
+  validatorCount.value = Number(data.pagination.total);
 };
 
 const loadTallying = async (): Promise<void> => {

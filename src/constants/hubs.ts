@@ -15,7 +15,7 @@ export const HUBS: Hub[] = [
   {
     id: 1,
     shortName: "Solana",
-    fullName: "Jupiter Ultra",
+    fullName: "Metis API",
     comingSoon: true,
     image: solanaImage,
     link: "https://jup.ag/"

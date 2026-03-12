@@ -1,7 +1,7 @@
 export const ETL_API = "https://etl.nolus.network";
 export const MAINNET_RPC = "https://rpc.nolus.network";
 export const API_MAINNET  ="https://lcd.nolus.network";
-export const RSS_SERVER ="https://beacon.nolus.network";
+export const RSS_SERVER = "https://medium-feed-proxy.nolus.workers.dev";
 
 export enum Stats {
   tx_volume,
