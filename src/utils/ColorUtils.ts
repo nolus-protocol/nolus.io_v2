@@ -56,7 +56,7 @@ export function sampleImageColor(
 }
 
 /**
- * Sets up color sampling from a video element when it starts playing.
+ * Sets up color sampling from a video element once a frame is actually rendered.
  *
  * @param video - The video element to sample from
  * @param cssVariable - The CSS variable name to set
@@ -75,16 +75,24 @@ export function setupVideoColorSampling(
     img.src = posterImage;
   }
 
-  // Refine with video color once it plays
-  video.addEventListener(
-    "playing",
-    () => {
+  // Use requestVideoFrameCallback if available — it fires when a frame
+  // is actually presented, guaranteeing drawable video data
+  if ("requestVideoFrameCallback" in video) {
+    video.requestVideoFrameCallback(() => {
+      sampleImageColor(video, cssVariable);
+    });
+  } else {
+    // Fallback: wait for enough data, then sample after a short delay
+    // to ensure the frame is actually painted
+    const onReady = () => {
       if (video.videoWidth > 0 && video.videoHeight > 0) {
-        requestAnimationFrame(() => {
-          sampleImageColor(video, cssVariable);
-        });
+        setTimeout(() => sampleImageColor(video, cssVariable), 100);
       }
-    },
-    { once: true }
-  );
+    };
+    if (video.readyState >= 2) {
+      onReady();
+    } else {
+      video.addEventListener("loadeddata", onReady, { once: true });
+    }
+  }
 }
