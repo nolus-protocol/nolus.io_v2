@@ -1,18 +1,14 @@
 /**
- * Samples colors along the left edge of an image or video and applies the
- * average to a CSS variable. Averaging multiple points along the edge produces
- * a much more stable and representative background color than a single pixel.
+ * Samples the background color from the corner pixels of an image or video.
+ * Uses all four corners to find the most consistent background color,
+ * filtering out animated content that may pass through some corners.
  *
  * @param imageSource - The image or video element to sample from
  * @param cssVariable - The CSS variable name to set (e.g., '--bg-banner-home')
- * @param sampleX - Horizontal position to sample at (0–1, default 0.05 = near left edge)
- * @param sampleCount - Number of points to sample vertically (default 10)
  */
 export function sampleImageColor(
   imageSource: HTMLImageElement | HTMLVideoElement,
-  cssVariable: string,
-  sampleX = 0.05,
-  sampleCount = 10
+  cssVariable: string
 ): void {
   try {
     const canvas = document.createElement("canvas");
@@ -32,20 +28,71 @@ export function sampleImageColor(
 
     ctx.drawImage(imageSource, 0, 0, canvas.width, canvas.height);
 
-    const x = Math.floor(canvas.width * sampleX);
-    let r = 0, g = 0, b = 0;
+    // Sample small patches at all four corners (3x3 pixels each)
+    // The true background color will be the most common among them
+    const corners = [
+      { x: 1, y: 1 },                          // top-left
+      { x: width - 2, y: 1 },                   // top-right
+      { x: 1, y: height - 2 },                  // bottom-left
+      { x: width - 2, y: height - 2 },          // bottom-right
+    ];
 
-    for (let i = 0; i < sampleCount; i++) {
-      const y = Math.floor((canvas.height * (i + 0.5)) / sampleCount);
-      const pixel = ctx.getImageData(x, y, 1, 1).data;
-      r += pixel[0];
-      g += pixel[1];
-      b += pixel[2];
+    const colors: [number, number, number][] = [];
+
+    for (const corner of corners) {
+      // Sample a 3x3 patch around each corner and average it
+      let r = 0, g = 0, b = 0;
+      let count = 0;
+      for (let dx = -1; dx <= 1; dx++) {
+        for (let dy = -1; dy <= 1; dy++) {
+          const px = Math.max(0, Math.min(width - 1, corner.x + dx));
+          const py = Math.max(0, Math.min(height - 1, corner.y + dy));
+          const pixel = ctx.getImageData(px, py, 1, 1).data;
+          r += pixel[0];
+          g += pixel[1];
+          b += pixel[2];
+          count++;
+        }
+      }
+      colors.push([Math.round(r / count), Math.round(g / count), Math.round(b / count)]);
     }
 
-    r = Math.round(r / sampleCount);
-    g = Math.round(g / sampleCount);
-    b = Math.round(b / sampleCount);
+    // Find the most common color by grouping similar corners (within distance 30)
+    // This filters out corners where animated content happens to be
+    let bestColor = colors[0];
+    let bestCount = 0;
+
+    for (let i = 0; i < colors.length; i++) {
+      let matches = 0;
+      for (let j = 0; j < colors.length; j++) {
+        const dist = Math.abs(colors[i][0] - colors[j][0])
+          + Math.abs(colors[i][1] - colors[j][1])
+          + Math.abs(colors[i][2] - colors[j][2]);
+        if (dist < 90) matches++;
+      }
+      if (matches > bestCount) {
+        bestCount = matches;
+        bestColor = colors[i];
+      }
+    }
+
+    // Average all corners that match the best color
+    let r = 0, g = 0, b = 0, count = 0;
+    for (const c of colors) {
+      const dist = Math.abs(bestColor[0] - c[0])
+        + Math.abs(bestColor[1] - c[1])
+        + Math.abs(bestColor[2] - c[2]);
+      if (dist < 90) {
+        r += c[0];
+        g += c[1];
+        b += c[2];
+        count++;
+      }
+    }
+
+    r = Math.round(r / count);
+    g = Math.round(g / count);
+    b = Math.round(b / count);
 
     const hex = `#${r.toString(16).padStart(2, "0")}${g.toString(16).padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
 
@@ -56,7 +103,9 @@ export function sampleImageColor(
 }
 
 /**
- * Sets up color sampling from a video element once a frame is actually rendered.
+ * Sets up color sampling from a video element. Samples multiple frames
+ * over time to converge on the true background color, since animated
+ * content may interfere with any single-frame sample.
  *
  * @param video - The video element to sample from
  * @param cssVariable - The CSS variable name to set
@@ -75,24 +124,29 @@ export function setupVideoColorSampling(
     img.src = posterImage;
   }
 
-  // Use requestVideoFrameCallback if available — it fires when a frame
-  // is actually presented, guaranteeing drawable video data
-  if ("requestVideoFrameCallback" in video) {
-    video.requestVideoFrameCallback(() => {
+  // Sample across multiple frames to get a stable background color
+  let samplesRemaining = 5;
+
+  const sampleFrame = () => {
+    if (samplesRemaining <= 0) return;
+    if (video.videoWidth > 0 && video.videoHeight > 0) {
       sampleImageColor(video, cssVariable);
-    });
-  } else {
-    // Fallback: wait for enough data, then sample after a short delay
-    // to ensure the frame is actually painted
-    const onReady = () => {
-      if (video.videoWidth > 0 && video.videoHeight > 0) {
-        setTimeout(() => sampleImageColor(video, cssVariable), 100);
-      }
-    };
-    if (video.readyState >= 2) {
-      onReady();
-    } else {
-      video.addEventListener("loadeddata", onReady, { once: true });
+      samplesRemaining--;
     }
+    if (samplesRemaining > 0) {
+      if ("requestVideoFrameCallback" in video) {
+        video.requestVideoFrameCallback(sampleFrame);
+      } else {
+        setTimeout(sampleFrame, 200);
+      }
+    }
+  };
+
+  if ("requestVideoFrameCallback" in video) {
+    video.requestVideoFrameCallback(sampleFrame);
+  } else if (video.readyState >= 2) {
+    sampleFrame();
+  } else {
+    video.addEventListener("loadeddata", () => sampleFrame(), { once: true });
   }
 }
